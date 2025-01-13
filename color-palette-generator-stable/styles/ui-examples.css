@@ -1,0 +1,28 @@
+.ui-examples {
+    flex: 1;
+    margin-top: 0;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.example-card {
+    background: rgba(255 255 255 / 15%);
+    color: white;
+    border-radius: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.example-header {
+    padding: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.example-content {
+    padding: 1.5rem;
+}

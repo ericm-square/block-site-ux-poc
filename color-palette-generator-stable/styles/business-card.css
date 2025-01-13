@@ -1,0 +1,96 @@
+#business-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 4px;
+    color: white;
+    background-color: var(--emphasis-fill);
+}
+
+.business-hero {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: visible;
+}
+
+.business-hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 20px 8px 8px;
+}
+
+.business-avatar {
+    position: absolute;
+    bottom: -24px;
+    left: 24px;
+    width: 96px;
+    height: 96px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.business-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.business-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 32px 16px 16px 16px;
+}
+
+.business-info h2 {
+    font: var(--display-10);
+    letter-spacing: var(--display-10-letter-spacing);
+    margin: 0;
+    color: var(--text-inverse);
+}
+
+.business-description {
+    font: var(--paragraph-30);
+    letter-spacing: var(--paragraph-30-letter-spacing);
+    opacity: 0.9;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+}
+
+.contact-row svg {
+    opacity: 0.9;
+    fill: currentColor;
+}
+
+.contact-row h4 {
+    margin: 0;
+    font: var(--paragraph-30-semibold);
+    letter-spacing: var(--paragraph-30-letter-spacing);
+}
+
+.business-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

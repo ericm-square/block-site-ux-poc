@@ -1,0 +1,71 @@
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn-primary {
+    min-width: 120px;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-primary:not(:disabled) {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary.btn-hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary.btn-focus:not(:disabled) {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px currentColor;
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #64748b;
+    min-width: 60px;
+}
+
+.button-secondary {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 24px;
+    border: none;
+    font: var(--paragraph-20-medium);
+    letter-spacing: var(--paragraph-20-letter-spacing);
+    background-color: var(--fill-40);
+    color: var(--text-inverse);
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+}
+
+.button-secondary:hover {
+    opacity: 0.9;
+}
+
+.button-secondary.active {
+    background-color: var(--emphasis-fill);
+}

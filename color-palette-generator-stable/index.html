@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Site Theme Generator</title>
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="styles/color-input.css">
+    <link rel="stylesheet" href="styles/palette.css">
+    <link rel="stylesheet" href="styles/ui-examples.css">
+    <link rel="stylesheet" href="styles/device-preview.css">
+    <link rel="stylesheet" href="styles/block.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/typography.css">
+    <link rel="stylesheet" href="styles/surfaces.css">
+    <link rel="stylesheet" href="styles/forms.css">
+    <link rel="stylesheet" href="styles/item-cards.css">
+    <link rel="stylesheet" href="styles/business-card.css">
+    <link rel="stylesheet" href="styles/status-banners.css">
+    <link rel="stylesheet" href="styles/segmented-control.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <!-- Color Input -->
+            <div class="color-input">
+                <input type="color" id="baseColor" value="#3b82f6">
+                <input type="text" id="colorHex" value="#3b82f6">
+                <div class="segmented-control">
+                    <button class="segment-button active" data-mode="blend">Color Blend</button>
+                    <button class="segment-button" data-mode="adaptive">Adaptive</button>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Palette -->
+                <div class="palette-container">
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Emphasis Colors -->
+                            <h4>Emphasis</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="emphasis-fill"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Emphasis Fill</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="emphasis-text"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Emphasis Text</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="emphasis-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Emphasis 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="emphasis-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Emphasis 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="emphasis-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Emphasis 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="emphasis-40"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Emphasis 40</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Text Colors -->
+                            <h4>Text</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="text-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Text 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="text-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Text 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="text-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Text 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="text-inverse"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Text Inverse</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Fill Colors -->
+                            <h4>Fill</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="fill-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Fill 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="fill-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Fill 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="fill-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Fill 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="fill-40"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Fill 40</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="fill-50"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Fill 50</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="fill-inverse"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Fill Inverse</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Surface Colors -->
+                            <h4>Surface</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="surface-5"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Surface 5</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="surface-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Surface 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="surface-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Surface 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="surface-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Surface 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Success Colors -->
+                            <h4>Success</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="success-fill"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Success Fill</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="success-text"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Success Text</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="success-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Success 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="success-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Success 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="success-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Success 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="success-40"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Success 40</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Warning Colors -->
+                            <h4>Warning</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="warning-fill"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Warning Fill</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="warning-text"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Warning Text</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="warning-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Warning 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="warning-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Warning 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="warning-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Warning 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="warning-40"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Warning 40</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-section">
+                        <div class="color-swatches">
+                            <!-- Critical Colors -->
+                            <h4>Critical</h4>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="critical-fill"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Critical Fill</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="critical-text"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Critical Text</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="critical-10"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Critical 10</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="critical-20"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Critical 20</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="critical-30"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Critical 30</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-box" data-color="critical-40"></div>
+                                <div class="swatch-info">
+                                    <div class="swatch-label">Critical 40</div>
+                                    <div class="swatch-hex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UI Examples -->
+                <div class="ui-examples">
+                    <div class="examples-grid">
+                        <!-- Device Preview -->
+                        <div class="device-preview-card">
+                            <div class="example-header">
+                                <div class="preview-title">Preview</div>
+                                <div class="segmented-control">
+                                    <button class="segment-button active" data-mode="mobile">Mobile</button>
+                                    <button class="segment-button" data-mode="responsive">Responsive</button>
+                                </div>
+                            </div>
+                            <div class="example-content">
+                                <div class="device-frame">
+                                    <div class="device-screen">
+                                        <div class="preview-content">
+                                    <div class="blocks">
+                                        <div class="block-site-header">
+                                            <div>
+                                                <a href="#" class="business-name">Little Grenjai</a>
+                                                <div class="open-status-icon pulse" data-color="success-fill" style="background-color: rgb(39, 184, 124);"></div>
+                                                <span class="open-status-text" data-color="success-fill" style="color: rgb(39, 184, 124);">Open</span>
+                                            </div>
+                                            <a class="button-secondary" onclick="toggleCheckIn()">Check in</a>
+                                        </div>
+                                        <!-- Business Card Block -->
+                                        <div class="block" id="business-card">
+                                                <div class="business-hero">
+                                                    <video playsinline autoplay muted loop>
+                                                      <source src="media/video.webm" type="video/webm">
+                                                      Your browser does not support the video tag.
+                                                    </video>
+                                                    <div class="business-avatar">
+                                                        <img src="media/logo.png" alt="logo">
+                                                    </div>
+                                                </div>
+                                                <div class="business-info">
+                                                    <h2>Little Grenjai</h2>
+                                                    <div class="contact-info">
+                                                        <div class="contact-row">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C15.86 2 19 5.14 19 9C19 12.52 16.39 15.44 13 15.92V22H11V15.92C7.61 15.43 5 12.52 5 9C5 5.14 8.14 2 12 2ZM7 9C7 11.76 9.24 14 12 14C14.76 14 17 11.76 17 9C17 6.24 14.76 4 12 4C9.24 4 7 6.24 7 9ZM13.5 9C13.5 9.82843 12.8284 10.5 12 10.5C11.1716 10.5 10.5 9.82843 10.5 9C10.5 8.17157 11.1716 7.5 12 7.5C12.8284 7.5 13.5 8.17157 13.5 9Z"/>
+                                                            </svg>
+                                                            <h4><a>477 Gates Ave, Brooklyn, NY 11216</a></h4>
+                                                        </div>
+                                                        <div class="contact-row">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.19849 2.30957L11.7954 7.90647L9.4831 10.2188C10.7199 11.7766 12.1644 13.2253 13.7195 14.4677L16.038 12.1491L21.6949 17.806L18.6628 20.838C18.018 21.4828 17.0719 21.841 16.1002 21.6463C9.50626 20.3257 3.67872 14.4982 2.35812 7.90425C2.16351 6.93252 2.52164 5.98642 3.16642 5.34165L6.19849 2.30957ZM6.19849 5.138L4.58063 6.75586C4.35148 6.98501 4.27108 7.27137 4.31918 7.5115C5.4813 13.3141 10.6903 18.5232 16.493 19.6853C16.7331 19.7334 17.0195 19.653 17.2486 19.4238L18.8665 17.806L16.038 14.9775L13.9008 17.1148L13.2075 16.5985C11.0066 14.9592 8.984 12.931 7.35238 10.7263L6.83976 10.0337L8.96697 7.90647L6.19849 5.138Z"/>
+                                                            </svg>
+                                                            <h4><a>(800) 123–4567</a></h4>
+                                                        </div>
+                                                    </div>
+                                                    <p class="business-description">A cozy neighborhood restaurant serving fresh, locally-sourced ingredients with a modern twist on classic comfort food. Our chef-driven menu changes seasonally to showcase the best produce and proteins available. We pride ourselves on creating a warm, inviting atmosphere where every guest feels like family.</p>
+                                                    <ul class="business-links">
+                                                        <li><a href="#menu" class="button-secondary">Menu</a></li>
+                                                        <li><a href="#about" class="button-secondary">About</a></li>
+                                                        <li><a href="#contact" class="button-secondary">Contact</a></li>
+                                                        <li><a href="#reviews" class="button-secondary">Reviews</a></li>
+                                                    </ul>
+                                                </div>
+                                        </div>
+
+                                        <!-- Menu Block -->
+                                        <div class="block">
+                                            <div class="block-content">
+                                                <h2>Order Online</h2>
+                                                <div class="banner banner-warning">
+                                                    <div class="banner-icon">⚠️</div>
+                                                    <div class="banner-content">
+                                                        <div class="banner-message">Under construction: This restaurant will be back online shortly. Please try again later.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="category-list">
+                                                    <button class="button-secondary active" data-category="all">All Items</button>
+                                                    <button class="button-secondary" data-category="popular">Popular</button>
+                                                    <button class="button-secondary" data-category="mains">Main Dishes</button>
+                                                    <button class="button-secondary" data-category="sides">Sides</button>
+                                                    <button class="button-secondary" data-category="drinks">Drinks</button>
+                                                </div>
+                                                <div class="menu-grid">
+                                                    <div class="item-card" data-category="mains popular">
+                                                        <div class="item-info">
+                                                            <div class="item-name">Grilled Salmon Bowl</div>
+                                                            <div class="item-description">Fresh Atlantic salmon served over quinoa with roasted vegetables and our house-made citrus glaze.</div>
+                                                            <div class="item-price">$24.99</div>
+                                                        </div>
+                                                        <img src="media/images/photo-1467003909585-2f8a72700288.jpg" alt="Grilled Salmon Bowl" class="item-image">
+                                                    </div>
+                                                    <div class="item-card" data-category="mains">
+                                                        <div class="item-info">
+                                                            <div class="item-name">Pad Thai</div>
+                                                            <div class="item-description">Rice noodles stir-fried with eggs, tofu, dried shrimp, and a tamarind sauce. Garnished with peanuts and lime.</div>
+                                                            <div class="item-price">$18.99</div>
+                                                        </div>
+                                                        <img src="media/images/photo-1467003909585-2f8a72700288.jpg" alt="Pad Thai" class="item-image">
+                                                    </div>
+                                                    <div class="item-card" data-category="sides">
+                                                        <div class="item-info">
+                                                            <div class="item-name">Spring Rolls</div>
+                                                            <div class="item-description">Fresh rice paper rolls with shrimp, vermicelli, lettuce, and mint. Served with peanut sauce.</div>
+                                                            <div class="item-price">$8.99</div>
+                                                        </div>
+                                                        <img src="media/images/photo-1467003909585-2f8a72700288.jpg" alt="Spring Rolls" class="item-image">
+                                                    </div>
+                                                    <div class="item-card" data-category="drinks">
+                                                        <div class="item-info">
+                                                            <div class="item-name">Thai Iced Tea</div>
+                                                            <div class="item-description">Traditional Thai tea with condensed milk and a hint of star anise. Served over ice.</div>
+                                                            <div class="item-price">$4.99</div>
+                                                        </div>
+                                                        <img src="media/images/photo-1467003909585-2f8a72700288.jpg" alt="Thai Iced Tea" class="item-image">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Gallery Block -->
+                                        <div class="block">
+                                            <div class="gallery">
+                                                <img src="media/images/table_layout_break.png" alt="Table Layout">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="example-card">
+                            <div class="example-header">Buttons</div>
+                            <div class="example-content">
+                                <div class="buttons-container">
+                                    <div class="button-row">
+                                        <div class="button-label">Default</div>
+                                        <button class="btn-primary">Button</button>
+                                    </div>
+                                    <div class="button-row">
+                                        <div class="button-label">Hover</div>
+                                        <button class="btn-primary btn-hover">Button</button>
+                                    </div>
+                                    <div class="button-row">
+                                        <div class="button-label">Focus</div>
+                                        <button class="btn-primary btn-focus">Button</button>
+                                    </div>
+                                    <div class="button-row">
+                                        <div class="button-label">Disabled</div>
+                                        <button class="btn-primary" disabled>Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status Banners -->
+                        <div class="example-card">
+                            <div class="example-header">Status Banners</div>
+                            <div class="example-content">
+                                <div class="banners-container">
+                                    <div class="banner banner-success">
+                                        <div class="banner-icon">✓</div>
+                                        <div class="banner-content">
+                                            <div class="banner-title">Success</div>
+                                            <div class="banner-message">Your changes have been saved successfully.</div>
+                                        </div>
+                                    </div>
+                                    <div class="banner banner-warning">
+                                        <div class="banner-icon">⚠️</div>
+                                        <div class="banner-content">
+                                            <div class="banner-title">Warning</div>
+                                            <div class="banner-message">Please review your information before continuing.</div>
+                                        </div>
+                                    </div>
+                                    <div class="banner banner-critical">
+                                        <div class="banner-icon">⚠️</div>
+                                        <div class="banner-content">
+                                            <div class="banner-title">Error</div>
+                                            <div class="banner-message">There was a problem processing your request.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Forms -->
+                        <div class="example-card">
+                            <div class="example-header">Form Elements</div>
+                            <div class="example-content">
+                                <div class="forms-container">
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label class="input-label">Default Input</label>
+                                            <input type="text" class="form-input" placeholder="Enter text">
+                                        </div>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label class="input-label">Hover State</label>
+                                            <input type="text" class="form-input input-hover" value="Input text">
+                                        </div>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label class="input-label">Focus State</label>
+                                            <input type="text" class="form-input input-focus" value="Input text">
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-row">
+                                        <div class="checkbox-wrapper">
+                                            <div class="form-checkbox"></div>
+                                            <label class="checkbox-label">Remember me</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item Cards -->
+                        <div class="example-card">
+                            <div class="example-header">Item Cards</div>
+                            <div class="example-content">
+                                <div class="menu-grid">
+                                    <div class="item-card">
+                                        <div class="item-info">
+                                            <div class="item-name">Margherita Pizza</div>
+                                            <div class="item-description">Fresh tomatoes, mozzarella, basil</div>
+                                            <div class="item-price">$14.99</div>
+                                        </div>
+                                        <img src="https://placehold.co/80" alt="Pizza" class="item-image">
+                                    </div>
+                                    <div class="item-card">
+                                        <div class="item-info">
+                                            <div class="item-name">Caesar Salad</div>
+                                            <div class="item-description">Romaine, croutons, parmesan</div>
+                                            <div class="item-price">$11.99</div>
+                                        </div>
+                                        <img src="https://placehold.co/80" alt="Salad" class="item-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Typography -->
+                        <div class="example-card">
+                            <div class="example-header">Typography</div>
+                            <div class="example-content">
+                                <div class="typography-container">
+                                    <h1>Display 30</h1>
+                                    <h2>Display 20</h2>
+                                    <h3>Display 10</h3>
+                                    <h4>Heading 30</h4>
+                                    <h5>Heading 20</h5>
+                                    <h6>Heading 10</h6>
+                                    <p>Paragraph 30</p>
+                                    <p class="paragraph-30-medium">Paragraph 30 Medium</p>
+                                    <p class="paragraph-30-semibold">Paragraph 30 Semibold</p>
+                                    <p class="paragraph-20">Paragraph 20</p>
+                                    <p class="paragraph-20-medium">Paragraph 20 Medium</p>
+                                    <p class="paragraph-20-semibold">Paragraph 20 Semibold</p>
+                                    <p class="paragraph-10">Paragraph 10, Medium, Semibold</p>
+                                    <p class="paragraph-10-medium">Paragraph 10 Medium</p>
+                                    <p class="paragraph-10-semibold">Paragraph 10 Semibold</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

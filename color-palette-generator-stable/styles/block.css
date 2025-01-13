@@ -1,0 +1,17 @@
+.block {
+    background: white;
+    border-radius: 24px;
+    margin-bottom: 8px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: visible;
+}
+
+.block-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 1rem;
+}

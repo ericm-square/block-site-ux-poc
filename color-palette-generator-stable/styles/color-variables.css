@@ -1,0 +1,87 @@
+:root {
+    /* Base Market Palette, Light Mode *
+
+    /* Emphasis */
+    --emphasis-fill: var(--base-color, #006AFF);
+    --emphasis-text: #005AD9;
+    --emphasis-10: #0055CC;
+    --emphasis-20: #005FE5;
+    --emphasis-30: #CCE1FF;
+    --emphasis-40: #E5F0FF;
+
+    /* Success */
+    --success-fill: #00B23B;
+    --success-text: #007D2A;
+    --success-10: #00802A;
+    --success-20: #009933;
+    --success-30: #CCFFDD;
+    --success-40: #E5FFEE;
+
+    /* Warning */
+    --warning-fill: #FF9F40;
+    --warning-text: #945C25;
+    --warning-10: #CC8033;
+    --warning-20: #E58F39;
+    --warning-30: #FFE5CC;
+    --warning-40: #FFF2E5;
+
+    /* Critical */
+    --critical-fill: #CC0023;
+    --critical-text: #BF0020;
+    --critical-10: #99001A;
+    --critical-20: #B2001E;
+    --critical-30: #FFCCD5;
+    --critical-40: #FFE5EA;
+
+    /* Text */
+    --text-10: rgba(0, 0, 0, 0.9);
+    --text-20: rgba(0, 0, 0, 0.55);
+    --text-30: rgba(0, 0, 0, 0.3);
+    --text-inverse: rgba(255, 255, 255, 0.95);
+    --text-black: rgba(0, 0, 0, 0.9);
+    --text-white:rgba(255, 255, 255, 1);
+
+    /* Surface */
+    --surface-5: #FFFFFF;
+    --surface-10: #FFFFFF;
+    --surface-20: #FFFFFF;
+    --surface-30: #FFFFFF;
+    --surface-inverse: #1A1A1A;
+    --surface-overlay: rgba(0, 0, 0, 0.8);
+
+    /* Fill */
+    --fill-10: rgba(0, 0, 0, 0.9);
+    --fill-20: rgba(0, 0, 0, 0.42);
+    --fill-30: rgba(0, 0, 0, 0.15);
+    --fill-40: rgba(0, 0, 0, 0.05);
+    --fill-50: rgba(0, 0, 0, 0.03);
+    --fill-inverse: rgba(255, 255, 255, 0.95);
+    --fill-black: rgba(0, 0, 0, 0.9);
+    --fill-white: rgba(255, 255, 255, 1);
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+    --text-10: rgba(0, 0, 0, 0.95);
+    --text-20: rgba(0, 0, 0, 0.55);
+    --text-30: rgba(0, 0, 0, 0.35);
+    --text-inverse: #FFFFFF;
+
+    --surface-5: #f5f5f5;
+    --surface-10: #ffffff;
+    --surface-20: #ffffff;
+    --surface-30: #ffffff;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+    --text-10: #FFFFFF;
+    --text-20: rgba(255, 255, 255, 0.65);
+    --text-30: rgba(255, 255, 255, 0.45);
+    --text-inverse: #000000;
+
+    --surface-5: #1A1A1A;
+    --surface-10: #262626;
+    --surface-20: #333333;
+    --surface-30: #404040;
+}

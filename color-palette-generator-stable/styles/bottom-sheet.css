@@ -1,0 +1,120 @@
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+    z-index: 2000;
+    transition: background-color 0.5s cubic-bezier(0.32, 0.72, 0, 1),
+                backdrop-filter 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.bottom-sheet.visible {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.bottom-sheet-content {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--round) var(--round) 0 0;
+    padding: 32px;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
+    position: relative;
+}
+
+.bottom-sheet.visible .bottom-sheet-content {
+    transform: translateY(0);
+}
+
+.bottom-sheet-header {
+    margin-bottom: 24px;
+}
+
+.bottom-sheet-header h3 {
+    font: var(--heading-20);
+    margin: 0;
+}
+
+.close-sheet {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--text-20);
+    transition: all 0.2s;
+}
+
+.close-sheet:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #666;
+}
+
+.bottom-sheet-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bottom-sheet-body p {
+    color: var(--text-20);
+    margin: 0;
+}
+
+.bottom-sheet-body input[type="tel"] {
+    font: var(--paragraph-20);
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--sharp);
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    background: #f8f8f8;
+}
+
+.bottom-sheet-body input[type="tel"]:focus {
+    outline: none;
+    border-color: var(--emphasis);
+    background: white;
+}
+
+.check-in-button:before {
+    content: url(media/icons/human-check.svg);
+    fill: white;
+}
+
+.check-in-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 16px;
+    font: var(--paragraph-20-semibold);
+    background: var(--emphasis);
+    color: white;
+    border: none;
+    border-radius: var(--round);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.check-in-btn:hover {
+    background-color: #d00f27;
+}

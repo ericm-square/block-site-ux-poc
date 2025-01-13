@@ -1,0 +1,11 @@
+.gallery {
+	aspect-ratio: 16 / 9;
+	padding: 4px;
+}
+
+.gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 20px;
+}

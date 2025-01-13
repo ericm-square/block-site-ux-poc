@@ -1,0 +1,43 @@
+.color-input {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background: #222;
+    padding: 16px;
+    width: 100vw;
+    display: flex;
+    gap: 16px;
+}
+
+.color-input label {
+    color: white;
+}
+
+input#baseColor {
+    background-color: #333;
+    block-size: 40px;
+    inline-size: 80px;
+    border: none;
+    cursor: pointer;
+    padding: 1px 3px;
+    border-radius: 4px;
+}
+
+input#colorHex {
+    background-color: #333;
+    color: white;
+    border: transparent
+}
+
+#colorHex {
+    width: 120px;
+    height: 40px;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+}

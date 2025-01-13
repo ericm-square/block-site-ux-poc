@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Online Ordering</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="site-container">
+        <header>
+            <div><a href="#" class="business-name">Little Grenjai</a><div class="open-status-icon pulse"></div><span class="open-status-text">Open</span></div>
+            <a class="button check-in-button" onclick="toggleCheckIn()">Check in</a>
+        </header>
+        <div class="blocks">
+            <div class="block" id="business-card">
+                <div class="block-content">
+                    <div class="business-hero">
+                        <video playsinline autoplay muted loop>
+                          <source src="media/video.webm" type="video/webm">
+                          Your browser does not support the video tag.
+                        </video>
+                        <div class="business-avatar">
+                            <img src="media/logo.png" alt="logo">
+                        </div>
+                    </div>
+                    <div class="business-info">
+                        <h2>Little Grenjai</h2>
+                        <div class="contact-info">
+                            <div class="contact-row">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C15.86 2 19 5.14 19 9C19 12.52 16.39 15.44 13 15.92V22H11V15.92C7.61 15.43 5 12.52 5 9C5 5.14 8.14 2 12 2ZM7 9C7 11.76 9.24 14 12 14C14.76 14 17 11.76 17 9C17 6.24 14.76 4 12 4C9.24 4 7 6.24 7 9ZM13.5 9C13.5 9.82843 12.8284 10.5 12 10.5C11.1716 10.5 10.5 9.82843 10.5 9C10.5 8.17157 11.1716 7.5 12 7.5C12.8284 7.5 13.5 8.17157 13.5 9Z"/>
+                                </svg>
+
+                                <h4><a>477 Gates Ave, Brooklyn, NY 11216</a></h4>
+                            </div>
+                            <div class="contact-row">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.19849 2.30957L11.7954 7.90647L9.4831 10.2188C10.7199 11.7766 12.1644 13.2253 13.7195 14.4677L16.038 12.1491L21.6949 17.806L18.6628 20.838C18.018 21.4828 17.0719 21.841 16.1002 21.6463C9.50626 20.3257 3.67872 14.4982 2.35812 7.90425C2.16351 6.93252 2.52164 5.98642 3.16642 5.34165L6.19849 2.30957ZM6.19849 5.138L4.58063 6.75586C4.35148 6.98501 4.27108 7.27137 4.31918 7.5115C5.4813 13.3141 10.6903 18.5232 16.493 19.6853C16.7331 19.7334 17.0195 19.653 17.2486 19.4238L18.8665 17.806L16.038 14.9775L13.9008 17.1148L13.2075 16.5985C11.0066 14.9592 8.984 12.931 7.35238 10.7263L6.83976 10.0337L8.96697 7.90647L6.19849 5.138Z" />
+                                </svg>
+                                <h4><a>(800) 123–4567</a></h4>
+                            </div>
+                        </div>
+                        <p class="business-description">A cozy neighborhood restaurant serving fresh, locally-sourced ingredients with a modern twist on classic comfort food. Our chef-driven menu changes seasonally to showcase the best produce and proteins available. We pride ourselves on creating a warm, inviting atmosphere where every guest feels like family.</p>
+                        <ul class="business-links">
+                            <li><a href="#menu">Menu</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#reviews">Reviews</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block-content">
+                    <h2>Order Online</h2>
+                    <div class="category-list">
+                        <button class="category-btn active" data-category="all">All Items</button>
+                        <button class="category-btn" data-category="popular">Popular</button>
+                        <button class="category-btn" data-category="mains">Main Dishes</button>
+                        <button class="category-btn" data-category="sides">Sides</button>
+                        <button class="category-btn" data-category="drinks">Drinks</button>
+                    </div>
+                    <div class="menu-grid">
+                        <!-- Main Dishes -->
+                        <div class="menu-item" data-category="mains popular">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Grilled Salmon Bowl</h3>
+                                <p class="menu-item-description">Fresh Atlantic salmon served over quinoa with roasted vegetables and our house-made citrus glaze.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$24.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1467003909585-2f8a72700288.jpg" alt="Grilled Salmon Bowl">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="mains">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Truffle Mushroom Pasta</h3>
+                                <p class="menu-item-description">House-made fettuccine with wild mushrooms, truffle oil, and fresh herbs in a light cream sauce.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$21.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1556761223-4c4282c73f77.jpg" alt="Truffle Mushroom Pasta">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="mains popular">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Korean BBQ Short Ribs</h3>
+                                <p class="menu-item-description">Tender beef short ribs marinated in our signature Korean BBQ sauce, served with kimchi and steamed rice.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$27.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1544025162-d76694265947.jpg" alt="Korean BBQ Short Ribs">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="mains">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Mediterranean Salad</h3>
+                                <p class="menu-item-description">Fresh mixed greens with feta, olives, cherry tomatoes, and cucumber in a lemon herb vinaigrette.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$16.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1540420773420-3366772f4999.jpg" alt="Mediterranean Salad">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <!-- More Main Dishes -->
+                        <div class="menu-item" data-category="mains">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Grilled Ribeye Steak</h3>
+                                <p class="menu-item-description">14oz prime ribeye steak with garlic butter, served with roasted potatoes and seasonal vegetables.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$34.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1600891964092-4316c288032e.jpg" alt="Grilled Ribeye Steak">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="mains popular">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Seafood Paella</h3>
+                                <p class="menu-item-description">Traditional Spanish rice dish with shrimp, mussels, clams, and chorizo in saffron-infused broth.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$29.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1534080564583-6be75777b70a.jpg" alt="Seafood Paella">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <!-- Sides -->
+                        <div class="menu-item" data-category="sides popular">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Truffle Fries</h3>
+                                <p class="menu-item-description">Crispy shoestring fries tossed with truffle oil, parmesan cheese, and fresh herbs.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$8.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1573080496219-bb080dd4f877.jpg" alt="Truffle Fries">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="sides">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Roasted Brussels Sprouts</h3>
+                                <p class="menu-item-description">Crispy brussels sprouts with bacon, balsamic glaze, and toasted almonds.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$9.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1572449043416-55f4685c9bb7.jpg" alt="Roasted Brussels Sprouts">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="sides">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Mac and Cheese</h3>
+                                <p class="menu-item-description">Creamy blend of four cheeses with a crispy breadcrumb topping.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$10.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1543339494-b4cd4f7ba686.jpg" alt="Mac and Cheese">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="sides">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Grilled Asparagus</h3>
+                                <p class="menu-item-description">Fresh asparagus grilled with olive oil, garlic, and lemon zest.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$7.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1515471209610-dae1c92d8777.jpg" alt="Grilled Asparagus">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <!-- Drinks -->
+                        <div class="menu-item" data-category="drinks">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Craft Mojito</h3>
+                                <p class="menu-item-description">Fresh mint, lime, and premium rum with a splash of soda.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$12.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1551538827-9c037cb4f32a.jpg" alt="Craft Mojito">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="drinks">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Artisanal Lemonade</h3>
+                                <p class="menu-item-description">House-made lemonade with fresh berries and mint.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$5.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1513558161293-cdaf765ed2fd.jpg" alt="Artisanal Lemonade">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="drinks">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Cold Brew Coffee</h3>
+                                <p class="menu-item-description">24-hour steeped coffee served over ice with your choice of milk.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$4.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1461023058943-07fcbe16d735.jpg" alt="Cold Brew Coffee">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="drinks">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Sparkling Elderflower</h3>
+                                <p class="menu-item-description">Refreshing blend of elderflower, mint, and sparkling water.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$6.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1544145945-f90425340c7e.jpg" alt="Sparkling Elderflower">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item" data-category="drinks popular">
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Matcha Green Tea Latte</h3>
+                                <p class="menu-item-description">Premium grade matcha whisked with steamed milk of your choice.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$5.99</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-image">
+                                <img src="media/images/photo-1515823662972-da6a2e4d3002.jpg" alt="Matcha Green Tea Latte">
+                                <button class="add-to-cart" aria-label="Add to cart"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="gallery">
+                    <img src="media/images/table_layout_break.png">
+                </div>
+            </div>
+            <div class="block" id="gift-cards">
+                <div class="block-content">
+                    <h2>Gift Cards</h2>
+                    <div class="gift-card-carousel">
+                        <div class="gift-card"></div>
+                        <div class="gift-card"></div>
+                        <div class="gift-card"></div>
+                    </div>
+                    <p>Perfect for any occasion, our gift card lets them choose from our curated selection.</p>
+                </div>
+            </div>
+        </div>
+        <div class="cart" onclick="toggleCart()">
+            <div class="cart-icon">
+                <span class="cart-count">0</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6H4.14158L2.36561 17.5438C2.08603 19.3611 3.49207 21 5.33072 21H18.6683C20.5069 21 21.913 19.3611 21.6334 17.5438L19.8574 6H16C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6ZM10 6C10 4.89543 10.8954 4 12 4C13.1046 4 14 4.89543 14 6H10ZM4.93434 14L5.85742 8H18.1416L19.0647 14H4.93434ZM4.62665 16H19.3724L19.6567 17.8479C19.7498 18.4537 19.2812 19 18.6683 19H5.33072C4.71784 19 4.24916 18.4537 4.34235 17.8479L4.62665 16Z" fill="white"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically populated -->
+        </div>
+        <div class="cart-footer">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount">$0.00</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <div class="bottom-sheet" id="checkInSheet">
+        <div class="bottom-sheet-content">
+            <button class="close-sheet" onclick="toggleCheckIn()">&times;</button>
+            <div class="bottom-sheet-header">
+                <h3>Check In</h3>
+            </div>
+            <div class="bottom-sheet-body">
+                <p>Enter your phone number to check in</p>
+                <input type="tel" id="phoneNumber" placeholder="(123) 456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="14">
+                <button class="primary-button check-in-btn" onclick="submitCheckIn()">Check In</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="color-picker-overlay">
+        <button class="color-picker-toggle" aria-label="Toggle color picker">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C12.83 21 13.5 20.33 13.5 19.5C13.5 19.11 13.35 18.76 13.11 18.49C12.88 18.23 12.73 17.88 12.73 17.5C12.73 16.67 13.4 16 14.23 16H16C18.76 16 21 13.76 21 11C21 6.58 16.97 3 12 3Z" fill="currentColor"/>
+            </svg>
+        </button>
+        <div class="color-picker-panel">
+            <input type="color" id="emphasisColorPicker" value="#FF0000">
+            <button class="reset-color">Reset</button>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

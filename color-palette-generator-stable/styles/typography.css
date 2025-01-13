@@ -1,0 +1,110 @@
+:root {    
+    /* FONT FAMILIES */
+    --theme-font: 'Inter', sans-serif;
+    --theme-display-font: var(--override-display-font, var(--theme-font));
+    --theme-heading-font: var(--override-heading-font, var(--theme-font));
+    --theme-paragraph-font: var(--override-paragraph-font, var(--theme-font));
+
+    /* FONTS */
+    --display-30: 700 64px/1 var(--theme-display-font);
+    --display-20: 700 48px/1.15 var(--theme-display-font);
+    --display-10: 700 32px/1.25 var(--theme-display-font);
+
+    --heading-30: 700 24px/1.15 var(--theme-heading-font);
+    --heading-20: 700 20px/1.1 var(--theme-heading-font);
+    --heading-10: 700 14px/1.25 var(--theme-heading-font);
+
+    --paragraph-30: 400 16px/1.15 var(--theme-paragraph-font);
+    --paragraph-20: 400 14px/1.5 var(--theme-paragraph-font);
+    --paragraph-10: 400 12px/1.5 var(--theme-paragraph-font);
+
+    --paragraph-30-medium: 500 16px/1.15 var(--theme-paragraph-font);
+    --paragraph-20-medium: 500 14px/1.5 var(--theme-paragraph-font);
+    --paragraph-10-medium: 500 12px/1.5 var(--theme-paragraph-font);
+
+    --paragraph-30-semibold: 600 16px/1.15 var(--theme-paragraph-font);
+    --paragraph-20-semibold: 600 14px/1.5 var(--theme-paragraph-font);
+    --paragraph-10-semibold: 600 12px/1.5 var(--theme-paragraph-font);
+
+    /* LETTER-SPACING */
+    --display-30-letter-spacing: var(--override-display-30-letter-spacing, -0.04em);
+    --display-20-letter-spacing: var(--override-display-20-letter-spacing, -0.03em);
+    --display-10-letter-spacing: var(--override-display-10-letter-spacing, -0.025em);
+
+    --heading-30-letter-spacing: var(--override-heading-30-letter-spacing, -0.005em);
+    --heading-20-letter-spacing: var(--override-heading-20-letter-spacing, 0);
+    --heading-10-letter-spacing: var(--override-heading-10-letter-spacing, 0);
+
+    --paragraph-30-letter-spacing: var(--override-paragraph-30-letter-spacing, 0);
+    --paragraph-20-letter-spacing: var(--override-paragraph-20-letter-spacing, 0);
+    --paragraph-10-letter-spacing: var(--override-paragraph-10-letter-spacing, 0.01em);
+}
+
+h1 {
+    font: var(--display-30);
+    letter-spacing: var(--display-30-letter-spacing);
+}
+
+h2 {
+    font: var(--display-20);
+    letter-spacing: var(--display-20-letter-spacing);
+}
+
+h3 {
+    font: var(--display-10);
+    letter-spacing: var(--display-10-letter-spacing);
+}
+
+h4 {
+    font: var(--heading-30);
+    letter-spacing: var(--heading-30-letter-spacing);
+}
+
+h5 {
+    font: var(--heading-20);
+    letter-spacing: var(--heading-20-letter-spacing);
+}
+
+h6 {
+    font: var(--heading-10);
+    letter-spacing: var(--heading-10-letter-spacing);
+}
+
+p, .paragraph-30 {
+    font: var(--paragraph-30);
+    letter-spacing: var(--paragraph-30-letter-spacing);
+}
+
+.paragraph-30-medium {
+    font: var(--paragraph-30-medium);
+}
+
+.paragraph-30-semibold {
+    font: var(--paragraph-30-semibold);
+}
+
+.paragraph-20 {
+    font: var(--paragraph-20);
+    letter-spacing: var(--paragraph-20-letter-spacing);
+}
+
+.paragraph-20-medium {
+    font: var(--paragraph-20-medium);
+}
+
+.paragraph-20-semibold {
+    font: var(--paragraph-20-semibold);
+}
+
+.paragraph-10 {
+    font: var(--paragraph-10);
+    letter-spacing: var(--paragraph-10-letter-spacing);
+}
+
+.paragraph-10-medium {
+    font: var(--paragraph-10-medium);
+}
+
+.paragraph-10-semibold {
+    font: var(--paragraph-10-semibold);
+}

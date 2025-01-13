@@ -1,0 +1,31 @@
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    margin-bottom: 2rem;
+    color: white;
+}
+
+main {
+    color: black;
+    margin-top: 64px;
+}
+
+.main-content {
+    display: flex;
+    gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+}
