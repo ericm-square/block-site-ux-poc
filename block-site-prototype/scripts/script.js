@@ -5,6 +5,17 @@ const colorPicker = document.querySelector('#emphasisColorPicker');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
 
+// When document loads...
+document.addEventListener('DOMContentLoaded', () => {
+    // Change background color based on browser...
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isChrome = /chrome/i.test(navigator.userAgent);
+    const body = document.querySelector('body');
+    if (isChrome) {
+        body.style.backgroundColor = '#2D2D2D';
+    }
+});
+
 // Toggle color picker panel
 colorPickerToggle.addEventListener('click', () => {
     colorPickerPanel.classList.toggle('active');
