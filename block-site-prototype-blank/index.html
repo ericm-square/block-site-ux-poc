@@ -21,14 +21,33 @@
                 </div>
             </div>
 
-            <div id="block-01" class="block expandable collapsed" onclick="toggleBlockExpanded('block-01')">
+            <!-- Block; Will expand to 800px when clicked -->
+            <div id="block-01" class="block expandable collapsed" onclick="toggleBlockExpanded(event, 'block-01')">
                 <div class="block-content">
                     <div style="height:400px;">
-                        
+                        One-Step Expand
                     </div>
                 </div>
             </div>
 
+            <!-- Block; Multiple Levels of Expand -->
+            <div id="block-multi-step" onclick="toggleBlockExpandedLevel1(event, 'block-multi-step')" class="block expandable collapsed-multi">
+                <div class="block-content" style="display:flex; flex-direction:column; justify-content:space-between; height:100%">
+                    <div>
+                        Multi-Step Expand
+                    </div>
+
+                    <div id="block-multi-step-next-btn" style="text-align:center; padding: 10px; margin-bottom:20px;">
+                        <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" style="width:300px; background: black; color: white; border-radius: 10px;" class="category-btn">Next</button>
+                    </div>
+
+                    <div id="block-multi-step-done-btn" style="text-align:center; padding: 10px; margin-bottom:20px;">
+                        <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" style="width:300px; background: black; color: white; border-radius: 10px;" class="category-btn">Done</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcement; Will expand when "Read More" is clicked -->
             <div id="announcement" class="block announcement collapsed" style="background-color:transparent;">
                 <div class="block-content">
                     <div class="announcement-grid">
@@ -37,16 +56,16 @@
                         </div>
 
                         <div class="expand-announcement-button">
-                            <a href="#" onclick="toggleBlockExpanded('announcement')">Read More</a>
+                            <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read More</a>
                         </div>
                     </div>
                     <div class="collapse-announcement-button">
-                        <a href="#" onclick="toggleBlockExpanded('announcement')">Read Less</a>
+                        <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read Less</a>
                     </div>
                 </div>
             </div>
 
-            <div class="block">
+            <div id="block-02" class="block">
                 <div class="block-content">
                     <div style="height:400px;"></div>
                 </div>

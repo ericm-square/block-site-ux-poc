@@ -188,13 +188,34 @@ header .business-name {
     transition: height 0.1s ease-in-out;
 }
 
+
+#block-multi-step-next-btn { display: none; }
+.block.expanded-multi-1 #block-multi-step-next-btn { display: block; }
+#block-multi-step-done-btn { display: none; }
+.block.expanded-multi-2 #block-multi-step-done-btn { display: block; }
+
+.block.collapsed-multi {
+    height: 200px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block.expanded-multi-1 {
+    height: 400px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block.expanded-multi-2 {
+    height: 800px;
+    transition: height 0.1s ease-in-out;
+}
+
 /* Announcement Expand/Collapse */
 .block.announcement.collapsed {
     height: 50px;
 }
 
 .block.announcement.expanded {
-    height: 320px;
+    height: 400px;
 }
 
 .block.announcement.expanded .announcement-text {

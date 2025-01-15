@@ -6,7 +6,7 @@ const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
 
 // Toggle whether block is expanded or not
-function toggleBlockExpanded(blockId) {
+function toggleBlockExpanded(event, blockId) {
     event.preventDefault();
     const block = document.getElementById(blockId);
     if (!block) { return; }
@@ -18,6 +18,42 @@ function toggleBlockExpanded(blockId) {
     } else {
         block.classList.add('expanded');
         block.classList.remove('collapsed');
+    }
+}
+
+function toggleBlockExpandedLevel1(event, blockId) {
+    event.preventDefault();
+    event.stopPropagation();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+
+    const isExpanded = block.classList.contains('expanded-multi-1');
+    if (isExpanded) {
+        block.classList.remove('expanded-multi-1');
+        block.classList.remove('expanded-multi-2');
+        block.classList.add('collapsed-multi');
+    } else {
+        block.classList.add('expanded-multi-1');
+        block.classList.remove('expanded-multi-2');
+        block.classList.remove('collapsed-multi');
+    }
+}
+
+function toggleBlockExpandedLevel2(event, blockId) {
+    event.preventDefault();
+    event.stopPropagation();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+
+    const isExpanded = block.classList.contains('expanded-multi-2');
+    if (isExpanded) {
+        block.classList.remove('expanded-multi-1');
+        block.classList.remove('expanded-multi-2');
+        block.classList.add('collapsed-multi');
+    } else {
+        block.classList.add('expanded-multi-2');
+        block.classList.remove('expanded-multi-1');
+        block.classList.remove('collapsed-multi');
     }
 }
 
