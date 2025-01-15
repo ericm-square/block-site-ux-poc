@@ -5,6 +5,23 @@ const colorPicker = document.querySelector('#emphasisColorPicker');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
 
+// Toggle whether block is expanded or not
+function toggleBlockExpanded(blockId) {
+    event.preventDefault();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+
+    const isExpanded = block.classList.contains('expanded');
+    if (isExpanded) {
+        block.classList.remove('expanded');
+        block.classList.add('collapsed');
+    } else {
+        block.classList.add('expanded');
+        block.classList.remove('collapsed');
+    }
+}
+
+
 // When document loads...
 document.addEventListener('DOMContentLoaded', () => {
     // Change background color based on browser...

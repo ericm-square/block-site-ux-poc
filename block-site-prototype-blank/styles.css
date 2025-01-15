@@ -7,6 +7,7 @@
     /* COLORS */
     --success: #3DD795;
     --emphasis: red;
+    --link: #4A95FF;
     --text-10: rgba(0,0,0,0.95);
     --text-20: rgba(0,0,0,0.55);
 
@@ -171,6 +172,81 @@ header .business-name {
     white-space: nowrap;
 }
 
+
+/* Block Expand/Collapse */
+.block.expandable {
+    cursor: pointer;
+}
+
+.block.collapsed {
+    height: 400px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block.expanded {
+    height: 800px;
+    transition: height 0.1s ease-in-out;
+}
+
+/* Announcement Expand/Collapse */
+.block.announcement.collapsed {
+    height: 50px;
+}
+
+.block.announcement.expanded {
+    height: 320px;
+}
+
+.block.announcement.expanded .announcement-text {
+    white-space: normal;
+    overflow: visible;
+}
+
+.block.announcement.expanded .expand-announcement-button {
+    display: none;
+}
+
+.block.announcement.expanded .collapse-announcement-button {
+    display: block;
+}
+
+/* Announcement */
+.announcement-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.announcement-text {
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expand-announcement-button {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.expand-announcement-button a,
+.collapse-announcement-button a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.collapse-announcement-button {
+    display: none;
+
+    padding-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+
 .open-status-icon {
     width: 6px;
     height: 6px;
@@ -234,11 +310,6 @@ header .business-name {
     position: relative;
     overflow: hidden;
 }
-
-
-/* ERM: TESTING */
-
-
 
 /* Grid layout */
 #business-card {
