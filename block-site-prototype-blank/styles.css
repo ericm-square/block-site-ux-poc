@@ -116,7 +116,7 @@
     cursor: pointer;
 }
 
-.popup-panel-input {
+.config-input {
     font: var(--paragraph-20-medium);
     padding: 8px;
     border: 1px solid rgba(0,0,0,0.1);
@@ -126,7 +126,7 @@
     transition: background-color 0.2s;
 }
 
-.popup-panel-input:hover {
+.config-input:hover {
     background: rgba(0,0,0,0.05);
 }
 
@@ -309,9 +309,6 @@ header .business-name {
     text-transform: uppercase;
 }
 
-
-
-
 .open-status-icon {
     width: 6px;
     height: 6px;
@@ -375,12 +372,12 @@ header .business-name {
     overflow: hidden;
 }
 
-.content .block {
+.load-animation__slide-in-fade .content .block {
     opacity: 0;
     transform: translateY(var(--animation-content-translate-y));
 }
 
-.content .block.animate {
+.load-animation__slide-in-fade .content .block.animate {
     animation: slideIn var(--animation-block-slide-in-duration) ease-out forwards;
 }
 
@@ -411,6 +408,10 @@ header .business-name {
     transition: opacity 0.2s ease-in;
 }
 
+body:not(.load-animation__slide-in-fade) .skeletons {
+    display: none !important;
+}
+
 .skeletons.fade-out {
     opacity: 0;
 }
@@ -433,16 +434,6 @@ header .business-name {
     0% { opacity: 0.6; }
     50% { opacity: 1; }
     100% { opacity: 0.6; }
-}
-
-/* Hide real content initially */
-#skeleton {
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
-}
-
-#skeleton.fade-out {
-    opacity: 0;
 }
 
 .content {
@@ -1155,5 +1146,37 @@ header .business-name {
     .business-links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* PLAYGROUND */
+.playground-container {
+    background: white;
+    padding: 40px;
+    margin: 8px;
+    border-radius: var(--round);
+}
+
+.row {
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.column {
+    flex: 1 1 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 4px;
+}
+
+@media (min-width: 799px) {
+    .row {
+        flex-flow: initial;
+    }
+
+    .column {
+        flex: 1 1 50%;
     }
 }

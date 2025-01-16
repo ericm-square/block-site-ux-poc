@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Restaurant Online Ordering</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="playground-container">
+        <div class="row">
+            <div class="column">
+                <label>initial load animation</label>
+                <select class="config-input" data-key="load-animation">
+                    <option value="slide-in-fade">Slide in fade</option>
+                    <option value="reveal-on-scroll">Reveal on scroll (wip)</option>
+                </select>
+            </div>
+            <!-- <div class="column">
+                <label>blocks starting position before slide in</label>
+                <input type="number" value="20" step="20" min="0" class="config-input" data-suffix="px" data-key="content-translate-y" data-css-var="--animation-content-translate-y">
+            </div>
+            <div class="column">
+                <label>blocks slide in duration</label>
+                <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-slide-in-duration" data-css-var="--animation-block-slide-in-duration">
+            </div> -->
+        </div>
+        <div class="row">
+            <p class="page-url"></p>
+            <!-- <button class="config-input copy-url-button">Copy Url</button> -->
+            <button class="config-input apply-options">Generate url</button>
+            <button class="config-input reset-options">Reset</button>
+        </div>
+    </div>
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/playground.js"></script>
+</body>
+</html>
+
+<div class="row">
+    <div class="column"></div>
+    <div class="column"></div>
+</div>

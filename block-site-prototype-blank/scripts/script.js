@@ -14,11 +14,11 @@ function toggleBlockExpanded(event, blockId) {
 
     const isExpanded = block.classList.contains('expanded');
     if (isExpanded) {
-        block.classList.remove('expanded');
-        block.classList.add('collapsed');
+        updateClass(block, 'expanded', false);
+        updateClass(block, 'collapsed', true);
     } else {
-        block.classList.add('expanded');
-        block.classList.remove('collapsed');
+        updateClass(block, 'expanded', true);
+        updateClass(block, 'collapsed', false);
     }
 }
 
@@ -30,13 +30,13 @@ function toggleBlockExpandedLevel1(event, blockId) {
 
     const isExpanded = block.classList.contains('expanded-multi-1');
     if (isExpanded) {
-        block.classList.remove('expanded-multi-1');
-        block.classList.remove('expanded-multi-2');
-        block.classList.add('collapsed-multi');
+        updateClass(block, 'expanded-multi-1', false);
+        updateClass(block, 'expanded-multi-2', false);
+        updateClass(block, 'collapsed-multi', true);
     } else {
-        block.classList.add('expanded-multi-1');
-        block.classList.remove('expanded-multi-2');
-        block.classList.remove('collapsed-multi');
+        updateClass(block, 'expanded-multi-1', true);
+        updateClass(block, 'expanded-multi-2', false);
+        updateClass(block, 'collapsed-multi', false);
     }
 }
 
@@ -48,33 +48,17 @@ function toggleBlockExpandedLevel2(event, blockId) {
 
     const isExpanded = block.classList.contains('expanded-multi-2');
     if (isExpanded) {
-        block.classList.remove('expanded-multi-1');
-        block.classList.remove('expanded-multi-2');
-        block.classList.add('collapsed-multi');
+        updateClass(block, 'expanded-multi-1', false);
+        updateClass(block, 'expanded-multi-2', false);
+        updateClass(block, 'collapsed-multi', true);
     } else {
-        block.classList.add('expanded-multi-2');
-        block.classList.remove('expanded-multi-1');
-        block.classList.remove('collapsed-multi');
+        updateClass(block, 'expanded-multi-1', false);
+        updateClass(block, 'expanded-multi-2', true);
+        updateClass(block, 'collapsed-multi', false);
     }
 }
 
-function updateCssVariable(variableName, value) {
-    console.log(`${variableName}: ${value}`);
-    document.documentElement.style.setProperty(variableName, value);
-}
-
-// When document loads...
-document.addEventListener('DOMContentLoaded', () => {
-    // Change background color based on browser...
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    const isChrome = /chrome/i.test(navigator.userAgent);
-    const body = document.querySelector('body');
-    if (isChrome) {
-        updateCssVariable('--background', '#2D2D2D');
-        updateCssVariable('--skeleton-opacity-20', 0.05);
-        updateCssVariable('--skeleton-opacity-10', 0.03);
-    }
-    // Animate blocks sequentially
+function animateSlideInFade() {
     const blocks = document.querySelectorAll('.block');
     const skeletons = document.querySelector('.skeletons');
     let skeletonsInterval;
@@ -83,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateBlocks(index = 0) {
         if (index >= blocks.length) return;
         
-        blocks[index].classList.add('animate');
+        updateClass(blocks[index], 'animate', true);
         
         blocksInterval = setTimeout(() => {
             animateBlocks(index + 1);
@@ -91,19 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resetSkeletons() {
-        skeletons.classList.remove('fade-out');
+        updateClass(skeletons, 'fade-out', false);
         skeletons.style.display = '';
     }
 
     function resetBlocks() {
         blocks.forEach((block) => {
-            block.classList.remove('animate');
+            updateClass(block, 'animate', false);
         });
     }
 
     function showContent() {
         animateBlocks();
-        skeletons.classList.add('fade-out');
+        updateClass(skeletons, 'fade-out', true);
         setTimeout(() => {
             skeletons.style.display = 'none';
         }, 500);
@@ -119,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skeletonsInterval = setTimeout(showContent, 2000);
     
-    const applyOptionsButton = document.querySelector('.apply-options');
+    /* const applyOptionsButton = document.querySelector('.apply-options');
     applyOptionsButton.addEventListener('click', () => {
         applyOptionsButton.parentElement.querySelectorAll('.popup-panel-input').forEach((panelInput) => {
             const cssVar = panelInput.getAttribute('data-css-var');
@@ -131,14 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         reloadContent();
-    });
-    
-    const defaultAnimationValues = {
-        '--animation-content-translate-y': '20px',
-        '--animation-block-slide-in-duration': '0.2s',
-    };
+    }); */
 
-    document.querySelector('.reset-options').addEventListener('click', () => {
+    /* document.querySelector('.reset-options').addEventListener('click', () => {
         for (const variable in defaultAnimationValues) {
             if (defaultAnimationValues.hasOwnProperty(variable)) {
                 const input = document.querySelector(`input[data-css-var="${variable}"]`);
@@ -148,7 +127,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         reloadContent();
-    });
+    }); */
+}
+
+// When document loads...
+document.addEventListener('DOMContentLoaded', () => {
+    // Change background color based on browser...
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isChrome = /chrome/i.test(navigator.userAgent);
+    const body = document.querySelector('body');
+    if (isChrome) {
+        updateCssVariable('--background', '#2D2D2D');
+        updateCssVariable('--skeleton-opacity-20', 0.05);
+        updateCssVariable('--skeleton-opacity-10', 0.03);
+    }
+
+    updateClass(body, `load-animation__${getLoadAnimationType()}`, true);
+
+    switch (getLoadAnimationType()) {
+        case 'reveal-on-scroll':
+            // todo
+            break;
+        case 'slide-in-fade':
+            animateSlideInFade();
+            break;
+    }
 });
 
 // Toggle color picker panel
@@ -160,20 +163,20 @@ popupToggle.forEach((popup) => {
 })
 
 // Update color when picker changes
-colorPicker.addEventListener('input', (e) => {
+colorPicker?.addEventListener('input', (e) => {
     document.documentElement.style.setProperty('--emphasis', e.target.value);
 });
 
 // Reset color to default
-resetColorBtn.addEventListener('click', () => {
+resetColorBtn?.addEventListener('click', () => {
     document.documentElement.style.setProperty('--emphasis', defaultEmphasisColor);
     colorPicker.value = defaultEmphasisColor;
 });
 
 // Close color picker panel when clicking outside
 document.addEventListener('click', (e) => {
-    if (!colorPickerToggle.contains(e.target) && !colorPickerPanel.contains(e.target)) {
-        colorPickerPanel.classList.remove('active');
+    if (colorPickerToggle && colorPickerPanel && !colorPickerToggle.contains(e.target) && !colorPickerPanel.contains(e.target)) {
+        updateClass(colorPickerPanel, 'active', false);
     }
 });
 
@@ -188,13 +191,13 @@ function toggleCart() {
 }
 
 // Initialize close cart button
-document.querySelector('.close-cart').addEventListener('click', (e) => {
+document.querySelector('.close-cart')?.addEventListener('click', (e) => {
     e.stopPropagation(); // Prevent event from bubbling to cart panel
     toggleCart();
 });
 
 // Prevent clicks inside cart panel from closing it
-document.querySelector('.cart-panel').addEventListener('click', (e) => {
+document.querySelector('.cart-panel')?.addEventListener('click', (e) => {
     e.stopPropagation();
 });
 
@@ -284,8 +287,8 @@ categoryButtons.forEach(button => {
         const category = button.dataset.category;
         
         // Update active button
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+        categoryButtons.forEach(btn => updateClass(btn, 'active', false));
+        updateClass(btn, 'active', true);
         
         // Filter menu items
         menuItems.forEach(item => {
@@ -303,7 +306,7 @@ function toggleCheckIn() {
     const sheet = document.getElementById('checkInSheet');
     if (sheet.style.display === 'flex') {
         // Closing animation
-        sheet.classList.remove('visible');
+        updateClass(sheet, 'visible', false);
         setTimeout(() => {
             sheet.style.display = 'none';
         }, 300); // Match this with your CSS transition duration
@@ -311,24 +314,13 @@ function toggleCheckIn() {
         // Opening animation
         sheet.style.display = 'flex';
         setTimeout(() => {
-            sheet.classList.add('visible');
+            updateClass(sheet, 'visible', true);
         }, 10);
     }
 }
 
-function formatPhoneNumber(input) {
-    let cleaned = input.replace(/\\D/g, '');
-    let match = cleaned.match(/^(\\d{3})(\\d{3})(\\d{4})$/);
-    
-    if (match) {
-        return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-    }
-    
-    return cleaned;
-}
-
 const phoneInput = document.getElementById('phoneNumber');
-phoneInput.addEventListener('input', (e) => {
+phoneInput?.addEventListener('input', (e) => {
     let input = e.target;
     let formatted = formatPhoneNumber(input.value);
     input.value = formatted;
