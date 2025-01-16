@@ -12,7 +12,7 @@
             <div>
                 <a href="#" class="business-name">Business Name</a>
                 <div class="open-status-icon pulse"></div>
-                <span class="open-status-text">Open</span>
+                <span class="open-status-text" onclick="toggleVisibility('actions-overlay')">Open</span>
             </div>
             <a class="button check-in-button" onclick="toggleCheckIn()">Check in</a>
         </header>
@@ -166,7 +166,7 @@
         </div>
     </div>
 
-    <div class="actions-overlay">
+    <div id="actions-overlay" class="actions-overlay">
         <!-- Color Picker -->
         <div class="color-picker-overlay">
             <button class="action-toggle popup-toggle color-picker-toggle" aria-label="Toggle color picker">

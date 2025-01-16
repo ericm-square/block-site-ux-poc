@@ -58,6 +58,13 @@ function toggleBlockExpandedLevel2(event, blockId) {
     }
 }
 
+// Toggle visibility of given element...
+function toggleVisibility(elementId) {
+    const element = document.getElementById(elementId);
+    const notVisible = element.style.visibility === 'hidden';
+    element.style.visibility = notVisible ? 'visible' : 'hidden';
+}
+
 function updateCssVariable(variableName, value) {
     console.log(`${variableName}: ${value}`);
     document.documentElement.style.setProperty(variableName, value);
