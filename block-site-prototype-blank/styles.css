@@ -255,11 +255,13 @@ header .business-name {
 
 /* Announcement Expand/Collapse */
 .announcement.collapsed {
-    height: 50px;
+    height: 20px;
+    transition: height 0.1s ease-in-out;
 }
 
 .announcement.expanded {
-    height: 400px;
+    height: 350px;
+    transition: height 0.1s ease-in-out;
 }
 
 .announcement.expanded .announcement-text {
