@@ -60,6 +60,14 @@
     --animation-content-translate-y: 140px;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.hide {
+    display: none;
+}
+
 /* Actions Overlay */
 .actions-overlay {
     position: fixed;
@@ -142,19 +150,6 @@
 .input-wrapper input {
     padding-right: 30px;
 }
-
-.input-wrapper[data-suffix]::before {
-    margin-top: 7px;
-    content: attr(data-suffix);
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font: var(--paragraph-20);
-    letter-spacing: var(--paragraph-20-letter-spacing);
-    color: rgba(0, 0, 0, 0.3);
-  }
 
 /* Rest of the existing CSS */
 h2 {
@@ -255,11 +250,13 @@ header .business-name {
 
 /* Announcement Expand/Collapse */
 .announcement.collapsed {
-    height: 50px;
+    height: 20px;
+    transition: height 0.1s ease-in-out;
 }
 
 .announcement.expanded {
-    height: 400px;
+    height: 350px;
+    transition: height 0.1s ease-in-out;
 }
 
 .announcement.expanded .announcement-text {

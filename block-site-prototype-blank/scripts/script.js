@@ -3,6 +3,7 @@ const popupToggle = document.querySelectorAll('.popup-toggle');
 const colorPickerToggle = document.querySelector('.color-picker-toggle');
 const colorPickerPanel = document.querySelector('.color-picker-panel');
 const colorPicker = document.querySelector('#emphasisColorPicker');
+const reloadOverlayBtn = document.querySelector('.reload-overlay');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
 
@@ -103,31 +104,30 @@ function animateSlideInFade() {
 
     skeletonsInterval = setTimeout(showContent, 2000);
     
-    /* const applyOptionsButton = document.querySelector('.apply-options');
+    const applyOptionsButton = document.querySelector('.apply-options');
     applyOptionsButton.addEventListener('click', () => {
-        applyOptionsButton.parentElement.querySelectorAll('.popup-panel-input').forEach((panelInput) => {
+        applyOptionsButton.parentElement.querySelectorAll('.config-input').forEach((panelInput) => {
             const cssVar = panelInput.getAttribute('data-css-var');
             const value = panelInput?.value;
-            const suffix = panelInput.parentElement?.getAttribute('data-suffix');
+            const suffix = panelInput?.getAttribute('data-suffix');
             if (cssVar && value && suffix) {
                 updateCssVariable(cssVar, `${value}${suffix}`);
             }
         });
         
         reloadContent();
-    }); */
+    });
 
-    /* document.querySelector('.reset-options').addEventListener('click', () => {
+    document.querySelector('.reset-options').addEventListener('click', () => {
         for (const variable in defaultAnimationValues) {
             if (defaultAnimationValues.hasOwnProperty(variable)) {
-                const input = document.querySelector(`input[data-css-var="${variable}"]`);
+                const input = document.querySelector(`input[data-key="${variable}"]`);
                 input.value = parseFloat(defaultAnimationValues[variable], 10);
-                console.log(defaultAnimationValues[variable]);
                 updateCssVariable(variable, defaultAnimationValues[variable]);
             }
         }
         reloadContent();
-    }); */
+    });
 }
 
 // When document loads...
@@ -142,13 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCssVariable('--skeleton-opacity-10', 0.03);
     }
 
-    updateClass(body, `load-animation__${getLoadAnimationType()}`, true);
+    updateClass(body, `load-animation__${getLoadAnimationType()}`, true); 
 
     switch (getLoadAnimationType()) {
         case 'reveal-on-scroll':
             // todo
             break;
         case 'slide-in-fade':
+            updateClass(reloadOverlayBtn, 'hide', false);
             animateSlideInFade();
             break;
     }

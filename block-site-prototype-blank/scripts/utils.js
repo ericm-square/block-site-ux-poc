@@ -52,3 +52,9 @@ function copyAsClipboard(targetElement) {
             console.error('Error copying text: ', err);
         });
 }
+
+function toggleVisibility(elementId) {
+    const element = document.getElementById(elementId);
+    const notVisible = element.classList.contains('hidden')
+    updateClass(element, 'hidden', !notVisible);
+}
