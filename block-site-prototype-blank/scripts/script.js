@@ -1,4 +1,5 @@
 // Color Picker
+const popupToggle = document.querySelectorAll('.popup-toggle');
 const colorPickerToggle = document.querySelector('.color-picker-toggle');
 const colorPickerPanel = document.querySelector('.color-picker-panel');
 const colorPicker = document.querySelector('#emphasisColorPicker');
@@ -12,14 +13,97 @@ document.addEventListener('DOMContentLoaded', () => {
     const isChrome = /chrome/i.test(navigator.userAgent);
     const body = document.querySelector('body');
     if (isChrome) {
-        body.style.backgroundColor = '#2D2D2D';
+        body.style.backgroundColor = '#000';
     }
+    // Animate blocks sequentially
+    const blocks = document.querySelectorAll('.block');
+    const skeletons = document.querySelector('.skeletons');
+    let skeletonsInterval;
+    let blocksInterval;
+
+    function animateBlocks(index = 0) {
+        if (index >= blocks.length) return;
+        
+        blocks[index].classList.add('animate');
+        
+        blocksInterval = setTimeout(() => {
+            animateBlocks(index + 1);
+        }, 200);
+    }
+
+    function resetSkeletons() {
+        skeletons.classList.remove('fade-out');
+        skeletons.style.display = '';
+    }
+
+    function resetBlocks() {
+        blocks.forEach((block) => {
+            block.classList.remove('animate');
+        });
+    }
+
+    function showContent() {
+        animateBlocks();
+        skeletons.classList.add('fade-out');
+        setTimeout(() => {
+            skeletons.style.display = 'none';
+        }, 500);
+    }
+
+    function reloadContent() {
+        clearInterval(skeletonsInterval);
+        clearTimeout(blocksInterval);
+        resetSkeletons();
+        resetBlocks();
+        skeletonsInterval = setTimeout(showContent, 2000);
+    }
+
+    skeletonsInterval = setTimeout(showContent, 2000);
+
+    function updateCssVariable(variableName, value) {
+        console.log(`${variableName}: ${value}`);
+        document.documentElement.style.setProperty(variableName, value);
+    }
+    
+    const applyOptionsButton = document.querySelector('.apply-options');
+    applyOptionsButton.addEventListener('click', () => {
+        applyOptionsButton.parentElement.querySelectorAll('.popup-panel-input').forEach((panelInput) => {
+            const cssVar = panelInput.getAttribute('data-css-var');
+            const value = panelInput?.value;
+            const suffix = panelInput.parentElement?.getAttribute('data-suffix');
+            if (cssVar && value && suffix) {
+                updateCssVariable(cssVar, `${value}${suffix}`);
+            }
+        });
+        
+        reloadContent();
+    });
+    
+    const defaultAnimationValues = {
+        '--animation-content-translate-y': '20px',
+        '--animation-block-slide-in-duration': '0.2s',
+    };
+
+    document.querySelector('.reset-options').addEventListener('click', () => {
+        for (const variable in defaultAnimationValues) {
+            if (defaultAnimationValues.hasOwnProperty(variable)) {
+                const input = document.querySelector(`input[data-css-var="${variable}"]`);
+                input.value = parseFloat(defaultAnimationValues[variable], 10);
+                console.log(defaultAnimationValues[variable]);
+                updateCssVariable(variable, defaultAnimationValues[variable]);
+            }
+        }
+        reloadContent();
+    });
 });
 
 // Toggle color picker panel
-colorPickerToggle.addEventListener('click', () => {
-    colorPickerPanel.classList.toggle('active');
-});
+popupToggle.forEach((popup) => {
+    popup.addEventListener('click', () => {
+        const popupPanel = popup.nextElementSibling;
+        popupPanel.classList.toggle('active');
+    });
+})
 
 // Update color when picker changes
 colorPicker.addEventListener('input', (e) => {

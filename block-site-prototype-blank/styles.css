@@ -49,10 +49,14 @@
     --paragraph-30-letter-spacing: var(--override-paragraph-30-letter-spacing, 0);
     --paragraph-20-letter-spacing: var(--override-paragraph-20-letter-spacing, 0);
     --paragraph-10-letter-spacing: var(--override-paragraph-10-letter-spacing, 0.01em);
+
+    /* ANIMATION */
+    --animation-block-slide-in-duration: 0.2s;
+    --animation-content-translate-y: 140px;
 }
 
-/* Color Picker Overlay */
-.color-picker-overlay {
+/* Actions Overlay */
+.actions-overlay {
     position: fixed;
     bottom: 24px;
     right: 24px;
@@ -62,7 +66,7 @@
     gap: 12px;
 }
 
-.color-picker-toggle {
+.action-toggle {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -77,11 +81,14 @@
     transition: transform 0.3s ease;
 }
 
-.color-picker-toggle:hover {
+.action-toggle:hover {
     transform: scale(1.1);
 }
 
-.color-picker-panel {
+.popup-panel {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
     background: white;
     padding: 12px;
     border-radius: var(--sharp);
@@ -91,7 +98,7 @@
     gap: 8px;
 }
 
-.color-picker-panel.active {
+.popup-panel.active {
     display: flex;
 }
 
@@ -104,7 +111,7 @@
     cursor: pointer;
 }
 
-.reset-color {
+.popup-panel-input {
     font: var(--paragraph-20-medium);
     padding: 8px;
     border: 1px solid rgba(0,0,0,0.1);
@@ -114,9 +121,35 @@
     transition: background-color 0.2s;
 }
 
-.reset-color:hover {
+.popup-panel-input:hover {
     background: rgba(0,0,0,0.05);
 }
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper label {
+    font: var(--paragraph-10);
+    letter-spacing: var(--paragraph-10-letter-spacing);
+}
+
+.input-wrapper input {
+    padding-right: 30px;
+}
+
+.input-wrapper[data-suffix]::before {
+    margin-top: 7px;
+    content: attr(data-suffix);
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font: var(--paragraph-20);
+    letter-spacing: var(--paragraph-20-letter-spacing);
+    color: rgba(0, 0, 0, 0.3);
+  }
 
 /* Rest of the existing CSS */
 h2 {
@@ -228,28 +261,100 @@ header .business-name {
 }
 
 .block {
-    background: white;
     border-radius: var(--round);
     padding: 4px;
     position: relative;
     overflow: hidden;
 }
 
+.content .block {
+    opacity: 0;
+    transform: translateY(var(--animation-content-translate-y));
+}
 
-/* ERM: TESTING */
+.content .block.animate {
+    animation: slideIn var(--animation-block-slide-in-duration) ease-out forwards;
+}
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(var(--animation-content-translate-y));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+.block:not(.skeleton-block) {
+    background: white;
+}
+
+/* Skeleton styles */
+.skeletons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+.skeletons.fade-out {
+    opacity: 0;
+}
+
+.skeleton {
+    border-radius: inherit;
+    animation: pulse 1.5s infinite;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.skeleton-business-hero-inner {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.skeleton-business-avatar {
+    background: #4A4A4A;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Hide real content initially */
+#skeleton {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+#skeleton.fade-out {
+    opacity: 0;
+}
+
+.content {
+    opacity: 1;
+}
 
 /* Grid layout */
-#business-card {
+.business-card,
+.skeleton-business-card {
     grid-column: span 4;
     grid-row: 1;
     border-radius: var(--round);
+}
+
+.block.business-card {
     background: var(--emphasis);
     color: white;
 }
 
-#business-card p, #business-card a {
+.business-card p, .business-card a {
     color: white;
 }
 
@@ -276,7 +381,8 @@ header .business-name {
     grid-column: span 11;
 }
 
-.block-content {
+.block-content,
+.skeleton-block-content {
     padding: 20px;
 }
 
@@ -305,13 +411,23 @@ header .business-name {
 }
 
 /* Business Card Styles */
-.business-hero {
+.business-hero,
+.skeleton-business-hero {
     position: relative;
     width: calc(100% + 40px);
     max-height: 320px;
     aspect-ratio: 5/4;
     margin: -20px -20px 0;
     overflow: visible;
+}
+
+.business-hero-inner,
+.skeleton-business-hero-inner {
+    border-radius: 20px 20px 6px 6px;
+}
+
+.business-hero-inner {
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .business-hero video {
@@ -321,16 +437,19 @@ header .business-name {
     object-fit: cover;
 }
 
-.business-avatar {
+.business-avatar,
+.skeleton-business-avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 4px solid white;
     position: absolute;
     bottom: -60px;
     left: 20px;
     overflow: hidden;
-    background: #6B46C1;
+}
+
+.business-avatar {
+    background: #fff;
 }
 
 .business-avatar img {
@@ -339,7 +458,8 @@ header .business-name {
     object-fit: cover;
 }
 
-.business-info {
+.business-info,
+.skeleton-business-info {
     margin-top: 70px;
 }
 
@@ -523,7 +643,7 @@ header .business-name {
 }
 
 /* Gift Cards */
-#gift-cards {
+.gift-cards {
 
 }
 
@@ -824,7 +944,8 @@ header .business-name {
         grid-column: span 12;
     }
 
-    #business-card {
+    .business-card,
+    .skeleton-business-card {
         grid-column: span 12;
         grid-row: auto;
     }
@@ -851,12 +972,12 @@ header .business-name {
         border-radius: var(--round) var(--round) 0 0;
     }
 
-    .color-picker-overlay {
+    .actions-overlay {
         bottom: 16px;
         right: 16px;
     }
 
-    .color-picker-toggle {
+    .action-toggle {
         width: 40px;
         height: 40px;
     }
@@ -865,7 +986,8 @@ header .business-name {
 @media (max-width: 560px) {
     .block:nth-child(odd),
     .block:nth-child(even),
-    #business-card {
+    .business-card,
+    .skeleton-business-card {
         grid-column: span 12;
         grid-row: auto;
     }
