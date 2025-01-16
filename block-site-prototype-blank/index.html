@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Restaurant Online Ordering</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="site-container">
         <header>
-            <div><a href="#" class="business-name">Little Grenjai</a><div class="open-status-icon pulse"></div><span class="open-status-text">Open</span></div>
+            <div>
+                <div class="open-status-icon pulse"></div>
+                <span class="open-status-text">Open</span>
+            </div>
             <a class="button check-in-button" onclick="toggleCheckIn()">Check in</a>
         </header>
 
@@ -26,11 +29,51 @@
                     </div>
                 </div>
             </div>
-            <div class="block">
+
+            <!-- Block; Will expand to 800px when clicked -->
+            <div id="block-01" class="block expandable collapsed" onclick="toggleBlockExpanded(event, 'block-01')">
                 <div class="block-content">
-                    <div style="height:400px;"></div>
+                    <div style="height:400px;">
+                        One-Step Expand
+                    </div>
                 </div>
             </div>
+
+            <!-- Block; Multiple Levels of Expand -->
+            <div id="block-multi-step" onclick="toggleBlockExpandedLevel1(event, 'block-multi-step')" class="block expandable collapsed-multi">
+                <div class="block-content" style="display:flex; flex-direction:column; justify-content:space-between; height:100%">
+                    <div>
+                        Multi-Step Expand
+                    </div>
+
+                    <div id="block-multi-step-next-btn" class="multi-step-button">
+                        <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Next</button>
+                    </div>
+
+                    <div id="block-multi-step-done-btn" class="multi-step-button">
+                        <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Done</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcement; Will expand when "Read More" is clicked -->
+            <div class="block" style="background-color:transparent;">
+                <div id="announcement" class="block-content announcement collapsed">
+                    <div class="announcement-grid">
+                        <div class="announcement-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt urna et mauris hendrerit, vitae tincidunt arcu pretium. Donec gravida metus sed tortor elementum, non tempus erat lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu vulputate enim. Morbi congue sem ut tempus luctus. Vivamus sed semper sem, a eleifend sem. Nunc vitae nisl sit amet sapien ultrices suscipit. Proin eu fringilla sem. Integer ultrices dui vel risus rhoncus, vitae lacinia velit vulputate. Nullam molestie justo ut volutpat finibus. Vivamus mollis mauris at nulla maximus, sit amet aliquet metus faucibus. Duis nec posuere est, sed porta elit. Nullam tincidunt dui ut laoreet ornare.
+                        </div>
+
+                        <div class="expand-announcement-button">
+                            <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read More</a>
+                        </div>
+                    </div>
+                    <div class="collapse-announcement-button">
+                        <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read Less</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="block">
                 <div class="gallery">
                     <div style="height:400px;"></div>
@@ -57,10 +100,7 @@
     <!-- Skeletons -->
     <div class="skeletons">
         <div class="site-container">
-            <header>
-                <div><a href="#" class="business-name">Little Grenjai</a><div class="open-status-icon pulse"></div><span class="open-status-text">Open</span></div>
-                <a class="button check-in-button" onclick="toggleCheckIn()">Check in</a>
-            </header>
+            <header></header>
             <div class="blocks">
                 <div class="block skeleton-block skeleton-business-card skeleton">
                     <div class="skeleton-block-content">

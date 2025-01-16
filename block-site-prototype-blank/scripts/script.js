@@ -6,6 +6,63 @@ const colorPicker = document.querySelector('#emphasisColorPicker');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
 
+// Toggle whether block is expanded or not
+function toggleBlockExpanded(event, blockId) {
+    event.preventDefault();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+
+    const isExpanded = block.classList.contains('expanded');
+    if (isExpanded) {
+        block.classList.remove('expanded');
+        block.classList.add('collapsed');
+    } else {
+        block.classList.add('expanded');
+        block.classList.remove('collapsed');
+    }
+}
+
+function toggleBlockExpandedLevel1(event, blockId) {
+    event.preventDefault();
+    event.stopPropagation();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+
+    const isExpanded = block.classList.contains('expanded-multi-1');
+    if (isExpanded) {
+        block.classList.remove('expanded-multi-1');
+        block.classList.remove('expanded-multi-2');
+        block.classList.add('collapsed-multi');
+    } else {
+        block.classList.add('expanded-multi-1');
+        block.classList.remove('expanded-multi-2');
+        block.classList.remove('collapsed-multi');
+    }
+}
+
+function toggleBlockExpandedLevel2(event, blockId) {
+    event.preventDefault();
+    event.stopPropagation();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+
+    const isExpanded = block.classList.contains('expanded-multi-2');
+    if (isExpanded) {
+        block.classList.remove('expanded-multi-1');
+        block.classList.remove('expanded-multi-2');
+        block.classList.add('collapsed-multi');
+    } else {
+        block.classList.add('expanded-multi-2');
+        block.classList.remove('expanded-multi-1');
+        block.classList.remove('collapsed-multi');
+    }
+}
+
+function updateCssVariable(variableName, value) {
+    console.log(`${variableName}: ${value}`);
+    document.documentElement.style.setProperty(variableName, value);
+}
+
 // When document loads...
 document.addEventListener('DOMContentLoaded', () => {
     // Change background color based on browser...
@@ -13,7 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const isChrome = /chrome/i.test(navigator.userAgent);
     const body = document.querySelector('body');
     if (isChrome) {
-        body.style.backgroundColor = '#000';
+        updateCssVariable('--background', '#2D2D2D');
+        updateCssVariable('--skeleton-opacity-20', 0.05);
+        updateCssVariable('--skeleton-opacity-10', 0.03);
     }
     // Animate blocks sequentially
     const blocks = document.querySelectorAll('.block');
@@ -59,11 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     skeletonsInterval = setTimeout(showContent, 2000);
-
-    function updateCssVariable(variableName, value) {
-        console.log(`${variableName}: ${value}`);
-        document.documentElement.style.setProperty(variableName, value);
-    }
     
     const applyOptionsButton = document.querySelector('.apply-options');
     applyOptionsButton.addEventListener('click', () => {

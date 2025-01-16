@@ -235,11 +235,6 @@ header .business-name {
     overflow: hidden;
 }
 
-
-/* ERM: TESTING */
-
-
-
 /* Grid layout */
 #business-card {
     grid-column: span 4;

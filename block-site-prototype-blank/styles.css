@@ -7,8 +7,10 @@
     /* COLORS */
     --success: #3DD795;
     --emphasis: red;
+    --link: #4A95FF;
     --text-10: rgba(0,0,0,0.95);
     --text-20: rgba(0,0,0,0.55);
+    --background: #000;
 
     /* FONT FAMILIES */
     --theme-font: 'Inter', sans-serif;
@@ -49,6 +51,9 @@
     --paragraph-30-letter-spacing: var(--override-paragraph-30-letter-spacing, 0);
     --paragraph-20-letter-spacing: var(--override-paragraph-20-letter-spacing, 0);
     --paragraph-10-letter-spacing: var(--override-paragraph-10-letter-spacing, 0.01em);
+
+    --skeleton-opacity-20: 0.15;
+    --skeleton-opacity-10: 0.05;
 
     /* ANIMATION */
     --animation-block-slide-in-duration: 0.2s;
@@ -164,7 +169,7 @@ p {
 }
 
 body {
-    background: black;
+    background: var(--background);
     font: var(--paragraph-30);
     margin: 0;
     padding: 0;
@@ -184,6 +189,7 @@ header {
     grid-template-columns: subgrid;
     align-items: center;
     padding: 0 8px;
+    height: 40px;
 }
 
 header div {
@@ -203,6 +209,108 @@ header, header a {
 header .business-name {
     white-space: nowrap;
 }
+
+
+/* Block Expand/Collapse */
+.block.expandable {
+    cursor: pointer;
+}
+
+.block.collapsed {
+    height: 400px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block.expanded {
+    height: 800px;
+    transition: height 0.1s ease-in-out;
+}
+
+
+#block-multi-step-next-btn { display: none; }
+.block.expanded-multi-1 #block-multi-step-next-btn { display: block; }
+#block-multi-step-done-btn { display: none; }
+.block.expanded-multi-2 #block-multi-step-done-btn { display: block; }
+
+.block.collapsed-multi {
+    height: 200px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block.expanded-multi-1 {
+    height: 400px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block.expanded-multi-2 {
+    height: 800px;
+    transition: height 0.1s ease-in-out;
+}
+
+.multi-step-button {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Announcement Expand/Collapse */
+.announcement.collapsed {
+    height: 50px;
+}
+
+.announcement.expanded {
+    height: 400px;
+}
+
+.announcement.expanded .announcement-text {
+    white-space: normal;
+    overflow: visible;
+}
+
+.announcement.expanded .expand-announcement-button {
+    display: none;
+}
+
+.announcement.expanded .collapse-announcement-button {
+    display: block;
+}
+
+/* Announcement */
+.announcement-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.announcement-text {
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expand-announcement-button {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.expand-announcement-button a,
+.collapse-announcement-button a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.collapse-announcement-button {
+    display: none;
+
+    padding-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
 
 .open-status-icon {
     width: 6px;
@@ -310,11 +418,11 @@ header .business-name {
 .skeleton {
     border-radius: inherit;
     animation: pulse 1.5s infinite;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, var(--skeleton-opacity-20));
 }
 
 .skeleton-business-hero-inner {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, var(--skeleton-opacity-10));
 }
 
 .skeleton-business-avatar {
@@ -374,6 +482,18 @@ header .business-name {
 .block:nth-of-type(4) {
     grid-column: span 4;
     grid-row: 3;
+    border-radius: var(--round);
+}
+
+.block:nth-of-type(5) {
+    grid-column: span 4;
+    grid-row: 4;
+    border-radius: var(--round);
+}
+
+.block:nth-of-type(6) {
+    grid-column: span 4;
+    grid-row: 5;
     border-radius: var(--round);
 }
 
@@ -634,12 +754,16 @@ header .business-name {
     font: var(--paragraph-20-medium);
     white-space: nowrap;
     transition: all 0.3s;
+    background: var(--background);
+    color: white;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .category-btn.active {
-    background: black;
+    background: var(--background);
     color: white;
-    border-color: black;
+    border-color: var(--background);
 }
 
 /* Gift Cards */
@@ -956,7 +1080,9 @@ header .business-name {
     }
 
     .block:nth-of-type(3),
-    .block:nth-of-type(4) {
+    .block:nth-of-type(4),
+    .block:nth-of-type(5),
+    .block:nth-of-type(6) {
         grid-column: span 6;
         grid-row: auto;
     }
