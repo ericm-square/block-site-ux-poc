@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags for Character Set -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- , user-scalable=no -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Restaurant Online Ordering</title>
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Apple Mobile Web App: General Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,27 +23,216 @@
     <meta name="apple-mobile-web-app-title" content="Block Site">
 
     <!-- Icons for iOS Home Screen -->
-    <link rel="apple-touch-icon" href="path/to/icon.png"> <!-- Default icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="path/to/icon-180.png"> <!-- Larger icon -->
-    <link rel="apple-touch-icon" sizes="152x152" href="path/to/icon-152.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="path/to/icon-120.png">
+    <link rel="apple-touch-icon" href="media/logo.png"> <!-- Default icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="media/logo.png"> <!-- Larger icon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="media/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="media/logo.png">
     
     <!-- Startup image for iOS devices -->
-    <link rel="apple-touch-startup-image" href="path/to/startup-image.png">
+    <link rel="apple-touch-startup-image" href="media/startup.jpg">
 
     <!-- Theme Color for Safari and Mobile Browsers -->
-    <!-- <meta name="theme-color" content="#ff5733"> -->
+    <!-- <meta name="theme-color" content="#c52816"> -->
 
     <!-- Web App Description (Optional) -->
     <meta name="description" content="A description of your app or website for Apple devices">
 
-    <title>Your App Title</title>
+
 </head>
 <body>
-    
-    <code>
-        apple-mobile-web-app-status-bar-style = black-translucent
-    </code>
+    <div class="site-container">
+        <header>
+            <div>
+                <a href="#" class="business-name">Business Name</a>
+                <div class="open-status-icon pulse"></div>
+                <span class="open-status-text" onclick="toggleVisibility('actions-overlay')">Open</span>
+            </div>
+            <a class="button check-in-button" onclick="toggleCheckIn()">Check in</a>
+        </header>
 
+        <!-- Blocks -->
+        <div class="blocks content">
+            <div class="block business-card">
+                <div class="block-content">
+                    <div class="business-hero">
+                        <div class="business-hero-inner" style="height: 100%;"></div>
+                        <div class="business-avatar"></div>
+                    </div>
+                    <div class="business-info">
+                        <div class="contact-info" style="height: 150px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        TODO:
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        TODO:
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        TODO:
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        TODO:
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        TODO:
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        TODO:
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart" onclick="toggleCart()">
+            <div class="cart-icon">
+                <span class="cart-count">0</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6H4.14158L2.36561 17.5438C2.08603 19.3611 3.49207 21 5.33072 21H18.6683C20.5069 21 21.913 19.3611 21.6334 17.5438L19.8574 6H16C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6ZM10 6C10 4.89543 10.8954 4 12 4C13.1046 4 14 4.89543 14 6H10ZM4.93434 14L5.85742 8H18.1416L19.0647 14H4.93434ZM4.62665 16H19.3724L19.6567 17.8479C19.7498 18.4537 19.2812 19 18.6683 19H5.33072C4.71784 19 4.24916 18.4537 4.34235 17.8479L4.62665 16Z" fill="white"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skeletons -->
+    <div class="skeletons">
+        <div class="site-container">
+            <header></header>
+            <div class="blocks">
+                <div class="block skeleton-block skeleton-business-card skeleton">
+                    <div class="skeleton-block-content">
+                        <div class="skeleton-business-hero">
+                            <div class="skeleton-business-hero-inner skeleton" style="height: 100%;"></div>
+                            <div class="skeleton-business-avatar"></div>
+                        </div>
+                        <div class="skeleton-business-info">
+                            <div class="contact-info" style="height: 150px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block skeleton-block skeleton">
+                    <div class="skeleton-block-content">
+                        <div style="height:400px;"></div>
+                    </div>
+                </div>
+                <div class="block skeleton-block skeleton">
+                    <div class="skeleton-block-content">
+                        <div style="height:400px;"></div>
+                    </div>
+                </div>
+                <div class="block skeleton-block skeleton gift-cards">
+                    <div class="skeleton-block-content">
+                        <div style="height:400px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Panel -->
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically populated -->
+        </div>
+        <div class="cart-footer">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount">$0.00</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Bottom Sheet -->
+    <div class="bottom-sheet" id="checkInSheet">
+        <div class="bottom-sheet-content">
+            <button class="close-sheet" onclick="toggleCheckIn()">&times;</button>
+            <div class="bottom-sheet-header">
+                <h3>Check In</h3>
+            </div>
+            <div class="bottom-sheet-body">
+                <p>Enter your phone number to check in</p>
+                <input type="tel" id="phoneNumber" placeholder="(123) 456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="14">
+                <button class="primary-button check-in-btn" onclick="submitCheckIn()">Check In</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="actions-overlay" class="actions-overlay hidden">
+        <!-- Color Picker -->
+        <div class="color-picker-overlay">
+            <button class="action-toggle popup-toggle color-picker-toggle" aria-label="Toggle color picker">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C12.83 21 13.5 20.33 13.5 19.5C13.5 19.11 13.35 18.76 13.11 18.49C12.88 18.23 12.73 17.88 12.73 17.5C12.73 16.67 13.4 16 14.23 16H16C18.76 16 21 13.76 21 11C21 6.58 16.97 3 12 3Z" fill="currentColor"/>
+                </svg>
+            </button>
+            <div class="popup-panel color-picker-panel">
+                <input type="color" id="emphasisColorPicker" value="#FF0000">
+                <button class="config-input reset-color">Reset</button>
+            </div>
+        </div>
+        <div class="reload-overlay hide">
+            <button class="action-toggle popup-toggle reload-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 32 32">
+                    <path fill="currentColor" d="M 16 4 C 10.886719 4 6.617188 7.160156 4.875 11.625 L 6.71875 12.375 C 8.175781 8.640625 11.710938 6 16 6 C 19.242188 6 22.132813 7.589844 23.9375 10 L 20 10 L 20 12 L 27 12 L 27 5 L 25 5 L 25 8.09375 C 22.808594 5.582031 19.570313 4 16 4 Z M 25.28125 19.625 C 23.824219 23.359375 20.289063 26 16 26 C 12.722656 26 9.84375 24.386719 8.03125 22 L 12 22 L 12 20 L 5 20 L 5 27 L 7 27 L 7 23.90625 C 9.1875 26.386719 12.394531 28 16 28 C 21.113281 28 25.382813 24.839844 27.125 20.375 Z"></path>
+                </svg>
+            </button>
+            <div class="popup-panel action-panel">
+                <div class="input-wrapper">
+                    <label>blocks starting position before slide in (px)</label>
+                    <input type="number" value="20" step="20" min="0" class="config-input" data-suffix="px" data-key="content-translate-y" data-css-var="--animation-content-translate-y">
+                </div>
+                <div class="input-wrapper">
+                    <label>blocks slide in duration</label>
+                    <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-slide-in-duration" data-css-var="--animation-block-slide-in-duration">
+                </div>
+                <button class="config-input apply-options">Apply</button>
+                <button class="config-input reset-options">Reset</button>
+            </div>
+        </div>
+    </div> -->
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
