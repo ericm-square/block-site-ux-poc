@@ -296,7 +296,10 @@
             setTimeout(function() {
                 console.log("Scrolling");
                 window.scrollTo(0, 100);
-                window.scrollBy(0, 100);
+
+                setTimeout(function() {
+                    window.scrollBy(0, 100);
+                }, 200);
             }, 200);
         });
     </script>
