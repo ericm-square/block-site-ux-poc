@@ -292,8 +292,11 @@
 
     <!-- Make this page scroll itself down a little bit in order to force a mobile browser to collapse the address bar -->
     <script>
-        window.addEventListener('load', function() {
-            window.scrollTo(0, 1);
+         window.addEventListener('load', function() {
+            setTimeout(function() {
+                console.log("Scrolling");
+                window.scrollTo(0, 10);
+            }, 200);
         });
     </script>
 </body>
