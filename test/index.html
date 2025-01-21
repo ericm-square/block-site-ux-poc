@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Restaurant Online Ordering</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json" />
 
     <!-- Apple Mobile Web App: General Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -274,9 +275,19 @@
                 <button class="config-input reset-options">Reset</button>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <script src="scripts/utils.js"></script>
     <script src="scripts/script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('scripts/service-worker.js').then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+    </script>
 </body>
 </html>
