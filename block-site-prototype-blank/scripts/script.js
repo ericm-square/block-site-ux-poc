@@ -130,8 +130,109 @@ function animateSlideInFade() {
     });
 }
 
+function animateRevealOnScroll(type = 'fade-in') {
+    const sr = ScrollReveal();
+
+    switch (type) {
+        case 'rotate':
+            sr.reveal('.reveal-block', {
+                opacity: [0, 1],
+                rotate: {
+                    x: 20,
+                    z: 20
+                },
+                duration: 500,    
+                interval: 200,
+                reset: true,
+                easing: 'ease-in-out',  
+                viewFactor: 0.2,
+            });
+            break;
+        case 'scale':
+            sr.reveal('.reveal-block', {
+                opacity: [0, 1],
+                scale: 0.85,
+                duration: 500, 
+                interval: 200,
+                delay: 0,
+                reset: true,
+                easing: 'ease-in-out',  
+                viewFactor: 0.2,
+            });
+            break;
+        case 'fade-in':
+            sr.reveal('.reveal-block', {
+                duration: 500,         // reveal animation
+                delay: 200,             // 200ms delay between each reveal
+                opacity: [0.2, 1],        // Fade in from 0 (invisible) to 1 (visible)
+                reset: true,            // Reset the animation on scroll back
+                easing: 'ease-in-out',  // Smooth easing for the opacity transition
+                viewFactor: 0.2,        // Trigger the reveal when 20% of the element is visible
+            });
+    }
+}
+
+function animateSwipeOnScroll() {
+    updateClass(document.querySelector('.blocks-wrapper'), 'swiper-container');
+    updateClass(document.querySelector('.blocks-wrapper .blocks'), 'swiper-wrapper');
+    const blocks = document.querySelectorAll('.reveal-block');
+    blocks.forEach((block) => {
+        updateClass(block, 'swiper-slide');
+    });
+
+    const swiper = new Swiper('.swiper-container', {
+        loop: false,              // Enable looping of blocks
+        slidesPerView: 1,        // Show 1 block at a time
+        spaceBetween: 30,        // Space between blocks (added gap)
+        centeredSlides: true,    // Center the active block
+        grabCursor: true,        // Enable grab cursor on touch devices
+        mousewheel: {            // Enable mouse wheel scroll navigation
+          invert: false,         // Scroll direction (false: down -> next, true: down -> prev)
+          forceToAxis: true,     // Force scrolling to work only in one direction (vertical or horizontal)
+        },
+        effect: 'slide', // fade or slide
+        slideToClickedSlide: false,  // Disable click-to-slide functionality
+        breakpoints: {           // Responsive settings
+          768: {
+            slidesPerView: 1,    // Show 1 block on smaller screens
+          },
+        },
+      });
+
+      // Scroll to swipe functionality
+    let isScrolling = false;
+    let scrollTimeout;
+
+    document.querySelector('.swiper-container').addEventListener('wheel', function (event) {
+      if (isScrolling) return;  // Prevent multiple triggers
+      isScrolling = true;
+
+      // Cancel the previous timeout if any
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      if (event.deltaY > 0) {
+        swiper.slideNext();  // Scroll down -> Next slide
+      } else {
+        swiper.slidePrev();  // Scroll up -> Previous slide
+      }
+
+      // Reset the scrolling lock after a short delay to allow the animation to finish
+      scrollTimeout = setTimeout(function() {
+        isScrolling = false;
+      }, 100);  // Adjust the timeout duration to match Swiper's transition speed
+    });
+}
+
+function animateStackingCards() {
+    // todo
+}
+
 // When document loads...
 document.addEventListener('DOMContentLoaded', () => {
+    
+
     // Change background color based on browser...
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const isChrome = /chrome/i.test(navigator.userAgent);
@@ -145,8 +246,20 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClass(body, `load-animation__${getLoadAnimationType()}`, true); 
 
     switch (getLoadAnimationType()) {
-        case 'reveal-on-scroll':
-            // todo
+        case 'reveal-on-scroll-fade-in':
+            animateRevealOnScroll('fade-in');
+            break;
+        case 'reveal-on-scroll-rotate':
+            animateRevealOnScroll('rotate');
+            break;
+        case 'reveal-on-scroll-scale':
+            animateRevealOnScroll('scale');
+            break;
+        case 'swipe-on-scroll':
+            animateSwipeOnScroll();
+            break;
+        case 'stacking-cards':
+            animateStackingCards();
             break;
         case 'slide-in-fade':
             updateClass(reloadOverlayBtn, 'hide', false);
@@ -289,7 +402,7 @@ categoryButtons.forEach(button => {
         
         // Update active button
         categoryButtons.forEach(btn => updateClass(btn, 'active', false));
-        updateClass(btn, 'active', true);
+        updateClass(button, 'active', true);
         
         // Filter menu items
         menuItems.forEach(item => {

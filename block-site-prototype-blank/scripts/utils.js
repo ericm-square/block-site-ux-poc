@@ -1,6 +1,6 @@
 const defaultAnimationValues = {
     'content-translate-y': '20px',
-    'block-slide-in-duration': '0.2s',
+    'block-duration': '0.2s',
 };
 
 function updateCssVariable(variableName, value) {
@@ -57,4 +57,17 @@ function toggleVisibility(elementId) {
     const element = document.getElementById(elementId);
     const notVisible = element.classList.contains('hidden')
     updateClass(element, 'hidden', !notVisible);
+}
+
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
+}
+
+function isPartiallyInViewport(element) {
+    const rect = element.getBoundingClientRect();
+
+    // Check if any part of the block is within the viewport
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    return isVisible;
 }

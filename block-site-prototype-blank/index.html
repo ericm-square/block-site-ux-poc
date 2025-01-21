@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Restaurant Online Ordering</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- ScrollReveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.css">
+
+    <!-- Add Stacking Cards -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.js"></script>
 </head>
 <body>
     <div class="site-container">
@@ -18,71 +29,75 @@
         </header>
 
         <!-- Blocks -->
-        <div class="blocks content">
-            <div class="block business-card">
-                <div class="block-content">
-                    <div class="business-hero">
-                        <div class="business-hero-inner" style="height: 100%;"></div>
-                        <div class="business-avatar"></div>
-                    </div>
-                    <div class="business-info">
-                        <div class="contact-info" style="height: 150px;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Block; Will expand to 800px when clicked -->
-            <div id="block-01" class="block expandable collapsed" onclick="toggleBlockExpanded(event, 'block-01')">
-                <div class="block-content">
-                    <div style="height:400px;">
-                        One-Step Expand
-                    </div>
-                </div>
-            </div>
-
-            <!-- Block; Multiple Levels of Expand -->
-            <div id="block-multi-step" onclick="toggleBlockExpandedLevel1(event, 'block-multi-step')" class="block expandable collapsed-multi">
-                <div class="block-content" style="display:flex; flex-direction:column; justify-content:space-between; height:100%">
-                    <div>
-                        Multi-Step Expand
-                    </div>
-
-                    <div id="block-multi-step-next-btn" class="multi-step-button">
-                        <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Next</button>
-                    </div>
-
-                    <div id="block-multi-step-done-btn" class="multi-step-button">
-                        <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Done</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Announcement; Will expand when "Read More" is clicked -->
-            <div class="block" style="background-color:transparent;">
-                <div id="announcement" class="block-content announcement collapsed">
-                    <div class="announcement-grid">
-                        <div class="announcement-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt urna et mauris hendrerit, vitae tincidunt arcu pretium. Donec gravida metus sed tortor elementum, non tempus erat lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu vulputate enim. Morbi congue sem ut tempus luctus. Vivamus sed semper sem, a eleifend sem. Nunc vitae nisl sit amet sapien ultrices suscipit. Proin eu fringilla sem. Integer ultrices dui vel risus rhoncus, vitae lacinia velit vulputate. Nullam molestie justo ut volutpat finibus. Vivamus mollis mauris at nulla maximus, sit amet aliquet metus faucibus. Duis nec posuere est, sed porta elit. Nullam tincidunt dui ut laoreet ornare.
-                        </div>
-
-                        <div class="expand-announcement-button">
-                            <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read More</a>
+        <div class="blocks-container">
+            <div class="blocks-wrapper">
+                <div class="blocks content">
+                    <div class="block business-card reveal-block">
+                        <div class="block-content">
+                            <div class="business-hero">
+                                <div class="business-hero-inner" style="height: 100%;"></div>
+                                <div class="business-avatar"></div>
+                            </div>
+                            <div class="business-info">
+                                <div class="contact-info" style="height: 150px;"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="collapse-announcement-button">
-                        <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read Less</a>
+        
+                    <!-- Block; Will expand to 800px when clicked -->
+                    <div id="block-01" class="block reveal-block expandable collapsed" onclick="toggleBlockExpanded(event, 'block-01')">
+                        <div class="block-content">
+                            <div style="height:400px;">
+                                One-Step Expand
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="block">
-                <div class="gallery">
-                    <div style="height:400px;"></div>
-                </div>
-            </div>
-            <div class="block gift-cards">
-                <div class="block-content">
-                    <div style="height:400px;"></div>
+        
+                    <!-- Block; Multiple Levels of Expand -->
+                    <div id="block-multi-step" onclick="toggleBlockExpandedLevel1(event, 'block-multi-step')" class="block reveal-block expandable collapsed-multi">
+                        <div class="block-content" style="display:flex; flex-direction:column; justify-content:space-between; height:100%">
+                            <div>
+                                Multi-Step Expand
+                            </div>
+        
+                            <div id="block-multi-step-next-btn" class="multi-step-button">
+                                <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Next</button>
+                            </div>
+        
+                            <div id="block-multi-step-done-btn" class="multi-step-button">
+                                <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Done</button>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Announcement; Will expand when "Read More" is clicked -->
+                    <div class="block reveal-block" style="background-color:transparent;">
+                        <div id="announcement" class="block-content announcement collapsed">
+                            <div class="announcement-grid">
+                                <div class="announcement-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt urna et mauris hendrerit, vitae tincidunt arcu pretium. Donec gravida metus sed tortor elementum, non tempus erat lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu vulputate enim. Morbi congue sem ut tempus luctus. Vivamus sed semper sem, a eleifend sem. Nunc vitae nisl sit amet sapien ultrices suscipit. Proin eu fringilla sem. Integer ultrices dui vel risus rhoncus, vitae lacinia velit vulputate. Nullam molestie justo ut volutpat finibus. Vivamus mollis mauris at nulla maximus, sit amet aliquet metus faucibus. Duis nec posuere est, sed porta elit. Nullam tincidunt dui ut laoreet ornare.
+                                </div>
+        
+                                <div class="expand-announcement-button">
+                                    <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read More</a>
+                                </div>
+                            </div>
+                            <div class="collapse-announcement-button">
+                                <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read Less</a>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="block reveal-block">
+                        <div class="gallery">
+                            <div style="height:400px;"></div>
+                        </div>
+                    </div>
+                    <div class="block reveal-block gift-cards">
+                        <div class="block-content">
+                            <div style="height:400px;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -187,18 +202,18 @@
             </button>
             <div class="popup-panel action-panel">
                 <div class="input-wrapper">
-                    <label>blocks starting position before slide in (px)</label>
+                    <label>blocks slide in starting Y position (px)</label>
                     <input type="number" value="20" step="20" min="0" class="config-input" data-suffix="px" data-key="content-translate-y" data-css-var="--animation-content-translate-y">
                 </div>
                 <div class="input-wrapper">
                     <label>blocks slide in duration</label>
-                    <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-slide-in-duration" data-css-var="--animation-block-slide-in-duration">
+                    <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-duration" data-css-var="--animation-block-duration">
                 </div>
                 <button class="config-input apply-options">Apply</button>
                 <button class="config-input reset-options">Reset</button>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <script src="scripts/utils.js"></script>
     <script src="scripts/script.js"></script>

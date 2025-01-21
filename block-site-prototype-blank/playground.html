@@ -12,9 +12,16 @@
             <div class="column">
                 <label>initial load animation</label>
                 <select class="config-input" data-key="load-animation">
-                    <option value="slide-in-fade">Slide in fade</option>
-                    <option value="reveal-on-scroll">Reveal on scroll (wip)</option>
+                    <option value="slide-in-fade">Show skeletons and slide in</option>
+                    <option value="reveal-on-scroll-fade-in">Reveal on scroll (fade-in)</option>
+                    <option value="reveal-on-scroll-rotate">Reveal on scroll (rotate)</option>
+                    <option value="reveal-on-scroll-scale">Reveal on scroll (scale)</option>
+                    <option value="swipe-on-scroll">Swipe on scroll</option>
                 </select>
+            </div>
+            <div class="column">
+                <label>blocks slide in duration</label>
+                <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-duration" data-css-var="--animation-block-duration">
             </div>
             <!-- <div class="column">
                 <label>blocks starting position before slide in</label>
@@ -22,7 +29,7 @@
             </div>
             <div class="column">
                 <label>blocks slide in duration</label>
-                <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-slide-in-duration" data-css-var="--animation-block-slide-in-duration">
+                <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-duration" data-css-var="--animation-block-duration">
             </div> -->
         </div>
         <div class="row">
