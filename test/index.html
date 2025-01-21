@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Restaurant Online Ordering</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Apple Mobile Web App: General Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!--
+        If content is set to default, the status bar appears normal. 
+        If set to black, the status bar has a black background. 
+        If set to black-translucent, the status bar is black and translucent. 
+        If set to default or black, the web content is displayed below the status bar. 
+        If set to black-translucent, the web content is displayed on the entire screen, partially obscured by the status bar.
+        The default value is default.
+    -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Options: default, black, black-translucent -->
+
+    <!-- Set the App Title when added to Home Screen -->
+    <meta name="apple-mobile-web-app-title" content="Block Site">
+
+    <!-- Icons for iOS Home Screen -->
+    <link rel="apple-touch-icon" href="media/logo.png"> <!-- Default icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="media/logo.png"> <!-- Larger icon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="media/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="media/logo.png">
+    
+    <!-- Startup image for iOS devices -->
+    <link rel="apple-touch-startup-image" href="media/startup.jpg">
+
+    <!-- Theme Color for Safari and Mobile Browsers -->
+    <meta name="theme-color" content="#c52816">
+
+    <!-- Web App Description (Optional) -->
+    <meta name="description" content="A description of your app or website for Apple devices">
 </head>
 <body>
     <div class="site-container">
@@ -65,7 +96,23 @@
             <div class="block">
                 <div class="block-content">
                     <div style="height:400px;">
-                        TODO:
+                        <strong>View Port</strong>
+                        <div style="padding: 10px;"></div>
+
+                        <code>
+                            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=no&quot;&gt;
+                        </code>
+                        <div style="padding: 10px;"></div>
+
+                        <a href="https://ericm-square.github.io/block-site-ux-poc/test/user-scalable-yes.html">
+                            <button class="category-btn active" data-category="all"><code>scalable</code></button>
+                        </a>
+                        <div style="padding: 10px;"></div>
+
+                        <a href="https://ericm-square.github.io/block-site-ux-poc/test/user-scalable-no.html">
+                            <button class="category-btn active" data-category="all"><code>not-scalable</code></button>
+                        </a>
+                        <div style="padding: 10px;"></div>
                     </div>
                 </div>
             </div>
