@@ -5,38 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Restaurant Online Ordering</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Apple Mobile Web App: General Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Swiper Styles -->
+    <style>
+    .swiper-container {
+        width: 80vw;
+    }
 
-    <!--
-        If content is set to default, the status bar appears normal. 
-        If set to black, the status bar has a black background. 
-        If set to black-translucent, the status bar is black and translucent. 
-        If set to default or black, the web content is displayed below the status bar. 
-        If set to black-translucent, the web content is displayed on the entire screen, partially obscured by the status bar.
-        The default value is default.
-    -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Options: default, black, black-translucent -->
+    .swiper-slide {
+        background-size: cover;
+        background-position: 50%;
+        /* min-height: 80vh; */
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
-    <!-- Set the App Title when added to Home Screen -->
-    <meta name="apple-mobile-web-app-title" content="Block Site">
+    .swiper-pagination {
+        &-bullet {
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            opacity: 1;
+        }
 
-    <!-- Icons for iOS Home Screen -->
-    <link rel="apple-touch-icon" href="media/logo.png"> <!-- Default icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/logo.png"> <!-- Larger icon -->
-    <link rel="apple-touch-icon" sizes="152x152" href="media/logo.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="media/logo.png">
-    
-    <!-- Startup image for iOS devices -->
-    <link rel="apple-touch-startup-image" href="media/startup.png">
+        &-bullet-active {
+            background-color: #fff;
+        }
+    }
 
-    <!-- Theme Color for Safari and Mobile Browsers -->
-    <meta name="theme-color" content="#ff0000">
 
-    <!-- Web App Description (Optional) -->
-    <meta name="description" content="A description of your app or website for Apple devices">
+    .swiper-button {
+        &-container {
+            background-color: rgba(0,0,0,.25);
+        }
+        &-prev {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")
+        }
+        &-next {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+        }
+    }
+
+    body {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+    }
+    /* Swiper card background */
+    .swiper-slide {
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            opacity: .4;
+        }
+        h2 {
+            pointer-events: none;
+            opacity: 1;
+            color: #ffffff;
+            font-size: calc(5vw);
+            letter-spacing: -1px;
+            transform: translateY(-5%) scale(.8);
+            transition: 1s ease;
+            text-transform: uppercase;
+            text-shadow: 0 5px 5px rgba(0,0,0, .01);
+        }
+        &-active h2 {
+            opacity: 1;
+            transform: translateY(0%) scale(1);
+            transition: 1s ease;
+        }
+    }
+    </style>
+
+    <!-- Carousel Animation Styles -->
+    <style>
+    #carousel-before {
+        cursor: pointer;
+        transition: transform 0.3s ease, height 0.3s ease, width 0.3s ease;
+    }
+
+    #carousel-before.clicked {
+        transform: scale(0.95);
+        height: 400px;
+    }
+
+    #carousel-after.clicked {
+        transform: scale(0.95);
+        height: 470px;
+    }
+
+    #carousel-after {
+        display: none;
+        height: 470px;
+        transition: transform 0.3s ease, height 0.3s ease, width 0.3s ease;
+    }
+
+    #carousel-after.visible {
+        display: block;
+    }
+    </style>
 </head>
 <body>
     <div class="site-container">
@@ -63,57 +142,60 @@
                 </div>
             </div>
 
-            <!-- Status Bar Style -->
-            <div class="block">
-                <div class="block-content">
-                    <div style="height:400px;">
-                        <strong>Status Bar Style</strong>
-                        <div style="padding: 10px;"></div>
-
-                        <code>
-                            &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;default&quot;&gt;
-                        </code>
-                        <div style="padding: 10px;"></div>
-
-                        <a rel="noopener noreferrer" href="https://ericm-square.github.io/block-site-ux-poc/test/status-bar-default.html">
-                            <button class="category-btn active" data-category="all"><code>default</code></button>
-                        </a>
-                        <div style="padding: 10px;"></div>
-
-                        <a rel="noopener noreferrer" href="https://ericm-square.github.io/block-site-ux-poc/test/status-bar-black.html">
-                            <button class="category-btn active" data-category="all"><code>black</code></button>
-                        </a>
-                        <div style="padding: 10px;"></div>
-
-                        <a rel="noopener noreferrer" href="https://ericm-square.github.io/block-site-ux-poc/test/status-bar-black-translucent.html">
-                            <button class="category-btn active" data-category="all"><code>black-translucent</code></button>
-                        </a>
-                        <div style="padding: 10px;"></div>
+            <!-- Carousel Button -->
+            <div id="carousel-before" class="block">
+                <div class="block-content" style="padding:0px;">
+                    <div style="height:400px; width:100%; display:flex; align-items:center; justify-content:center;">
+                        Open Carousel
                     </div>
                 </div>
             </div>
 
-            <!--  -->
-            <div class="block">
-                <div class="block-content">
-                    <div style="height:400px;">
-                        <strong>View Port</strong>
-                        <div style="padding: 10px;"></div>
-
-                        <code>
-                            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=no&quot;&gt;
-                        </code>
-                        <div style="padding: 10px;"></div>
-
-                        <a rel="noopener noreferrer" href="https://ericm-square.github.io/block-site-ux-poc/test/user-scalable-yes.html">
-                            <button class="category-btn active" data-category="all"><code>scalable</code></button>
-                        </a>
-                        <div style="padding: 10px;"></div>
-
-                        <a rel="noopener noreferrer" href="https://ericm-square.github.io/block-site-ux-poc/test/user-scalable-no.html">
-                            <button class="category-btn active" data-category="all"><code>not-scalable</code></button>
-                        </a>
-                        <div style="padding: 10px;"></div>
+            <!-- Carousel -->
+            <div id="carousel-after" class="block">
+                <div class="block-content" style="padding:0px;">
+                    <div style="height:400px; width:100%;">
+                        
+                        <button id="carousel-after-button" class="primary-button">Close Carousel</button>
+                        <div class="swiper-container">
+                            <!-- swiper slides -->
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" style="height: 400px;">
+                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                                    Slide 1
+                                    </div>
+                                </div>
+                                
+                                <div class="swiper-slide" style="height: 400px;">
+                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                                    Slide 2
+                                    </div>
+                                </div>
+                                
+                                <div class="swiper-slide" style="height: 400px;">
+                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                                    Slide 3
+                                    </div>
+                                </div>
+                                
+                                <div class="swiper-slide" style="height: 400px;">
+                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                                    Slide 4
+                                    </div>
+                                </div>
+                                
+                                <div class="swiper-slide" style="height: 400px;">
+                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                                    Slide 5
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- !swiper slides -->
+                            
+                            <!-- pagination dots -->
+                            <div class="swiper-pagination"></div>
+                            <!-- !pagination dots -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -281,13 +363,43 @@
     <script src="scripts/script.js"></script>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('scripts/service-worker.js').then(function(registration) {
-                console.log('Service Worker registered with scope:', registration.scope);
-            }).catch(function(error) {
-                console.log('Service Worker registration failed:', error);
-            });
-        }
+        var Swipes = new Swiper('.swiper-container', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+        document.getElementById('carousel-before').addEventListener('click', function() {
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.style.display = 'none';
+                document.getElementById('carousel-after').classList.add('visible');
+                document.getElementById('carousel-after').style.display = 'block';
+                document.getElementById('carousel-after').classList.remove('clicked');
+
+                document.getElementById('carousel-after-button').classList.add('visible');
+                document.getElementById('carousel-after-button').style.display = 'block';
+            }, 300); // Match the transition duration
+        });
+
+        document.getElementById('carousel-after-button').addEventListener('click', function() {
+            const carouselAfter = document.getElementById('carousel-after');
+            carouselAfter.classList.add('clicked');
+
+            setTimeout(() => {
+                this.style.display = 'none';
+                carouselAfter.style.display = 'none';
+
+                document.getElementById('carousel-before').classList.add('visible');
+                document.getElementById('carousel-before').style.display = 'block';
+                document.getElementById('carousel-before').classList.remove('clicked');
+            }, 300); // Match the transition duration
+        });
     </script>
 </body>
 </html>
