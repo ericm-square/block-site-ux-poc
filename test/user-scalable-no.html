@@ -2,21 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <title>Restaurant Online Ordering</title>
-    <link rel="apple-touch-icon" href="media/logo.png">
     <link rel="stylesheet" href="styles.css">
 
-    <!-- ScrollReveal -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Apple Mobile Web App: General Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!-- Swiper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.css">
+    <!--
+        If content is set to default, the status bar appears normal. 
+        If set to black, the status bar has a black background. 
+        If set to black-translucent, the status bar is black and translucent. 
+        If set to default or black, the web content is displayed below the status bar. 
+        If set to black-translucent, the web content is displayed on the entire screen, partially obscured by the status bar.
+        The default value is default.
+    -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Options: default, black, black-translucent -->
 
-    <!-- Add Stacking Cards -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.js"></script>
+    <!-- Set the App Title when added to Home Screen -->
+    <meta name="apple-mobile-web-app-title" content="Block Site">
+
+    <!-- Icons for iOS Home Screen -->
+    <link rel="apple-touch-icon" href="media/logo.png"> <!-- Default icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="media/logo.png"> <!-- Larger icon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="media/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="media/logo.png">
+    
+    <!-- Startup image for iOS devices -->
+    <link rel="apple-touch-startup-image" href="media/startup.png">
+
+    <!-- Theme Color for Safari and Mobile Browsers -->
+    <!-- <meta name="theme-color" content="#ff0000"> -->
+
+    <!-- Web App Description (Optional) -->
+    <meta name="description" content="A description of your app or website for Apple devices">
+
+
 </head>
 <body>
     <div class="site-container">
@@ -30,86 +51,69 @@
         </header>
 
         <!-- Blocks -->
-        <div class="blocks-container">
-            <div class="blocks-wrapper">
-                <div class="blocks content">
-                    <div class="block business-card reveal-block">
-                        <div class="block-content">
-                            <div class="business-hero">
-                                <div class="business-hero-inner" style="height: 100%;"></div>
-                                <div class="business-avatar"></div>
-                            </div>
-                            <div class="business-info">
-                                <div class="contact-info" style="height: 150px;"></div>
-                            </div>
-                        </div>
+        <div class="blocks content">
+            <div class="block business-card">
+                <div class="block-content">
+                    <div class="business-hero">
+                        <div class="business-hero-inner" style="height: 100%;"></div>
+                        <div class="business-avatar"></div>
                     </div>
-        
-                    <!-- Block; Will expand to 800px when clicked -->
-                    <div id="block-01" class="block reveal-block expandable collapsed" onclick="toggleBlockExpanded(event, 'block-01')">
-                        <div class="block-content">
-                            <div style="height:400px;">
-                                One-Step Expand
-                            </div>
-                        </div>
+                    <div class="business-info">
+                        <div class="contact-info" style="height: 150px;"></div>
                     </div>
-        
-                    <!-- Block; Multiple Levels of Expand -->
-                    <div id="block-multi-step" onclick="toggleBlockExpandedLevel1(event, 'block-multi-step')" class="block reveal-block expandable collapsed-multi">
-                        <div class="block-content" style="display:flex; flex-direction:column; justify-content:space-between; height:100%">
-                            <div>
-                                Multi-Step Expand
-                            </div>
-        
-                            <div id="block-multi-step-next-btn" class="multi-step-button">
-                                <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Next</button>
-                            </div>
-        
-                            <div id="block-multi-step-done-btn" class="multi-step-button">
-                                <button onclick="toggleBlockExpandedLevel2(event, 'block-multi-step')" class="category-btn">Done</button>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Announcement; Will expand when "Read More" is clicked -->
-                    <div class="block reveal-block" style="background-color:transparent;">
-                        <div id="announcement" class="block-content announcement collapsed">
-                            <div class="announcement-grid">
-                                <div class="announcement-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt urna et mauris hendrerit, vitae tincidunt arcu pretium. Donec gravida metus sed tortor elementum, non tempus erat lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu vulputate enim. Morbi congue sem ut tempus luctus. Vivamus sed semper sem, a eleifend sem. Nunc vitae nisl sit amet sapien ultrices suscipit. Proin eu fringilla sem. Integer ultrices dui vel risus rhoncus, vitae lacinia velit vulputate. Nullam molestie justo ut volutpat finibus. Vivamus mollis mauris at nulla maximus, sit amet aliquet metus faucibus. Duis nec posuere est, sed porta elit. Nullam tincidunt dui ut laoreet ornare.
-                                </div>
-        
-                                <div class="expand-announcement-button">
-                                    <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read More</a>
-                                </div>
-                            </div>
-                            <div class="collapse-announcement-button">
-                                <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read Less</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="block reveal-block gift-cards">
-                        <div class="block-content">
-                            <div style="height:400px;">
-                                Links<br /><br />
-        
-                                <a href="https://ericm-square.github.io/block-site-ux-poc/test/">
-                                    PWA Test Items
-                                </a><br /><br />
-        
-                                <a href="https://ericm-square.github.io/block-site-ux-poc/test/swiper.html">
-                                    Carousel
-                                </a>
-        
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
 
-                    <div class="block reveal-block">
-                        <div class="gallery">
-                            <div style="height:400px;"></div>
-                        </div>
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        user-scalable = no
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="block">
+                <div class="block-content">
+                    <div style="height:400px;">
+                        
                     </div>
                 </div>
             </div>
@@ -215,18 +219,18 @@
             </button>
             <div class="popup-panel action-panel">
                 <div class="input-wrapper">
-                    <label>blocks slide in starting Y position (px)</label>
+                    <label>blocks starting position before slide in (px)</label>
                     <input type="number" value="20" step="20" min="0" class="config-input" data-suffix="px" data-key="content-translate-y" data-css-var="--animation-content-translate-y">
                 </div>
                 <div class="input-wrapper">
                     <label>blocks slide in duration</label>
-                    <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-duration" data-css-var="--animation-block-duration">
+                    <input type="number" value="0.2" step="0.1" min="0" class="config-input" data-suffix="s" data-key="block-slide-in-duration" data-css-var="--animation-block-slide-in-duration">
                 </div>
                 <button class="config-input apply-options">Apply</button>
                 <button class="config-input reset-options">Reset</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script src="scripts/utils.js"></script>
     <script src="scripts/script.js"></script>

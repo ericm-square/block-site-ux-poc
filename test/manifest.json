@@ -1,0 +1,46 @@
+{
+  "short_name": "Block Site",
+  "name": "Block Site Full Name",
+  "icons": [
+    {
+      "src": "media/logo.png",
+      "sizes": "200x198",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "media/logo.png",
+      "type": "image/png",
+      "sizes": "200x198",
+      "purpose": "maskable"
+    },
+    {
+      "src": "media/logo-square.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "media/startup.png",
+      "sizes": "529x800",
+      "type": "image/png"
+    },
+    {
+      "src": "media/startup.png",
+      "sizes": "529x800",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "media/startup.png",
+      "sizes": "529x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ff0000",
+  "background_color": "#00ff00"
+}
