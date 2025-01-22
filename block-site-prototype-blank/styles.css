@@ -887,6 +887,21 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 }
 
 /* Gift Cards */
+.block-gift-cards {
+    height: 500px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block-gift-cards.collapsed {
+    height: 500px;
+}
+
+/* Full size. I hard-coded the height because I'm not sure how to animate it without that */
+.block-gift-cards.expanded {
+    height: 1260px;
+}
+
+
 .gift-card-btn {
     padding: 8px 16px;
     border: 1px solid rgba(0,0,0,0.15);

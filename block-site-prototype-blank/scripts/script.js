@@ -159,6 +159,31 @@ function animateSlideInFade() {
     });
 }
 
+
+// GIFT CARDS
+function onGiftCardsNextClick() {
+    const blockGiftCards = document.getElementById('block-gift-cards');
+
+    // Scroll the block into view...
+    blockGiftCards.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+    });
+
+    // Increase height...
+    updateClass(blockGiftCards, 'expanded', true);
+    updateClass(blockGiftCards, 'collapsed', false);
+
+    
+    // Hide next button...
+    const nextButton = document.getElementById('gift-card-next-btn');
+    updateClass(nextButton, 'hide', true);
+
+    // Show gift card additional content...
+    const giftCardAdditionalContent = document.getElementById('gift-card-additional-content');
+    updateClass(giftCardAdditionalContent, 'hide', false);
+}
+
 function animateRevealOnScroll(type = 'fade-in') {
     const sr = ScrollReveal();
 
