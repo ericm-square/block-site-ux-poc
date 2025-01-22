@@ -17,12 +17,24 @@
     <!-- Add Stacking Cards -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.css">
     <script src="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.js"></script>
+
+    <!-- Tailwind (prefixed with 'tw-') -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            prefix: 'tw-',
+            corePlugins: {
+                preflight: false
+            }
+        }
+    </script>
+
 </head>
 <body>
     <div class="site-container">
         <header>
             <div>
-                <a href="#" class="business-name">Business Name</a>
+                <a href="#" id="business-name" class="business-name">Business Name</a>
                 <div class="open-status-icon pulse"></div>
                 <span class="open-status-text" onclick="toggleVisibility('actions-overlay')">Open</span>
             </div>
@@ -150,6 +162,102 @@
                             </div>
                             <div class="collapse-announcement-button">
                                 <a href="#" onclick="toggleBlockExpanded(event, 'announcement')">Read Less</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="block-gift-cards" class="block reveal-block block-gift-cards expandable collapsed" onclick="toggleBlockExpandedLevel1(event, 'block-gift-cards')">
+                        <div class="block-content">
+                            <div>
+                                <h2>Gift Cards</h2>
+
+                                <!-- Carousel -->
+                                <div class="gift-card-carousel">
+                                    <div class="gift-card"></div>
+                                    <div class="gift-card"></div>
+                                    <div class="gift-card"></div>
+                                </div>
+
+                                <!-- Gift Card Amount -->
+                                <p class="gift-card-sub-label">Amount</p>
+                                <div class="gift-card-list tw-grid tw-grid-cols-3 tw-gap-4 tw-mt-4">
+                                    <button class="gift-card-btn active" data-category="all">$25</button>
+                                    <button class="gift-card-btn">$50</button>
+                                    <button class="gift-card-btn">$75</button>
+                                    <button class="gift-card-btn">$100</button>
+                                    <button class="gift-card-btn">$200</button>
+                                    <button class="gift-card-btn">Custom</button>
+                                </div>
+                                <div style="padding:10px;"></div>
+
+                                <!-- TODO: -->
+                                <!-- Next Button -->
+                                <div id="gift-card-next-btn" class="multi-step-button">
+                                    <button onclick="onGiftCardsNextClick(event, 'block-multi-step')" class="category-btn">Next</button>
+                                </div>
+
+                                <!-- Additional Content (only visible when clicking "Next") -->
+                                <div id="gift-card-additional-content" class="gift-card-additional-content">
+                                    <!-- Gift Type -->
+                                    <p class="gift-card-sub-label">Gift type</p>
+                                    <div class="tw-mt-4">
+                                        <select class="config-input" data-key="load-animation" style="width: 100%">
+                                            <option value="for-one-individual">For one individual</option>
+                                        </select>
+                                    </div>
+                                    <div style="padding:10px;"></div>
+
+                                    <!-- Delivery details -->
+                                    <p class="gift-card-sub-label">Delivery details</p>
+                                    <div class="gift-card-list tw-grid tw-grid-cols-2 tw-gap-4 tw-mt-4">
+                                        <button class="gift-card-btn active" data-category="all">By text</button>
+                                        <button class="gift-card-btn">By email</button>
+                                    </div>
+                                    <div style="padding:10px;"></div>
+
+                                    <!-- Send to myself -->
+                                    <div class="tw-flex tw-items-center tw-mt-4 tw-mb-6">
+                                        <input type="checkbox" id="send-to-myself" class="tw-mr-2">
+                                        <label for="send-to-myself">Send to myself</label>
+                                    </div>
+
+                                    <!-- Who's this gift for -->
+                                    <div class="tw-mb-6">
+                                        <input type="text" placeholder="Who's this gift for?" class="tw-block tw-box-border tw-w-full tw-p-4 tw-text-gray-900 tw-border tw-border-gray-300 tw-border-solid tw-rounded-lg tw-text-base focus:tw-ring-gray-500 focus:tw-border-gray-500">
+                                    </div>
+
+                                    <!-- Phone Number -->
+                                    <div class="tw-mb-6">
+                                        <input type="text" placeholder="Phone number" class="tw-block tw-box-border tw-w-full tw-p-4 tw-text-gray-900 tw-border tw-border-gray-300 tw-border-solid tw-rounded-lg tw-text-base focus:tw-ring-gray-500 focus:tw-border-gray-500">
+                                    </div>
+
+                                    <!-- SENDER DETAILS -->
+                                    <p class="gift-card-sub-label">Sender details</p>
+                                    <div class="tw-mb-6"></div>
+
+                                    <!-- Who's this gift from? -->
+                                    <div class="tw-mb-6">
+                                        <input type="text" placeholder="Who's this gift from?" class="tw-block tw-box-border tw-w-full tw-p-4 tw-text-gray-900 tw-border tw-border-gray-300 tw-border-solid tw-rounded-lg tw-text-base focus:tw-ring-gray-500 focus:tw-border-gray-500">
+                                    </div>
+
+                                    <!-- Message -->
+                                    <div class="tw-mb-6">
+                                        <textarea placeholder="Message (optional)" rows="5" class="tw-font-sans tw-block tw-box-border tw-w-full tw-p-4 tw-text-gray-900 tw-border tw-border-gray-300 tw-border-solid tw-rounded-lg tw-text-base focus:tw-ring-gray-500 focus:tw-border-gray-500"></textarea>
+                                    </div>
+                                </div>
+
+
+                                <!-- Amount / Add to cart -->
+                                <div class="tw-flex tw-justify-between tw-items-center tw-mt-4">
+                                    <div>
+                                        <div class="tw-text-base tw-text-gray-500">Gift card</div>
+                                        <div class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
+                                    </div>
+                                
+                                    <div>
+                                        <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2">Add to cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

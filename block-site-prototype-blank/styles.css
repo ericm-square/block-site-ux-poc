@@ -76,6 +76,20 @@ html {
     display: none;
 }
 
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.fade-in { animation: fadeIn 1s; opacity: 1; }
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.fade-out { animation: fadeOut 1s; opacity: 0; }
+
+
 /* Actions Overlay */
 .actions-overlay {
     position: fixed;
@@ -229,6 +243,7 @@ header, header a {
 
 header .business-name {
     white-space: nowrap;
+    min-width: 100px;
 }
 
 .load-animation__swipe-on-scroll .button {
@@ -954,6 +969,47 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 }
 
 /* Gift Cards */
+.block-gift-cards {
+    height: 500px;
+    transition: height 0.1s ease-in-out;
+}
+
+.block-gift-cards.collapsed {
+    height: 500px;
+}
+
+/* Full size. I hard-coded the height because I'm not sure how to animate it without that */
+.block-gift-cards.expanded {
+    height: 1260px;
+}
+
+
+.gift-card-btn {
+    padding: 8px 16px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: var(--surface-inverse);
+    border-radius: var(--sharp);
+    cursor: pointer;
+    font: var(--paragraph-20-medium);
+    white-space: nowrap;
+    transition: all 0.3s;
+    color: black;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.gift-card-btn.active {
+    background: var(--background);
+    color: white;
+    border-color: var(--background);
+}
+
+
+.gift-card-sub-label {
+    font-weight: 500;
+    font-size: 16px;
+}
+
 .gift-cards {
 
 }
@@ -1278,7 +1334,9 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     .block:nth-of-type(3),
     .block:nth-of-type(4),
     .block:nth-of-type(5),
-    .block:nth-of-type(6) {
+    .block:nth-of-type(6),
+    .block:nth-of-type(7),
+    .block:nth-of-type(8) {
         grid-column: span 12;
         grid-row: auto;
     }

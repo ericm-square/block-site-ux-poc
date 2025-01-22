@@ -161,6 +161,31 @@ function animateSlideInFade() {
     });
 }
 
+
+// GIFT CARDS
+function onGiftCardsNextClick() {
+    const blockGiftCards = document.getElementById('block-gift-cards');
+
+    // Scroll the block into view...
+    blockGiftCards.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+    });
+
+    // Increase height...
+    updateClass(blockGiftCards, 'expanded', true);
+    updateClass(blockGiftCards, 'collapsed', false);
+
+    
+    // Hide next button...
+    const nextButton = document.getElementById('gift-card-next-btn');
+    updateClass(nextButton, 'hide', true);
+
+    // Show gift card additional content...
+    const giftCardAdditionalContent = document.getElementById('gift-card-additional-content');
+    updateClass(giftCardAdditionalContent, 'hide', false);
+}
+
 function animateRevealOnScroll(type = 'fade-in') {
     const sr = ScrollReveal();
 
@@ -503,6 +528,33 @@ function updateItemQuantity(itemId, newQuantity) {
     
     updateCart();
 }
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Toggle through "Business Name" and other content...
+document.addEventListener("DOMContentLoaded", () => {
+    const textOptions = ["Business name", "Waitlist (2)"];
+    const text1 = document.getElementById('business-name');
+
+    setInterval(async () => {
+        // Fade out text1...
+        updateClass(text1, 'fade-in', false);
+        updateClass(text1, 'fade-out', true);
+
+        // Hold for 1 seconds...
+        await delay(1_000);
+
+        // Swap the text...
+        text1.textContent = (text1.textContent === textOptions[0]) ? textOptions[1] : textOptions[0];
+
+        // Fade in text1...
+        updateClass(text1, 'fade-out', false);
+        updateClass(text1, 'fade-in', true);
+    }, 4_000);
+    
+});
 
 // Initialize add to cart buttons
 document.querySelectorAll('.add-to-cart').forEach(button => {
