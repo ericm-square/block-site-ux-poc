@@ -7,13 +7,42 @@ const reloadOverlayBtn = document.querySelector('.reload-overlay');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
 
+function expandFullScreen(event, blockId) {
+    // event.preventDefault();
+    const block = document.getElementById(blockId);
+    if (!block) { return; }
+    const isFullHeight = block.classList.contains('full-height');
+
+    // Scroll so this block is at the top of the screen...
+    if (!isFullHeight) {
+        block.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }
+
+    if (isFullHeight) {
+        updateClass(block, 'full-height', false);
+    } else {
+        updateClass(block, 'full-height', true);
+    }   
+}
+
 // Toggle whether block is expanded or not
 function toggleBlockExpanded(event, blockId) {
     event.preventDefault();
     const block = document.getElementById(blockId);
     if (!block) { return; }
-
     const isExpanded = block.classList.contains('expanded');
+
+    // Scroll so this block is at the top of the screen...
+    if (!isExpanded) {
+        block.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }
+
     if (isExpanded) {
         updateClass(block, 'expanded', false);
         updateClass(block, 'collapsed', true);

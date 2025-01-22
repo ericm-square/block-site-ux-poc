@@ -247,6 +247,9 @@ header .business-name {
     transition: height 0.1s ease-in-out;
 }
 
+.block.full-height {
+    height: 100vh; /* Full viewport height */
+}
 
 #block-multi-step-next-btn { display: none; }
 .block.expanded-multi-1 #block-multi-step-next-btn { display: block; }
@@ -1194,7 +1197,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     .block:nth-of-type(4),
     .block:nth-of-type(5),
     .block:nth-of-type(6) {
-        grid-column: span 6;
+        grid-column: span 12;
         grid-row: auto;
     }
 
