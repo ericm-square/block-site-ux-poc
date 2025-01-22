@@ -58,6 +58,10 @@
     /* ANIMATION */
     --animation-block-duration: 0.5s;
     --animation-content-translate-y: 140px;
+
+    --business-card-height: 510px;
+    --contact-info-close-height: 100px;
+    --contact-info-open-height: 150px;
 }
 
 html {
@@ -414,6 +418,17 @@ header .business-name {
     overflow: hidden;
 }
 
+.business-card-block {
+    padding: 0;
+    height: var(--business-card-height);
+    /* max-height: 40vh; */
+    transition: height 0.5s ease 0.3s;
+}
+
+.business-card-block.open {
+    height: calc(var(--business-card-height) + var(--contact-info-open-height) - var(--contact-info-close-height));
+}
+
 .load-animation__swipe-on-scroll .block {
     padding: 0;
 }
@@ -440,9 +455,9 @@ header .business-name {
 }
 
 /* SWIPE AND SCROLL */
-.swiper-container {
+.swiper-container.blocks-wrapper {
   width: 100vw;              /* Full width of viewport */
-  height: 100vh;             /* Full height of viewport */
+  /* height: 100vh;  */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -453,24 +468,24 @@ header .business-name {
 }
 
 /* Style each swiper slide */
-.swiper-slide {
+.swiper-slide.reveal-block {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.load-animation__swipe-on-scroll .swiper-slide {
+.load-animation__swipe-on-scroll .swiper-slide.reveal-block {
     width: 80vw;               /* 80% of the viewport width */
   height: 90vh;              /* 80% of the viewport height */
   min-height: 0 !important;
 }
 
 /* Make the adjacent slides partially visible */
-.swiper-slide-next, .swiper-slide-prev {
+.swiper-slide.reveal-block-next, .swiper-slide.reveal-block-prev {
   opacity: 0.6;             /* Slightly transparent */
   transform: scale(0.9);    /* Slightly smaller */
 }
 
 /* Active slide: fully visible and normal scale */
-.swiper-slide-active {
+.swiper-slide.reveal-block-active {
   opacity: 1;               /* Full opacity for active slide */
   transform: scale(1);      /* Full scale for active slide */
 }
@@ -506,7 +521,7 @@ header .business-name {
   }
 
 
-.block:not(.skeleton-block) {
+.block:not(.skeleton-block):not(.business-card-block) {
     background: white;
 }
 
@@ -555,19 +570,18 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 }
 
 /* Grid layout */
-.business-card,
+.business-card-block,
 .skeleton-business-card {
     grid-column: span 4;
     grid-row: 1;
+    border-radius: 0;
+}
+
+.skeleton-business-card {
     border-radius: var(--round);
 }
 
-.block.business-card {
-    background: var(--emphasis);
-    color: white;
-}
-
-.business-card p, .business-card a {
+.business-card-block p, .business-card-block a {
     color: white;
 }
 
@@ -607,8 +621,67 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 }
 
 .block-content,
-.skeleton-block-content {
+.skeleton-block-content,
+.business-card {
     padding: 20px;
+}
+
+.business-card {
+    background: var(--emphasis);
+    color: white;
+    box-sizing: border-box;
+    border-radius: var(--round);
+}
+
+.business-card-block .block-content {
+    padding: 0;
+    height: 100%;
+}
+
+.business-cards-swiper-container,
+.swiper-slide.business-card {
+    width: 100%;
+    height: 100%;
+}
+
+.business-cards-swiper-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+.load-animation__swipe-on-scroll .business-cards-swiper-container {
+    padding: 0;
+}
+  
+.carousel-before {
+    cursor: pointer;
+}
+
+.business-card-carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.business-card-carousel.scale-down-fade {
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.business-card-carousel.scale-up-fade {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .expand {
@@ -640,7 +713,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 .skeleton-business-hero {
     position: relative;
     width: calc(100% + 40px);
-    max-height: 320px;
+    height: 320px;
     aspect-ratio: 5/4;
     margin: -20px -20px 0;
     overflow: visible;
@@ -653,6 +726,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 
 .business-hero-inner {
     background: rgba(0, 0, 0, 0.15);
+    height: 100%;
 }
 
 .business-hero video {
@@ -697,6 +771,14 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 .contact-row svg {
     fill: white;
     margin-top: 4px;
+}
+
+.contact-info {
+    height: var(--contact-info-close-height);
+}
+
+.carousel-after .contact-info {
+    height: var(--contact-info-open-height);
 }
 
 .contact-info h4 {
@@ -1182,7 +1264,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
         grid-column: span 12;
     }
 
-    .business-card,
+    .business-card-block,
     .skeleton-business-card {
         grid-column: span 12;
         grid-row: auto;
@@ -1226,13 +1308,14 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 @media (max-width: 560px) {
     .block:nth-child(odd),
     .block:nth-child(even),
-    .business-card,
+    .business-card-block,
     .skeleton-business-card {
         grid-column: span 12;
         grid-row: auto;
     }
 
-    .block:first-of-type {
+    .block:first-of-type,
+    .business-card {
         border-radius: var(--round) var(--round) var(--sharp) var(--sharp);
     }
 

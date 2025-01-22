@@ -6,6 +6,8 @@ const colorPicker = document.querySelector('#emphasisColorPicker');
 const reloadOverlayBtn = document.querySelector('.reload-overlay');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
+let businessCardsSwiper;
+let isBusinessCardsSwiperVisible = false;
 
 function expandFullScreen(event, blockId) {
     // event.preventDefault();
@@ -209,7 +211,7 @@ function animateSwipeOnScroll() {
         updateClass(block, 'swiper-slide');
     });
 
-    const swiper = new Swiper('.swiper-container', {
+    const outerSwiper = new Swiper('.swiper-container', {
         loop: false,              // Enable looping of blocks
         slidesPerView: 1,        // Show 1 block at a time
         spaceBetween: 30,        // Space between blocks (added gap)
@@ -233,6 +235,9 @@ function animateSwipeOnScroll() {
     let scrollTimeout;
 
     document.querySelector('.swiper-container').addEventListener('wheel', function (event) {
+        // if (isBusinessCardsSwiperVisible) {
+        //     return;
+        // }
       if (isScrolling) return;  // Prevent multiple triggers
       isScrolling = true;
 
@@ -242,9 +247,9 @@ function animateSwipeOnScroll() {
       }
 
       if (event.deltaY > 0) {
-        swiper.slideNext();  // Scroll down -> Next slide
+        outerSwiper.slideNext();  // Scroll down -> Next slide
       } else {
-        swiper.slidePrev();  // Scroll up -> Previous slide
+        outerSwiper.slidePrev();  // Scroll up -> Previous slide
       }
 
       // Reset the scrolling lock after a short delay to allow the animation to finish
@@ -256,6 +261,74 @@ function animateSwipeOnScroll() {
 
 function animateStackingCards() {
     // todo
+}
+
+function toggleCarousel() {
+    const businessCardBlock = document.querySelector('.business-card-block');
+    const carouselBefore = document.querySelector('.carousel-before');
+    const carouselAfter = document.querySelector('.carousel-after');
+    let timeout = null;
+    let scrollTimeout = null;
+    let lastScrollY = window.scrollY;
+    let shouldCloseCarousel = false;
+
+    carouselBefore.addEventListener('click', function() {
+        clearTimeout(timeout);
+        updateClass(businessCardBlock, 'open', true);
+        updateClass(carouselAfter, 'hide', false);
+        timeout = setTimeout(() => {
+            updateClass(this, 'scale-down-fade', true);
+            updateClass(carouselAfter, 'scale-down-fade', false);
+            setTimeout(() => {
+                updateClass(this, 'hide', true);
+            }, 500);
+        }, 200);
+        shouldCloseCarousel = true;
+        isBusinessCardsSwiperVisible = true;
+    });
+
+    window.addEventListener('scroll', function () {
+        const currentScrollY = window.scrollY;
+        const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+        const isScrollingAway = scrollDifference >= 150;
+
+        if (shouldCloseCarousel && isScrollingAway) {
+            lastScrollY = currentScrollY;
+            shouldCloseCarousel = false;
+            isBusinessCardsSwiperVisible = false;
+            clearTimeout(timeout);
+            clearTimeout(scrollTimeout);
+            updateClass(businessCardBlock, 'open', false);
+            updateClass(carouselBefore, 'hide', false);
+            scrollTimeout = setTimeout(() => {
+                updateClass(carouselAfter, 'scale-down-fade', true);
+                updateClass(carouselBefore, 'scale-down-fade', false);
+
+                setTimeout(() => {
+                    updateClass(carouselAfter, 'hide', true);
+                }, 500);
+            }, 500);
+        }
+    });
+
+    let wheelTimeout;
+
+    document.querySelector('.business-cards-swiper-container').addEventListener('wheel', function () {
+        shouldCloseCarousel = false;
+        isBusinessCardsSwiperVisible = false;
+        clearTimeout(timeout);
+        clearTimeout(wheelTimeout);
+        updateClass(businessCardBlock, 'open', false);
+        updateClass(carouselBefore, 'hide', false);
+        wheelTimeout = setTimeout(() => {
+            updateClass(carouselAfter, 'scale-down-fade', true);
+            updateClass(carouselBefore, 'scale-down-fade', false);
+
+            setTimeout(() => {
+                updateClass(carouselAfter, 'hide', true);
+            }, 500);
+        }, 200);
+    });
 }
 
 // When document loads...
@@ -273,6 +346,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateClass(body, `load-animation__${getLoadAnimationType()}`, true); 
+
+    const swiperOptions = {
+        loop: true,              // Enable looping of slides
+        slidesPerView: 1,        // Show 1 slide at a time
+        spaceBetween: 20,        // Space between slides
+        centeredSlides: true,    // Center the active slide
+        grabCursor: true,        // Enable grab cursor on touch devices
+        slideToClickedSlide: true, // Enable click-to-slide functionality
+        pagination: {            // Pagination (optional, dots)
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {           // Responsive settings
+          768: {
+            slidesPerView: 1,    // Show 1 slide on smaller screens
+          },
+        },
+    };
+    if (getLoadAnimationType() === 'swipe-on-scroll') {
+        swiperOptions.direction = 'vertical';
+    }
+    businessCardsSwiper = new Swiper('.business-cards-swiper-container', swiperOptions);
+
+    toggleCarousel();
 
     switch (getLoadAnimationType()) {
         case 'reveal-on-scroll-fade-in':
