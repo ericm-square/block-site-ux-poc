@@ -405,7 +405,7 @@
     
     <!-- Gift Card Action Bar -->
     <div id="gift-card-action-bar-sticky" class="hide tw-bg-white tw-w-full tw-fixed tw-bottom-0" style="box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5);">
-        <div class="tw-flex tw-justify-between tw-items-center tw-mt-4 tw-p-4">
+        <div class="tw-flex tw-justify-between tw-items-center tw-p-4">
             <div>
                 <div class="tw-text-base tw-text-gray-500">Gift card</div>
                 <div class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
@@ -537,6 +537,18 @@
         const isGiftCardExpanded = blockGiftCards.classList.contains('expanded');
         if (!isGiftCardExpanded) { return; }
 
+        // If any inputs in the block are focused, show the action bar...
+        const formElements = blockGiftCards.querySelectorAll('input');
+        let isAnElementFocused = false;
+        formElements.forEach((el) => {
+            const isFocused = el === document.activeElement;
+            if (isFocused) { isAnElementFocused = true; }
+        });
+        if (isAnElementFocused) {
+            actionBarSticky.style.opacity = 1;
+            return;
+        }
+
 
         // Get some info about window scrolling position...
         const windowScrollPos = window.scrollY;     // Current window scroll position
@@ -545,8 +557,6 @@
         const giftCardsScrollPos = blockGiftCards.getBoundingClientRect().top;
         const actionBarAttachedScrollPos = actionBarAttached.getBoundingClientRect().top;
         
-
-
         // Figure out if the "attached" bar is at the same spot as the "sticky" bar
         // That happens when its scroll position is at the bottom of the screen -minus- the height of the sticky bar
         const equalScrollPosition = windowHeight - actionBarHeight;
@@ -569,10 +579,15 @@
             }
         }
 
-
         
+        
+
+
+        // If we are below the gift card section, hide the sticky bar (because it's part of the gift card section)
         if (isAtOrBelowGiftCard) {
             actionBarSticky.style.opacity = 0;
+
+        // If we are "inside" the gift card section, show the sticky bar...
         } else if (!isAboveGiftCard) {
             actionBarSticky.style.opacity = 1;
         }
