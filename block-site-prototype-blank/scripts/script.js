@@ -166,8 +166,8 @@ function animateSlideInFade() {
 
 
 // GIFT CARDS
-function onGiftCardsNextClick() {
-    const blockGiftCards = document.getElementById('block-gift-cards');
+function onGiftCardsNextClick(e, idBlockToExpand, idAdditionalContent, idNextButton, onlyFullScreen) {
+    const blockGiftCards = document.getElementById(idBlockToExpand);
 
     // Scroll the block into view...
     blockGiftCards.scrollIntoView({
@@ -179,13 +179,18 @@ function onGiftCardsNextClick() {
     updateClass(blockGiftCards, 'expanded', true);
     updateClass(blockGiftCards, 'collapsed', false);
 
-    
+    // If "onlyFullScreen", it means we want the block to only take up 100% of the screen (and not go beyond it)....
+    if (onlyFullScreen) {
+        blockGiftCards.style.height = '99vh';
+        blockGiftCards.style['overflow-y'] = 'scroll';
+    }
+
     // Hide next button...
-    const nextButton = document.getElementById('gift-card-next-btn');
+    const nextButton = document.getElementById(idNextButton);
     updateClass(nextButton, 'hide', true);
 
     // Show gift card additional content...
-    const giftCardAdditionalContent = document.getElementById('gift-card-additional-content');
+    const giftCardAdditionalContent = document.getElementById(idAdditionalContent);
     updateClass(giftCardAdditionalContent, 'hide', false);
 }
 
@@ -671,21 +676,27 @@ function delay(ms) {
 document.addEventListener("DOMContentLoaded", () => {
     const textOptions = ["Business name", "Waitlist (2)"];
     const text1 = document.getElementById('business-name');
+    const openMarker = document.getElementById('open-marker');
 
     setInterval(async () => {
+        const text = text1.textContent.trim();
+        const isBusinessName = text === textOptions[0];
+
         // Fade out text1...
         updateClass(text1, 'fade-in', false);
         updateClass(text1, 'fade-out', true);
+        if (isBusinessName) { updateClass(openMarker, 'fade-out', true); updateClass(openMarker, 'fade-in', false); }
 
         // Hold for 1 seconds...
         await delay(1_000);
 
         // Swap the text...
-        text1.textContent = (text1.textContent === textOptions[0]) ? textOptions[1] : textOptions[0];
+        text1.textContent = (isBusinessName) ? textOptions[1] : textOptions[0];
 
         // Fade in text1...
         updateClass(text1, 'fade-out', false);
         updateClass(text1, 'fade-in', true);
+        if (!isBusinessName) { updateClass(openMarker, 'fade-out', false); updateClass(openMarker, 'fade-in', true); }
     }, 4_000);
     
 });
