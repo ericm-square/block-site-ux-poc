@@ -196,6 +196,10 @@ body {
     overflow: hidden;
 }
 
+.load-animation__swipe-on-scroll.vertical-scroll {
+    overflow-y: scroll;
+}
+
 .site-container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -209,7 +213,7 @@ body {
     flex-flow: column;
     padding: 0;
     gap: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 header {
@@ -479,7 +483,7 @@ header .business-name {
   padding-left: 10vw;        /* Add padding to the left to create peek effect */
   padding-right: 10vw;       /* Add padding to the right to create peek effect */
   box-sizing: border-box;    /* Include padding in container size */
-  overflow: hidden;          /* Hide overflowing slides */
+  /* overflow: hidden; */
 }
 
 /* Style each swiper slide */
@@ -491,6 +495,10 @@ header .business-name {
     width: 80vw;               /* 80% of the viewport width */
   height: 90vh;              /* 80% of the viewport height */
   min-height: 0 !important;
+}
+
+.load-animation__swipe-on-scroll.is-current-block-scaled-up .swiper-slide.reveal-block:not(.scale-up) {
+    opacity: 0.5;
 }
 
 /* Make the adjacent slides partially visible */
@@ -697,6 +705,14 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 .business-card-carousel.scale-up-fade {
     transform: scale(1);
     opacity: 1;
+}
+
+.inner-content {
+    /* overflow-x: hidden;
+    padding-right: 20px;
+    overflow-y: auto; */
+    max-height: 85vh;
+    overflow: hidden;
 }
 
 .expand {
@@ -971,7 +987,16 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 /* Gift Cards */
 .block-gift-cards {
     height: 500px;
-    transition: height 0.1s ease-in-out;
+    position: relative;
+    transition: height 0.1s ease-in-out, width 0.3s ease, transform 0.1s ease;
+}
+
+.load-animation__swipe-on-scroll .block-gift-cards.scale-up {
+    /* transform: scale(1.1); */
+    width: 96vw !important;
+    transform: translateX(-7.5vw) translateY(-3.2vw);
+    /* left: -7.5vw; */
+    height: auto;
 }
 
 .block-gift-cards.collapsed {
@@ -981,6 +1006,10 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 /* Full size. I hard-coded the height because I'm not sure how to animate it without that */
 .block-gift-cards.expanded {
     height: 1260px;
+}
+
+.block-gift-cards .block-content {
+    /* height: 100vh; */
 }
 
 

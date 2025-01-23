@@ -6,8 +6,10 @@ const colorPicker = document.querySelector('#emphasisColorPicker');
 const reloadOverlayBtn = document.querySelector('.reload-overlay');
 const resetColorBtn = document.querySelector('.reset-color');
 const defaultEmphasisColor = 'red';
+let outerSwiper;
 let businessCardsSwiper;
 let isBusinessCardsSwiperVisible = false;
+let shouldLockScrolling = false;
 
 function expandFullScreen(event, blockId) {
     // event.preventDefault();
@@ -232,11 +234,12 @@ function animateSwipeOnScroll() {
     updateClass(document.querySelector('.blocks-wrapper'), 'swiper-container');
     updateClass(document.querySelector('.blocks-wrapper .blocks'), 'swiper-wrapper');
     const blocks = document.querySelectorAll('.reveal-block');
+    const blocksInner = document.querySelectorAll('.reveal-block .inner-content');
     blocks.forEach((block) => {
         updateClass(block, 'swiper-slide');
     });
 
-    const outerSwiper = new Swiper('.swiper-container', {
+    outerSwiper = new Swiper('.swiper-container', {
         loop: false,              // Enable looping of blocks
         slidesPerView: 1,        // Show 1 block at a time
         spaceBetween: 30,        // Space between blocks (added gap)
@@ -253,13 +256,115 @@ function animateSwipeOnScroll() {
             slidesPerView: 1,    // Show 1 block on smaller screens
           },
         },
+        simulateTouch: true,   // Allow touch (drag/swipe)
+        allowTouchMove: true,  // Allow slide dragging,
+        on: {
+            touchStart: function (e) {
+                const currentSlide = this.slides[this.activeIndex];
+                const hasGiftCards = currentSlide.closest('#block-gift-cards');
+                if (hasGiftCards) {
+                    const isGiftCardsScaledUp = currentSlide.classList.contains('scale-up');
+                    this.allowTouchMove = !isGiftCardsScaledUp;
+                }
+            },
+            touchMove: function (e) {
+            // console.log('Dragging:', outerSwiper.realIndex);
+            },
+            touchEnd: function (e) {
+            },
+            slideChange: function () {
+            // console.log('Slide changed to index:', outerSwiper.realIndex);
+            },
+        },
       });
 
       // Scroll to swipe functionality
     let isScrolling = false;
     let scrollTimeout;
+    
+    let atBottomAttempt = 0;
+    const giftCardsBlock = document.querySelector('#block-gift-cards');
+
+    blocks.forEach((block) => {
+        block.addEventListener('click', (event) => {
+            const isGiftCardsBlock = event.target.closest('#block-gift-cards');
+            shouldLockScrolling = isGiftCardsBlock;
+
+            updateClass(giftCardsBlock, 'scale-up', isGiftCardsBlock);
+            updateClass(document.body, 'vertical-scroll', isGiftCardsBlock);
+            updateClass(document.body, 'is-current-block-scaled-up', isGiftCardsBlock);
+
+            if (isGiftCardsBlock) {
+                outerSwiper.update();
+            }
+            
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        shouldLockScrolling = false;
+        updateClass(giftCardsBlock, 'scale-up', false);
+        updateClass(document.body, 'vertical-scroll', false);
+        updateClass(document.body, 'is-current-block-scaled-up', false);
+    });
+    
+    // const giftCardsBlock = document.querySelector('##block-gift-cards');
+    // giftCardsBlock.addEventListener('click', (event) => {
+        
+    // });
+
+    // blocksInner.forEach(innerContent => {
+    //     innerContent.addEventListener('wheel', function(event) {
+    //         // Get current scroll position
+    //         let scrollPosition = innerContent.scrollTop;
+    //         // Get the total scrollable height and the visible area height
+    //         let scrollHeight = innerContent.scrollHeight;
+    //         let clientHeight = innerContent.clientHeight;
+    //         const atBottom = scrollPosition + clientHeight >= scrollHeight;
+
+    //         if (atBottom) {
+    //             atBottomAttempt++;
+    //         } else {
+    //             atBottomAttempt = 0;
+    //         }
+
+    //         if (atBottomAttempt > 1 && atBottom && shouldLockScrolling) {
+    //             outerSwiper.slideNext();
+    //             shouldLockScrolling = false;
+    //         }
+
+    //         console.log(atBottomAttempt);
+        
+    //         // Check if scrolling down
+    //         if (event.deltaY > 0) {
+    //             // If the content is at the bottom, trigger outerSwiper.slideNext()
+    //             if (scrollPosition + clientHeight >= scrollHeight) {
+    //               // At the bottom, trigger the next slide on outerSwiper
+    //             //   outerSwiper.slideNext();
+    //               return;  // Prevent further scrolling
+    //             }
+    //             // Otherwise, allow normal scroll
+    //             innerContent.scrollTop = scrollPosition + 80;  // Scroll down by 80px
+    //           } else { // Scrolling up
+    //             // If the content is at the top, trigger outerSwiper.slidePrev()
+    //             if (scrollPosition <= 0) {
+    //               // At the top, trigger the previous slide on outerSwiper
+    //             //   outerSwiper.slidePrev();
+    //               return;  // Prevent further scrolling
+    //             }
+    //             // Otherwise, allow normal scroll
+    //             innerContent.scrollTop = scrollPosition - 80;  // Scroll up by 80px
+    //           }
+        
+    //         // Prevent the default scroll behavior
+    //         event.preventDefault();
+    //       });
+    //   });
 
     document.querySelector('.swiper-container').addEventListener('wheel', function (event) {
+        if (shouldLockScrolling) {
+            return;
+        }
         // if (isBusinessCardsSwiperVisible) {
         //     return;
         // }
@@ -282,6 +387,7 @@ function animateSwipeOnScroll() {
         isScrolling = false;
       }, 100);  // Adjust the timeout duration to match Swiper's transition speed
     });
+
 }
 
 function animateStackingCards() {
@@ -323,6 +429,7 @@ function toggleCarousel() {
             isBusinessCardsSwiperVisible = false;
             clearTimeout(timeout);
             clearTimeout(scrollTimeout);
+            clearTimeout(wheelTimeout);
             updateClass(businessCardBlock, 'open', false);
             updateClass(carouselBefore, 'hide', false);
             scrollTimeout = setTimeout(() => {
@@ -338,10 +445,11 @@ function toggleCarousel() {
 
     let wheelTimeout;
 
-    document.querySelector('.business-cards-swiper-container').addEventListener('wheel', function () {
+    function resetCarousel() {
         shouldCloseCarousel = false;
         isBusinessCardsSwiperVisible = false;
         clearTimeout(timeout);
+        clearTimeout(scrollTimeout);
         clearTimeout(wheelTimeout);
         updateClass(businessCardBlock, 'open', false);
         updateClass(carouselBefore, 'hide', false);
@@ -353,13 +461,21 @@ function toggleCarousel() {
                 updateClass(carouselAfter, 'hide', true);
             }, 500);
         }, 200);
+    }
+
+    document.querySelector('.business-cards-swiper-container').addEventListener('wheel', function () {
+        resetCarousel();
     });
+
+    if (outerSwiper) {
+        outerSwiper.on('slideChange', function() {
+            resetCarousel();
+          });
+    }
 }
 
 // When document loads...
 document.addEventListener('DOMContentLoaded', () => {
-    
-
     // Change background color based on browser...
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const isChrome = /chrome/i.test(navigator.userAgent);
@@ -394,8 +510,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     businessCardsSwiper = new Swiper('.business-cards-swiper-container', swiperOptions);
 
-    toggleCarousel();
-
     switch (getLoadAnimationType()) {
         case 'reveal-on-scroll-fade-in':
             animateRevealOnScroll('fade-in');
@@ -417,6 +531,9 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSlideInFade();
             break;
     }
+
+    toggleCarousel();
+    
 });
 
 // Toggle color picker panel
