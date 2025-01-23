@@ -291,81 +291,18 @@ function animateSwipeOnScroll() {
     let atBottomAttempt = 0;
     const giftCardsBlock = document.querySelector('#block-gift-cards');
 
-    blocks.forEach((block) => {
-        block.addEventListener('click', (event) => {
-            const isGiftCardsBlock = event.target.closest('#block-gift-cards');
-            shouldLockScrolling = isGiftCardsBlock;
-
-            updateClass(giftCardsBlock, 'scale-up', isGiftCardsBlock);
-            updateClass(document.body, 'vertical-scroll', isGiftCardsBlock);
-            updateClass(document.body, 'is-current-block-scaled-up', isGiftCardsBlock);
-
-            if (isGiftCardsBlock) {
-                outerSwiper.update();
-            }
-            
-        });
-    });
-
     document.addEventListener('click', (event) => {
-        shouldLockScrolling = false;
-        updateClass(giftCardsBlock, 'scale-up', false);
-        updateClass(document.body, 'vertical-scroll', false);
-        updateClass(document.body, 'is-current-block-scaled-up', false);
+        const isGiftCardsBlock = event.target.closest('#block-gift-cards');
+        shouldLockScrolling = isGiftCardsBlock;
+
+        updateClass(giftCardsBlock, 'scale-up', isGiftCardsBlock);
+        updateClass(document.body, 'vertical-scroll', isGiftCardsBlock);
+        updateClass(document.body, 'is-current-block-scaled-up', isGiftCardsBlock);
+
+        if (isGiftCardsBlock) {
+            outerSwiper.update();
+        }
     });
-    
-    // const giftCardsBlock = document.querySelector('##block-gift-cards');
-    // giftCardsBlock.addEventListener('click', (event) => {
-        
-    // });
-
-    // blocksInner.forEach(innerContent => {
-    //     innerContent.addEventListener('wheel', function(event) {
-    //         // Get current scroll position
-    //         let scrollPosition = innerContent.scrollTop;
-    //         // Get the total scrollable height and the visible area height
-    //         let scrollHeight = innerContent.scrollHeight;
-    //         let clientHeight = innerContent.clientHeight;
-    //         const atBottom = scrollPosition + clientHeight >= scrollHeight;
-
-    //         if (atBottom) {
-    //             atBottomAttempt++;
-    //         } else {
-    //             atBottomAttempt = 0;
-    //         }
-
-    //         if (atBottomAttempt > 1 && atBottom && shouldLockScrolling) {
-    //             outerSwiper.slideNext();
-    //             shouldLockScrolling = false;
-    //         }
-
-    //         console.log(atBottomAttempt);
-        
-    //         // Check if scrolling down
-    //         if (event.deltaY > 0) {
-    //             // If the content is at the bottom, trigger outerSwiper.slideNext()
-    //             if (scrollPosition + clientHeight >= scrollHeight) {
-    //               // At the bottom, trigger the next slide on outerSwiper
-    //             //   outerSwiper.slideNext();
-    //               return;  // Prevent further scrolling
-    //             }
-    //             // Otherwise, allow normal scroll
-    //             innerContent.scrollTop = scrollPosition + 80;  // Scroll down by 80px
-    //           } else { // Scrolling up
-    //             // If the content is at the top, trigger outerSwiper.slidePrev()
-    //             if (scrollPosition <= 0) {
-    //               // At the top, trigger the previous slide on outerSwiper
-    //             //   outerSwiper.slidePrev();
-    //               return;  // Prevent further scrolling
-    //             }
-    //             // Otherwise, allow normal scroll
-    //             innerContent.scrollTop = scrollPosition - 80;  // Scroll up by 80px
-    //           }
-        
-    //         // Prevent the default scroll behavior
-    //         event.preventDefault();
-    //       });
-    //   });
 
     document.querySelector('.swiper-container').addEventListener('wheel', function (event) {
         if (shouldLockScrolling) {

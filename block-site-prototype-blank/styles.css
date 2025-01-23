@@ -1040,7 +1040,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 .load-animation__swipe-on-scroll .block-gift-cards.scale-up {
     /* transform: scale(1.1); */
     width: 96vw !important;
-    transform: translateX(-7.5vw) translateY(-7.5vw);
+    transform: translateX(-7.5vw) translateY(-2em);
     /* left: -7.5vw; */
     height: auto;
 }
