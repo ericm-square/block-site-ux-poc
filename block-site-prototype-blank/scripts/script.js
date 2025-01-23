@@ -343,10 +343,12 @@ function animateExpanded() {
     businessCardBlock.style.height = `${width}px`;
 
     setTimeout(() => {
-        document.querySelector('header').style.transition = 'height 0.8s ease';
+        const duration = '0.8s';
+        document.querySelector('header').style.transition = `height ${duration} ease`;
+        document.querySelector('.business-avatar').style.transition = `left ${duration} ease, bottom ${duration} ease,  width ${duration} ease, height ${duration} ease`;
+        document.querySelector('.business-hero').style.transition = `height ${duration} ease`;
         updateClass(document.body, 'initial', false);
         businessCardBlock.style.height = '';
-        
         document.querySelector('header').style.height = '40px';
     }, 500);
 }

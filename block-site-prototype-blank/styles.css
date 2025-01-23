@@ -467,7 +467,7 @@ header .business-name {
     padding: 0;
     height: var(--business-card-height);
     /* max-height: 40vh; */
-    transition: height 0.5s ease 0.3s;
+    transition: height 0.5s ease;
 }
 
 .load-animation__expanded.initial .block:not(.business-card-block) {
@@ -479,7 +479,7 @@ header .business-name {
 }
 
 .load-animation__expanded:not(.initial) .business-card-block {
-    transition: height 0.5s ease 0.3s;
+    transition: height 0.8s ease 0.5s;
 }
 
 .business-card-block.open {
@@ -792,6 +792,10 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     overflow: visible;
 }
 
+.load-animation__expanded.initial .business-hero {
+    height: 50%;
+}
+
 .business-hero-inner,
 .skeleton-business-hero-inner {
     border-radius: 20px 20px 6px 6px;
@@ -822,6 +826,13 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     bottom: -60px;
     left: 20px;
     overflow: hidden;
+}
+
+.load-animation__expanded.initial .business-avatar {
+    left: 34vw;
+    width: 180px;
+    height: 180px;
+    bottom: -90px;
 }
 
 .business-avatar {
