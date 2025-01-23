@@ -201,6 +201,72 @@ function onGiftCardsNextClick(e, idBlockToExpand, idAdditionalContent, idNextBut
     updateClass(giftCardAdditionalContent, 'hide', false);
 }
 
+// Handles showing/hiding the gift card action bar when scrolling (lots of hard-coded stuff)...
+window.addEventListener('scroll', function() {
+    const actionBarAttached = document.getElementById('gift-card-action-bar-attached');
+    const actionBarSticky = document.getElementById('gift-card-action-bar-sticky');
+    const blockGiftCards = document.getElementById('block-gift-cards');
+
+    // If gift card was not expanded, just return...
+    const isGiftCardExpanded = blockGiftCards.classList.contains('expanded');
+    if (!isGiftCardExpanded) { return; }
+
+    // If any inputs in the block are focused, show the action bar...
+    const formElements = blockGiftCards.querySelectorAll('input');
+    const textAreas = blockGiftCards.querySelectorAll('textarea');
+    let isAnElementFocused = false;
+    [formElements, textAreas].forEach((elementTypes) => {
+        elementTypes.forEach((el) => {
+            const isFocused = el === document.activeElement;
+            if (isFocused) { isAnElementFocused = true; }
+        });
+    });
+
+    // If any of the form elements are focused...
+    if (isAnElementFocused) {
+        actionBarSticky.style.opacity = 1;
+        return;
+    }
+
+    // Get some info about window scrolling position...
+    const windowScrollPos = window.scrollY;     // Current window scroll position
+    const windowHeight = window.innerHeight;    // Height of the window
+    const actionBarHeight = actionBarSticky.offsetHeight;
+    const giftCardsScrollPos = blockGiftCards.getBoundingClientRect().top;
+    const actionBarAttachedScrollPos = actionBarAttached.getBoundingClientRect().top;
+    
+    // Figure out if the "attached" bar is at the same spot as the "sticky" bar
+    // That happens when its scroll position is at the bottom of the screen -minus- the height of the sticky bar
+    const equalScrollPosition = windowHeight - actionBarHeight;
+
+    // isAtOrBelowGiftCard = Window has scroll below the "$25" section in the card
+    // isAboveGiftCard = We scrolled way above the gift cards section and it's not even visible
+    const tolerance = 10;
+    const isAtOrBelowGiftCard = (actionBarAttachedScrollPos <= equalScrollPosition + tolerance);
+    const isAboveGiftCard = giftCardsScrollPos > windowHeight - actionBarHeight;
+
+    // As we are scrolling up, slowly lower the gift card...
+    if (isAboveGiftCard) {
+        const amountAbove = Math.abs(giftCardsScrollPos + actionBarHeight - windowHeight);
+        if (amountAbove > actionBarHeight) {
+            actionBarSticky.style.bottom = 0;
+            actionBarSticky.style.opacity = 0;
+        } else {
+            actionBarSticky.style.bottom = `-${amountAbove}px`;
+            actionBarSticky.style.opacity = 1;
+        }
+    }
+
+    // If we are below the gift card section, hide the sticky bar (because it's part of the gift card section)
+    if (isAtOrBelowGiftCard) {
+        actionBarSticky.style.opacity = 0;
+
+    // If we are "inside" the gift card section, show the sticky bar...
+    } else if (!isAboveGiftCard) {
+        actionBarSticky.style.opacity = 1;
+    }
+});
+
 function animateRevealOnScroll(type = 'fade-in') {
     const sr = ScrollReveal();
 
