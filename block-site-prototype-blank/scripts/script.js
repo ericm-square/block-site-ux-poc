@@ -185,6 +185,13 @@ function onGiftCardsNextClick(e, idBlockToExpand, idAdditionalContent, idNextBut
         blockGiftCards.style['overflow-y'] = 'scroll';
     }
 
+    // Show the footer...
+    if (!onlyFullScreen) {  // TODO: Don't keep this
+        const footer = document.getElementById('gift-card-action-bar-sticky');
+        updateClass(footer, 'hide', false);
+    }
+
+
     // Hide next button...
     const nextButton = document.getElementById(idNextButton);
     updateClass(nextButton, 'hide', true);
