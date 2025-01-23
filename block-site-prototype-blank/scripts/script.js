@@ -10,6 +10,7 @@ let outerSwiper;
 let businessCardsSwiper;
 let isBusinessCardsSwiperVisible = false;
 let shouldLockScrolling = false;
+const businessCardBlock = document.querySelector('.business-card-block');
 
 function expandFullScreen(event, blockId) {
     // event.preventDefault();
@@ -394,8 +395,21 @@ function animateStackingCards() {
     // todo
 }
 
+function animateExpanded() {
+    window.scrollTo(0, 0);
+    const width = window.innerHeight - document.querySelector('header').clientHeight + 10;
+    businessCardBlock.style.height = `${width}px`;
+
+    setTimeout(() => {
+        document.querySelector('header').style.transition = 'height 0.8s ease';
+        updateClass(document.body, 'initial', false);
+        businessCardBlock.style.height = '';
+        
+        document.querySelector('header').style.height = '40px';
+    }, 500);
+}
+
 function toggleCarousel() {
-    const businessCardBlock = document.querySelector('.business-card-block');
     const carouselBefore = document.querySelector('.carousel-before');
     const carouselAfter = document.querySelector('.carousel-after');
     let timeout = null;
@@ -439,7 +453,7 @@ function toggleCarousel() {
                 setTimeout(() => {
                     updateClass(carouselAfter, 'hide', true);
                 }, 500);
-            }, 500);
+            }, 200);
         }
     });
 
@@ -525,6 +539,9 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         case 'stacking-cards':
             animateStackingCards();
+            break;
+        case 'expanded':
+            animateExpanded();
             break;
         case 'slide-in-fade':
             updateClass(reloadOverlayBtn, 'hide', false);

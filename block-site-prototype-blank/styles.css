@@ -200,6 +200,10 @@ body {
     overflow-y: scroll;
 }
 
+.load-animation__expanded.initial {
+    overflow: hidden;
+}
+
 .site-container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -208,12 +212,17 @@ body {
     padding: 8px;
 }
 
-.load-animation__swipe-on-scroll .site-container {
+.load-animation__swipe-on-scroll .site-container,
+.load-animation__expanded .site-container {
     display: flex;
     flex-flow: column;
     padding: 0;
     gap: 0;
     /* overflow: hidden; */
+}
+
+.load-animation__expanded.initial .site-container {
+    padding: 0;
 }
 
 header {
@@ -223,12 +232,28 @@ header {
     align-items: center;
     padding: 0 8px;
     height: 40px;
+    transition: opacity 0.2s ease;
 }
 
-.load-animation__swipe-on-scroll header {
+.load-animation__swipe-on-scroll header,
+.load-animation__expanded header {
     display: flex;
     justify-content: space-between;
     padding: 8px 16px;
+}
+
+.load-animation__swipe-on-scroll.is-current-block-scaled-up header {
+    opacity: 0.2;
+}
+
+.load-animation__expanded.initial header {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.load-animation__expanded header {
+    /* transition: height 0.2s ease; */
 }
 
 header div {
@@ -250,7 +275,8 @@ header .business-name {
     min-width: 100px;
 }
 
-.load-animation__swipe-on-scroll .button {
+.load-animation__swipe-on-scroll .button,
+.load-animation__expanded .button {
     margin-right: 0;
 }
 
@@ -441,6 +467,18 @@ header .business-name {
     padding: 0;
     height: var(--business-card-height);
     /* max-height: 40vh; */
+    transition: height 0.5s ease 0.3s;
+}
+
+.load-animation__expanded.initial .block:not(.business-card-block) {
+    display: none;
+}
+
+.load-animation__expanded.initial .business-card-block {
+    transition: none;
+}
+
+.load-animation__expanded:not(.initial) .business-card-block {
     transition: height 0.5s ease 0.3s;
 }
 
@@ -656,6 +694,10 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     border-radius: var(--round);
 }
 
+.load-animation__expanded.initial .business-card {
+    border-radius: 0;
+}
+
 .business-card-block .block-content {
     padding: 0;
     height: 100%;
@@ -753,6 +795,10 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 .business-hero-inner,
 .skeleton-business-hero-inner {
     border-radius: 20px 20px 6px 6px;
+}
+
+.load-animation__expanded.initial .business-hero-inner {
+    border-radius: 0;
 }
 
 .business-hero-inner {
@@ -994,7 +1040,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 .load-animation__swipe-on-scroll .block-gift-cards.scale-up {
     /* transform: scale(1.1); */
     width: 96vw !important;
-    transform: translateX(-7.5vw) translateY(-3.2vw);
+    transform: translateX(-7.5vw) translateY(-7.5vw);
     /* left: -7.5vw; */
     height: auto;
 }
@@ -1078,7 +1124,8 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     cursor: pointer;
 }
 
-.load-animation__swipe-on-scroll .cart {
+.load-animation__swipe-on-scroll .cart,
+.load-animation__expanded .cart {
     display: none !important;
 }
 
@@ -1404,6 +1451,11 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     .block:first-of-type,
     .business-card {
         border-radius: var(--round) var(--round) var(--sharp) var(--sharp);
+    }
+
+    .load-animation__expanded.initial .block:first-of-type,
+    .load-animation__expanded.initial .business-card {
+        border-radius: 0;
     }
 
     .block:not(:first-of-type):not(:last-of-type) {
