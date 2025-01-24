@@ -431,6 +431,7 @@
             var scrollY = window.scrollY;
             var windowHeight = window.innerHeight;
             var documentHeight = document.body.offsetHeight;
+            var visualViewportHeight = window.visualViewport.height;
 
             console.log(scrollY, windowHeight, documentHeight);
             // footer.style.bottom = `-${scrollY}px`;
@@ -439,7 +440,7 @@
 
             // Add some debug info to the screen...
             const elDebug = document.getElementById('debug-info');
-            elDebug.textContent = `${scrollY} / ${windowHeight} / ${documentHeight}`;
+            elDebug.textContent = `${scrollY} / ${windowHeight} / ${documentHeight} / ${visualViewportHeight}`;
         });
     </script>
 </body>
