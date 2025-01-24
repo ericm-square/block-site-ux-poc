@@ -769,8 +769,8 @@ categoryButtons.forEach(button => {
 });
 
 // Check-in functionality
-function toggleCheckIn() {
-    const sheet = document.getElementById('checkInSheet');
+function toggleCheckIn(id) {
+    const sheet = document.getElementById(id ?? 'checkInSheet');
     if (sheet.style.display === 'flex') {
         // Closing animation
         updateClass(sheet, 'visible', false);
