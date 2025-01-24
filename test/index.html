@@ -448,13 +448,13 @@
             //      So, we want to bump up the footer by that amount
             // footer.style.bottom = `-${scrollY}px`;       // No keyboard, works fine
             const keyboardHeight = windowHeight - visualViewportHeight;
-            footer.style.bottom = `-${scrollY - keyboardHeight + (isAddressBarExpanded ? approxAddressBarHeight : 0)}px`;       // Keyboard is present
+            footer.style.bottom = `-${scrollY - keyboardHeight + approxAddressBarHeight}px`;       // Keyboard is present
             
             
             // Add some debug info to the screen...
             // console.log(scrollY, windowHeight, documentHeight);
             const elDebug = document.getElementById('debug-info');
-            elDebug.textContent = `v6 ${scrollY} / ${windowHeight} / ${windowOuterHeight} / ${documentHeight}`;// / ${visualViewportHeight} / ${window.screen.availHeight} / ${window.screen.height}`;
+            elDebug.textContent = `v7 ${scrollY} / ${windowHeight} / ${windowOuterHeight} / ${documentHeight}`;// / ${visualViewportHeight} / ${window.screen.availHeight} / ${window.screen.height}`;
         });
     </script>
 </body>
