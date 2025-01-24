@@ -439,11 +439,12 @@
             //      So, the difference in that amount will be the keyboard size
             //      So, we want to bump up the footer by that amount
             // footer.style.bottom = `-${scrollY}px`;       // No keyboard, works fine
-            footer.style.bottom = `-${scrollY + (windowHeight - visualViewportHeight)}px`;       // Keyboard is present
+            const keyboardHeight = windowHeight - visualViewportHeight;
+            footer.style.bottom = `-${scrollY - keyboardHeight}px`;       // Keyboard is present
             
             
             // Add some debug info to the screen...
-            console.log(scrollY, windowHeight, documentHeight);
+            // console.log(scrollY, windowHeight, documentHeight);
             const elDebug = document.getElementById('debug-info');
             elDebug.textContent = `${scrollY} / ${windowHeight} / ${documentHeight} / ${visualViewportHeight}`;
         });
