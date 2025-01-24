@@ -433,7 +433,6 @@
             var documentHeight = document.body.offsetHeight;
             var visualViewportHeight = window.visualViewport.height;
 
-
             // If there's no keyboard, "-scrollY" will put it directly on the bottom of the page.
             // If there's a keyboard, windowHeight will remain the same, but visualViewportHeight will be smaller.
             //      So, the difference in that amount will be the keyboard size
@@ -446,7 +445,7 @@
             // Add some debug info to the screen...
             // console.log(scrollY, windowHeight, documentHeight);
             const elDebug = document.getElementById('debug-info');
-            elDebug.textContent = `${scrollY} / ${windowHeight} / ${documentHeight} / ${visualViewportHeight}`;
+            elDebug.textContent = `v2 ${scrollY} / ${windowHeight} / ${documentHeight} / ${visualViewportHeight} / ${window.screen.availHeight}`;
         });
     </script>
 </body>
