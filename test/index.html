@@ -433,12 +433,17 @@
             var documentHeight = document.body.offsetHeight;
             var visualViewportHeight = window.visualViewport.height;
 
-            console.log(scrollY, windowHeight, documentHeight);
-            // footer.style.bottom = `-${scrollY}px`;
-            footer.style.bottom = `-${scrollY - 600}px`;
 
-
+            // If there's no keyboard, "-scrollY" will put it directly on the bottom of the page.
+            // If there's a keyboard, windowHeight will remain the same, but visualViewportHeight will be smaller.
+            //      So, the difference in that amount will be the keyboard size
+            //      So, we want to bump up the footer by that amount
+            // footer.style.bottom = `-${scrollY}px`;       // No keyboard, works fine
+            footer.style.bottom = `-${scrollY + (windowHeight - visualViewportHeight)}px`;       // Keyboard is present
+            
+            
             // Add some debug info to the screen...
+            console.log(scrollY, windowHeight, documentHeight);
             const elDebug = document.getElementById('debug-info');
             elDebug.textContent = `${scrollY} / ${windowHeight} / ${documentHeight} / ${visualViewportHeight}`;
         });
