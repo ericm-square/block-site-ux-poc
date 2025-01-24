@@ -374,6 +374,11 @@
                         <div class="block-content">
                             <div class="inner-contentx">
                                 <h2>Merch</h2>
+
+                                <!-- Button to add to cart -->
+                                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2" onclick="updateClass(document.getElementById('merch-action-bar-sticky'), 'hide', false)">
+                                    Add to cart
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -430,6 +435,19 @@
         </div>
     </div>
 
+    <!-- Merch Action Bar -->
+    <div id="merch-action-bar-sticky" class="hide tw-bg-white tw-w-full tw-fixed tw-bottom-0" style="box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5);">
+        <div class="tw-flex tw-justify-between tw-items-center tw-p-4">
+            <div>
+                <div class="tw-text-base tw-text-gray-500">Total</div>
+                <div class="tw-text-xl tw-text-black tw-font-bold">$99.99</div>
+            </div>
+        
+            <div>
+                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2">View cart</button>
+            </div>
+        </div>
+    </div>
 
 
 
