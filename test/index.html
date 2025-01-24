@@ -434,19 +434,27 @@
             var documentHeight = document.body.offsetHeight;
             var visualViewportHeight = window.visualViewport.height;
 
+            // From experimenting...
+            // When address bar is visible: windowHeight = 663; windowOuterHeight = 844 (Diff = 181)
+            // When address bar is collapsed: windowHeight = 745; windowOuterHeight = 663 (Diff = 99)
+            // So a fully open address bar is ~82px in height
+            const approxAddressBarHeight = 82;
+            const approxAddressBarAdjustment = Math.abs(windowOuterHeight - windowHeight) 
+            const isAddressBarExpanded = approxAddressBarAdjustment > 110; // Estimate
+
             // If there's no keyboard, "-scrollY" will put it directly on the bottom of the page.
             // If there's a keyboard, windowHeight will remain the same, but visualViewportHeight will be smaller.
             //      So, the difference in that amount will be the keyboard size
             //      So, we want to bump up the footer by that amount
             // footer.style.bottom = `-${scrollY}px`;       // No keyboard, works fine
             const keyboardHeight = windowHeight - visualViewportHeight;
-            footer.style.bottom = `-${scrollY - keyboardHeight}px`;       // Keyboard is present
+            footer.style.bottom = `-${scrollY - keyboardHeight + (isAddressBarExpanded ? approxAddressBarHeight : 0)}px`;       // Keyboard is present
             
             
             // Add some debug info to the screen...
             // console.log(scrollY, windowHeight, documentHeight);
             const elDebug = document.getElementById('debug-info');
-            elDebug.textContent = `v5 ${scrollY} / ${windowHeight} / ${windowOuterHeight} / ${documentHeight}`;// / ${visualViewportHeight} / ${window.screen.availHeight} / ${window.screen.height}`;
+            elDebug.textContent = `v6 ${scrollY} / ${windowHeight} / ${windowOuterHeight} / ${documentHeight}`;// / ${visualViewportHeight} / ${window.screen.availHeight} / ${window.screen.height}`;
         });
     </script>
 </body>
