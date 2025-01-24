@@ -387,7 +387,7 @@
         <div class="tw-flex tw-justify-between tw-items-center tw-p-4">
             <div>
                 <div class="tw-text-base tw-text-gray-500">Gift card</div>
-                <div class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
+                <div id="debug-info" class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
             </div>
         
             <div>
@@ -433,7 +433,13 @@
             var documentHeight = document.body.offsetHeight;
 
             console.log(scrollY, windowHeight, documentHeight);
-            footer.style.bottom = `-${scrollY}px`;
+            // footer.style.bottom = `-${scrollY}px`;
+            footer.style.bottom = `-${scrollY - 600}px`;
+
+
+            // Add some debug info to the screen...
+            const elDebug = document.getElementById('debug-info');
+            elDebug.textContent = `${scrollY} / ${windowHeight} / ${documentHeight}`;
         });
     </script>
 </body>
