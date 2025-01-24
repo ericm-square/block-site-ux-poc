@@ -90,6 +90,41 @@ html {
 .fade-out { animation: fadeOut 1s; opacity: 0; }
 
 
+@keyframes scaleDown {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.95);
+    }
+}
+
+@keyframes widthChange {
+    from {
+        width: 100%;
+        margin-left: 0;
+    }
+    to {
+        width: calc(100% - 16px);
+        margin-left: 8px;
+    }
+}
+
+.action-bar-enter { 
+    opacity: 1;
+    width: 100%;
+}
+.action-bar-exit {
+    animation: widthChange 0.1s, fadeOut 0.1s;
+    width: calc(100% - 16px);
+    opacity: 0;
+    margin-left: 8px;
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
 /* Actions Overlay */
 .actions-overlay {
     position: fixed;

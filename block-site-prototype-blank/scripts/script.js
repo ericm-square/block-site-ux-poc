@@ -211,6 +211,8 @@ window.addEventListener('scroll', function() {
     const isGiftCardExpanded = blockGiftCards.classList.contains('expanded');
     if (!isGiftCardExpanded) { return; }
 
+    actionBarSticky.style.bottom = `0px`;
+
     // If any inputs in the block are focused, show the action bar...
     const formElements = blockGiftCards.querySelectorAll('input');
     const textAreas = blockGiftCards.querySelectorAll('textarea');
@@ -224,7 +226,9 @@ window.addEventListener('scroll', function() {
 
     // If any of the form elements are focused...
     if (isAnElementFocused) {
-        actionBarSticky.style.opacity = 1;
+        // actionBarSticky.style.opacity = 1;
+        updateClass(actionBarSticky, 'action-bar-enter', true);
+        updateClass(actionBarSticky, 'action-bar-exit', false);
         return;
     }
 
@@ -250,20 +254,34 @@ window.addEventListener('scroll', function() {
         const amountAbove = Math.abs(giftCardsScrollPos + actionBarHeight - windowHeight);
         if (amountAbove > actionBarHeight) {
             actionBarSticky.style.bottom = 0;
-            actionBarSticky.style.opacity = 0;
+            // actionBarSticky.style.opacity = 0;
+            updateClass(actionBarSticky, 'tw-opacity-0', true);
+            // updateClass(actionBarSticky, 'action-bar-exit', true);
+            // updateClass(actionBarSticky, 'action-bar-enter', false);
         } else {
             actionBarSticky.style.bottom = `-${amountAbove}px`;
-            actionBarSticky.style.opacity = 1;
+            // actionBarSticky.style.opacity = 1;
+            updateClass(actionBarSticky, 'tw-opacity-0', false);
+            updateClass(actionBarSticky, 'action-bar-enter', true);
+            updateClass(actionBarSticky, 'action-bar-exit', false);
         }
     }
 
     // If we are below the gift card section, hide the sticky bar (because it's part of the gift card section)
     if (isAtOrBelowGiftCard) {
-        actionBarSticky.style.opacity = 0;
+        const amountBelow = Math.abs(equalScrollPosition - actionBarAttachedScrollPos);
+        actionBarSticky.style.bottom = `${amountBelow}px`;
+
+        // actionBarSticky.style.opacity = 0;
+        updateClass(actionBarSticky, 'action-bar-exit', true);
+        updateClass(actionBarSticky, 'action-bar-enter', false);
 
     // If we are "inside" the gift card section, show the sticky bar...
     } else if (!isAboveGiftCard) {
-        actionBarSticky.style.opacity = 1;
+        // actionBarSticky.style.opacity = 1;
+        updateClass(actionBarSticky, 'tw-opacity-0', false);
+        updateClass(actionBarSticky, 'action-bar-enter', true);
+        updateClass(actionBarSticky, 'action-bar-exit', false);
     }
 });
 
