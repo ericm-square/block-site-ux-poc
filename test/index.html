@@ -430,6 +430,7 @@
             var footerHeight = footer.offsetHeight;
             var scrollY = window.scrollY;
             var windowHeight = window.innerHeight;
+            var windowOuterHeight = window.outerHeight;
             var documentHeight = document.body.offsetHeight;
             var visualViewportHeight = window.visualViewport.height;
 
@@ -445,7 +446,7 @@
             // Add some debug info to the screen...
             // console.log(scrollY, windowHeight, documentHeight);
             const elDebug = document.getElementById('debug-info');
-            elDebug.textContent = `v2 ${scrollY} / ${windowHeight} / ${documentHeight} / ${visualViewportHeight} / ${window.screen.availHeight}`;
+            elDebug.textContent = `v3 ${scrollY} / ${windowHeight} / ${windowOuterHeight} / ${documentHeight} / ${visualViewportHeight} / ${window.screen.availHeight} / ${window.screen.height}`;
         });
     </script>
 </body>
