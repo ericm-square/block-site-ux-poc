@@ -7,6 +7,16 @@
     <link rel="apple-touch-icon" href="media/logo.png">
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Apple Mobile Web App: General Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Restaurant Online Ordering">
+    <meta property="og:description" content="Order your favorite meals online from our restaurant.">
+    <meta property="og:image" content="https://ericm-square.github.io/block-site-ux-poc/block-site-prototype-blank/media/images/spaghetti.gif">
+    <meta property="og:type" content="website">
+
     <!-- ScrollReveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
@@ -249,7 +259,7 @@
                                 </div>
 
                                 <!-- Amount / Add to cart -->
-                                <div class="tw-flex tw-justify-between tw-items-center tw-mt-4">
+                                <div id="gift-card-action-bar-attached" class="tw-flex tw-justify-between tw-items-center tw-mt-4">
                                     <div>
                                         <div class="tw-text-base tw-text-gray-500">Gift card</div>
                                         <div class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
@@ -259,6 +269,7 @@
                                         <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2">Add to cart</button>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -358,8 +369,27 @@
                         </div>
                     </div>
 
+                    <!-- Merch -->
+                    <div id="block-merch" class="block reveal-block block-gift-cards expandable collapsed">
+                        <div class="block-content">
+                            <div class="inner-contentx">
+                                <h2>Merch</h2>
+
+                                <!-- Button to add to cart -->
+                                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2" onclick="updateClass(document.getElementById('merch-action-bar-sticky'), 'hide', false)">
+                                    Add to cart
+                                </button>
+
+                                <!-- Button to add item -->
+                                 <br /><br /><br /><br />
+                                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2" onclick="toggleCheckIn('addItemSheet')">
+                                    Add Item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
         
-                    <div class="block reveal-block gift-cards">
+                    <div class="block reveal-block">
                         <div class="block-content">
                             <div style="height:400px;">
                                 Links<br /><br />
@@ -397,6 +427,39 @@
             </div>
         </div>
     </div>
+
+    
+    <!-- Gift Card Action Bar -->
+    <div id="gift-card-action-bar-sticky" class="hide tw-bg-white tw-w-full tw-fixed tw-bottom-0" style="box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5);">
+        <div class="tw-flex tw-justify-between tw-items-center tw-p-4">
+            <div>
+                <div class="tw-text-base tw-text-gray-500">Gift card</div>
+                <div class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
+            </div>
+        
+            <div>
+                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2">Add to cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Merch Action Bar -->
+    <div id="merch-action-bar-sticky" class="hide tw-bg-white tw-w-full tw-fixed tw-bottom-0" style="box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5);">
+        <div class="tw-flex tw-justify-between tw-items-center tw-p-4">
+            <div>
+                <div class="tw-text-base tw-text-gray-500">Total</div>
+                <div class="tw-text-xl tw-text-black tw-font-bold">$99.99</div>
+            </div>
+        
+            <div>
+                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2">View cart</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <!-- Skeletons -->
     <div class="skeletons">
@@ -462,6 +525,22 @@
                 <p>Enter your phone number to check in</p>
                 <input type="tel" id="phoneNumber" placeholder="(123) 456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="14">
                 <button class="primary-button check-in-btn" onclick="submitCheckIn()">Check In</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-sheet" id="addItemSheet">
+        <div class="bottom-sheet-content">
+            <button class="close-sheet" onclick="toggleCheckIn('addItemSheet')">&times;</button>
+            <div class="bottom-sheet-header">
+                <h3>Add Item</h3>
+            </div>
+            <div class="bottom-sheet-body">
+                <img src="media/images/photo-1544025162-d76694265947.jpg" alt="Item Image" style="width:100%; height:100%;">
+
+                <div class="tw-text-xl tw-text-black tw-font-bold">$99.99</div>
+                <input type="text" id="phoneNumber" placeholder="Notes" maxlength="14">
+                <button class="primary-button check-in-btn" onclick="updateClass(document.getElementById('merch-action-bar-sticky'), 'hide', false); toggleCheckIn('addItemSheet')">Add to cart</button>
             </div>
         </div>
     </div>

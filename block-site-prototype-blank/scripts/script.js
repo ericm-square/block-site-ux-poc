@@ -186,6 +186,13 @@ function onGiftCardsNextClick(e, idBlockToExpand, idAdditionalContent, idNextBut
         blockGiftCards.style['overflow-y'] = 'scroll';
     }
 
+    // Show the footer...
+    if (!onlyFullScreen) {  // TODO: Don't keep this
+        const footer = document.getElementById('gift-card-action-bar-sticky');
+        updateClass(footer, 'hide', false);
+    }
+
+
     // Hide next button...
     const nextButton = document.getElementById(idNextButton);
     updateClass(nextButton, 'hide', true);
@@ -194,6 +201,90 @@ function onGiftCardsNextClick(e, idBlockToExpand, idAdditionalContent, idNextBut
     const giftCardAdditionalContent = document.getElementById(idAdditionalContent);
     updateClass(giftCardAdditionalContent, 'hide', false);
 }
+
+// Handles showing/hiding the gift card action bar when scrolling (lots of hard-coded stuff)...
+window.addEventListener('scroll', function() {
+    const actionBarAttached = document.getElementById('gift-card-action-bar-attached');
+    const actionBarSticky = document.getElementById('gift-card-action-bar-sticky');
+    const blockGiftCards = document.getElementById('block-gift-cards');
+
+    // If gift card was not expanded, just return...
+    const isGiftCardExpanded = blockGiftCards.classList.contains('expanded');
+    if (!isGiftCardExpanded) { return; }
+
+    actionBarSticky.style.bottom = `0px`;
+
+    // If any inputs in the block are focused, show the action bar...
+    const formElements = blockGiftCards.querySelectorAll('input');
+    const textAreas = blockGiftCards.querySelectorAll('textarea');
+    let isAnElementFocused = false;
+    [formElements, textAreas].forEach((elementTypes) => {
+        elementTypes.forEach((el) => {
+            const isFocused = el === document.activeElement;
+            if (isFocused) { isAnElementFocused = true; }
+        });
+    });
+
+    // If any of the form elements are focused...
+    if (isAnElementFocused) {
+        // actionBarSticky.style.opacity = 1;
+        updateClass(actionBarSticky, 'action-bar-enter', true);
+        updateClass(actionBarSticky, 'action-bar-exit', false);
+        return;
+    }
+
+    // Get some info about window scrolling position...
+    const windowScrollPos = window.scrollY;     // Current window scroll position
+    const windowHeight = window.innerHeight;    // Height of the window
+    const actionBarHeight = actionBarSticky.offsetHeight;
+    const giftCardsScrollPos = blockGiftCards.getBoundingClientRect().top;
+    const actionBarAttachedScrollPos = actionBarAttached.getBoundingClientRect().top;
+    
+    // Figure out if the "attached" bar is at the same spot as the "sticky" bar
+    // That happens when its scroll position is at the bottom of the screen -minus- the height of the sticky bar
+    const equalScrollPosition = windowHeight - actionBarHeight;
+
+    // isAtOrBelowGiftCard = Window has scroll below the "$25" section in the card
+    // isAboveGiftCard = We scrolled way above the gift cards section and it's not even visible
+    const tolerance = 10;
+    const isAtOrBelowGiftCard = (actionBarAttachedScrollPos <= equalScrollPosition + tolerance);
+    const isAboveGiftCard = giftCardsScrollPos > windowHeight - actionBarHeight;
+
+    // As we are scrolling up, slowly lower the gift card...
+    if (isAboveGiftCard) {
+        const amountAbove = Math.abs(giftCardsScrollPos + actionBarHeight - windowHeight);
+        if (amountAbove > actionBarHeight) {
+            actionBarSticky.style.bottom = 0;
+            // actionBarSticky.style.opacity = 0;
+            updateClass(actionBarSticky, 'tw-opacity-0', true);
+            // updateClass(actionBarSticky, 'action-bar-exit', true);
+            // updateClass(actionBarSticky, 'action-bar-enter', false);
+        } else {
+            actionBarSticky.style.bottom = `-${amountAbove}px`;
+            // actionBarSticky.style.opacity = 1;
+            updateClass(actionBarSticky, 'tw-opacity-0', false);
+            updateClass(actionBarSticky, 'action-bar-enter', true);
+            updateClass(actionBarSticky, 'action-bar-exit', false);
+        }
+    }
+
+    // If we are below the gift card section, hide the sticky bar (because it's part of the gift card section)
+    if (isAtOrBelowGiftCard) {
+        const amountBelow = Math.abs(equalScrollPosition - actionBarAttachedScrollPos);
+        actionBarSticky.style.bottom = `${amountBelow}px`;
+
+        // actionBarSticky.style.opacity = 0;
+        updateClass(actionBarSticky, 'action-bar-exit', true);
+        updateClass(actionBarSticky, 'action-bar-enter', false);
+
+    // If we are "inside" the gift card section, show the sticky bar...
+    } else if (!isAboveGiftCard) {
+        // actionBarSticky.style.opacity = 1;
+        updateClass(actionBarSticky, 'tw-opacity-0', false);
+        updateClass(actionBarSticky, 'action-bar-enter', true);
+        updateClass(actionBarSticky, 'action-bar-exit', false);
+    }
+});
 
 function animateRevealOnScroll(type = 'fade-in') {
     const sr = ScrollReveal();

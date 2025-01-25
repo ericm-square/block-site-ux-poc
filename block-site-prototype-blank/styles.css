@@ -125,6 +125,41 @@ body.fade-out { animation: fadeOut 1s; opacity: 0; }
     }
   }
 
+@keyframes scaleDown {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.95);
+    }
+}
+
+@keyframes widthChange {
+    from {
+        width: 100%;
+        margin-left: 0;
+    }
+    to {
+        width: calc(100% - 16px);
+        margin-left: 8px;
+    }
+}
+
+.action-bar-enter { 
+    opacity: 1;
+    width: 100%;
+}
+.action-bar-exit {
+    animation: widthChange 0.1s, fadeOut 0.1s;
+    width: calc(100% - 16px);
+    opacity: 0;
+    margin-left: 8px;
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
 /* Actions Overlay */
 .actions-overlay {
     position: fixed;
@@ -1419,6 +1454,17 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 }
 
 .bottom-sheet-body input[type="tel"] {
+    font: var(--paragraph-20);
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--sharp);
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    background: #f8f8f8;
+}
+
+.bottom-sheet-body input[type="text"] {
     font: var(--paragraph-20);
     padding: 16px;
     border: 1px solid rgba(0, 0, 0, 0.1);

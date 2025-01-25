@@ -383,7 +383,18 @@
         </div>
     </div>
 
-    <div class="tw-bg-red-100 tw-w-full tw-p-4 tw-fixed tw-bottom-0">Footer</div>
+    <div id="moving-footer" class="tw-bg-red-100 tw-w-full tw-absolute tw-bottom-0 tw-z-999">
+        <div class="tw-flex tw-justify-between tw-items-center tw-p-4">
+            <div>
+                <div class="tw-text-base tw-text-gray-500">Gift card</div>
+                <div id="debug-info" class="tw-text-xl tw-text-black tw-font-bold">$25.00</div>
+            </div>
+        
+            <div>
+                <button class="tw-bg-black tw-text-white tw-rounded-full tw-px-4 tw-py-2">Add to cart</button>
+            </div>
+        </div>
+    </div>
 
     <script src="scripts/utils.js"></script>
     <script src="scripts/script.js"></script>
@@ -399,7 +410,7 @@
     </script>
 
     <!-- Make this page scroll itself down a little bit in order to force a mobile browser to collapse the address bar -->
-    <script>
+    <!-- <script>
          window.addEventListener('load', function() {
             setTimeout(function() {
                 console.log("Scrolling");
@@ -409,6 +420,41 @@
                     window.scrollBy(0, 100);
                 }, 200);
             }, 200);
+        });
+    </script> -->
+
+    <script>
+        // Move the "moving-footer" element every time we scroll so that it is ALWAYS on the bottom...
+        window.addEventListener('scroll', function() {
+            var footer = document.getElementById('moving-footer');
+            var footerHeight = footer.offsetHeight;
+            var scrollY = window.scrollY;
+            var windowHeight = window.innerHeight;
+            var windowOuterHeight = window.outerHeight;
+            var documentHeight = document.body.offsetHeight;
+            var visualViewportHeight = window.visualViewport.height;
+
+            // From experimenting...
+            // When address bar is visible: windowHeight = 663; windowOuterHeight = 844 (Diff = 181)
+            // When address bar is collapsed: windowHeight = 745; windowOuterHeight = 663 (Diff = 99)
+            // So a fully open address bar is ~82px in height
+            const approxAddressBarHeight = 82;
+            const approxAddressBarAdjustment = Math.abs(windowOuterHeight - windowHeight) 
+            const isAddressBarExpanded = approxAddressBarAdjustment > 110; // Estimate
+
+            // If there's no keyboard, "-scrollY" will put it directly on the bottom of the page.
+            // If there's a keyboard, windowHeight will remain the same, but visualViewportHeight will be smaller.
+            //      So, the difference in that amount will be the keyboard size
+            //      So, we want to bump up the footer by that amount
+            // footer.style.bottom = `-${scrollY}px`;       // No keyboard, works fine
+            const keyboardHeight = windowHeight - visualViewportHeight;
+            footer.style.bottom = `-${scrollY - keyboardHeight + approxAddressBarHeight}px`;       // Keyboard is present
+            
+            
+            // Add some debug info to the screen...
+            // console.log(scrollY, windowHeight, documentHeight);
+            const elDebug = document.getElementById('debug-info');
+            elDebug.textContent = `v7 ${scrollY} / ${windowHeight} / ${windowOuterHeight} / ${documentHeight}`;// / ${visualViewportHeight} / ${window.screen.availHeight} / ${window.screen.height}`;
         });
     </script>
 </body>
