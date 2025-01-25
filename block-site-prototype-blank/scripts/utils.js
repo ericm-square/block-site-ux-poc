@@ -4,7 +4,6 @@ const defaultAnimationValues = {
 };
 
 function updateCssVariable(variableName, value) {
-    console.log(`${variableName}: ${value}`);
     document.documentElement.style.setProperty(variableName, value);
 }
 

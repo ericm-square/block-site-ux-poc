@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Restaurant Online Ordering</title>
+    <link rel="apple-touch-icon" href="media/logo.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ScrollReveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.css">
+
+    <!-- Add Stacking Cards -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/stacking-cards@1.0.0/dist/stacking-cards.min.js"></script>
+
+    <!-- Tailwind (prefixed with 'tw-') -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            prefix: 'tw-',
+            corePlugins: {
+                preflight: false
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div class="site-container">
+        <header>
+            <div>
+                <a href="#" id="business-name" class="business-name">Business name</a>
+                <div id="open-marker">
+                    <div class="open-status-icon pulse"></div>
+                    <span class="open-status-text" onclick="toggleVisibility('actions-overlay')">Open</span>
+                </div>
+            </div>
+            <a class="button check-in-button" onclick="toggleCheckIn()">Check in</a>
+        </header>
+
+        <!-- Blocks -->
+        <div class="blocks-container item-detail-container">
+            <div class="blocks-wrapper">
+                <div class="blocks">
+                    <div class="block">
+                        <div class="block-content">
+                            <a href="index.html?load-animation=reveal-on-scroll-scale" class="back-to-previous-page transition-link back-button"></a>
+            
+                            <h2>Grilled Salmon Bowl</h2>
+                            <div class="menu-item-detail" data-category="mains popular">
+                                <div class="menu-item-image">
+                                    <img src="media/images/photo-1467003909585-2f8a72700288.jpg" alt="Grilled Salmon Bowl">
+                                </div>
+                                <p class="menu-item-description">Fresh Atlantic salmon served over quinoa with roasted vegetables and our house-made citrus glaze.</p>
+                                <div class="menu-item-footer">
+                                    <span class="menu-item-price">$24.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart" onclick="toggleCart()">
+            <div class="cart-icon">
+                <span class="cart-count">0</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6H4.14158L2.36561 17.5438C2.08603 19.3611 3.49207 21 5.33072 21H18.6683C20.5069 21 21.913 19.3611 21.6334 17.5438L19.8574 6H16C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6ZM10 6C10 4.89543 10.8954 4 12 4C13.1046 4 14 4.89543 14 6H10ZM4.93434 14L5.85742 8H18.1416L19.0647 14H4.93434ZM4.62665 16H19.3724L19.6567 17.8479C19.7498 18.4537 19.2812 19 18.6683 19H5.33072C4.71784 19 4.24916 18.4537 4.34235 17.8479L4.62665 16Z" fill="white"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

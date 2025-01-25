@@ -83,12 +83,47 @@ html {
 }
 .fade-in { animation: fadeIn 1s; opacity: 1; }
 
+body.fade-in { animation: fadeIn 0.5s; opacity: 1; }
+
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
 }
 .fade-out { animation: fadeOut 1s; opacity: 0; }
 
+body.fade-out { animation: fadeOut 1s; opacity: 0; }
+
+.slide-out {
+    animation: slideOut 0.5s forwards;
+  }
+  
+.slide-in {
+    animation: slideIn 0.5s forwards;
+  }
+
+/* Keyframes for Slide-Out (moving out to the top) */
+@keyframes slideOut {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  
+  /* Keyframes for Slide-In (coming from the bottom) */
+  @keyframes slideIn {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
 /* Actions Overlay */
 .actions-overlay {
@@ -190,6 +225,12 @@ body {
     font: var(--paragraph-30);
     margin: 0;
     padding: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.slide-in-on-load.initial {
+    /* position: relative;
+    overflow: hidden; */
 }
 
 .load-animation__swipe-on-scroll {
@@ -210,6 +251,12 @@ body {
     grid-template-rows: 40px auto;
     gap: 8px;
     padding: 8px;
+}
+
+.slide-in-on-load.initial .site-container {
+    /* position: absolute;
+    width: 100%;
+    top: 0; */
 }
 
 .load-animation__swipe-on-scroll .site-container,
@@ -445,6 +492,30 @@ header .business-name {
     display: block;
 }
 
+.item-detail-container {
+    /* display: block;
+    background: white;
+    border-radius: var(--round); */
+}
+
+.back-button {
+    display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  border: 0;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iIAogICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIKICAgICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAJPGcgaWQ9ImFycm93LWJhY2siPjxwYXRoIGQ9Ik0yMCwxMUg3LjhsNS42LTUuNkwxMiw0bC04LDhsOCw4bDEuNC0xLjRMNy44LDEzSDIwVjExeiIvPjwvZz4KPC9zdmc+Cgo=);
+}
+
 .blocks {
     display: grid;
     grid-column: span 11;
@@ -461,6 +532,10 @@ header .business-name {
     padding: 4px;
     position: relative;
     overflow: hidden;
+}
+
+.item-detail-container .block {
+    min-height: calc(100vh - 90px);
 }
 
 .business-card-block {
@@ -653,27 +728,16 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     min-height: var(--first-row-height);
 }
 
-.block:nth-of-type(3) {
+.block:nth-of-type(3),
+.block:nth-of-type(4),
+.block:nth-of-type(5),
+.block:nth-of-type(6),
+.block:nth-of-type(7),
+.block:nth-of-type(8),
+.block:nth-of-type(9),
+.block:nth-of-type(10) {
     grid-column: span 4;
-    grid-row: 2;
-    border-radius: var(--round);
-}
-
-.block:nth-of-type(4) {
-    grid-column: span 4;
-    grid-row: 3;
-    border-radius: var(--round);
-}
-
-.block:nth-of-type(5) {
-    grid-column: span 4;
-    grid-row: 4;
-    border-radius: var(--round);
-}
-
-.block:nth-of-type(6) {
-    grid-column: span 4;
-    grid-row: 5;
+    grid-row: calc(n + 2);
     border-radius: var(--round);
 }
 
@@ -829,7 +893,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
 }
 
 .load-animation__expanded.initial .business-avatar {
-    left: 34vw;
+    left: calc(100% / 2 - 90px);
     width: 180px;
     height: 180px;
     bottom: -90px;
@@ -972,6 +1036,10 @@ body:not(.load-animation__slide-in-fade) .skeletons {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.menu-item-detail .menu-item-image {
+    margin: 20px 0;
 }
 
 .add-to-cart {
@@ -1413,17 +1481,7 @@ body:not(.load-animation__slide-in-fade) .skeletons {
         grid-row: auto;
     }
 
-    .block:nth-of-type(2) {
-        grid-column: span 12;
-        grid-row: auto;
-    }
-
-    .block:nth-of-type(3),
-    .block:nth-of-type(4),
-    .block:nth-of-type(5),
-    .block:nth-of-type(6),
-    .block:nth-of-type(7),
-    .block:nth-of-type(8) {
+    .block:not(.business-card-block) {
         grid-column: span 12;
         grid-row: auto;
     }
