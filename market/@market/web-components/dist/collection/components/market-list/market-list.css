@@ -1,0 +1,49 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: block;
+}
+
+::slotted(.market-action-card) {
+  margin-bottom: var(--action-card-spacing);
+}
+
+::slotted(.market-input-search) {
+  margin-bottom: var(--core-metrics-spacing-100);
+}
+
+.hidden, ::slotted(.hidden) {
+  display: none;
+}
+
+/* remove the bottom border of last visible row when there's a search query */
+::slotted(.market-row.hide-bottom-border)::before {
+  display: none;
+}
+
+.market-empty-state, ::slotted(.market-empty-state) {
+  padding-right: 0;
+  padding-left: 0;
+  border: 0;
+}
+
+::slotted(.market-drag-cursor) {
+  --drag-cursor-height: 4px;
+
+  display: block;
+  height: 0;
+  outline: calc(var(--drag-cursor-height) / 2) solid var(--core-emphasis-fill-color);
+  pointer-events: none;
+}

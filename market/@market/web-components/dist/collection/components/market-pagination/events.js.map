@@ -1,0 +1,1 @@
+{"version":3,"file":"events.js","sourceRoot":"","sources":["../../../../src/components/market-pagination/events.ts"],"names":[],"mappings":"","sourcesContent":["export type TMarketPaginationPageSizeChangeEventDetail = {\n  value: string;\n};\n\nexport type TMarketInternalPaginationNavigationEventDetail = {\n  page: string;\n  prevPage: string;\n  pageSize: string;\n};\n"]}

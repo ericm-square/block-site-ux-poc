@@ -1,0 +1,76 @@
+@import "./mixins/typography";
+
+[data-market-features*="typography"] {
+  @extend %base-type;
+}
+
+[data-market-features*="typography"] .display-20 {
+  @extend %display-20;
+}
+
+[data-market-features*="typography"] h1,
+[data-market-features*="typography"] .display-10 {
+  @extend %display-10;
+}
+
+[data-market-features*="typography"] h2,
+[data-market-features*="typography"] .heading-30 {
+  @extend %heading-30;
+}
+
+[data-market-features*="typography"] h3,
+[data-market-features*="typography"] .heading-20 {
+  @extend %heading-20;
+}
+
+[data-market-features*="typography"] h4,
+[data-market-features*="typography"] .heading-10 {
+  @extend %heading-10;
+}
+
+[data-market-features*="typography"] h5,
+[data-market-features*="typography"] .heading-5 {
+  @extend %heading-5;
+}
+
+[data-market-features*="typography"] .paragraph-30 {
+  @extend %paragraph-30;
+}
+
+[data-market-features*="typography"] p,
+[data-market-features*="typography"] .paragraph-20 {
+  @extend %paragraph-20;
+}
+
+[data-market-features*="typography"] .paragraph-10 {
+  @extend %paragraph-10;
+}
+
+[data-market-features*="typography"] .medium-30 {
+  @extend %medium-30;
+}
+
+[data-market-features*="typography"] .medium-20 {
+  @extend %medium-20;
+}
+
+[data-market-features*="typography"] .medium-10 {
+  @extend %medium-10;
+}
+
+[data-market-features*="typography"] .semibold-30 {
+  @extend %semibold-30;
+}
+
+[data-market-features*="typography"] .semibold-20 {
+  @extend %semibold-20;
+}
+
+[data-market-features*="typography"] .semibold-10 {
+  @extend %semibold-10;
+}
+
+[data-market-features*="typography"] code,
+[data-market-features*="typography"] .monospace {
+  @extend %monospace;
+}

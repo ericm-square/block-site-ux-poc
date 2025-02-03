@@ -1,0 +1,2 @@
+function t(...t){return t.reduce(((t,e)=>{if(typeof e==="string"){t.push(e)}else if(typeof e==="object"){for(const f of Object.keys(e)){if(e[f]){t.push(f)}}}return t}),[]).join(" ")}export{t as c};
+//# sourceMappingURL=p-8ccc0928.js.map

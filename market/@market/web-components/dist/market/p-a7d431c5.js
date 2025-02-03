@@ -1,0 +1,2 @@
+let n;function o(o){return new Proxy((n=>n),{apply(o,l,i){return Reflect.apply(n!==null&&n!==void 0?n:o,l,i)}})(o)}const l=o=>{n=o};function i(n,l){var i,r;return((r=(i=n===null||n===void 0?void 0:n.tagName)===null||i===void 0?void 0:i.toLowerCase)===null||r===void 0?void 0:r.call(i))===o(l)}export{o as g,i,l as s};
+//# sourceMappingURL=p-a7d431c5.js.map

@@ -1,0 +1,126 @@
+/* TODO: add design tokens for table components */
+
+/* TODO: add design tokens for table components */
+
+:host {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: var(--table-cell-vertical-padding-size, 12px) var(--table-cell-horizontal-padding-size, 8px);
+  background-color: var(--table-cell-state-normal-background-color, var(--core-surface-10-color));
+  font-weight: var(--table-cell-primary-text-font-weight, var(--core-type-paragraph-20-weight));
+  font-size: var(--table-cell-primary-text-font-size, var(--core-type-paragraph-20-size));
+  line-height: var(--table-cell-primary-text-line-height, var(--core-type-paragraph-20-leading));
+  text-overflow: ellipsis;
+}
+
+:host([align="right"]) {
+    justify-content: flex-end;
+  }
+
+:host([align="right"]) .sorting-caret {
+      order: -1;
+      margin-right: var(--table-heading-sort-icon-space-size, 8px);
+      margin-left: 0;
+    }
+
+:host([stickTo="left"]) {
+    position: sticky;
+    grid-area: left;
+    border-right:
+      var(--table-fixed-column-border-width, 1px)
+      solid
+      var(--table-fixed-column-border-color, var(--core-divider-20-color));
+  }
+
+:host([stickTo="right"]) {
+    grid-area: right;
+    border-left:
+      var(--table-fixed-column-border-width, 1px)
+      solid
+      var(--table-fixed-column-border-color, var(--core-divider-20-color));
+  }
+
+
+:host {
+
+  font-weight: var(--table-heading-primary-text-font-weight, 500);
+  font-size: var(--table-heading-primary-text-font-size, var(--core-type-semibold-20-size));
+  line-height: var(--table-heading-primary-text-line-height, var(--core-type-semibold-20-leading));
+}
+
+
+:host([sortable]) {
+    cursor: pointer;
+    transition:
+      background-color
+      var(--core-animation-enter-transition-fast-speed-duration)
+      var(--core-animation-enter-transition-fast-speed-duration-easing);
+  }
+
+
+:host([sortable]:hover) {
+    background-color: var(--table-heading-hover-state-background-color, var(--core-fill-50-color));
+  }
+
+
+:host([sortable]:active) {
+    background-color: var(--table-heading-active-state-background-color, var(--core-emphasis-40-color));
+  }
+
+
+:host([sort-order]) .sorting-caret {
+    fill: var(--table-heading-sortable-variant-active-state-caret-color, var(--core-text-10-color));
+  }
+
+
+:host([sort-order="descending"]) .sorting-caret {
+    transform: rotate(0deg);
+  }
+
+
+:host([hidden]) {
+    display: none;
+  }
+
+.sorting-caret {
+  margin-left: var(--table-heading-sort-icon-space-size, 8px);
+  fill: var(--table-heading-sortable-variant-normal-state-caret-color, var(--core-text-30-color));
+  transition:
+    color
+    var(--core-animation-enter-transition-fast-speed-duration)
+    var(--core-animation-enter-transition-fast-speed-duration-easing);
+  transform: rotate(180deg);
+}
+
+/* TODO: update pixels to variables once they exist */
+::slotted([slot="leading-accessory"][size="image"]) {
+  margin-right: 16px;
+  margin-left: 12px;
+}
+
+::slotted([slot="leading-accessory"][size="icon"]) {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+::slotted([slot="trailing-accessory"][size="image"]) {
+  margin-right: 12px;
+  margin-left: 16px;
+}
+
+::slotted([slot="trailing-accessory"][size="icon"]) {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: inherit;
+  background-color: transparent;
+  font: inherit;
+}

@@ -1,0 +1,57 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  /* TODO UI-1153 design tokens */
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* ensures that toast appear on top of any market-context bc market-context-manager has a z-index of 1000 */
+  z-index: 1010;
+  padding: 0 0 var(--toast-bottom-margin, 24px);
+
+  /* ensure we can click through the market-toaster to underlying elements behind it */
+  pointer-events: none;
+}
+
+
+:host ::slotted(.market-toast) {
+    /* ensure horizontal margins from edge of toaster */
+    width: calc(100% - var(--toast-horizontal-margin, 16px) * 2);
+    margin: var(--toast-vertical-spacing, 16px) auto 0;
+
+    /* clicks pass through market-toaster but should still fire on slotted market-toasts */
+    pointer-events: auto;
+  }
+
+
+/*
+    Because some folks are using toasts without the toaster API,
+    we only use transitions if it was added via toaster.show()
+  */
+
+
+:host ::slotted(.use-transitions) {
+    /* position offscreen just below the bottom of the toaster */
+    position: absolute;
+    top: 100%;
+
+    /* center toast horizontally */
+    left: 50%;
+    margin: 0;
+    transition: transform var(--toast-animation-transition-duration, 200ms) ease-in-out;
+    transform: translate(-50%, 0);
+  }

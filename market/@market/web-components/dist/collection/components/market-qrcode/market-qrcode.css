@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+  :host svg .foreground {
+      fill: var(--qrcode-normal-variant-foreground-color);
+    }
+
+  :host svg .background {
+      fill: var(--qrcode-normal-variant-background-color);
+    }
+
+  :host svg .logo {
+      fill: var(--qrcode-normal-variant-icon-color);
+    }
+
+  :host([monochrome]) .foreground {
+      fill: var(--qrcode-monochrome-variant-foreground-color);
+    }
+
+  :host([monochrome]) .background {
+      fill: var(--qrcode-monochrome-variant-background-color);
+    }
+
+  :host([monochrome]) .logo {
+      fill: var(--qrcode-monochrome-variant-icon-color);
+    }
+
+  /* in cases where the size prop is set, the SVG should fill its container */
+
+  :host([size]) svg {
+      width: 100%;
+      height: 100%;
+    }

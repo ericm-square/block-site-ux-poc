@@ -1,0 +1,7 @@
+:host {
+  display: grid;
+
+  /* TODO: add design tokens */
+  grid-template-columns: repeat(auto-fill, var(--color-swatch-width, 40px));
+  grid-gap: var(--color-swatch-list-spacing, 16px);
+}

@@ -1,0 +1,53 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:host([orientation="horizontal"]) {
+  flex-direction: row;
+}
+
+:host([orientation="horizontal"][size="small"]:not([compact]):not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-connectors-density-small-size-current-state-step-spacing);
+}
+
+:host([orientation="horizontal"][size="medium"]:not([compact]):not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-connectors-density-medium-size-current-state-step-spacing);
+}
+
+:host([orientation="horizontal"][size="large"]:not([compact]):not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-connectors-density-large-size-current-state-step-spacing);
+}
+
+:host([orientation="horizontal"][size="small"][compact]:not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-compact-density-small-size-current-state-step-spacing);
+}
+
+:host([orientation="horizontal"][size="medium"][compact]:not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-compact-density-medium-size-current-state-step-spacing);
+}
+
+:host([orientation="horizontal"][size="large"][compact]:not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-compact-density-large-size-current-state-step-spacing);
+}
+
+:host([orientation="horizontal"][compact][interactive]) {
+  gap: 0;
+}

@@ -1,0 +1,16 @@
+import { Meta, StoryObj } from '@storybook/web-components';
+import { TPaginationTemplateArgs } from './market-pagination.templates';
+type Story = StoryObj<TPaginationTemplateArgs>;
+declare const _default: Meta<TPaginationTemplateArgs>;
+export default _default;
+export declare const API: Story;
+export declare const FirstPage: Story;
+export declare const LastPage: Story;
+export declare const Localized: Story;
+export declare const CustomPageSizeOptions: Story;
+export declare const WithoutPageSizeOptions: Story;
+export declare const LargeDataset: Story;
+export declare const WithoutPageInfo: Story;
+export declare const WithoutPageInfoWithPreviousPageAvailable: Story;
+export declare const WithoutPageInfoWithNextPageAvailable: Story;
+export declare const Disabled: Story;

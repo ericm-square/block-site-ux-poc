@@ -1,0 +1,53 @@
+:host {
+  --table-cell-horizontal-padding-size: 8px;
+  --table-cell-indent-size: 40px;
+  --drag-highlight-border-size: 2px;
+}
+
+/* weird, but slot needs to inherit in order to cascade to slotted items */
+:host, slot, .children {
+  vertical-align: inherit;
+  text-align: inherit;
+}
+
+/* secret sauce here:
+  this removes the wrappers from the layout render tree
+  so that the table layout still works! */
+:host, .children {
+  display: contents;
+}
+
+:host([collapsible][collapsed]) .children {
+    display: none;
+  }
+
+/* highlight the group's parent if it's collapsed but contains the drag cursor */
+:host(.market-drag-cursor-parent[collapsible][collapsed]) ::slotted([slot="parent"]) {
+    position: relative;
+    border-radius: var(--core-radius-10);
+    background-color: var(--core-emphasis-40-color);
+    outline: var(--drag-highlight-border-size) solid var(--core-emphasis-fill-color);
+    outline-offset: calc(var(--drag-highlight-border-size) * -1);
+  }
+
+/* the drag cursor */
+::slotted(.market-drag-cursor) {
+  --drag-cursor-height: 4px;
+
+  position: absolute;
+  right: 0;
+  left:
+    calc(
+      var(--table-cell-horizontal-padding-size) +
+      (var(--drag-cursor-indent-level) + 1) * var(--table-cell-indent-size)
+    );
+  display: block;
+  height: 0;
+  outline: calc(var(--drag-cursor-height) / 2) solid var(--core-emphasis-fill-color);
+  pointer-events: none;
+}
+
+/* hide the placeholder group's child rows */
+:host(.market-drag-placeholder) ::slotted(:not([slot="parent"])) {
+    display: none;
+  }

@@ -1,0 +1,68 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: flex;
+
+  /* ensure button group fills available space when used inside a flex container */
+  flex-grow: 1;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-flow: row nowrap;
+  gap: var(--button-group-spacing);
+}
+
+:host([alignment="right"]) .content {
+  flex-direction: row-reverse;
+}
+
+:host([alignment="left"]) .content {
+  justify-content: flex-start;
+}
+
+:host([alignment="split"]) .content {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+:host([alignment="split"]) .content ::slotted(.market-button:first-of-type) {
+    margin-left: auto;
+  }
+
+:host([alignment="fill"]) .content {
+  flex-direction: row-reverse;
+}
+
+:host([alignment="fill"]) .content ::slotted(.market-button) {
+    flex: 1;
+  }
+
+:host([alignment="stack"]) .content {
+  flex-direction: column;
+}
+
+/* overflow content */
+
+[slot="content"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--button-group-spacing);
+}
+
+::slotted([slot="overflow-buttons"]) {
+  width: 100%;
+}

@@ -1,0 +1,131 @@
+%field-states {
+  /* == state:normal.validity:normal == */
+  border-radius: var(--field-border-radius);
+  background-color: var(--field-normal-state-background-color);
+  color: var(--field-normal-state-input-color);
+
+  /* use pseudo to create border so we can use inset box-shadow but still layer on top */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--field-border-radius);
+    box-shadow: inset 0 0 0 var(--field-border-size) var(--field-normal-state-normal-validity-border-color);
+    pointer-events: none;
+  }
+
+  /*
+  Border changes per state and per validity
+  Do not reorder this section. They are organized by precedence
+  (i.e. disabled is placed last, because it should override all other state attributes).
+  */
+
+  /* == state:normal.validity:invalid == */
+  &([invalid])::after {
+    box-shadow: inset 0 0 0 var(--field-border-size) var(--field-normal-state-invalid-validity-border-color);
+  }
+
+  /* == state:hover.validity:normal == */
+  &(:hover) {
+    background-color: var(--field-hover-state-background-color);
+    color: var(--field-hover-state-input-color);
+
+    &::after {
+      box-shadow: inset 0 0 0 var(--field-border-size) var(--field-hover-state-normal-validity-border-color);
+    }
+  }
+
+  /* == state:hover.validity:invalid == */
+  &([invalid]:hover)::after {
+    box-shadow: inset 0 0 0 var(--field-border-size) var(--field-hover-state-invalid-validity-border-color);
+  }
+
+  /* == state:focus.validity:normal == */
+  &([focused]) {
+    color: var(--field-focus-state-input-color);
+
+    &::after {
+      box-shadow:
+        inset 0 0 0 var(--field-focus-state-border-size)
+        var(--field-focus-state-normal-validity-border-color);
+    }
+  }
+
+  /* == state:focus.validity:invalid == */
+  &([focused][invalid])::after {
+    box-shadow: inset 0 0 0 var(--field-focus-state-border-size) var(--field-focus-state-invalid-validity-border-color);
+  }
+
+  /* == state:readonly == */
+  &([readonly]:hover)::after {
+    box-shadow: inset 0 0 0 var(--field-border-size) var(--field-normal-state-normal-validity-border-color);
+  }
+
+  /* == state:disabled == */
+  &([disabled]) {
+
+    /* stylelint-disable declaration-no-important */
+    background-color: var(--field-disabled-state-background-color) !important;
+    color: var(--field-disabled-state-input-color) !important;
+    cursor: not-allowed !important;
+
+    &::after {
+      box-shadow: inset 0 0 0 var(--field-border-size) var(--field-disabled-state-border-color) !important;
+    }
+    /* stylelint-enable declaration-no-important */
+
+    ::slotted(.market-accessory),
+    ::slotted(img[slot*="accessory"]),
+    ::slotted(svg[slot*="accessory"]),
+    ::slotted(div[slot*="accessory"]) {
+      /* non-interactive slotted accessories should be dimmed when field is disabled (same behavior as rows) */
+      --field-disabled-state-accessory-opacity: var(--row-disabled-state-leading-accessory-opacity);
+
+      opacity: var(--field-disabled-state-accessory-opacity);
+    }
+  }
+
+  /*
+  Label color changes per state, per phase
+  Do not reorder this section. They are organized by precedence
+  (i.e. disabled is placed last, because it should override all other state attributes).
+  */
+
+  /* == state:normal.phase:empty == */
+  &([value=""]) ::slotted(label) {
+    color: var(--field-normal-state-empty-phase-label-color);
+  }
+
+  /* == state:normal.phase:float == */
+  &(:not([value=""])) ::slotted(label),
+  &([value=""][autofilled]) ::slotted(label) {
+    color: var(--field-normal-state-float-phase-label-color);
+  }
+
+  /* == state:hover.phase:empty == */
+  &(:hover) ::slotted(label) {
+    color: var(--field-hover-state-empty-phase-label-color);
+  }
+
+  /* == state:hover.phase:float == */
+  &(:not([value=""]):hover) ::slotted(label),
+  &([value=""][autofilled]:hover) ::slotted(label) {
+    color: var(--field-hover-state-float-phase-label-color);
+  }
+
+  /* == state:focus.phase:float == */
+  &([focused]) ::slotted(label) {
+    color: var(--field-focus-state-float-phase-label-color);
+  }
+
+  /* == state:disabled.phase:empty == */
+  &([value=""][disabled]) ::slotted(label) {
+    color: var(--field-disabled-state-empty-phase-label-color);
+  }
+
+  /* == state:disabled.phase:float == */
+  &(:not([value=""])[disabled]) ::slotted(label),
+  &([value=""][autofilled][disabled]) ::slotted(label) {
+    color: var(--field-disabled-state-float-phase-label-color);
+  }
+}

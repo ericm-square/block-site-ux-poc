@@ -1,0 +1,84 @@
+:host {
+  display: inline-block;
+}
+
+  :host .market-dropdown {
+    padding-bottom: 0;
+  }
+
+  :host .market-dropdown .trigger-tap-target {
+      /* wrapper for slot="trigger" to ensure a large enough tap target */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: var(--tooltip-minimum-width);
+      min-height: var(--tooltip-minimum-height);
+    }
+
+  :host svg, :host ::slotted(svg[slot="trigger"]) {
+    fill: var(--tooltip-trigger-icon-normal-state-color);
+    transition:
+      fill
+      var(
+        --tooltip-animation-move-transition-duration,
+        0.3s
+      )
+      ease-out;
+  }
+
+  :host ::slotted([slot="trigger"]:not(svg)) {
+    color: var(--tooltip-trigger-text-normal-state-color);
+    transition:
+      color
+      border-bottom
+      var(
+        --tooltip-trigger-animation-fade-transition-duration,
+        0.3s
+      )
+      ease-out;
+
+    /* Safari seems to have issues with the shorthand `text-decoration` property,
+       so we list them all out individually instead */
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--tooltip-trigger-text-normal-state-color);
+    text-decoration-thickness: var(--tooltip-trigger-text-underline-size);
+    text-underline-position: under; /* positions underline under text descenders */
+    text-underline-offset: 2px; /* eyeballing design offset from descenders */
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+  }
+
+  :host([aria-expanded]) svg, :host([aria-expanded]) ::slotted(svg[slot="trigger"]) {
+      fill: var(--tooltip-trigger-icon-active-state-color);
+    }
+
+  :host([aria-expanded]) ::slotted([slot="trigger"]:not(svg)) {
+      color: var(--tooltip-trigger-text-active-state-color);
+      text-decoration-color: var(--tooltip-trigger-text-active-state-color);
+    }
+
+  :host([disabled]) svg, :host([disabled]) ::slotted(svg[slot="trigger"]) {
+      fill: var(--tooltip-trigger-icon-disabled-state-color);
+    }
+
+  :host([disabled]) ::slotted([slot="trigger"]:not(svg)) {
+      color: var(--tooltip-trigger-text-disabled-state-color);
+      text-decoration-color: var(--tooltip-trigger-text-disabled-state-color);
+    }
+
+  /* styling white on black tooltip popover */
+
+  :host aside {
+    max-width: var(--tooltip-maximum-width);
+    padding: var(--tooltip-padding-vertical-size) var(--tooltip-padding-horizontal-size);
+    border-radius: var(--tooltip-radius);
+    background-color: var(--tooltip-background-color);
+    color: var(--tooltip-text-color);
+    box-shadow: var(--elevation-30-shadow); /* TODO: needs component token */
+    font-weight: var(--tooltip-text-weight);
+    font-size: var(--tooltip-text-size);
+    line-height: var(--tooltip-text-leading);
+    letter-spacing: var(--tooltip-text-tracking);
+    text-transform: var(--tooltip-text-case);
+  }

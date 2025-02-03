@@ -1,0 +1,2 @@
+function o(){return new Promise((o=>{var i;((i=window===null||window===void 0?void 0:window.requestAnimationFrame)===null||i===void 0?void 0:i.call(window,(()=>o())))||o()}))}export{o as a};
+//# sourceMappingURL=p-e5f35127.js.map

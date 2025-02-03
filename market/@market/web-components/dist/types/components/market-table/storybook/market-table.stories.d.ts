@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const MarketTable: StoryObj;
+export declare const API: StoryObj;
+export declare const ColumnWidths: StoryObj;
+export declare const HidingColumns: StoryObj;
+export declare const SortableColumns: StoryObj;
+export declare const StickyHeadersFooters: StoryObj;
+export declare const StickyRows: StoryObj;
+export declare const StickyColumns: StoryObj;

@@ -1,0 +1,159 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --transition-duration: 0.2s;
+  --focus-ring-color: color-mix(in srgb, var(--choice-button-focus-ring-color) 100%, transparent);
+
+  position: relative;
+  display: inline-block;
+  border-radius: var(--choice-button-border-radius);
+  background-color: var(--choice-button-unselected-value-normal-state-background-color);
+  color: var(--choice-button-unselected-value-normal-state-label-color);
+  cursor: pointer;
+  transition: background-color color var(--transition-duration);
+}
+
+button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--choice-button-border-radius);
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: center;
+  cursor: inherit;
+}
+
+button:focus-visible {
+    outline: var(--choice-button-focus-ring-border-size) solid var(--focus-ring-color);
+    outline-offset: var(--choice-button-focus-ring-buffer-size);
+  }
+
+::slotted([slot="secondary-text"]) {
+  cursor: inherit;
+}
+
+:host([size="medium"]) button {
+    padding: var(--choice-button-medium-size-vertical-padding) var(--choice-button-medium-size-horizontal-padding);
+    font-weight: var(--choice-button-medium-size-text-primary-weight);
+    font-size: var(--choice-button-medium-size-text-primary-size);
+    line-height: var(--choice-button-medium-size-text-primary-leading);
+    letter-spacing: var(--choice-button-medium-size-text-primary-tracking);
+    text-transform: var(--choice-button-medium-size-text-primary-case);
+    -moz-column-gap: var(--choice-button-medium-size-content-spacing);
+         column-gap: var(--choice-button-medium-size-content-spacing);
+  }
+
+:host([size="medium"]) ::slotted([slot="secondary-text"]) {
+    font-weight: var(--choice-button-medium-size-text-secondary-weight);
+    font-size: var(--choice-button-medium-size-text-secondary-size);
+    line-height: var(--choice-button-medium-size-text-secondary-leading);
+    letter-spacing: var(--choice-button-medium-size-text-secondary-tracking);
+    text-transform: var(--choice-button-medium-size-text-secondary-case);
+  }
+
+:host([size="small"]) button {
+    padding: var(--choice-button-small-size-vertical-padding) var(--choice-button-small-size-horizontal-padding);
+    font-weight: var(--choice-button-small-size-text-primary-weight);
+    font-size: var(--choice-button-small-size-text-primary-size);
+    line-height: var(--choice-button-small-size-text-primary-leading);
+    letter-spacing: var(--choice-button-small-size-text-primary-tracking);
+    text-transform: var(--choice-button-small-size-text-primary-case);
+    -moz-column-gap: var(--choice-button-small-size-content-spacing);
+         column-gap: var(--choice-button-small-size-content-spacing);
+  }
+
+:host([size="small"]) ::slotted([slot="secondary-text"]) {
+    font-weight: var(--choice-button-small-size-text-secondary-weight);
+    font-size: var(--choice-button-small-size-text-secondary-size);
+    line-height: var(--choice-button-small-size-text-secondary-leading);
+    letter-spacing: var(--choice-button-small-size-text-secondary-tracking);
+    text-transform: var(--choice-button-small-size-text-secondary-case);
+  }
+
+:host([size="large"]) button {
+    padding: var(--choice-button-large-size-vertical-padding) var(--choice-button-large-size-horizontal-padding);
+    font-weight: var(--choice-button-large-size-text-primary-weight);
+    font-size: var(--choice-button-large-size-text-primary-size);
+    line-height: var(--choice-button-large-size-text-primary-leading);
+    letter-spacing: var(--choice-button-large-size-text-primary-tracking);
+    text-transform: var(--choice-button-large-size-text-primary-case);
+    -moz-column-gap: var(--choice-button-large-size-content-spacing);
+         column-gap: var(--choice-button-large-size-content-spacing);
+  }
+
+:host([size="large"]) ::slotted([slot="secondary-text"]) {
+    font-weight: var(--choice-button-large-size-text-secondary-weight);
+    font-size: var(--choice-button-large-size-text-secondary-size);
+    line-height: var(--choice-button-large-size-text-secondary-leading);
+    letter-spacing: var(--choice-button-large-size-text-secondary-tracking);
+    text-transform: var(--choice-button-large-size-text-secondary-case);
+  }
+
+/* Value: Unselected, State: Hover */
+@media (hover: hover) {
+  :host(:hover) {
+    background-color: var(--choice-button-unselected-value-hover-state-background-color);
+    color: var(--choice-button-unselected-value-hover-state-label-color);
+  }
+}
+
+/* Value: Unselected, State: Pressed */
+:host(:active) {
+  background-color: var(--choice-button-unselected-value-pressed-state-background-color);
+  color: var(--choice-button-unselected-value-pressed-state-label-color);
+}
+
+/* Value: Unselected, State: Disabled */
+:host([disabled]) {
+  background-color: var(--choice-button-unselected-value-disabled-state-background-color);
+  color: var(--choice-button-unselected-value-disabled-state-label-color);
+}
+
+/* Value: Selected */
+:host([selected]) {
+  background-color: var(--choice-button-selected-value-normal-state-background-color);
+  color: var(--choice-button-selected-value-normal-state-label-color);
+}
+
+/* Value: Selected, State: Hover */
+@media (hover: hover) {
+  :host([selected]:hover) {
+    background-color: var(--choice-button-selected-value-hover-state-background-color);
+    color: var(--choice-button-selected-value-hover-state-label-color);
+  }
+}
+
+/* Value: Selected, State: Pressed */
+:host([selected]:active) {
+  background-color: var(--choice-button-selected-value-pressed-state-background-color);
+  color: var(--choice-button-selected-value-pressed-state-label-color);
+}
+
+/* Value: Selected, State: Disabled */
+:host([selected][disabled]) {
+  background-color: var(--choice-button-selected-value-disabled-state-background-color);
+  color: var(--choice-button-selected-value-disabled-state-label-color);
+}

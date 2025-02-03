@@ -1,0 +1,87 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+a, button {
+  /* TODO: add link focus ring tokens (UI-6643) */
+  --text-link-focus-ring-border-size: var(--button-focus-ring-border-size);
+  --text-link-focus-ring-buffer-size: var(--button-focus-ring-buffer-size);
+  --text-link-focus-ring-color: var(--button-focus-ring-color);
+  --focus-ring-color: color-mix(in srgb, var(--text-link-focus-ring-color) 100%, transparent);
+}
+
+a:focus-visible, button:focus-visible {
+    border-radius: 1px;
+    outline: var(--text-link-focus-ring-border-size) solid var(--focus-ring-color);
+    outline-offset: var(--text-link-focus-ring-buffer-size);
+  }
+
+
+/* below styles implement the "medium" size text link */
+
+:host {
+  --transition-duration: 0.2s;
+
+  color: var(--text-link-normal-variant-color);
+  font-weight: var(--text-link-medium-size-text-weight);
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: var(--text-link-medium-size-text-tracking);
+  cursor: pointer;
+}
+
+:host a, :host a:link, :host a:visited, :host a:hover, :host a:active, :host button {
+    color: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    transition: color var(--transition-duration);
+  }
+
+:host a, :host a:link, :host a:visited, :host button {
+    opacity: var(--text-link-normal-state-opacity);
+  }
+
+:host a:hover, :host button:hover, :host a:focus, :host button:focus {
+    color: var(--core-blue-20-color); /* TODO make component specific token */
+    text-decoration: underline;
+  }
+
+:host a:active, :host button:active {
+    color: var(--core-blue-10-color); /* TODO make component specific token */
+  }
+
+:host([highlight="underline"]) a, :host([highlight="underline"]) button {
+    display: inline-block; /* prevent underline from spilling into blank space */
+    text-decoration: underline;
+  }
+
+:host([highlight="underline"]) a:hover, :host([highlight="underline"]) a:focus, :host([highlight="underline"]) button:hover, :host([highlight="underline"]) button:focus {
+    color: var(--core-blue-20-color); /* TODO make component specific token */
+    text-decoration: none;
+  }
+
+:host([aria-disabled]) a, :host([aria-disabled]) button {
+    opacity: var(--text-link-disabled-state-opacity);
+  }
+
+:host([destructive]) {
+    color: var(--text-link-destructive-variant-color);
+  }
+
+:host button {
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+  }

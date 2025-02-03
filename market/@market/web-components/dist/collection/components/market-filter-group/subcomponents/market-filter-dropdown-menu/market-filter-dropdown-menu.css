@@ -1,0 +1,90 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+::slotted([slot="filter-title"]) {
+  font-weight: var(--core-type-heading-20-weight);
+  font-size: var(--core-type-heading-20-size);
+  font-family: var(--core-type-heading-20-font-family);
+  line-height: var(--core-type-heading-20-leading);
+  letter-spacing: var(--core-type-heading-20-tracking);
+  text-transform: var(--core-type-heading-20-case);
+}
+
+/**
+ * Temporary container so we don't "flash" filters that are being moved around
+ * But we don't want to set `display: none` nor `width: 0`
+ * since we need to measure the filters' widths
+ */
+.overflow-filters {
+  overflow: hidden;
+  height: 0;
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+}
+
+.selection-header::part(heading) {
+  /* TODO: add design token */
+  --filter-overflow-heading-margin-top-size: var(--core-metrics-spacing-200);
+
+  margin-top: var(--filter-overflow-heading-margin-top-size);
+}
+
+/* width + negative left and right margin added to offset the native scrollbars */
+.filter-options-container {
+  /* TODO: add design token */
+  --filter-overflow-filter-options-container-margin-top-size: var(--core-metrics-spacing-100);
+
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  width:
+    calc(
+      100% +
+      var(--modal-popover-wide-viewport-padding-left-size) +
+      var(--modal-popover-wide-viewport-padding-right-size)
+    );
+  margin:
+    var(--filter-overflow-filter-options-container-margin-top-size)
+    calc(var(--modal-popover-wide-viewport-padding-right-size) * -1)
+    calc(var(--modal-popover-wide-viewport-padding-bottom-size) * -1)
+    calc(var(--modal-popover-wide-viewport-padding-left-size) * -1);
+  padding-left: var(--modal-popover-wide-viewport-padding-left-size);
+}
+.filter-options-container ::slotted(.market-list[slot="filter-options"]) {
+    width: calc(100% - var(--modal-popover-wide-viewport-padding-right-size));
+  }
+/* acts as the bottom padding within the scrollable content */
+.filter-options-container ::slotted(.market-list[slot="filter-options"])::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: var(--core-metrics-spacing-100);
+    }
+.filter-options-container ::slotted(.market-date-picker[slot="filter-options"]) {
+    width: auto;
+    min-width: var(--date-picker-minimum-width);
+    padding-right: var(--modal-popover-wide-viewport-padding-right-size);
+  }
+/* acts as the bottom padding within the scrollable content */
+.filter-options-container ::slotted(.market-date-picker[slot="filter-options"])::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: var(--core-metrics-spacing-300);
+    }
+.filter-options-container ::slotted(.market-date-picker[slot="filter-options"][display-menu]) {
+    height: calc(100%);
+  }

@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.market-color-swatch {
+  vertical-align: middle;
+  margin: var(--color-picker-input-icon-vertical-spacing, 12px) 0;
+}
+
+.color-picker-input-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--color-picker-input-width, 40px);
+  height: var(--color-picker-input-height, 40px);
+
+  /* TODO: add margin token and missing color picker tokens */
+  margin: 12px 0;
+  border-radius: var(--color-picker-icon-border-radius, calc(var(--core-radius-10) * 1px));
+  background-color: var(--color-picker-icon-background-color, var(--core-fill-40-color));
+}
+
+.color-picker-input-icon svg path {
+    fill: var(--core-fill-10-color);
+  }

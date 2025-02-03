@@ -1,0 +1,28 @@
+/* TODO: Update to use design tokens */
+
+.input-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.start-input:not(:last-child) {
+  margin-right: 16px;
+}
+
+.time-input, .date-input {
+  box-sizing: border-box; /* Include padding and border in the total width */
+  width: 100%; /* Make sure both inputs take up the full width */
+  margin-top: 16px;
+}
+
+.market-banner {
+  margin-top: 16px;
+}

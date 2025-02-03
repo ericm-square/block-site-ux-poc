@@ -1,0 +1,6 @@
+{
+  "name": "@market/web-components/hydrate",
+  "description": "market component hydration app.",
+  "main": "index.js",
+  "types": "index.d.ts"
+}

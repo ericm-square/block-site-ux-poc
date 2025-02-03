@@ -1,0 +1,32 @@
+/* This file contains global styling. It applies to the light DOM only */
+
+@import "../../../../node_modules/@market/market-theme/css/properties";
+@import "../../../../node_modules/@market/market-theme/css/dark-mode";
+@import "./grid";
+@import "./animations";
+@import "./modals";
+@import "./elevation";
+
+/* feature flagged styles */
+@import "./typography";
+@import "./components";
+@import "./html-styles";
+
+[data-market-features*="dark-mode"] {
+  background-color: var(--core-surface-10-color);
+}
+
+/* Screen reader only class */
+
+/* Learn more -> https://webaim.org/techniques/css/invisiblecontent/ */
+.market-sr-only {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}

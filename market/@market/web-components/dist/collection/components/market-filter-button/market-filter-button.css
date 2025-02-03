@@ -1,0 +1,150 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  /* TODO: add icon color tokens */
+  --filter-button-normal-state-icon-color: var(--filter-button-normal-state-label-color);
+  --filter-button-hover-state-icon-color: var(--filter-button-hover-state-label-color);
+  --filter-button-pressed-state-icon-color: var(--filter-button-pressed-state-label-color);
+  --filter-button-disabled-state-icon-color: var(--filter-button-disabled-state-label-color);
+
+  display: inline-block;
+  white-space: nowrap;
+}
+
+button {
+  display: inline-flex;
+  gap: var(--filter-button-label-content-spacing);
+  justify-content: center;
+  align-items: center;
+
+  /* button width is 100% of host(market-filter-button), not the parent element of market-filter-button */
+  width: 100%;
+  border: none;
+  border-radius: var(--filter-button-border-radius);
+  background-color: var(--filter-button-normal-state-background-color);
+  color: var(--filter-button-normal-state-label-color);
+  box-shadow: var(--filter-button-normal-state-border-color) 0 0 0 var(--filter-button-border-size) inset;
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+  }
+
+button ::slotted([slot]) {
+    cursor: inherit;
+  }
+
+button ::slotted([slot="feedback"]) {
+    color: var(--filter-button-normal-state-feedback-color);
+    white-space: nowrap;
+  }
+
+button svg {
+    display: none;
+    fill: var(--filter-button-normal-state-icon-color);
+  }
+
+:host([icon-only]) .label {
+    display: none;
+  }
+
+:host([icon-only]) svg {
+    display: block;
+  }
+
+:host([size="medium"]) button {
+    min-height: var(--filter-button-medium-size-minimum-height);
+    padding:
+      var(--filter-button-medium-size-label-vertical-padding)
+      var(--filter-button-medium-size-label-horizontal-padding);
+    font-weight: var(--filter-button-medium-size-label-text-weight);
+    font-size: var(--filter-button-medium-size-label-text-size);
+    line-height: var(--filter-button-medium-size-label-text-leading);
+    letter-spacing: var(--filter-button-medium-size-label-text-tracking);
+    text-transform: var(--filter-button-medium-size-label-text-case);
+  }
+
+:host([size="medium"]) ::slotted([slot="feedback"]) {
+    font-weight: var(--filter-button-medium-size-feedback-text-weight);
+    font-size: var(--filter-button-medium-size-feedback-text-size);
+    line-height: var(--filter-button-medium-size-feedback-text-leading);
+    letter-spacing: var(--filter-button-medium-size-feedback-text-tracking);
+    text-transform: var(--filter-button-medium-size-feedback-text-case);
+  }
+
+:host([size="small"]) button {
+    min-height: var(--filter-button-small-size-minimum-height);
+    padding:
+      var(--filter-button-small-size-label-vertical-padding)
+      var(--filter-button-small-size-label-horizontal-padding);
+    font-weight: var(--filter-button-small-size-label-text-weight);
+    font-size: var(--filter-button-small-size-label-text-size);
+    line-height: var(--filter-button-small-size-label-text-leading);
+    letter-spacing: var(--filter-button-small-size-label-text-tracking);
+    text-transform: var(--filter-button-small-size-label-text-case);
+  }
+
+:host([size="small"]) ::slotted([slot="feedback"]) {
+    font-weight: var(--filter-button-small-size-feedback-text-weight);
+    font-size: var(--filter-button-small-size-feedback-text-size);
+    line-height: var(--filter-button-small-size-feedback-text-leading);
+    letter-spacing: var(--filter-button-small-size-feedback-text-tracking);
+    text-transform: var(--filter-button-small-size-feedback-text-case);
+  }
+
+:host(:hover) button, :host(:focus) button {
+    background-color: var(--filter-button-hover-state-background-color);
+    color: var(--filter-button-hover-state-label-color);
+    box-shadow: var(--filter-button-hover-state-border-color) 0 0 0 var(--filter-button-border-size) inset;
+  }
+
+:host(:hover) ::slotted([slot="feedback"]), :host(:focus) ::slotted([slot="feedback"]) {
+    color: var(--filter-button-hover-state-feedback-color);
+  }
+
+:host(:hover) svg, :host(:focus) svg {
+    fill: var(--filter-button-hover-state-icon-color);
+  }
+
+:host([active]) button, :host(:active) button {
+    background-color: var(--filter-button-pressed-state-background-color);
+    color: var(--filter-button-pressed-state-label-color);
+    box-shadow: var(--filter-button-pressed-state-border-color) 0 0 0 var(--filter-button-border-size) inset;
+  }
+
+:host([active]) ::slotted([slot="feedback"]), :host(:active) ::slotted([slot="feedback"]) {
+    color: var(--filter-button-pressed-state-feedback-color);
+  }
+
+:host([active]) svg, :host(:active) svg {
+    fill: var(--filter-button-pressed-state-icon-color);
+  }
+
+:host([disabled]) button {
+    background-color: var(--filter-button-disabled-state-background-color);
+    color: var(--filter-button-disabled-state-label-color);
+    box-shadow: var(--filter-button-disabled-state-border-color) 0 0 0 var(--filter-button-border-size) inset;
+  }
+
+:host([disabled]) ::slotted([slot="feedback"]) {
+    color: var(--filter-button-disabled-state-feedback-color);
+  }
+
+:host([disabled]) svg {
+    fill: var(--filter-button-disabled-state-icon-color);
+  }

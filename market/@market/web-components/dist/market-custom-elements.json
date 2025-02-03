@@ -1,0 +1,3695 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "market-accessory",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-accessory>` is used to display a slotted image or icon, and is intended to be used as a slotted leading or trailing accessory in `<market-row>` and `<market-input-text>`."
+      },
+      "attributes": [
+        {
+          "name": "size",
+          "description": "The desired size for the leading or trailing accessory, which we expect to\nbe either an image or a <market-icon> component. The available sizes are\n\"icon\" (24x24) and \"image\" (40x40).",
+          "values": [
+            {
+              "name": "icon"
+            },
+            {
+              "name": "image"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-accordion-item",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Whether the accordion should appear in a disabled state."
+        },
+        {
+          "name": "expanded",
+          "description": "Determines whether the accordion is shown as expanded or collapsed."
+        },
+        {
+          "name": "name",
+          "description": "The unique name of the accordion."
+        },
+        {
+          "name": "size",
+          "description": "The size of the heading text of the accordion.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-action-card",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-action-card>` is intended for card scenarios that are either \"action-oriented\" or \"selectable\". The entire card is a touch target with an elevated treatment intended to make the card appear to be tappable.\n\nYou can slot `<market-row>` (with or without slotted controls like `<market-radio>` or `<market-checkbox>`) into `<market-action-card>`.\n\n`<market-action-card>` can be used inside of `<market-list>`."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Visually and functionally disables the action card."
+        },
+        {
+          "name": "selected",
+          "description": "Whether the action card is selected or not."
+        },
+        {
+          "name": "transient",
+          "description": "When set to `true`, card will not persist selected state on click."
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the action card."
+        }
+      ]
+    },
+    {
+      "name": "market-activity-indicator",
+      "description": {
+        "kind": "markdown",
+        "value": "A component used to model a radial activity indicator, to be used inside other components."
+      },
+      "attributes": [
+        {
+          "name": "size",
+          "description": "String for setting activity indicator size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-activity-indicator-bar",
+      "description": {
+        "kind": "markdown",
+        "value": "A component used to model an activity bar indicator, to be used inside other components."
+      },
+      "attributes": [
+        {
+          "name": "max",
+          "description": "The maximum value of the activity bar"
+        },
+        {
+          "name": "value",
+          "description": "The value the activity bar should report"
+        }
+      ]
+    },
+    {
+      "name": "market-banner",
+      "description": {
+        "kind": "markdown",
+        "value": "market-banner displays a message and has the option to add a dismiss button or another action button."
+      },
+      "attributes": [
+        {
+          "name": "dismiss-button-aria-label",
+          "description": "Optional property to pass a string to the dismiss \"x\"\nthat will function as its aria-label. Defaults to \"Dismiss\"."
+        },
+        {
+          "name": "dismissable",
+          "description": "whether to show the dismiss \"x\" or not"
+        },
+        {
+          "name": "icon-image-title",
+          "description": "Title for the icon image, used as the accessible name for the icon.\nIf a custom icon is provided, this prop is ignored."
+        },
+        {
+          "name": "variant",
+          "description": "banner variant that corresponds to the type of info it is conveying",
+          "values": [
+            {
+              "name": "critical"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "insight"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-blade",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "animation-duration",
+          "description": "DEPRECATED: The duration for the blade enter/exit animations, set from design tokens"
+        },
+        {
+          "name": "animation-enter-duration",
+          "description": "The duration for the modal enter animation, set from design tokens"
+        },
+        {
+          "name": "animation-exit-duration",
+          "description": "The duration for the modal exit animation, set from design tokens"
+        },
+        {
+          "name": "data-dialog-id",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal"
+        },
+        {
+          "name": "hidden",
+          "description": "INTERNAL ONLY: Used in CSS to trigger start and stop animations"
+        },
+        {
+          "name": "data-dialog-index",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal's place\nin the stack"
+        },
+        {
+          "name": "trap-focus",
+          "description": "Enforces focus trapping on the modal"
+        }
+      ]
+    },
+    {
+      "name": "market-button",
+      "description": {
+        "kind": "markdown",
+        "value": "In addition to being a button, `market-button` is also our very first Market component!"
+      },
+      "attributes": [
+        {
+          "name": "caret",
+          "description": "String for setting (optional) button caret direction",
+          "values": [
+            {
+              "name": "down"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "up"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the button"
+        },
+        {
+          "name": "download",
+          "description": "Causes the browser to treat the linked URL as a download. Only works for same-origin URLs.\nOnly applies when an `href` is provided.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-download) for details on accepted values."
+        },
+        {
+          "name": "focused",
+          "description": "Whether or not the button is in a focused state"
+        },
+        {
+          "name": "href",
+          "description": "Contains a URL or a URL fragment that the hyperlink points to.\nIf this property is set, an anchor tag will be rendered."
+        },
+        {
+          "name": "icon-only",
+          "description": "Whether the button only contains an icon."
+        },
+        {
+          "name": "inner-tabindex",
+          "description": "Optionally set a custom tabindex on the inner HTML `<button>`."
+        },
+        {
+          "name": "is-loading",
+          "description": "Whether or not the button is in a loading state"
+        },
+        {
+          "name": "rank",
+          "description": "String for setting button rank",
+          "values": [
+            {
+              "name": "primary"
+            },
+            {
+              "name": "secondary"
+            },
+            {
+              "name": "tertiary"
+            }
+          ]
+        },
+        {
+          "name": "rel",
+          "description": "Defines the relationship between a linked resource and the current document.\nOnly applies when an `href` is provided.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) for details on accepted values."
+        },
+        {
+          "name": "size",
+          "description": "String for setting button size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target) for details on accepted values.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        },
+        {
+          "name": "type",
+          "description": "String for setting button type",
+          "values": [
+            {
+              "name": "button"
+            },
+            {
+              "name": "reset"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "variant",
+          "description": "String for setting button variant",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "regular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-button-dropdown",
+      "description": {
+        "kind": "markdown",
+        "value": "This component uses `<market-dropdown>` to create a component that has a `<market-button>` and slotted content. Interacting with the button will open the slotted content in a `<market-popover>` which is positioned using Popper.js.\n\nTo tweak the position of the dropdown button's popover, you can style `market-button-dropdown::part(popover)` directly using CSS."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the button dropdown."
+        },
+        {
+          "name": "interaction",
+          "description": "Defines what types of interaction the button dropdown should have\n(see `market-dropdown` docs for more granular explanation)",
+          "values": [
+            {
+              "name": "click"
+            },
+            {
+              "name": "hover"
+            },
+            {
+              "name": "persistent"
+            }
+          ]
+        },
+        {
+          "name": "no-caret",
+          "description": "Disabling the up/down caret."
+        },
+        {
+          "name": "persist-list",
+          "description": "Disables the default behavior of *not* persisting selections in slotted `market-list`s."
+        },
+        {
+          "name": "popover-placement",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the preferred placement of the popper.\nhttps://popper.js.org/docs/v2/constructors//#placement",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "auto-end"
+            },
+            {
+              "name": "auto-start"
+            },
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        },
+        {
+          "name": "popover-strategy",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is absolute. If\nyour reference element is in a fixed container, use the fixed strategy.\nhttps://popper.js.org/docs/v2/constructors//#strategy",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-button-group",
+      "description": {
+        "kind": "markdown",
+        "value": "A component to organize and maintain multiple buttons within a page or component. It handles button alignment and button overflow based on screen size. Should be used with the <market-button> component."
+      },
+      "attributes": [
+        {
+          "name": "alignment",
+          "description": "A string specifying the alignment for the button group.\nThis will change button size and distribution across the group.",
+          "values": [
+            {
+              "name": "fill"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "split"
+            },
+            {
+              "name": "stack"
+            }
+          ]
+        },
+        {
+          "name": "popover-strategy",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is absolute. If\nyour reference element is in a fixed container, use the fixed strategy.\nhttps://popper.js.org/docs/v2/constructors//#strategy",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-checkbox",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-checkbox>` can be used on its own, or slotted into `<market-row>` as a control. When used with `market-row`,\nthe row's `selected` prop overrides the checkbox's `checked` prop."
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the checkbox is active or not."
+        },
+        {
+          "name": "checked",
+          "description": "Whether the checkbox is checked or unchecked. Operates independently of the indeterminate property.\nIf used as a slotted control inside of `market-row`, this will be overridden by the row's `selected` property."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the checkbox is disabled."
+        },
+        {
+          "name": "focused",
+          "description": "Whether the checkbox is focused or not."
+        },
+        {
+          "name": "hovered",
+          "description": "Whether the checkbox is hovered or not."
+        },
+        {
+          "name": "indeterminate",
+          "description": "Whether the checkbox is indeterminate. If true, indeterminate visual state takes precedence over checked/unchecked."
+        },
+        {
+          "name": "invalid",
+          "description": "Whether the checkbox is invalid."
+        }
+      ]
+    },
+    {
+      "name": "market-choice-button",
+      "description": {
+        "kind": "markdown",
+        "value": "A component that is similar to <market-button>, but specifies a selected state for the user to 'choose' a specific button. The component also has the ability to be disabled and to have size changes. If necessary, secondary-text can be slotted to the right of the main label."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the choice button"
+        },
+        {
+          "name": "selected",
+          "description": "Whether or not the choice button is in a selected state"
+        },
+        {
+          "name": "size",
+          "description": "String for setting choice button size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-code-display",
+      "description": {
+        "kind": "markdown",
+        "value": "market-code-display allows users to copy a displayed code to their clipboard for authentication purposes.\n\n**Guidelines for use:**\n- Out of the 3 slots, only 'code' is required.\n- Slots must be used in order of 'code' => 'copy-text' => 'actions'. If not put in order, styling may break.\n- Consumers can slot in up to 1 additional action on top of 'Copy' in the form of a \\<button\\> or \\<a\\> tag."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Whether the component should appear in a disabled state."
+        },
+        {
+          "name": "focused",
+          "description": "A boolean representing whether the code input is focused or not."
+        }
+      ]
+    },
+    {
+      "name": "market-code-input",
+      "description": {
+        "kind": "markdown",
+        "value": "A code-input component."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the input is disabled or not.\nThis visually and functionally will disable the input."
+        },
+        {
+          "name": "focused",
+          "description": "A boolean representing whether the code input is focused or not."
+        },
+        {
+          "name": "invalid",
+          "description": "A boolean representing whether the input is invalid or not.\nThis represents error states."
+        },
+        {
+          "name": "length",
+          "description": "A number specifying the length of the code"
+        },
+        {
+          "name": "name",
+          "description": "A string specifying a name for the code input."
+        },
+        {
+          "name": "readonly",
+          "description": "A boolean representing whether the input is readonly or not."
+        },
+        {
+          "name": "type",
+          "description": "A string specifying the type of input to render (text or numeric)",
+          "values": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "password"
+            },
+            {
+              "name": "text"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "A string representing a default value (code) that can be passed in to be rendered"
+        }
+      ]
+    },
+    {
+      "name": "market-color-picker",
+      "description": {
+        "kind": "markdown",
+        "value": "> **NOTE:** This component is currently in beta and its usage is subject to change before its release in a future major version of Market."
+      },
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Value representing the color shown on the color picker."
+        }
+      ]
+    },
+    {
+      "name": "market-color-picker-gradient",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Value representing the selected color of the secondary gradient picker.\nThis is a string that can represent a [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color).\nThis is the value the color picker will use.\nSupported color types are rgb/a, hsl/a, and hex colors."
+        }
+      ]
+    },
+    {
+      "name": "market-color-picker-input",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Value representing the color shown on the input.\nThis should be in a hexadecimal format (i.e. #ABC123), similarly to native HTML color inputs."
+        }
+      ]
+    },
+    {
+      "name": "market-color-swatch",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "description": "Whether the swatch is selected or not."
+        },
+        {
+          "name": "value",
+          "description": "Value representing the color of the swatch. This is a string that can represent any [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color)."
+        }
+      ]
+    },
+    {
+      "name": "market-color-swatch-list",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "value",
+          "description": "A string specifying a value for the list.\nFor a color swatch to be selected, this value should match the swatch's value.\nNote: all color swatch values slotted in must be **unique**!\nAn empty string, or '', will clear the selection."
+        }
+      ]
+    },
+    {
+      "name": "market-content-card",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-content-card>` is a simple card component for displaying static content.\nFor interactive/selectable cards, see `market-action-card`."
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-context",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "animation-enter-duration",
+          "description": "The duration for the modal enter animation, set from design tokens"
+        },
+        {
+          "name": "animation-exit-duration",
+          "description": "The duration for the modal exit animation, set from design tokens"
+        },
+        {
+          "name": "hidden",
+          "description": "Whether the context is hidden or visible."
+        }
+      ]
+    },
+    {
+      "name": "market-context-manager",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether or not the context manager is UI blocking"
+        }
+      ]
+    },
+    {
+      "name": "market-date-picker",
+      "description": {
+        "kind": "markdown",
+        "value": "<market-banner>If you don't need a calendar UI and simply want a formatted input where a user can type a date, use `<market-input-text type=\"date\">`.</market-banner>\n\nYou can use `<market-date-picker>` with `<market-button-dropdown>` or `<market-dropdown>` with the following in mind:\n\n- Set `interaction=\"persistent\"` to make the popover stay open while interacting with the date picker.\n- Set `max-width: none` on the popover to make it wide enough to fit the menu sidebar.\n- You will need to wire up your own event listeners to handle changes to the date value and close the dropdown.\n\nAn officially blessed, out-of-the-box date picker dropdown component to handle these types of issues is still under consideration."
+      },
+      "attributes": [
+        {
+          "name": "display-menu",
+          "description": "Whether or not the side market-date-picker-menu is shown.\nTo pass in translation supported text, use slots available for each option."
+        },
+        {
+          "name": "displayed-date",
+          "description": "The ISO formatted string that determines the displayed month on the calendar.\nUse DateTime string format as seen here: https://tc39.es/ecma262/#sec-date-time-string-format\nExample: `YYYY-MM-DDT08:00`.\nNote: Omitting the time portion defaults to UTC, so this may display as a day behind on your calendar!\nIf you add hours it will default to your timezone, like the above example.\nInvalid date strings default to today's date."
+        },
+        {
+          "name": "exclude-menu-items",
+          "description": "A list of market-date-picker-menu items that will be excluded from appearing on the menu list.\ni.e. `this-year,last-year` or `today,this-week,last-week,custom`\nThe menu names are lowercase and hyphenated strings, found here:\nhttps://github.com/squareup/market/blob/main/web/web-components/src/components/market-date-picker/enums/menu.tsx\n\nThis works in conjunction with timeframe,\ni.e. \"timeframe=past\", excludes dates in the future in addition to the ones here.\nThis is written as items separated by ','."
+        },
+        {
+          "name": "invalid",
+          "description": "Whether the selected dates are invalid.\nIt should not be possible to click on invalid dates, so this occurs through date inputs."
+        },
+        {
+          "name": "locale",
+          "description": "Date picker locale. Defaults to browser locale. If that cannot be determined, defaults to 'en-US'."
+        },
+        {
+          "name": "mobile-menu-position",
+          "description": "Position of menu on a mobile screen, if market-date-picker-menu is shown.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        },
+        {
+          "name": "preset-menu-option",
+          "description": "Preset menu option to populate date picker range.\nPresetting `custom` should be used with `selectedStartDate` and `selectedEndDate` props.\nOtherwise if both `selectedStartDate/selectedEndDate` and `presetMenuOption` are given, `presetMenuOption` takes precedence."
+        },
+        {
+          "name": "selected-end-date",
+          "description": "User selected end date for a range saved as an ISO formatted string.\nUse DateTime string format as seen here: https://tc39.es/ecma262/#sec-date-time-string-format\nExample: `YYYY-MM-DDT08:00`."
+        },
+        {
+          "name": "selected-start-date",
+          "description": "User selected single date or start date for a range saved as an ISO formatted string.\nUse DateTime string format as seen here: https://tc39.es/ecma262/#sec-date-time-string-format\nExample: `YYYY-MM-DDT08:00`."
+        },
+        {
+          "name": "selection-type",
+          "description": "Whether the date picker allows selection of a single date or a date range",
+          "values": [
+            {
+              "name": "range"
+            },
+            {
+              "name": "single"
+            }
+          ]
+        },
+        {
+          "name": "timeframe",
+          "description": "String for setting timeframe type to select which market-date-picker-menu items to show.\nPast means only past dates available, future is only current and future dates, and present is the default for all shown.",
+          "values": [
+            {
+              "name": "future"
+            },
+            {
+              "name": "past"
+            },
+            {
+              "name": "present"
+            }
+          ]
+        },
+        {
+          "name": "with-inputs",
+          "description": "This enables the input field for the date picker.",
+          "values": [
+            {
+              "name": "date"
+            },
+            {
+              "name": "date-and-time"
+            }
+          ]
+        },
+        {
+          "name": "year-view-active",
+          "description": "Displays a clickable caret in the month/year header.\nIf it is up, we show the month/year selection view instead of dates."
+        }
+      ]
+    },
+    {
+      "name": "market-date-picker-date",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "day",
+          "description": "String for user to pass in value of the date"
+        },
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the date picker date"
+        },
+        {
+          "name": "selected",
+          "description": "Handles whether or not date picker date is selected"
+        },
+        {
+          "name": "selection",
+          "description": "String for setting date picker date selection type",
+          "values": [
+            {
+              "name": "none"
+            },
+            {
+              "name": "range-first"
+            },
+            {
+              "name": "range-last"
+            },
+            {
+              "name": "range-middle"
+            },
+            {
+              "name": "single"
+            }
+          ]
+        },
+        {
+          "name": "today",
+          "description": "Handles whether or not date picker date is for today's date"
+        },
+        {
+          "name": "type",
+          "description": "String type to determine type of date selected for parent component",
+          "values": [
+            {
+              "name": "day"
+            },
+            {
+              "name": "month"
+            },
+            {
+              "name": "year"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-date-picker-input-date",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "range",
+          "description": "Whether the date picker is a range"
+        },
+        {
+          "name": "selected-end-date",
+          "description": "The selected end date"
+        },
+        {
+          "name": "selected-start-date",
+          "description": "The selected start date"
+        },
+        {
+          "name": "timeframe",
+          "description": "The timeframe to restrict the date picker to",
+          "values": [
+            {
+              "name": "future"
+            },
+            {
+              "name": "past"
+            },
+            {
+              "name": "present"
+            }
+          ]
+        },
+        {
+          "name": "with-time",
+          "description": "Whether to use date-time input instead of date-only"
+        }
+      ]
+    },
+    {
+      "name": "market-date-picker-menu",
+      "description": {
+        "kind": "markdown",
+        "value": "This component is a subcomponent of `market-date-picker`. It is not meant to be used as a standalone component. The purpose of these docs are to show that the menu row text items can be changed using the associated slots to support translation."
+      },
+      "attributes": [
+        {
+          "name": "exclude-menu-items",
+          "description": "A list of menu items that will be excluded from appearing on the menu list.\ni.e. `this-year,last-year` or `today,this-week,last-week,custom`\nThe menu names are lowercase and hyphenated strings, found here:\nhttps://github.com/squareup/market/blob/main/web/web-components/src/components/market-date-picker/enums/menu.tsx\n\nThis works in conjunction with timeframe,\ni.e. \"timeframe=past\", excludes dates in the future in addition to the ones here.\nThis is written as items separated by ','."
+        },
+        {
+          "name": "preset-menu-option",
+          "description": "Preset menu option passed from the parent. For the menu, this handles visually selecting the menu row."
+        },
+        {
+          "name": "timeframe",
+          "description": "String for setting timeframe type to select which menu items to show",
+          "values": [
+            {
+              "name": "future"
+            },
+            {
+              "name": "past"
+            },
+            {
+              "name": "present"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-dialog",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "animation-enter-duration",
+          "description": "The duration for the modal enter animation, set from design tokens"
+        },
+        {
+          "name": "animation-exit-duration",
+          "description": "The duration for the modal exit animation, set from design tokens"
+        },
+        {
+          "name": "data-dialog-id",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal"
+        },
+        {
+          "name": "hidden",
+          "description": "INTERNAL ONLY: Used in CSS to trigger start and stop animations"
+        },
+        {
+          "name": "data-dialog-index",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal's place\nin the stack"
+        },
+        {
+          "name": "is-loading",
+          "description": "Whether the activity indicator is rendered or not"
+        },
+        {
+          "name": "persistent",
+          "description": "Whether the dialog is persistent or dismissable"
+        },
+        {
+          "name": "trap-focus",
+          "description": "Enforces focus trapping on the dialog"
+        }
+      ]
+    },
+    {
+      "name": "market-divider",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-divider>` is used to separate two components with a configurable amount of space."
+      },
+      "attributes": [
+        {
+          "name": "margin",
+          "description": "Sets the vertical margin for the divider.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "Sets the vertical margin for the divider.",
+          "values": [
+            {
+              "name": "thick"
+            },
+            {
+              "name": "thin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-drag-handle",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-dropdown",
+      "description": {
+        "kind": "markdown",
+        "value": "A component with a \"trigger\" and a \"content\" slot. Interacting with the slotted trigger content will open the slotted content in a `<market-popover>` which is positioned using Popper.js. This component is used as the foundation for `<market-tooltip>` and `<market-button-dropdown>`.\n\nWe do not recommend using this component directly unless you have a design-approved use case that isn't covered by other available Market components!"
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally disables the component, as well as relevant Market components\nin the \"trigger\" slot (`<market-button>`, `<market-link>`)."
+        },
+        {
+          "name": "expanded",
+          "description": "Determines whether the dropdown is expanded or collapsed"
+        },
+        {
+          "name": "interaction",
+          "description": "Defining how the popover should be triggered to open/close. Note that\nclicks outside the dropdown will always close it.\n\n`click`: popover toggles open/closed on clicks to the trigger or popover\n\n`hover`: popover opens on trigger mouseover, closes on trigger or popover\n mouseout\n\n`persistent`: popover toggles open/closed on clicks to the trigger, popover\nstays open if users click on it or its content\n\n`none`: popover does not toggle open/closed on any user interaction; it is\nexpected to be controlled by the parent component",
+          "values": [
+            {
+              "name": "click"
+            },
+            {
+              "name": "hover"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "persistent"
+            }
+          ]
+        },
+        {
+          "name": "popover-distance",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDisplaces the popper away from, or toward, the reference element in the\ndirection of its placement.\nhttps://popper.js.org/docs/v2/modifiers/offset/#distance-1"
+        },
+        {
+          "name": "popover-placement",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the preferred placement of the popper.\nhttps://popper.js.org/docs/v2/constructors//#placement",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "auto-end"
+            },
+            {
+              "name": "auto-start"
+            },
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        },
+        {
+          "name": "popover-skidding",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDisplaces the popover along the reference element.\nhttps://popper.js.org/docs/v2/modifiers/offset/#skidding-1"
+        },
+        {
+          "name": "popover-strategy",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is absolute. If\nyour reference element is in a fixed container, use the fixed strategy.\nhttps://popper.js.org/docs/v2/constructors//#strategy",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-empty-state",
+      "description": {
+        "kind": "markdown",
+        "value": "A component that conveys an empty section or page."
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-field",
+      "description": {
+        "kind": "markdown",
+        "value": "A wrapper for form inputs. <market-field> handles functionality that lies outside the input itself."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the field is disabled or not.\nThis visually and functionally will disable the field."
+        },
+        {
+          "name": "invalid",
+          "description": "A boolean representing whether the field is invalid or not.\nThis represents error states."
+        },
+        {
+          "name": "name",
+          "description": "A string specifying a name for the field."
+        },
+        {
+          "name": "readonly",
+          "description": "A boolean representing whether the field is readonly or not."
+        }
+      ]
+    },
+    {
+      "name": "market-file-upload",
+      "description": {
+        "kind": "markdown",
+        "value": "`market-file-upload` allows the user to choose one or more files from their device storage to add to its internal\n`<input type=\"file\">` element. **The component does not handle uploading the chosen files!** We recommend handling file\nupload (or any other file operations) via an event listener on the `marketFileUploadValueChange` event, which is emitted\nevery time the selected file(s) are changed."
+      },
+      "attributes": [
+        {
+          "name": "accept",
+          "description": "String that is a list of file types the uploader should accept. This is\npassed to the internal `<input type=\"file\"/>` tag. For more info, see the\n[MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)."
+        },
+        {
+          "name": "compact",
+          "description": "Used to toggle \"compact mode\" (for use on mobile devices and when space is limited)"
+        },
+        {
+          "name": "delete-button-aria-label",
+          "description": "Optional property passed to the delete icons on selected file\nrows that will function as its aria-label. Defaults to \"Delete\"."
+        },
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the file picker."
+        },
+        {
+          "name": "file-subtext",
+          "description": "What type of secondary information, if any, to display on all file rows",
+          "values": [
+            {
+              "name": "size"
+            },
+            {
+              "name": "type"
+            }
+          ]
+        },
+        {
+          "name": "invalid",
+          "description": "DEPRECATED: Represents whether the input is invalid or not. This represents input-level error states.\nWe recommend using the fileMetadata prop to set error status and messages on the file level instead."
+        },
+        {
+          "name": "multiple",
+          "description": "Represents whether the selector allows multiple files\nto be selected."
+        }
+      ]
+    },
+    {
+      "name": "market-filter",
+      "description": {
+        "kind": "markdown",
+        "value": "> **NOTE:** This component is currently in beta and its usage is subject to change.\n\nThis component uses `<market-filter-button>` to display the label and selected value, and acts as the trigger for displaying the popover. The display value can be overwritten by adding an element with a `display-value` slot.\n\nThe popover can contain a `<market-list>` by assigning it with the `list` slot. When the list's `multiselect` is enabled, the popover will act as `interaction=\"persistent\"`, unless explicitly set via the `dropdownInteraction` prop. Also with `multiselect`, it is recommended that the `<market-row>`s have a `<market-checkbox slot=\"control\">`.\n\nBy default, the selected value is displayed next to the label. But for `<market-list multiselect>`, if there are multiple selections, the count is displayed instead. If you wish to give more detail to the count (e.g. \"3 colors\"), you may do so by utilizing the `display-value` slot.\n\nSoon to be implemented is support for `<market-date-picker>`."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the filter button"
+        },
+        {
+          "name": "dropdown-interaction",
+          "description": "Defines what types of interaction the dropdown should have\n(see `market-dropdown` docs for more granular explanation).\n\nIf not defined and the list is multiselect,\nthe dropdown interaction will be set to `persistent`\nso that the dropdown won't automatically close after selecting a row.",
+          "values": [
+            {
+              "name": "click"
+            },
+            {
+              "name": "hover"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "persistent"
+            }
+          ]
+        },
+        {
+          "name": "expanded",
+          "description": "Determines whether the filter is expanded or collapsed"
+        },
+        {
+          "name": "focused",
+          "description": "Whether or not the button is focused"
+        },
+        {
+          "name": "name",
+          "description": "Filter name"
+        },
+        {
+          "name": "popover-placement",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is `bottom-start`.\nhttps://popper.js.org/docs/v2/constructors/#strategy",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "auto-end"
+            },
+            {
+              "name": "auto-start"
+            },
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        },
+        {
+          "name": "popover-strategy",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is absolute. If\nyour reference element is in a fixed container, use the fixed strategy.\nhttps://popper.js.org/docs/v2/constructors//#strategy",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "String for setting filter button size",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-filter-button",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether or not the button is in an active state, e.g. filter is selected and dropdown is opened"
+        },
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the button"
+        },
+        {
+          "name": "focused",
+          "description": "Whether or not the button is focused"
+        },
+        {
+          "name": "icon-only",
+          "description": "Whether to display icon in place of label"
+        },
+        {
+          "name": "popover-id",
+          "description": "The ID of the popover element that the button controls"
+        },
+        {
+          "name": "size",
+          "description": "String for setting filter button size",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-filter-dropdown-menu",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "size",
+          "description": "String for setting filter button size",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-filter-group",
+      "description": {
+        "kind": "markdown",
+        "value": "> **NOTE:** This component is currently in beta and its usage is subject to change.\n\nThis serves as a container for `<market-input-search>` and `<market-filter>` and it handles layout variations depending on certain conditions such as the viewport width, number of filters, presence of search input, etc. as further described below.\n\nAn overflow menu for filters is automatically added when there's insufficient space or when there are more than 3 filters. In any case, filter group elements are not line wrapped. The overflowed filters are moved to the dropdown menu, where their respective value selection would be situated in that same dropdown. The size of the dropdown menu button is determined by the size of the first filter and it is assumed that all filters have the same size.\n\nThe search input, if provided, automatically transforms into compact mode on mobile viewports or when there are more than 3 filters in the group. When the search input is in compact mode and focus is given (by clicking it, for example), the search input component expands to show its input field and **all** filters are temporarily moved to the overflow menu. Removing the focus (by clicking the back button or anything else but the input) brings the search input back to compact mode.\n\nThere is no limit to the number of filters. Though having multiple search inputs may work, it will cause visual bugs and is therefore inadvisable."
+      },
+      "attributes": [
+        {
+          "name": "max-visible-filters",
+          "description": "Maximum number of visible filters before they are truncated and moved into the overflow menu.\nHowever, filters may be truncated anyway if there is not enough space."
+        }
+      ]
+    },
+    {
+      "name": "market-footer",
+      "description": {
+        "kind": "markdown",
+        "value": "A component for the bottom of a page or component, like <market-dialog>, <market-modal-partial>, or <market-modal-full>."
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-header",
+      "description": {
+        "kind": "markdown",
+        "value": "A component for the top of a page or component like <market-modal>."
+      },
+      "attributes": [
+        {
+          "name": "close-button-aria-label",
+          "description": "String to use for the aria-label accessibility attribute of the default close \"x\" button."
+        },
+        {
+          "name": "compact",
+          "description": "Whether or not the header is in compact mode\nwhen navigation is present."
+        },
+        {
+          "name": "disable-close-button",
+          "description": "Disables the default close \"x\" button."
+        },
+        {
+          "name": "show-navigation",
+          "description": "Whether or not the navigation slot is shown"
+        }
+      ]
+    },
+    {
+      "name": "market-icon",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "fidelity",
+          "description": "Optional: A number representing the fidelity of the icon to display."
+        },
+        {
+          "name": "name",
+          "description": "A string identifier for the icon. This can be either the semantic name which maps to\na token or the descriptive name, which maps to a SVG id in the sprite, though using the\nsemantic name is preferred because it gives you access to additional features like fidelity.\nYou can also pass any string and it will display a symbol or group within any SVG sprite\non the page, whether it is the Market sprite or not."
+        }
+      ]
+    },
+    {
+      "name": "market-inline-section-header",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-inline-status",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "",
+          "values": [
+            {
+              "name": "critical"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-input-password",
+      "description": {
+        "kind": "markdown",
+        "value": "A text input that masks the inputted text. There is a clickable icon that toggles the masking on and off."
+      },
+      "attributes": [
+        {
+          "name": "autocomplete",
+          "description": "Whether or not this input should allow autocompletion by the browser\nAccepts a boolean, or \"true\", \"false\", \"on\", \"off\" or an\n[accepted string value for the autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)"
+        },
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the input is disabled or not.\nThis visually and functionally will disable the input."
+        },
+        {
+          "name": "focused",
+          "description": "A boolean representing whether the input is focused or not."
+        },
+        {
+          "name": "input-id",
+          "description": "A string specifying an ID for the input."
+        },
+        {
+          "name": "inputmode",
+          "description": "Allows a browser to display an appropriate virtual keyboard.\n[Accepted values](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)."
+        },
+        {
+          "name": "invalid",
+          "description": "A boolean representing whether the input is invalid or not.\nThis represents error states."
+        },
+        {
+          "name": "maxlength",
+          "description": "A number specifying the maximum length of characters for the input value."
+        },
+        {
+          "name": "minlength",
+          "description": "A number specifying the minimum length of characters for the input value."
+        },
+        {
+          "name": "name",
+          "description": "A string specifying a name for the input."
+        },
+        {
+          "name": "placeholder",
+          "description": "A string specifying the placeholder of the input.\nThis is shown before a user attempts to add a value, given no value is already provided."
+        },
+        {
+          "name": "readonly",
+          "description": "A boolean representing whether the input is readonly or not."
+        },
+        {
+          "name": "required",
+          "description": "Whether or not the input is required; used to validate the input's value.\nSee MDN on the [required attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required)"
+        },
+        {
+          "name": "size",
+          "description": "String for setting input size.\nSizes `small` and `medium` visually hide the label,\nbut you should still provide one for accessibility purposes.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the input. This will be visually shown on the input and can be edited by the user."
+        }
+      ]
+    },
+    {
+      "name": "market-input-search",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "autocomplete",
+          "description": "Whether or not this input should allow autocompletion by the browser;\naccepts a boolean, or `\"true\"`, `\"false\"`, `\"on\"`, `\"off\"` or an\n[accepted string value for the autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).\n\nNote (source: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)):\nIn order to provide autocompletion, user-agents might require an input to have a:\n1. Have a `name` and/or `id` attribute;\n2. Be descendants of a `<form>` element;\n3. The form to have a submit button"
+        },
+        {
+          "name": "autofocus",
+          "description": "A boolean representing whether the input should focus on page load"
+        },
+        {
+          "name": "clear-button-aria-label",
+          "description": "A string representing the clear button's aria-label; localize as needed"
+        },
+        {
+          "name": "compact",
+          "description": "**INTERNAL [do not use directly]**\n\nUsed by `market-filter-group` when setting this component to compact mode"
+        },
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the input is disabled or not;\nthis visually and functionally will disable the input."
+        },
+        {
+          "name": "focused",
+          "description": "A boolean representing whether the input is focused or not"
+        },
+        {
+          "name": "input-aria-label",
+          "description": "A string representing the input's aria-label; localize as needed"
+        },
+        {
+          "name": "maxlength",
+          "description": "A number specifying the maximum length of characters for the input value"
+        },
+        {
+          "name": "name",
+          "description": "A string specifying a name for the search input"
+        },
+        {
+          "name": "placeholder",
+          "description": "A string specifying the placeholder of the input;\nthis is shown before a user attempts to add a value, given no value is already provided."
+        },
+        {
+          "name": "search-icon-button-aria-label",
+          "description": "A string representing the search icon button's aria-label; localize as needed"
+        },
+        {
+          "name": "size",
+          "description": "A string specifying the size of the input",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the input;\nthis will be visually shown on the input and can be edited by the user."
+        },
+        {
+          "name": "variant",
+          "description": "",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-input-text",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "autocomplete",
+          "description": "Whether or not this input should allow autocompletion by the browser\nAccepts a boolean, or \"true\", \"false\", \"on\", \"off\" or an\n[accepted string value for the autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)"
+        },
+        {
+          "name": "autofilled",
+          "description": "Whether the input is displaying an initial autofill value. Used for\nstyling to ensure the label floats up correctly."
+        },
+        {
+          "name": "autofocus",
+          "description": "A boolean representing whether the input should focus on page load.\nIf multiple elements with `autofocus` are present, it is not guaranteed which one\nwill ultimately receive the focus. It is advised that only one at most is present."
+        },
+        {
+          "name": "autovalidate",
+          "description": "Whether or not to automatically style this input as invalid based on\nnative input validation attributes: `min`, `max`, `pattern`, `required`, `maxlength`, `minlength`.\nSee MDN articles on [form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)\nand [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)"
+        },
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the input is disabled or not.\nThis visually and functionally will disable the input."
+        },
+        {
+          "name": "focused",
+          "description": "A boolean representing whether the input is focused or not."
+        },
+        {
+          "name": "input-id",
+          "description": "A string specifying an ID for the input."
+        },
+        {
+          "name": "inputmode",
+          "description": "Allows a browser to display an appropriate virtual keyboard.\n[Accepted values](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)."
+        },
+        {
+          "name": "invalid",
+          "description": "A boolean representing whether the input is invalid or not.\nThis represents error states."
+        },
+        {
+          "name": "max",
+          "description": "Specifies the maximum value for number and time inputs.\nSee MDN on the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max)"
+        },
+        {
+          "name": "maxlength",
+          "description": "A number specifying the maximum length of characters for the input value.\nSee MDN on the [maxlength attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength)"
+        },
+        {
+          "name": "min",
+          "description": "Specifies the minimum value for number and time inputs.\nSee MDN on the [min attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min)"
+        },
+        {
+          "name": "minlength",
+          "description": "A number specifying the minimum length of characters for the input value.\nSee MDN on the [minlength attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/minlength)"
+        },
+        {
+          "name": "name",
+          "description": "A string specifying a name for the input."
+        },
+        {
+          "name": "pattern",
+          "description": "Specifies a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)\nto validate the input's value against.\nSee MDN on the [pattern attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)"
+        },
+        {
+          "name": "placeholder",
+          "description": "A string specifying the placeholder of the input.\nThis is shown before a user attempts to add a value, given no value is already provided."
+        },
+        {
+          "name": "readonly",
+          "description": "A boolean representing whether the input is readonly or not."
+        },
+        {
+          "name": "required",
+          "description": "Whether or not the input is required; used to validate the input's value.\nSee MDN on the [required attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required)"
+        },
+        {
+          "name": "size",
+          "description": "String for setting input size.\nSizes `small` and `medium` visually hide the label,\nbut you should still provide one for accessibility purposes.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "step",
+          "description": "Specifies the increment step for number and time inputs.\nSee MDN on the [step attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step)"
+        },
+        {
+          "name": "type",
+          "description": "A string specifying the type of control to render. Any native HTML input type would work here."
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the input. This will be visually shown on the input and can be edited by the user."
+        }
+      ]
+    },
+    {
+      "name": "market-link",
+      "description": {
+        "kind": "markdown",
+        "value": "A simple styled link component."
+      },
+      "attributes": [
+        {
+          "name": "destructive",
+          "description": "Gives the link destructive styling."
+        },
+        {
+          "name": "disabled",
+          "description": "Visually disables the link and prevents navigating to the link on click."
+        },
+        {
+          "name": "download",
+          "description": "Causes the browser to treat the linked URL as a download. Only works for same-origin URLs.\nOnly applies when an `href` is provided.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download) for details on accepted values."
+        },
+        {
+          "name": "highlight",
+          "description": "Links that exist within a larger block of text need to rely on more than color to meet accessibility standards.",
+          "values": [
+            {
+              "name": "underline"
+            }
+          ]
+        },
+        {
+          "name": "href",
+          "description": "String that represents the URL the link goes to.\nIf not present, the internal tag will be a `<button>` rather than `<a>` in order to align with a11y best practices."
+        },
+        {
+          "name": "rel",
+          "description": "Defines the relationship between a linked resource and the current document.\nOnly applies when an `href` is provided.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) for details on accepted values."
+        },
+        {
+          "name": "target",
+          "description": "Specifies where to open the linked URL.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target) for details on accepted values.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-list",
+      "description": {
+        "kind": "markdown",
+        "value": "A component for displaying lists of items.\n\nYou can slot `<market-row>` or `<market-action-card>` into `<market-list>`. If\nthe list is `interactive`, it will handle selection/deselection of its slotted\nrows or cards.\n\n`<market-list>` and `<market-row>` can be used together in `<market-select>`'s\n`list` slot and will function in that context as an interactive list of options."
+      },
+      "attributes": [
+        {
+          "name": "filter-strategy",
+          "description": "Filter strategy\n\n- `\"textcontent\"` (default, case-insensitive): This strategy searches through each of the row’s `.textContent`. This means it would also search through a row’s subtext, accessories, and other slots.\n- `\"label\"` (case-insensitive): This strategy searches through the slotted `<label>` elements of rows. Note that if a `<label>` is not slotted in a row, this default filter strategy will not work.\n- `\"value\"` (case-sensitive): This strategy searches through the rows’ `value` attribute. Values are usually case-sensitive so they are treated the same way when searching for them.\n- `Function`: This strategy works similarly to `Array.prototype.filter()` where the function’s `boolean` output determines if the item will be kept or filtered out. For your convenience, you are provided with 5 parameters:\n  - `item`: `TMarketListItem`\n  - `label`: the `<label>`’s `.textContent`\n  - `query`: `value` of `<market-input-search>`\n  - `textContent`: the item’s `.textContent`\n  - `value`: `value` of the item",
+          "values": [
+            {
+              "name": "label"
+            },
+            {
+              "name": "textcontent"
+            },
+            {
+              "name": "value"
+            }
+          ]
+        },
+        {
+          "name": "hide-selectable-count",
+          "description": "Whether a count of selectable items rendered within the control row will be hidden"
+        },
+        {
+          "name": "interactive",
+          "description": "Whether or not the list is interactive. Results in list items receiving hover\nand active styling when hovered/clicked.<br>\n\n_NOTE:_ Lists slotted into `market-popover`, or any of the components that use it\ninternally such as `market-select`, `market-dropdown`, and `market-button-dropdown`,\nwill automatically have their `interactive` property set to `true`."
+        },
+        {
+          "name": "multiselect",
+          "description": "Whether or not the list can allow for multiple selections (currently not\nreflected in the `value` prop)"
+        },
+        {
+          "name": "name",
+          "description": "String value used for the `aria-labelledby` attribute."
+        },
+        {
+          "name": "reorder-mode",
+          "description": "When set to `framework`, the list will move the reordered row back to its original position\nbefore the `marketListItemsReordered` event is fired. This is useful when the list\nis rendered within a framework like Ember or React.",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "framework"
+            }
+          ]
+        },
+        {
+          "name": "reorderable",
+          "description": "Whether the list is reorderable or not.\nSetting to `internal` enables reordering rows internally\nwhile `external` also allows dragging to & from other lists.",
+          "values": [
+            {
+              "name": "external"
+            },
+            {
+              "name": "internal"
+            },
+            {
+              "name": "off"
+            }
+          ]
+        },
+        {
+          "name": "transient",
+          "description": "When set to `true`, rows/cards will not persist selected state on click. Only takes effect when `interactive` is true."
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the list. To select multiple values,\nseparate **unique** values with a comma (e.g. `'orange,pear'`).\nSetting to empty string (`''`) will clear all current selections."
+        }
+      ]
+    },
+    {
+      "name": "market-modal-full",
+      "description": {
+        "kind": "markdown",
+        "value": "Note: Dialogs/Modals in Market are \"dumb\" components and are mostly only concerned with how\nthey look on the page. They don't know anything about closing & opening or even\nhow they are positioned on the page. Those things are handled by the context and\ncontext manager."
+      },
+      "attributes": [
+        {
+          "name": "animation-enter-duration",
+          "description": "The duration for the modal enter animation, set from design tokens"
+        },
+        {
+          "name": "animation-exit-duration",
+          "description": "The duration for the modal exit animation, set from design tokens"
+        },
+        {
+          "name": "data-dialog-id",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal"
+        },
+        {
+          "name": "hidden",
+          "description": "INTERNAL ONLY: Used in CSS to trigger start and stop animations"
+        },
+        {
+          "name": "data-dialog-index",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal's place\nin the stack"
+        },
+        {
+          "name": "layout",
+          "description": "Sets the layout width for the main content area. Defaults to `regular`, which sets a\na maximum content width of 600px. You can also use `wide` for a max 1248px content area,\nor `fluid` to have content fill the whole viewport.",
+          "values": [
+            {
+              "name": "fluid"
+            },
+            {
+              "name": "regular"
+            },
+            {
+              "name": "wide"
+            }
+          ]
+        },
+        {
+          "name": "trap-focus",
+          "description": "Enforces focus trapping on the modal"
+        }
+      ]
+    },
+    {
+      "name": "market-modal-partial",
+      "description": {
+        "kind": "markdown",
+        "value": "Note: Dialogs/Modals in Market are \"dumb\" components and are mostly only concerned with how\nthey look on the page. They don't know anything about closing & opening or even\nhow they are positioned on the page. Those things are handled by the context and\ncontext manager."
+      },
+      "attributes": [
+        {
+          "name": "animation-enter-duration",
+          "description": "The duration for the modal enter animation, set from design tokens"
+        },
+        {
+          "name": "animation-exit-duration",
+          "description": "The duration for the modal exit animation, set from design tokens"
+        },
+        {
+          "name": "data-dialog-id",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal"
+        },
+        {
+          "name": "hidden",
+          "description": "INTERNAL ONLY: Used in CSS to trigger start and stop animations"
+        },
+        {
+          "name": "data-dialog-index",
+          "description": "INTERNAL ONLY: Used by the context manager to identify a specific dialog/modal's place\nin the stack"
+        },
+        {
+          "name": "trap-focus",
+          "description": "Enforces focus trapping on the modal"
+        }
+      ]
+    },
+    {
+      "name": "market-pagination",
+      "description": {
+        "kind": "markdown",
+        "value": "A component to use for pagination. Renders two subcomponents: `<market-pagination-page-size>`, a dropdown for selecting the page size (number of items per page), and `<market-pagination-nav>`, a dropdown for selecting a specific page, and buttons for navigating to the previous/next pages. The previous button will be disabled if the current page is the first page, and the next button will be disabled if the current page is the last page.\n\nThis component does not handle actually rendering any paginated items, nor does it implement any kind of navigation on its own. It emits the following events in response to user interaction, which should be listened to and implemented by the client application:\n\n- `marketPaginationPageSizeChange` - emits `{ pageSize }`\n- `marketPaginationNavigation` - emits `{ page, prevPage, pageSize }`\n\n_That means when interacting with the Storybook examples, the selected value in the dropdowns will not change. You can inspect the Actions pane of the story to view the emitted event details._"
+      },
+      "attributes": [
+        {
+          "name": "current-page",
+          "description": "The current page being viewed."
+        },
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables all navigation buttons"
+        },
+        {
+          "name": "has-next-page",
+          "description": "Allow the user to navigate to the next page"
+        },
+        {
+          "name": "has-previous-page",
+          "description": "Allow the user to navigate to the previous page"
+        },
+        {
+          "name": "page-size",
+          "description": "The number of results displayed per page."
+        },
+        {
+          "name": "page-size-options",
+          "description": "Options for page sizes (comma separated list of numbers). If omitted, will not display the page size subcomponent."
+        },
+        {
+          "name": "total-pages",
+          "description": "The total number of pages."
+        }
+      ]
+    },
+    {
+      "name": "market-pagination-nav",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "current-page",
+          "description": "The current page being viewed."
+        },
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the navigation buttons"
+        },
+        {
+          "name": "has-next-page",
+          "description": "Allow the user to navigate to the next page"
+        },
+        {
+          "name": "has-previous-page",
+          "description": "Allow the user to navigate to the previous page"
+        },
+        {
+          "name": "page-size",
+          "description": "The number of results displayed per page.\nRequired to emit this value as part of the navigation event."
+        },
+        {
+          "name": "total-pages",
+          "description": "The total number of pages."
+        }
+      ]
+    },
+    {
+      "name": "market-pagination-page-size",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables dropdown"
+        },
+        {
+          "name": "page-size-options",
+          "description": "Options for page sizes (comma separated list)."
+        },
+        {
+          "name": "value",
+          "description": "The number of results displayed per page."
+        }
+      ]
+    },
+    {
+      "name": "market-pill",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "indicator",
+          "description": "Controls whether the pill should display an indicator icon."
+        },
+        {
+          "name": "interactive",
+          "description": "Controls whether the pill should react to hovers/clicks. It is recommended to only set this to true if you have also slotted an icon into the pill."
+        },
+        {
+          "name": "size",
+          "description": "String for setting pill size",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "variant",
+          "description": "Sets the visual variant style for the pill.",
+          "values": [
+            {
+              "name": "alpha"
+            },
+            {
+              "name": "beta"
+            },
+            {
+              "name": "critical"
+            },
+            {
+              "name": "emphasis"
+            },
+            {
+              "name": "insight"
+            },
+            {
+              "name": "normal"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-popover",
+      "description": {
+        "kind": "markdown",
+        "value": "A simple component used by other components like `<market-select>` and `<market-dropdown>` to display popovers."
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-progress-tracker",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "compact",
+          "description": "Whether the progress tracker is in compact mode\n\nOnly functional when `orientation` is set to `\"horizontal\"`"
+        },
+        {
+          "name": "connectorless",
+          "description": "Whether there are connectors displayed between steps"
+        },
+        {
+          "name": "current-step-index",
+          "description": "Index of the current step of the tracker\n\nWhen defined, the child `market-progress-tracker-step` components’\n`active` and `completed` attributes will be automatically set.\n\nOtherwise, it is expected that the steps’\n`active` and `completed` properties are manually set."
+        },
+        {
+          "name": "indicator",
+          "description": "Type of icon used to indicate the step’s progress",
+          "values": [
+            {
+              "name": "check"
+            },
+            {
+              "name": "circle"
+            }
+          ]
+        },
+        {
+          "name": "interactive",
+          "description": "Whether this step tracker is interactive\n\nOnly functional when `orientation` is set to `\"horizontal\"`"
+        },
+        {
+          "name": "orientation",
+          "description": "Progress tracker orientation",
+          "values": [
+            {
+              "name": "horizontal"
+            },
+            {
+              "name": "vertical"
+            }
+          ]
+        },
+        {
+          "name": "reversed",
+          "description": "Whether the direction of the progress indicators is reversed"
+        },
+        {
+          "name": "size",
+          "description": "Steps’ size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-progress-tracker-step",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the step is active"
+        },
+        {
+          "name": "completed",
+          "description": "Whether the step is completed"
+        },
+        {
+          "name": "name",
+          "description": "Unique name of the step\n\nWhen this step is interactive and clicked, it is included in the detail of the emitted event."
+        }
+      ]
+    },
+    {
+      "name": "market-qrcode",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "border",
+          "description": "Include a six data-pixel border around the QR code. When this attribute is\npresent, the QR code will have a background color (default is transparent\nbackground)."
+        },
+        {
+          "name": "content",
+          "description": "The URL or other content of the QR code. The QR code is generated using\n[@square/qrcode-encoder](https://github.com/squareup/qrcode/blob/master/packages/square-qrcode-encoder/README.md)."
+        },
+        {
+          "name": "monochrome",
+          "description": "When true, QR code will render all elements in black & white."
+        },
+        {
+          "name": "size",
+          "description": "By default, QR code size is dependent on the information being encoded.\nUse this property to set the QR code's height and width in pixels."
+        }
+      ]
+    },
+    {
+      "name": "market-radio",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-radio>` can be used on its own, or slotted into `<market-row>` as a control. When used with `market-row`, the\nrow's `selected` prop overrides the radio's `selected` prop."
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the radio is active or not."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the radio button is disabled."
+        },
+        {
+          "name": "focused",
+          "description": "Whether the radio is focused or not."
+        },
+        {
+          "name": "hovered",
+          "description": "Whether the radio is hovered or not."
+        },
+        {
+          "name": "invalid",
+          "description": "Whether the radio button is invalid."
+        },
+        {
+          "name": "selected",
+          "description": "Whether the radio button is selected (analogous to the HTML input attribute `checked`).\nIf used as a slotted control inside of `market-row`, this will be overridden by the row's `selected` property."
+        }
+      ]
+    },
+    {
+      "name": "market-row",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "control-position",
+          "description": "Whether the slotted control appears to the left or right of the main content.",
+          "values": [
+            {
+              "name": "leading"
+            },
+            {
+              "name": "trailing"
+            }
+          ]
+        },
+        {
+          "name": "destructive",
+          "description": "Gives the row destructive styling."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the row is disabled.\nAlso disables slotted controls (`<market-checkbox>`, `<market-radio>`, or `<market-toggle>`), if present."
+        },
+        {
+          "name": "drag-enabled",
+          "description": "Whether the row is drag & drop enabled"
+        },
+        {
+          "name": "drag-handle-position",
+          "description": "Whether the drag handle appears to the left or right.",
+          "values": [
+            {
+              "name": "leading"
+            },
+            {
+              "name": "trailing"
+            }
+          ]
+        },
+        {
+          "name": "href",
+          "description": "A link that this row should navigate to on click.\nIf this property is set, an anchor tag will be rendered."
+        },
+        {
+          "name": "interactive",
+          "description": "Whether or not the row is interactive. Results in rows receiving hover\nand active styling when hovered/clicked.\n\nAutomatically set to `true` when using the drill variant\nor passing in a slotted control (checkbox/radio/toggle).<br>\n\nAutomatically be set to reflect the list's `interactive`\nvalue if used inside of `<market-list>`."
+        },
+        {
+          "name": "selected",
+          "description": "Whether the row is currently selected. Used by `<market-list>` and `<market-select>`.\nAlso sets the selection state for slotted controls (`<market-checkbox>`, `<market-radio>`, or `<market-toggle>`),\nif present."
+        },
+        {
+          "name": "size",
+          "description": "Determines the form factor of the row.",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.\nSee [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target) for details on accepted values.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        },
+        {
+          "name": "togglable",
+          "description": "By default, row selection is toggled on click. There are some cases, such\nas selects, where we instead want the row to stay active on subsequent\nclicks. Setting `togglable` to `false` enables this behavior. Can be set\nby `<market-list>` and `<market-select>`."
+        },
+        {
+          "name": "transient",
+          "description": "When set to `true`, rows will not persist selected state on click.\nOnly takes effect when `interactive` is true."
+        },
+        {
+          "name": "value",
+          "description": "The value for the row."
+        },
+        {
+          "name": "variant",
+          "description": "The style of row you want to use. The default is \"regular\", which allows\nyou to optionally slot a checkbox, radio, or (in the future) toggle control.\nThe other option is \"drill\", which functions more like a link that you can\nuse to drill through a series of action card sets.",
+          "values": [
+            {
+              "name": "drill"
+            },
+            {
+              "name": "regular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-segment",
+      "description": {
+        "kind": "markdown",
+        "value": "This component is a subcomponent of `market-segmented-control`. It is not meant to be used as a standalone component."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Whether the market segment should appear in a disabled state."
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the segment."
+        }
+      ]
+    },
+    {
+      "name": "market-segmented-control",
+      "description": {
+        "kind": "markdown",
+        "value": "Segmented controls are commonly used to provide a second level of navigation to display different views. They can also be used to filter a collection. Intended for use with `market-segment`."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the market-segmented-control is disabled or not.\nThis visually and functionally will disable the control area."
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the segmented-control.\nThis value determines which segment is selected based on the segment value."
+        }
+      ]
+    },
+    {
+      "name": "market-select",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the select."
+        },
+        {
+          "name": "focused",
+          "description": "Whether or not the select is focused."
+        },
+        {
+          "name": "invalid",
+          "description": "Whether or not the select is invalid (w/ corresponding visual state)"
+        },
+        {
+          "name": "multiselect",
+          "description": "Whether or not multiselect is enabled"
+        },
+        {
+          "name": "name",
+          "description": "String for the \"name\" attribute. Used when slotted into `market-field`."
+        },
+        {
+          "name": "placeholder",
+          "description": "A string specifying the placeholder for the select.\nThis is shown when the select is open with no selection."
+        },
+        {
+          "name": "popover-container",
+          "description": "Ancestor selector to contain the popover menu.\nUse this if you need the popover to be appended to\nan ancestor element other than the `body` element."
+        },
+        {
+          "name": "popover-strategy",
+          "description": "Configuration option for Floating UI (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is absolute. If\nyour reference element is in a fixed container, use the fixed strategy.\nhttps://floating-ui.com/docs/computePosition#strategy",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        },
+        {
+          "name": "readonly",
+          "description": "Whether or not the select is readonly."
+        },
+        {
+          "name": "required",
+          "description": "Whether or not the select is required. This property relays\nimportant contextual information when using a screen reader"
+        },
+        {
+          "name": "size",
+          "description": "String for setting select size.\nSizes `small` and `medium` visually hide the label,\nbut you should still provide one for accessibility purposes.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the select\nMust correspond to a `value` attribute on a slotted `market-row`\nFor multiselect, separate values with a comma (e.g. 'orange,pear')."
+        }
+      ]
+    },
+    {
+      "name": "market-sheet",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "animation-enter-duration",
+          "description": "The duration for the modal enter animation, set from design tokens"
+        },
+        {
+          "name": "animation-exit-duration",
+          "description": "The duration for the modal exit animation, set from design tokens"
+        },
+        {
+          "name": "close-handle-aria-label",
+          "description": "Translated string to label Close handle"
+        },
+        {
+          "name": "disable-focus",
+          "description": "Disable focus trapping on the modal"
+        },
+        {
+          "name": "open-mode",
+          "description": "Default state sheet opens to when opened from close",
+          "values": [
+            {
+              "name": "dynamic"
+            },
+            {
+              "name": "full"
+            },
+            {
+              "name": "partial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-stepper",
+      "description": {
+        "kind": "markdown",
+        "value": "A number input that can be incremented and decremented using the + and - buttons."
+      },
+      "attributes": [
+        {
+          "name": "decrement-aria-label",
+          "description": "The decrement button's aria-label. Localize as needed."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the input is disabled or not.\nThis visually and functionally disables the input."
+        },
+        {
+          "name": "focused",
+          "description": "Whether the input is focused or not."
+        },
+        {
+          "name": "increment-aria-label",
+          "description": "The increment button's aria-label. Localize as needed."
+        },
+        {
+          "name": "input-aria-label",
+          "description": "The inner input's aria-label. Localize as needed."
+        },
+        {
+          "name": "input-id",
+          "description": "The ID for the inner input."
+        },
+        {
+          "name": "invalid",
+          "description": "Whether the input is invalid or not. This represents error states."
+        },
+        {
+          "name": "max",
+          "description": "A number specifying the greatest value in the range of permitted values.\n(See MDN on the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#max))"
+        },
+        {
+          "name": "min",
+          "description": "A number specifying the most negative value in the range of permitted values.\n(See MDN on the [min attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min))"
+        },
+        {
+          "name": "name",
+          "description": "The name for the inner input."
+        },
+        {
+          "name": "placeholder",
+          "description": "The placeholder of the input. Shown before a user attempts to\nadd a value, given no value is already provided."
+        },
+        {
+          "name": "readonly",
+          "description": "Whether the input is readonly or not."
+        },
+        {
+          "name": "step",
+          "description": "A positive number specifying the increment step.\n(See MDN on the [step attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step))"
+        },
+        {
+          "name": "value",
+          "description": "The value for the input. This is visually shown on the input\nand can be edited by the user."
+        }
+      ]
+    },
+    {
+      "name": "market-tab",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Whether or not the tab is disabled"
+        },
+        {
+          "name": "selected",
+          "description": "Whether or not the tab is selected"
+        },
+        {
+          "name": "size",
+          "description": "Tab's size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-tab-list",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "default-tab",
+          "description": "String for the default selected tab (i.e. `market-tab`'s `id` attribute)\n\nOnly used when the component initially loads"
+        },
+        {
+          "name": "selected-tab",
+          "description": "String for the selected tab (i.e. `market-tab`'s `id` attribute)\n\nOmitting or setting to empty string will default to the first non-disabled tab"
+        },
+        {
+          "name": "size",
+          "description": "Tabs' size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-tab-panel",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "hidden",
+          "description": "Whether or not the panel is hidden"
+        }
+      ]
+    },
+    {
+      "name": "market-table",
+      "description": {
+        "kind": "markdown",
+        "value": "Designed to be used with `market-table-row`, `market-table-column`, and `market-table-cell`.\n\nIn order to make a basic table, set up the markup as in this example:\n\n```\n<market-table>\n  <market-table-row slot=\"header\">\n    <market-table-column name=\"column-1\">Header content</market-table-column>\n    <market-table-column name=\"column-2\">Header content</market-table-column>\n    <market-table-column name=\"column-3\">Header content</market-table-column>\n  </market-table-row>\n  <market-table-row>\n    <market-table-cell>Cell content</market-table-cell>\n    <market-table-cell>Cell content</market-table-cell>\n    <market-table-cell>Cell content</market-table-cell>\n  </market-table-row>\n</market-table>\n```\n\n`market-table` uses CSS grid for layout. By default it will use auto-flow the cells into equally-sized columns, but you can refine your table's column widths by using a `grid-template-columns` definition:\n\n```css\n.my-market-table {\n  grid-template-columns: 100px 1fr 1fr;\n}\n```\n\nIn order to support custom column widths and sticky table columns, `market-table` will clip content that overflows the width of the table. If you are working on a table that needs to scroll horizontally, you can override this behavior by unsetting the `overflow-x` style:\n\n```css\n.my-market-table {\n  overflow-x: unset; /* default is 'clip' */\n}\n```"
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-table-area",
+      "description": {
+        "kind": "markdown",
+        "value": "This component is intended for internal use only! It is used by `market-table` to define areas for sticky rows (header/main/footer) and by `market-table-row` to define areas for sticky columns (left/main/right)."
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether or not this table area is currently visible/has any rows or cells within"
+        },
+        {
+          "name": "orientation",
+          "description": "Whether or not this area is grouping columns (vertical) or rows (horizontal)",
+          "values": [
+            {
+              "name": "horizontal"
+            },
+            {
+              "name": "vertical"
+            }
+          ]
+        },
+        {
+          "name": "stick-to",
+          "description": "Sticks this area to an edge of the table",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-table-cell",
+      "description": {
+        "kind": "markdown",
+        "value": "Table cells are the most atomic component of a table. You can slot any kind of content into a cell.\n\nWhen used in a `market-table`, table cells inherit properties from their parent `market-table-row`\nand corresponding `market-table-column` (if one exists). It should be rare to have to set a prop on\n`market-table-cell` directly.\n\nAnalogous to the `<td>` HTML element."
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the cell is currently active."
+        },
+        {
+          "name": "align",
+          "description": "Content/text alignment for this cell, default is set based on the alignment of the\nmarket-table-column with matching column/name prop\n\n**NOTE:** this is set automatically when used in a `market-table` with a corresponding\n`market-table-column`.",
+          "values": [
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "column",
+          "description": "A key that matches the 'name' prop on the appropriate market-table-column\n\n**NOTE:** this is set automatically when used in a `market-table` with a corresponding\n`market-table-column`."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the cell is disabled."
+        },
+        {
+          "name": "interactive",
+          "description": "Whether or not the cell is interactive. Results in cell receiving\nhover and active styling when hovered/clicked."
+        },
+        {
+          "name": "leading-indentation",
+          "description": "Determines how much to indent the cell by.\nThis will be multiplied by the default indentation size (40px) for uniform indentation levels\n\n**NOTE:** this is inherited automatically if set on the parent `market-table-row`."
+        }
+      ]
+    },
+    {
+      "name": "market-table-column",
+      "description": {
+        "kind": "markdown",
+        "value": "A `market-table-column` is a special type of table cell, intended for use in a `market-table-row`\nand required for any row slotted into the `header` slot of `market-table`. It controls properties\nfor all cells in a column in addition to acting as a table heading for a column (similar to how a\n`<th>` would).\n\nYou MUST pass a `[name]` attribute to every `market-table-column` element, as this is how it keeps\ntrack of its related cells."
+      },
+      "attributes": [
+        {
+          "name": "align",
+          "description": "Will set the `align` property on all related cells to this value",
+          "values": [
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "hidden",
+          "description": "Hides the column and all related cells."
+        },
+        {
+          "name": "index",
+          "description": "**INTERNAL [do not use directly]**\nThe order of this market-table-column in the DOM"
+        },
+        {
+          "name": "name",
+          "description": "**REQUIRED:** A unique key for this column, used to map all related cells together"
+        },
+        {
+          "name": "sort-order",
+          "description": "What order the column is sorting in; ascending points up and descending points down\nIf the column is sortable and this prop is not present, the sort icon points up but is grayed out.",
+          "values": [
+            {
+              "name": "ascending"
+            },
+            {
+              "name": "descending"
+            }
+          ]
+        },
+        {
+          "name": "sortable",
+          "description": "Whether or not this column is sortable"
+        },
+        {
+          "name": "stick-to",
+          "description": "Makes this column stick to an edge of the table",
+          "values": [
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "width",
+          "description": "**INTERNAL [do not use directly]**\nSet by the parent table element, based on it's grid-template-columns CSS value"
+        }
+      ]
+    },
+    {
+      "name": "market-table-row",
+      "description": {
+        "kind": "markdown",
+        "value": "`market-table-row` expects its slotted children to be `market-table-cell` or `market-table-column`\nelements, and can be fixed ('stuck') to the top or bottom edge of its parent table.\n\nAnalogous to the `<tr>` HTML element."
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the row is currently active."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the row is disabled."
+        },
+        {
+          "name": "expanded",
+          "description": "**INTERNAL [do not use directly]**\nUsed to set aria-expanded on the nested button for animation"
+        },
+        {
+          "name": "footer",
+          "description": "Gives this row footer styling"
+        },
+        {
+          "name": "header",
+          "description": "Gives this row header styling"
+        },
+        {
+          "name": "index",
+          "description": "**INTERNAL [do not use directly]**\nThe order of this row in the DOM"
+        },
+        {
+          "name": "interactive",
+          "description": "Whether or not the row is interactive. Results in row receiving\nhover and active styling when hovered/clicked."
+        },
+        {
+          "name": "leading-indentation",
+          "description": "Optional: Level of leading indentation\nThis will be multiplied by the default indentation size (40px) for uniform indentation\nlevels"
+        },
+        {
+          "name": "nested",
+          "description": "Used to determine if the table has accordion rows. When true,\nit will add extra spacing at the beginning of the row. This will\nkeep the row's contents aligned with the accordion rows. This is\nset from the market-table component.\n\nThis property can be overriden when the content does not need\nthe extra accordion spacing."
+        },
+        {
+          "name": "original-slot",
+          "description": "The slot this row was originally placed in"
+        },
+        {
+          "name": "selected",
+          "description": "Whether the row is selected. Used by control element."
+        },
+        {
+          "name": "stick-to",
+          "description": "Optional: The edge of the table to fix this row to.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        },
+        {
+          "name": "sticky",
+          "description": "Optional: When present, can be used instead of `stickTo` in combination\nwith `header` or `footer` to determine the edge of the table to stick this\nrow to. (`header` elements with `[sticky]` will be attached to the top, and\n`footer` elements to the bottom)"
+        }
+      ]
+    },
+    {
+      "name": "market-table-v2",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "align",
+          "description": "Sets the horizontal alignment.\nTable alignment will be inherited by descendant rows & cells.",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "collapsible",
+          "description": "Whether the slotted table groups are collapsible."
+        },
+        {
+          "name": "layout",
+          "description": "Sets the `table-layout` algorithm.\nBy default, the column widths are adjusted to fit the content.\nIf column widths are explicitly sized, use `fixed` to speed up render time.\nSee [table-layout](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout)\nfor more information.",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        },
+        {
+          "name": "reorder-mode",
+          "description": "When set to `framework`, the table will move the reordered item back to its original position\nbefore the `marketTableV2RowsReordered` event is fired. This is useful when the table\nis rendered within a framework like Ember or React.",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "framework"
+            }
+          ]
+        },
+        {
+          "name": "reorderable",
+          "description": "Whether the table is reorderable or not.\nSetting to `internal` enables reordering table rows internally\nwhile `external` also allows dragging to & from other tables.",
+          "values": [
+            {
+              "name": "external"
+            },
+            {
+              "name": "internal"
+            },
+            {
+              "name": "off"
+            }
+          ]
+        },
+        {
+          "name": "selected",
+          "description": "Whether the table is selected.\nRelevant if the table has rows with a slotted controls.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "indeterminate"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "valign",
+          "description": "Sets the vertical alignment.\nTable alignment will be inherited by descendant rows & cells.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "middle"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-table-v2-cell",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the cell is currently active."
+        },
+        {
+          "name": "align",
+          "description": "Sets the horizontal alignment. When not set,\nalignment is inherited from an ancestor row or table.",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "caret",
+          "description": "Displays a leading clickable caret;\nintended to be used in conjunction with\n`<market-table-v2-group>` to support nested rows.",
+          "values": [
+            {
+              "name": "down"
+            },
+            {
+              "name": "up"
+            }
+          ]
+        },
+        {
+          "name": "caret-aria-label-collapsed",
+          "description": "Translated label for the expand action when group is currently collapsed (for screen reader users)"
+        },
+        {
+          "name": "caret-aria-label-expanded",
+          "description": "Translated label for the collapse action when group is currently expanded (for screen reader users)"
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the cell is currently disabled."
+        },
+        {
+          "name": "indent",
+          "description": "Indentation level"
+        },
+        {
+          "name": "interactive",
+          "description": "Whether the cell is interactive, which results in hover, focus, & pressed styles."
+        },
+        {
+          "name": "nowrap",
+          "description": "Set this to `true` to force cell text onto one line.\nMay cause horizontal scrolling in the ancestor table."
+        },
+        {
+          "name": "selected",
+          "description": "Whether the cell is selected.\nRelevant if the cell has a slotted control.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "indeterminate"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "sort-aria-label-ascending",
+          "description": "Translated label for the icon indicating an ascending sort (for screen reader users)"
+        },
+        {
+          "name": "sort-aria-label-descending",
+          "description": "Translated label for the icon indicating a descending sort (for screen reader users)"
+        },
+        {
+          "name": "sort-aria-label-none",
+          "description": "Translated label for the icon indicating no sort applied (for screen reader users)"
+        },
+        {
+          "name": "sort-order",
+          "description": "When `sortable` is `true`, this prop sets the `aria-sort` attribute\nand displays an arrow in the correct sort direction.",
+          "values": [
+            {
+              "name": "ascending"
+            },
+            {
+              "name": "descending"
+            },
+            {
+              "name": "none"
+            }
+          ]
+        },
+        {
+          "name": "sort-strategy",
+          "description": "When `sortable` is `true`, this prop specifies the sorting strategy.\n- `'string'`: sorts rows alphabetically (case-insensitive) by the text content of the cell (default)\n- `'number'`: sorts rows numerically using [`parseFloat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat) to parse the cell content\n- `'datetime'`: sorts rows chronologically using [date-fns `parse()`](https://date-fns.org/v3.3.1/docs/parse) method to parse the cell content. This strategy requires specifying a format in the cell's `sortStrategyFormat` prop; see accepted formats [here](https://date-fns.org/v3.3.1/docs/parse)\n- `Function`: a custom callback function to compare rows, similar to the `compareFn` in [`Array.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort). The following arguments are provided to the function:\n  - `rowA`: the first row for comparison\n  - `rowB`: the second row for comparison\n  - `order`: the direction of the sort, either `ascending` or `descending`\n  - `index`: the index of the column being sorted on\n\n  The callback function should return a number whose sign indicates the relative order of the two elements:\n  - negative if `rowA` is less than `rowB`\n  - positive if `rowA` is greater than `rowB`\n  - zero if `rowA` & `rowB` are equal",
+          "values": [
+            {
+              "name": "datetime"
+            },
+            {
+              "name": "number"
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        {
+          "name": "sort-strategy-format",
+          "description": "When setting `sortStrategy` to `\"datetime\"`, this prop is required to specify the format.\nSee accepted formats [here](https://date-fns.org/v3.3.1/docs/parse)"
+        },
+        {
+          "name": "sortable",
+          "description": "When the cell is in a table header row, this prop enables sorting by this cell's column."
+        },
+        {
+          "name": "sticky",
+          "description": "Makes a cell \"stick\" to the left or right of its parent row.\nRequires the row to be sized wider than the table to enable horizontal scrolling.",
+          "values": [
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "valign",
+          "description": "Sets the vertical alignment. When not set,\nalignment is inherited from an ancestor row or table.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "middle"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-table-v2-group",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "collapsed",
+          "description": "Whether the group is expanded or collapsed, when `collapsible` is `true`."
+        },
+        {
+          "name": "collapsible",
+          "description": "Whether the group is collapsible."
+        },
+        {
+          "name": "drag-enabled",
+          "description": "Whether the group is drag & drop enabled."
+        },
+        {
+          "name": "indent",
+          "description": "Indentation level"
+        },
+        {
+          "name": "reorder-mode",
+          "description": "When set to `framework`, the group will move the reordered item back to its original position\nbefore the `marketTableV2RowsReordered` event is fired. This is useful when the table\nis rendered within a framework like Ember or React.",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "framework"
+            }
+          ]
+        },
+        {
+          "name": "reorderable",
+          "description": "Whether the group is reorderable or not.\nSetting to `internal` enables reordering table rows internally\nwhile `external` also allows dragging to & from other tables.",
+          "values": [
+            {
+              "name": "external"
+            },
+            {
+              "name": "internal"
+            },
+            {
+              "name": "off"
+            }
+          ]
+        },
+        {
+          "name": "selected",
+          "description": "Whether the group is selected.\nRelevant if the group has rows with slotted controls.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "indeterminate"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-table-v2-row",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the row is currently active."
+        },
+        {
+          "name": "align",
+          "description": "Sets the horizontal alignment.\nWhen not set, alignment is inherited from an ancestor table.\nLikewise, row alignment will be inherited by descendant cells.",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "caret",
+          "description": "Displays a leading clickable caret in the first cell;\nintended to be used in conjunction with\n`<market-table-v2-group>` to support nested rows.",
+          "values": [
+            {
+              "name": "down"
+            },
+            {
+              "name": "up"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the row is currently disabled."
+        },
+        {
+          "name": "drag-enabled",
+          "description": "Whether the row is drag & drop enabled."
+        },
+        {
+          "name": "drag-handle-position",
+          "description": "Whether the drag handle appears to the left or right.",
+          "values": [
+            {
+              "name": "leading"
+            },
+            {
+              "name": "trailing"
+            }
+          ]
+        },
+        {
+          "name": "drag-handle-visibility",
+          "description": "Whether the drag handle appears always or only on hover",
+          "values": [
+            {
+              "name": "always"
+            },
+            {
+              "name": "hover"
+            }
+          ]
+        },
+        {
+          "name": "footer",
+          "description": "Styles a row with footer styles."
+        },
+        {
+          "name": "header",
+          "description": "Styles a row with header styles."
+        },
+        {
+          "name": "indent",
+          "description": "Indentation level of the first cell in the row."
+        },
+        {
+          "name": "interactive",
+          "description": "Whether the row is interactive, which results in hover, focus, & pressed styles."
+        },
+        {
+          "name": "selected",
+          "description": "Whether the row is selected.\nRelevant if the row's first cell has a slotted control.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "indeterminate"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "sticky",
+          "description": "Makes a row \"stick\" to the top or bottom of its parent table.\nRequires an explict height on the table to enable vertical scrolling.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        },
+        {
+          "name": "valign",
+          "description": "Sets the vertical alignment.\nWhen not set, alignment is inherited from an ancestor table.\nLikewise, row alignment will be inherited by descendant cells.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "middle"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-tabs",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "default-tab",
+          "description": "String for the default selected tab (i.e. `market-tab`'s `id` attribute)\n\nOnly used when the component initially loads"
+        },
+        {
+          "name": "selected-tab",
+          "description": "String for the selected tab (i.e. `market-tab`'s `id` attribute)\n\nOmitting or setting to empty string will default to the first non-disabled tab"
+        }
+      ]
+    },
+    {
+      "name": "market-tag",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the tag"
+        },
+        {
+          "name": "focused",
+          "description": "Whether or not the tag is in a focused state"
+        },
+        {
+          "name": "size",
+          "description": "String for setting tag size",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-textarea",
+      "description": {
+        "kind": "markdown",
+        "value": "A multi-line text input component."
+      },
+      "attributes": [
+        {
+          "name": "autofocus",
+          "description": "A boolean representing whether the input should focus on page load.\nIf multiple elements with `autofocus` are present, it is not guaranteed which one\nwill ultimately receive the focus. It is advised that only one at most is present."
+        },
+        {
+          "name": "disabled",
+          "description": "A boolean representing whether the textarea is disabled or not.\nThis visually and functionally will disable the textarea."
+        },
+        {
+          "name": "focused",
+          "description": "A boolean representing whether the textarea is focused or not."
+        },
+        {
+          "name": "inputmode",
+          "description": "Allows a browser to display an appropriate virtual keyboard.\n[Accepted values](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)."
+        },
+        {
+          "name": "invalid",
+          "description": "A boolean representing whether the textarea is invalid or not.\nThis represents error states."
+        },
+        {
+          "name": "max-height",
+          "description": "A string specifying the maximum height in pixels for the textarea. Vertical resizing will be limited to this height. Example value: '200px'.\n\n**DEPRECATED**: set `max-height` via CSS"
+        },
+        {
+          "name": "maxlength",
+          "description": "A string specifying the maximum length of characters for the input value."
+        },
+        {
+          "name": "name",
+          "description": "A string specifying a name for the textarea."
+        },
+        {
+          "name": "placeholder",
+          "description": "A string specifying the placeholder of the textarea.\nThis is shown before a user attempts to add a value, given no value is already provided."
+        },
+        {
+          "name": "readonly",
+          "description": "A boolean representing whether the textarea is readonly or not."
+        },
+        {
+          "name": "value",
+          "description": "A string specifying a value for the textarea. This will be visually shown on the textarea and can be edited by the user."
+        }
+      ]
+    },
+    {
+      "name": "market-tile",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "aria-disabled",
+          "description": "Whether to disable the tile."
+        },
+        {
+          "name": "interactive",
+          "description": "Enables interactivity."
+        },
+        {
+          "name": "selected",
+          "description": "Whether the tile is currently selected"
+        },
+        {
+          "name": "show-actions",
+          "description": "Whether to render the markup in the action slot."
+        },
+        {
+          "name": "size",
+          "description": "What size tile to render.",
+          "values": [
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "Value for the tile."
+        }
+      ]
+    },
+    {
+      "name": "market-toast",
+      "description": {
+        "kind": "markdown",
+        "value": "Toasts are a small message that shows up in a box at the bottom of the screen and disappears on its own after few seconds. It is a simple feedback about an operation in which current activity remains visible and interactive. \n\n`market-toast` should be used together with [`market-toaster`](../market-toaster/readme.md)"
+      },
+      "attributes": [
+        {
+          "name": "dismiss-button-aria-label",
+          "description": "Optional property to pass a string to the dismiss \"x\"\nthat will function as its aria-label. Defaults to \"Dismiss\"."
+        },
+        {
+          "name": "persistent",
+          "description": "Whether or not the toast persists, ie does not autodismiss after 5s"
+        },
+        {
+          "name": "progress",
+          "description": "The progress of the action, progress bar will be rendered for values between 0-100 inclusive"
+        },
+        {
+          "name": "variant",
+          "description": "toast variant that corresponds to the type of info it is conveying",
+          "values": [
+            {
+              "name": "critical"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "insight"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "market-toaster",
+      "description": {
+        "kind": "markdown",
+        "value": "`market-toaster` is a container for `market-toast`. It handles showing `market-toast` for its alloted amount of time on the screen. It is also positioned to ensure that toasts appear on top of all other elements."
+      },
+      "attributes": []
+    },
+    {
+      "name": "market-toggle",
+      "description": {
+        "kind": "markdown",
+        "value": "`<market-toggle>` can be used on its own, or slotted into `<market-row>` as a control. When used with `market-row`,\nthe row's `selected` prop overrides the toggle's `checked` prop."
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether the toggle is active or not."
+        },
+        {
+          "name": "checked",
+          "description": "Whether the toggle is checked or not.\nIf used as a slotted control inside of `market-row`, this will be overridden by the row's `selected` property."
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the toggle is disabled."
+        },
+        {
+          "name": "focused",
+          "description": "Whether the toggle is focused or not."
+        },
+        {
+          "name": "hovered",
+          "description": "Whether the toggle is hovered or not."
+        }
+      ]
+    },
+    {
+      "name": "market-tooltip",
+      "description": {
+        "kind": "markdown",
+        "value": "This component uses `<market-dropdown>` to create a component with a \"trigger\" slot (which expects text or an icon) and a \"content\" slot. Interacting with the text/icon trigger will open the slotted content in a tooltip-specific popover which is positioned using Popper.js.\n\nTo tweak the position of the tooltip popover, you can style `market-tooltip::part(popover)` directly using CSS."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Functionally and visually disables the tooltip trigger."
+        },
+        {
+          "name": "expanded",
+          "description": "Whether or not the tooltip is open. Setting it to true means it will be open\nby default"
+        },
+        {
+          "name": "interaction",
+          "description": "Defines what types of interaction the tooltip should have\n(see `market-dropdown` docs for more granular explanation)",
+          "values": [
+            {
+              "name": "click"
+            },
+            {
+              "name": "hover"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "persistent"
+            }
+          ]
+        },
+        {
+          "name": "popover-distance",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDisplaces the popper away from, or toward, the reference element in the\ndirection of its placement.\nhttps://popper.js.org/docs/v2/modifiers/offset/#distance-1"
+        },
+        {
+          "name": "popover-placement",
+          "description": "Configuration option for Popper.js (used to position the tooltip overlay).\nDescribes the preferred placement of the popper.\nhttps://popper.js.org/docs/v2/constructors//#placement",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "auto-end"
+            },
+            {
+              "name": "auto-start"
+            },
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        },
+        {
+          "name": "popover-skidding",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDisplaces the popover along the reference element.\nhttps://popper.js.org/docs/v2/modifiers/offset/#skidding-1"
+        },
+        {
+          "name": "popover-strategy",
+          "description": "Configuration option for Popper.js (used to position `<market-popover>`).\nDescribes the positioning strategy to use. By default, it is absolute. If\nyour reference element is in a fixed container, use the fixed strategy.\nhttps://popper.js.org/docs/v2/constructors//#strategy",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

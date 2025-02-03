@@ -1,0 +1,182 @@
+/* TODO: add design tokens for table components */
+
+/* TODO: add design tokens for table components */
+
+:host {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: var(--table-cell-vertical-padding-size, 12px) var(--table-cell-horizontal-padding-size, 8px);
+  background-color: var(--table-cell-state-normal-background-color, var(--core-surface-10-color));
+  font-weight: var(--table-cell-primary-text-font-weight, var(--core-type-paragraph-20-weight));
+  font-size: var(--table-cell-primary-text-font-size, var(--core-type-paragraph-20-size));
+  line-height: var(--table-cell-primary-text-line-height, var(--core-type-paragraph-20-leading));
+  text-overflow: ellipsis;
+}
+
+:host([align="right"]) {
+    justify-content: flex-end;
+  }
+
+:host([align="right"]) .sorting-caret {
+      order: -1;
+      margin-right: var(--table-heading-sort-icon-space-size, 8px);
+      margin-left: 0;
+    }
+
+:host([stickTo="left"]) {
+    position: sticky;
+    grid-area: left;
+    border-right:
+      var(--table-fixed-column-border-width, 1px)
+      solid
+      var(--table-fixed-column-border-color, var(--core-divider-20-color));
+  }
+
+:host([stickTo="right"]) {
+    grid-area: right;
+    border-left:
+      var(--table-fixed-column-border-width, 1px)
+      solid
+      var(--table-fixed-column-border-color, var(--core-divider-20-color));
+  }
+
+
+:host {
+  --transition-duration: 0.2s; /* TODO: design token when design finalizes spec */
+
+  transition: background-color var(--transition-duration);
+}
+
+
+@media (hover: hover) {
+
+
+:host {
+    /* media query is to suppress hover styles on mobile devices */
+}
+    :host([interactive]:hover) {
+      background-color: var(--table-cell-hover-state-background-color);
+    }
+  }
+
+
+:host([interactive]) {
+    cursor: pointer;
+  }
+
+
+:host([interactive]:focus) {
+    outline: none; /* override default browser focus styles */
+  }
+
+
+:host([interactive]:not([disabled]):focus) {
+    background-color: var(--table-cell-focus-state-background-color);
+  }
+
+
+:host([active]), :host([interactive]:not([disabled]):active) {
+    background-color: var(--table-cell-pressed-state-background-color);
+  }
+
+
+:host([interactive][disabled]) {
+    pointer-events: none;
+  }
+
+
+:host([disabled]) {
+    background-color: transparent;
+    color: var(--table-cell-disabled-state-text-color);
+    pointer-events: none;
+  }
+
+
+:host([hidden]) {
+    display: none;
+  }
+
+:host(:first-of-type) {
+  padding-left: var(--table-cell-padding, 8px);
+}
+
+:host(:first-of-type) ::slotted(button) {
+    /* TODO: These should have design tokens in the future */
+    all: unset;
+    display: flex; /* stylelint-disable-line order/properties-order */
+    justify-content: space-between;
+    align-items: center;
+    padding-right: var(--core-metrics-spacing-100);
+    padding-left:
+      calc(
+        var(--cell-indent-level) *
+        var(--table-row-indentation-padding, 40px) +
+        var(--core-metrics-spacing-100)
+      );
+    color: var(--table-cell-normal-state-content-color, var(--core-fill-black-color));
+    cursor: pointer;
+  }
+
+:host(:first-of-type) ::slotted(button):focus-visible {
+      outline: none;
+    }
+
+:host(:first-of-type) ::slotted(button):focus {
+      color: var(--table-accordion-focus-state-content-color, var(--core-fill-black-color));
+    }
+
+:host(:first-of-type) ::slotted(button):hover {
+      color: var(--table-accordion-hover-state-content-color, var(--core-fill-black-color));
+    }
+
+:host(:first-of-type) ::slotted(button):active {
+      color: var(--table-accordion-pressed-state-content-color, var(--core-fill-black-color));
+    }
+
+:host(:first-of-type) ::slotted([slot="nested-row-indicator"]) {
+    height: 100%;
+  }
+
+/* TODO: update pixels to variables once they exist */
+::slotted([slot="leading-accessory"][size="image"]) {
+  margin-right: 16px;
+  margin-left: 12px;
+}
+
+::slotted([slot="leading-accessory"][size="icon"]) {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+::slotted([slot="trailing-accessory"][size="image"]) {
+  margin-right: 12px;
+  margin-left: 16px;
+}
+
+::slotted([slot="trailing-accessory"][size="icon"]) {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+::slotted([slot="nested-row-indicator"]) {
+  color: var(--table-cell-normal-state-content-color, var(--core-fill-black-color));
+}
+
+::slotted([slot="nested-row-indicator"]:focus-visible) {
+  outline: none;
+}
+
+::slotted([slot="nested-row-indicator"]:focus) {
+  color: var(--table-accordion-focus-state-content-color, var(--core-fill-black-color));
+}
+
+::slotted([slot="nested-row-indicator"]:hover) {
+  color: var(--table-accordion-hover-state-content-color, var(--core-fill-black-color));
+}
+
+::slotted([slot="nested-row-indicator"]:active) {
+  color: var(--table-accordion-pressed-state-content-color, var(--core-fill-black-color));
+}

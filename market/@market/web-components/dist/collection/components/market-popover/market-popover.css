@@ -1,0 +1,67 @@
+/* TODO: add design tokens */
+
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: inline-block;
+  overflow-y: auto;
+  min-width: var(--modal-popover-wide-viewport-min-width-size);
+  max-height: var(--modal-popover-wide-viewport-max-height-size);
+
+  /*
+    TODO (UI-1598):
+    According to the current Figma, padding for popovers are 24px all around unless they are market-lists.
+    Update this with accurate design tokens when they are updated correctly.
+  */
+  padding:
+    var(--modal-popover-wide-viewport-padding-right-size)
+    var(--modal-popover-wide-viewport-padding-right-size)
+    var(--modal-popover-wide-viewport-padding-right-size)
+    var(--modal-popover-wide-viewport-padding-left-size);
+  border-radius: var(--modal-popover-border-radius);
+  background-color: var(--modal-popover-background-color);
+  box-shadow: var(--elevation-30-shadow);
+}
+
+
+@media (min-width: 600px) {
+
+
+:host {
+    /* Stop stretching to fill the full viewport width if we're on a
+       larger screen. */
+    width: auto
+}
+  }
+
+::slotted(.market-list) {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /**
+   * Because the popover has default padding 24px this gives a negative margin to
+   * overlap that by 16px resulting in a perceived padding of 8px when highlighted
+   */
+  margin-bottom: calc(var(--modal-popover-wide-viewport-padding-bottom-size) - var(--popover-padding, 24px));
+}
+
+::slotted(.market-list:not([has-search])) {
+  /**
+    * Because the popover has default padding 24px this gives a negative margin to
+    * overlap that by 16px resulting in a perceived padding of 8px when highlighted
+    */
+  margin: calc(var(--popover-content-vertical-padding, 8px) - var(--popover-padding, 24px)) 0;
+}

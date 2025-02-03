@@ -1,0 +1,42 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+/* TODO: design tokens (this component corresponds to the "Spinner" component in Figma) */
+
+:host([size="large"]) .market-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+:host([size="small"]) .market-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+.market-icon {
+  position: static;
+  flex: none;
+  fill: currentcolor;
+  animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

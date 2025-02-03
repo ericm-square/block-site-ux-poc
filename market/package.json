@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@market/web-components": "^7.2.1"
+  }
+}

@@ -1,0 +1,95 @@
+:host {
+  display: flex;
+}
+
+@media only screen and (max-width: 800px) {
+  :host([mobile-menu-position="top"]) {
+    flex-direction: column;
+  }
+
+    :host([mobile-menu-position="top"]) list-view {
+      margin-bottom: var(--date-picker-menu-vertical-spacing);
+    }
+
+  :host([mobile-menu-position="bottom"]) {
+    flex-direction: column-reverse;
+  }
+
+    :host([mobile-menu-position="bottom"]) list-view {
+      margin-top: var(--date-picker-menu-vertical-spacing);
+    }
+}
+
+header {
+  height: var(--date-picker-header-minimum-height);
+  margin-bottom: var(--date-picker-header-vertical-spacing);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+:host([year-view-active]) nav {
+  justify-content: center;
+}
+
+[id^="date-picker-label-"] {
+  margin: 0;
+}
+
+.year-view-button {
+  color: var(--date-picker-month-year-label-color, var(--core-text-10-color));
+}
+
+.year-view-button:hover, .year-view-button:active {
+    background-color: transparent;
+    color: var(--core-emphasis-text-color);
+  }
+
+.caret {
+  margin-left: var(--date-picker-header-button-padding);
+}
+
+:host([year-view-active]) .caret {
+    transform: rotate(-180deg);
+  }
+
+calendar {
+  min-width: var(--date-picker-minimum-width);
+}
+
+month-view {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--date-picker-grid-item-vertical-padding) var(--date-picker-grid-item-horizontal-padding);
+  box-sizing: border-box;
+}
+
+year-section {
+  display: flex;
+
+  /* TODO: ADD DESIGN TOKENS (UI-6038) */
+  gap:
+    var(--date-picker-grid-item-year-button-vertical-padding, 0)
+    var(--date-picker-grid-item-year-button-horizontal-padding, 12.5px);
+  box-sizing: border-box;
+}
+
+year-section .market-icon {
+    width: var(--date-picker-grid-item-year-button-icon-size, var(--accessory-icon-variant-medium-size-height));
+  }
+
+month-section {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+
+  /* TODO: ADD DESIGN TOKENS (UI-6038) */
+  gap:
+    var(--date-picker-grid-item-month-button-vertical-padding, 16px)
+    var(--date-picker-grid-item-month-button-horizontal-padding, 26.67px);
+  box-sizing: border-box;
+}

@@ -1,0 +1,455 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --transition-duration: 0.2s;
+  --focus-ring-color: color-mix(in srgb, var(--button-focus-ring-color) 100%, transparent);
+
+  position: relative;
+  display: inline-block;
+  border-radius: var(--button-border-radius);
+  transition: background-color color var(--transition-duration);
+}
+
+/* inner button / link */
+.inner-tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: none;
+  border-radius: var(--button-border-radius);
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.inner-tag:focus-visible {
+    outline: var(--button-focus-ring-border-size) solid var(--focus-ring-color);
+    outline-offset: var(--button-focus-ring-buffer-size);
+  }
+
+::slotted([slot="icon"]) {
+  position: relative;
+  display: flex;
+  color: inherit;
+  fill: currentcolor;
+  stroke: inherit;
+}
+
+.market-activity-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  line-height: 0;
+  opacity: 0%;
+  transform: translate(-50%, -50%);
+}
+
+:host([is-loading]) {
+  pointer-events: none;
+}
+
+:host([is-loading]) .inner-tag {
+    opacity: 0%;
+  }
+
+:host([is-loading]) .market-activity-indicator {
+    opacity: 100%;
+  }
+
+:host([size="small"]) {
+  --button-small-size-minimum-width: var(--button-small-size-minimum-height);
+
+  font-weight: var(--button-small-size-text-weight);
+  font-size: var(--button-small-size-text-size);
+  line-height: var(--button-small-size-text-leading);
+  letter-spacing: var(--button-small-size-text-tracking);
+}
+
+:host([size="small"]) .inner-tag {
+    min-width: var(--button-small-size-minimum-width);
+    min-height: var(--button-small-size-minimum-height);
+    -moz-column-gap: var(--button-small-size-content-spacing);
+         column-gap: var(--button-small-size-content-spacing);
+  }
+
+:host([size="small"][rank="primary"]) .inner-tag {
+    padding:
+      var(--button-small-size-primary-rank-vertical-padding)
+      var(--button-small-size-primary-rank-horizontal-padding);
+  }
+
+/* 24px icons are 2px too tall for 40px buttons with 9px padding.
+    this is reflected in figma, but not in design tokens,
+    so manually adjust with negative vertical margins */
+
+:host([size="small"][rank="primary"]) svg, :host([size="small"][rank="primary"]) ::slotted([slot="icon"]) {
+    margin:
+      calc(
+        (var(--button-small-size-minimum-height) - var(--accessory-icon-variant-size)) / 2
+        - var(--button-small-size-primary-rank-vertical-padding)
+      ) 0;
+  }
+
+:host([size="small"][rank="secondary"]) .inner-tag {
+    padding:
+      var(--button-small-size-secondary-rank-vertical-padding)
+      var(--button-small-size-secondary-rank-horizontal-padding);
+  }
+
+/* 24px icons are 2px too tall for 40px buttons with 9px padding.
+    this is reflected in figma, but not in design tokens,
+    so manually adjust with negative vertical margins */
+
+:host([size="small"][rank="secondary"]) svg, :host([size="small"][rank="secondary"]) ::slotted([slot="icon"]) {
+    margin:
+      calc(
+        (var(--button-small-size-minimum-height) - var(--accessory-icon-variant-size)) / 2
+        - var(--button-small-size-secondary-rank-vertical-padding)
+      ) 0;
+  }
+
+:host([size="small"][rank="tertiary"]) .inner-tag {
+    padding:
+      var(--button-small-size-tertiary-rank-vertical-padding)
+      var(--button-small-size-tertiary-rank-horizontal-padding);
+  }
+
+/* 24px icons are 2px too tall for 40px buttons with 9px padding.
+    this is reflected in figma, but not in design tokens,
+    so manually adjust with negative vertical margins */
+
+:host([size="small"][rank="tertiary"]) svg, :host([size="small"][rank="tertiary"]) ::slotted([slot="icon"]) {
+    margin:
+      calc(
+        (var(--button-small-size-minimum-height) - var(--accessory-icon-variant-size)) / 2
+        - var(--button-small-size-tertiary-rank-vertical-padding)
+      ) 0;
+  }
+
+:host([size="small"][icon-only]) .inner-tag {
+    padding: var(--icon-button-small-size-padding-size);
+  }
+
+:host([size="medium"]) {
+  --button-medium-size-minimum-width: var(--button-medium-size-minimum-height);
+
+  font-weight: var(--button-medium-size-text-weight);
+  font-size: var(--button-medium-size-text-size);
+  line-height: var(--button-medium-size-text-leading);
+  letter-spacing: var(--button-medium-size-text-tracking);
+}
+
+:host([size="medium"]) .inner-tag {
+    min-width: var(--button-medium-size-minimum-width);
+    min-height: var(--button-medium-size-minimum-height);
+    -moz-column-gap: var(--button-medium-size-content-spacing);
+         column-gap: var(--button-medium-size-content-spacing);
+  }
+
+:host([size="medium"][rank="primary"]) .inner-tag {
+    padding:
+      var(--button-medium-size-primary-rank-vertical-padding)
+      var(--button-medium-size-primary-rank-horizontal-padding);
+  }
+
+:host([size="medium"][rank="secondary"]) .inner-tag {
+    padding:
+      var(--button-medium-size-secondary-rank-vertical-padding)
+      var(--button-medium-size-secondary-rank-horizontal-padding);
+  }
+
+:host([size="medium"][rank="tertiary"]) .inner-tag {
+    padding:
+      var(--button-medium-size-tertiary-rank-vertical-padding)
+      var(--button-medium-size-tertiary-rank-horizontal-padding);
+  }
+
+:host([size="medium"][icon-only]) .inner-tag {
+    padding: var(--icon-button-medium-size-padding-size);
+  }
+
+:host([size="large"]) {
+  --button-large-size-minimum-width: var(--button-large-size-minimum-height);
+
+  font-weight: var(--button-large-size-text-weight);
+  font-size: var(--button-large-size-text-size);
+  line-height: var(--button-large-size-text-leading);
+  letter-spacing: var(--button-large-size-text-tracking);
+}
+
+:host([size="large"]) .inner-tag {
+    min-width: var(--button-large-size-minimum-width);
+    min-height: var(--button-large-size-minimum-height);
+    -moz-column-gap: var(--button-large-size-content-spacing);
+         column-gap: var(--button-large-size-content-spacing);
+  }
+
+:host([size="large"][rank="primary"]) .inner-tag {
+    padding:
+      var(--button-large-size-primary-rank-vertical-padding)
+      var(--button-large-size-primary-rank-horizontal-padding);
+  }
+
+:host([size="large"][rank="secondary"]) .inner-tag {
+    padding:
+      var(--button-large-size-secondary-rank-vertical-padding)
+      var(--button-large-size-secondary-rank-horizontal-padding);
+  }
+
+:host([size="large"][rank="tertiary"]) .inner-tag {
+    padding:
+      var(--button-large-size-tertiary-rank-vertical-padding)
+      var(--button-large-size-tertiary-rank-horizontal-padding);
+  }
+
+:host([size="large"][icon-only]) .inner-tag {
+    padding: var(--icon-button-large-size-padding-size);
+  }
+
+:host([rank="primary"]) {
+  background-color: var(--button-normal-variant-primary-rank-normal-state-background-color);
+  color: var(--button-normal-variant-primary-rank-normal-state-label-color);
+}
+
+:host([rank="primary"][icon-only]) {
+  color: var(--icon-button-primary-rank-normal-state-icon-color);
+}
+
+@media (hover: hover) {
+  :host([rank="primary"]:hover) {
+    background-color: var(--button-normal-variant-primary-rank-hover-state-background-color);
+    color: var(--button-normal-variant-primary-rank-hover-state-label-color);
+  }
+
+  :host([rank="primary"][icon-only]:hover) {
+    color: var(--icon-button-primary-rank-hover-state-icon-color);
+  }
+}
+
+:host([rank="primary"][focused]) {
+  background-color: var(--button-normal-variant-primary-rank-focus-state-background-color);
+  color: var(--button-normal-variant-primary-rank-focus-state-label-color);
+}
+
+:host([rank="primary"][icon-only][focused]) {
+  color: var(--icon-button-primary-rank-focus-state-icon-color);
+}
+
+:host([rank="primary"]:active) {
+  background-color: var(--button-normal-variant-primary-rank-pressed-state-background-color);
+  color: var(--button-normal-variant-primary-rank-pressed-state-label-color);
+}
+
+:host([rank="primary"][icon-only]:active) {
+  color: var(--icon-button-primary-rank-pressed-state-icon-color);
+}
+
+:host([rank="primary"][disabled]) {
+  background-color: var(--button-normal-variant-primary-rank-disabled-state-background-color);
+  color: var(--button-normal-variant-primary-rank-disabled-state-label-color);
+}
+
+:host([rank="primary"][icon-only][disabled]) {
+  color: var(--icon-button-primary-rank-disabled-state-icon-color);
+}
+
+:host([rank="secondary"]) {
+  background-color: var(--button-normal-variant-secondary-rank-normal-state-background-color);
+  color: var(--button-normal-variant-secondary-rank-normal-state-label-color);
+}
+
+:host([rank="secondary"][icon-only]) {
+  color: var(--icon-button-secondary-rank-normal-state-icon-color);
+}
+
+@media (hover: hover) {
+  :host([rank="secondary"]:hover) {
+    background-color: var(--button-normal-variant-secondary-rank-hover-state-background-color);
+    color: var(--button-normal-variant-secondary-rank-hover-state-label-color);
+  }
+
+  :host([rank="secondary"][icon-only]:hover) {
+    color: var(--icon-button-secondary-rank-hover-state-icon-color);
+  }
+}
+
+:host([rank="secondary"][focused]) {
+  background-color: var(--button-normal-variant-secondary-rank-focus-state-background-color);
+  color: var(--button-normal-variant-secondary-rank-focus-state-label-color);
+}
+
+:host([rank="secondary"][icon-only][focused]) {
+  color: var(--icon-button-secondary-rank-focus-state-icon-color);
+}
+
+:host([rank="secondary"]:active) {
+  background-color: var(--button-normal-variant-secondary-rank-pressed-state-background-color);
+  color: var(--button-normal-variant-secondary-rank-pressed-state-label-color);
+}
+
+:host([rank="secondary"][icon-only]:active) {
+  color: var(--icon-button-secondary-rank-pressed-state-icon-color);
+}
+
+:host([rank="secondary"][disabled]) {
+  background-color: var(--button-normal-variant-secondary-rank-disabled-state-background-color);
+  color: var(--button-normal-variant-secondary-rank-disabled-state-label-color);
+}
+
+:host([rank="secondary"][icon-only][disabled]) {
+  color: var(--icon-button-secondary-rank-disabled-state-icon-color);
+}
+
+:host([rank="tertiary"]) {
+  background-color: var(--button-normal-variant-tertiary-rank-normal-state-background-color);
+  color: var(--button-normal-variant-tertiary-rank-normal-state-label-color);
+}
+
+:host([rank="tertiary"][icon-only]) {
+  color: var(--icon-button-tertiary-rank-normal-state-icon-color);
+}
+
+@media (hover: hover) {
+  :host([rank="tertiary"]:hover) {
+    background-color: var(--button-normal-variant-tertiary-rank-hover-state-background-color);
+    color: var(--button-normal-variant-tertiary-rank-hover-state-label-color);
+  }
+
+  :host([rank="tertiary"][icon-only]:hover) {
+    color: var(--icon-button-tertiary-rank-hover-state-icon-color);
+  }
+}
+
+:host([rank="tertiary"][focused]) {
+  background-color: var(--button-normal-variant-tertiary-rank-focus-state-background-color);
+  color: var(--button-normal-variant-tertiary-rank-focus-state-label-color);
+}
+
+:host([rank="tertiary"][icon-only][focused]) {
+  color: var(--icon-button-tertiary-rank-focus-state-icon-color);
+}
+
+:host([rank="tertiary"]:active) {
+  background-color: var(--button-normal-variant-tertiary-rank-pressed-state-background-color);
+  color: var(--button-normal-variant-tertiary-rank-pressed-state-label-color);
+}
+
+:host([rank="tertiary"][icon-only]:active) {
+  color: var(--icon-button-tertiary-rank-pressed-state-icon-color);
+}
+
+:host([rank="tertiary"][disabled]) {
+  background-color: var(--button-normal-variant-tertiary-rank-disabled-state-background-color);
+  color: var(--button-normal-variant-tertiary-rank-disabled-state-label-color);
+}
+
+:host([rank="tertiary"][icon-only][disabled]) {
+  color: var(--icon-button-tertiary-rank-disabled-state-icon-color);
+}
+
+/* destructive primary */
+
+:host([variant="destructive"][rank="primary"]) {
+  background-color: var(--button-destructive-variant-primary-rank-normal-state-background-color);
+  color: var(--button-destructive-variant-primary-rank-normal-state-label-color);
+}
+
+@media (hover: hover) {
+  :host([variant="destructive"][rank="primary"]:hover) {
+    background-color: var(--button-destructive-variant-primary-rank-hover-state-background-color);
+    color: var(--button-destructive-variant-primary-rank-hover-state-label-color);
+  }
+}
+
+:host([variant="destructive"][rank="primary"][focused]) {
+  background-color: var(--button-destructive-variant-primary-rank-focus-state-background-color);
+  color: var(--button-destructive-variant-primary-rank-focus-state-label-color);
+}
+
+:host([variant="destructive"][rank="primary"]:active) {
+  background-color: var(--button-destructive-variant-primary-rank-pressed-state-background-color);
+  color: var(--button-destructive-variant-primary-rank-pressed-state-label-color);
+}
+
+:host([variant="destructive"][rank="primary"][disabled]) {
+  background-color: var(--button-destructive-variant-primary-rank-disabled-state-background-color);
+  color: var(--button-destructive-variant-primary-rank-disabled-state-label-color);
+}
+
+/* destructive secondary */
+
+:host([variant="destructive"][rank="secondary"]) {
+  background-color: var(--button-destructive-variant-secondary-rank-normal-state-background-color);
+  color: var(--button-destructive-variant-secondary-rank-normal-state-label-color);
+}
+
+@media (hover: hover) {
+  :host([variant="destructive"][rank="secondary"]:hover) {
+    background-color: var(--button-destructive-variant-secondary-rank-hover-state-background-color);
+    color: var(--button-destructive-variant-secondary-rank-hover-state-label-color);
+  }
+}
+
+:host([variant="destructive"][rank="secondary"][focused]) {
+  background-color: var(--button-destructive-variant-secondary-rank-focus-state-background-color);
+  color: var(--button-destructive-variant-secondary-rank-focus-state-label-color);
+}
+
+:host([variant="destructive"][rank="secondary"]:active) {
+  background-color: var(--button-destructive-variant-secondary-rank-pressed-state-background-color);
+  color: var(--button-destructive-variant-secondary-rank-pressed-state-label-color);
+}
+
+:host([variant="destructive"][rank="secondary"][disabled]) {
+  background-color: var(--button-destructive-variant-secondary-rank-disabled-state-background-color);
+  color: var(--button-destructive-variant-secondary-rank-disabled-state-label-color);
+}
+
+/* destructive tertiary */
+
+:host([variant="destructive"][rank="tertiary"]) {
+  background-color: var(--button-destructive-variant-tertiary-rank-normal-state-background-color);
+  color: var(--button-destructive-variant-tertiary-rank-normal-state-label-color);
+}
+
+@media (hover: hover) {
+  :host([variant="destructive"][rank="tertiary"]:hover) {
+    background-color: var(--button-destructive-variant-tertiary-rank-hover-state-background-color);
+    color: var(--button-destructive-variant-tertiary-rank-hover-state-label-color);
+  }
+}
+
+:host([variant="destructive"][rank="tertiary"][focused]) {
+  background-color: var(--button-destructive-variant-tertiary-rank-focus-state-background-color);
+  color: var(--button-destructive-variant-tertiary-rank-focus-state-label-color);
+}
+
+:host([variant="destructive"][rank="tertiary"]:active) {
+  background-color: var(--button-destructive-variant-tertiary-rank-pressed-state-background-color);
+  color: var(--button-destructive-variant-tertiary-rank-pressed-state-label-color);
+}
+
+:host([variant="destructive"][rank="tertiary"][disabled]) {
+  background-color: var(--button-destructive-variant-tertiary-rank-disabled-state-background-color);
+  color: var(--button-destructive-variant-tertiary-rank-disabled-state-label-color);
+}
+

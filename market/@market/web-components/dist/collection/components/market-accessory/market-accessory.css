@@ -1,0 +1,48 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host([size="icon"]) {
+  width: var(--accessory-icon-variant-medium-size-width);
+  height: var(--accessory-icon-variant-medium-size-height);
+}
+
+:host([size="image"]) {
+  width: var(--accessory-medium-size-width);
+  height: var(--accessory-medium-size-height);
+}
+
+:host ::slotted(.market-icon) {
+  /* placeholder for styling market-icon component */
+}
+
+:host ::slotted(img) {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+:host([size="icon"]) ::slotted(img) {
+  border-radius: var(--accessory-background-radius);
+}
+
+:host([size="image"]) ::slotted(img) {
+  border-radius: var(--accessory-background-radius);
+}

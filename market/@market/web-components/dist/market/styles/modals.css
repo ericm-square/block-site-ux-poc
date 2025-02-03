@@ -1,0 +1,47 @@
+:root {
+  /* Partial Modals do not have settings for narrow viewports because they display with the
+  same CSS as full modals, therefore, the second-smallest viewport here, medium, is the default
+  for partial modal custom properties */
+  --modal-partial-vertical-padding-size: var(--modal-partial-medium-viewport-vertical-padding-size);
+  --modal-partial-vertical-screen-buffer-size: var(--modal-partial-medium-viewport-vertical-screen-buffer-size);
+  --modal-partial-horizontal-padding-size: var(--modal-partial-medium-viewport-horizontal-padding-size);
+  --modal-partial-horizontal-screen-buffer-size: var(--modal-partial-medium-viewport-horizontal-screen-buffer-size);
+  --modal-partial-width: var(--modal-partial-medium-viewport-width);
+  --modal-full-horizontal-padding-size: var(--modal-full-narrow-viewport-horizontal-padding-size);
+  --modal-full-vertical-padding-size: var(--modal-full-narrow-viewport-vertical-padding-size);
+  --modal-dialog-vertical-padding-size: var(--modal-dialog-medium-viewport-vertical-padding-size);
+  --modal-dialog-horizontal-padding-size: var(--modal-dialog-medium-viewport-horizontal-padding-size);
+  --modal-dialog-width: var(--modal-dialog-medium-viewport-width);
+}
+
+/* stylelint-disable-next-line max-line-length */
+:root:has(.market-context-manager[active]):not(:has(.market-context-manager[active] .market-context:only-child.no-veil)) {
+  overflow: hidden;
+}
+
+/* TODO: Use env() here with a design token -jbiggs */
+
+@media (min-width: 600px) {
+  :root {
+    --modal-full-vertical-padding-size: var(--modal-full-medium-viewport-vertical-padding-size);
+    --modal-full-horizontal-padding-size: var(--modal-full-medium-viewport-horizontal-padding-size);
+    --modal-dialog-vertical-padding-size: var(--modal-dialog-medium-viewport-vertical-padding-size);
+    --modal-dialog-horizontal-padding-size: var(--modal-dialog-medium-viewport-horizontal-padding-size);
+    --modal-dialog-width: var(--modal-dialog-medium-viewport-width);
+  }
+}
+
+@media (min-width: 800px) {
+  :root {
+    --modal-partial-vertical-padding-size: var(--modal-partial-wide-viewport-vertical-padding-size);
+    --modal-partial-vertical-screen-buffer-size: var(--modal-partial-wide-viewport-vertical-screen-buffer-size);
+    --modal-partial-horizontal-padding-size: var(--modal-partial-wide-viewport-horizontal-padding-size);
+    --modal-partial-horizontal-screen-buffer-size: var(--modal-partial-wide-viewport-horizontal-screen-buffer-size);
+    --modal-partial-width: var(--modal-partial-wide-viewport-width);
+    --modal-full-vertical-padding-size: var(--modal-full-wide-viewport-vertical-padding-size);
+    --modal-full-horizontal-padding-size: var(--modal-full-wide-viewport-horizontal-padding-size);
+    --modal-dialog-vertical-padding-size: var(--modal-dialog-wide-viewport-vertical-padding-size);
+    --modal-dialog-horizontal-padding-size: var(--modal-dialog-wide-viewport-horizontal-padding-size);
+    --modal-dialog-width: var(--modal-dialog-wide-viewport-width);
+  }
+}

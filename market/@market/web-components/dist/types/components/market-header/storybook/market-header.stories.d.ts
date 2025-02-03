@@ -1,0 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const API: StoryObj;
+export declare const Subheading: StoryObj;
+export declare const Wayfinding: StoryObj;
+export declare const Actions: StoryObj;
+export declare const Nav: StoryObj;
+export declare const CustomNav: StoryObj;
+export declare const KitchenSink: StoryObj;
+export declare const CompactNav: StoryObj;
+export declare const CompactCustomNav: StoryObj;
+export declare const CompactActions: StoryObj;
+export declare const CompactKitchenSink: StoryObj;

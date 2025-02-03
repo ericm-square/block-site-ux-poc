@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","sourceRoot":"","sources":["../../../../src/components/market-filter/types.ts"],"names":[],"mappings":"","sourcesContent":["export type TMarketFilterType = 'date' | 'list';\n"]}

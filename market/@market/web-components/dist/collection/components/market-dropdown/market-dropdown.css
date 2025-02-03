@@ -1,0 +1,49 @@
+:host {
+  display: inline-block;
+}
+
+  :host ::slotted([slot="trigger"]) {
+    cursor: pointer !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  :host ::slotted([slot="popover"]) {
+    z-index: 99999; /* TODO: use context manager for stacking? */
+    opacity: 0%;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  :host([expanded]) ::slotted([slot="popover"]) {
+      opacity: 100%;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+  /*
+    This emoji selector is a weird hack that doesn't actually do anything
+    visually, but it fixes a strange bug in which Safari does not repaint styles
+    on slotted content when the parent selector changes. This element selector,
+    if it existed in the template (which it doesn't) would be part of the
+    dropdown's shadowDOM, as opposed to the slotted content, which is part of
+    the lightDOM. For some reason adding this selector here causes Safari to
+    repaint the slotted content as well. -jbiggs
+
+    Resolves a Safari bug where market-dropdown and market-button-dropdown would
+    not immediately open on click: https://github.com/squareup/market/issues/2588
+    */
+
+  :host([expanded]) .🙃 {
+      visibility: hidden;
+    }
+
+  /* default styles for slotted market-popovers */
+
+  /* By default market-popover fills the full width on small/mobile screens.
+       Once the viewport is larger, we want to enforce a max width. */
+
+  @media (min-width: 600px) {
+
+  :host ::slotted(.market-popover) {
+      max-width: 400px
+  }
+    }

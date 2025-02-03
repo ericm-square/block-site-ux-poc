@@ -1,0 +1,61 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --filter-group-margin: var(--core-metrics-spacing-200);
+  --filter-group-search-width: 280px;
+
+  display: flex;
+  margin: var(--filter-group-margin);
+}
+
+.content {
+  --filter-group-button-spacing: var(--core-metrics-spacing-100);
+
+  display: flex;
+  flex: 1;
+  flex-flow: row nowrap;
+  gap: var(--filter-group-button-spacing, var(--core-metrics-spacing-100));
+}
+
+::slotted([slot="search"]) {
+  max-width: var(--filter-group-search-width);
+}
+
+::slotted([slot="search"]:not([compact])) {
+  min-width: var(--filter-group-search-width);
+}
+
+::slotted([slot="search"][focused]) {
+  flex: 1 1 var(--filter-group-search-width);
+}
+
+@media (max-width: 599px) {
+  .content {
+    justify-content: space-between;
+  }
+
+  ::slotted([slot="search"]) {
+    max-width: unset;
+  }
+
+  ::slotted([slot="search"][focused]) {
+    flex: 1;
+  }
+
+  ::slotted([slot="filters"]) {
+    display: inline-flex;
+    flex: 1;
+  }
+}

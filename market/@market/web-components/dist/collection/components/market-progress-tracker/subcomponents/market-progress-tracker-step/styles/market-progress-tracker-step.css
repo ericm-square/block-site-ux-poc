@@ -1,0 +1,473 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([orientation="horizontal"][size="large"]) ::slotted([slot="label"]), :host([orientation="vertical"][size="large"]) ::slotted([slot="label"]) {
+  font-weight: var(--core-type-heading-20-weight);
+  font-size: var(--core-type-heading-20-size);
+  font-family: var(--core-type-heading-20-font-family);
+  line-height: var(--core-type-heading-20-leading);
+  letter-spacing: var(--core-type-heading-20-tracking);
+  text-transform: var(--core-type-heading-20-case);
+}
+
+::slotted([slot="subtext"]) {
+  font-weight: var(--core-type-paragraph-10-weight);
+  font-size: var(--core-type-paragraph-10-size);
+  font-family: var(--core-type-paragraph-10-font-family);
+  line-height: var(--core-type-paragraph-10-leading);
+  letter-spacing: var(--core-type-paragraph-10-tracking);
+  text-transform: var(--core-type-paragraph-10-case);
+}
+
+::slotted([slot="subtext"]) b, ::slotted([slot="subtext"]) strong {
+    font-weight: var(--core-type-semibold-10-weight);
+  }
+
+:host([orientation="vertical"][size="small"]) ::slotted([slot="label"]) {
+  font-weight: var(--core-type-medium-20-weight);
+  font-size: var(--core-type-medium-20-size);
+  font-family: var(--core-type-medium-20-font-family);
+  line-height: var(--core-type-medium-20-leading);
+  letter-spacing: var(--core-type-medium-20-tracking);
+  text-transform: var(--core-type-medium-20-case);
+}
+
+:host([orientation="horizontal"][size="small"]) ::slotted([slot="label"]) {
+  font-weight: var(--core-type-semibold-10-weight);
+  font-size: var(--core-type-semibold-10-size);
+  font-family: var(--core-type-semibold-10-font-family);
+  line-height: var(--core-type-semibold-10-leading);
+  letter-spacing: var(--core-type-semibold-10-tracking);
+  text-transform: var(--core-type-semibold-10-case);
+}
+
+:host([orientation="horizontal"][size="medium"]) ::slotted([slot="label"]), :host([orientation="vertical"][size="medium"]) ::slotted([slot="label"]) {
+  font-weight: var(--core-type-semibold-30-weight);
+  font-size: var(--core-type-semibold-30-size);
+  font-family: var(--core-type-semibold-30-font-family);
+  line-height: var(--core-type-semibold-30-leading);
+  letter-spacing: var(--core-type-semibold-30-tracking);
+  text-transform: var(--core-type-semibold-30-case);
+}
+
+.button, .label {
+  display: flex;
+  grid-area: button;
+  gap: var(--progress-tracker-horizontal-label-spacing, var(--core-metrics-spacing-100));
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.button {
+  border-radius: var(--progress-tracker-horizontal-button-border-radius, 6px);
+  cursor: pointer;
+}
+
+.button:active, .button:hover:active {
+    background-color: var(--progress-tracker-horizontal-button-pressed-background-color, var(--core-emphasis-40-color));
+    color: var(--progress-tracker-horizontal-button-pressed-text-color, var(--core-text-10-color));
+  }
+
+.button:focus-visible {
+    outline: var(--core-focus-ring-border-size) solid var(--core-focus-ring-color);
+    outline-offset: var(--core-focus-ring-buffer-size);
+  }
+
+:host([compact]) .button {
+  padding-right: var(--progress-tracker-horizontal-compact-button-padding-right, var(--core-metrics-spacing-100));
+  padding-left: var(--progress-tracker-horizontal-compact-button-padding-left, var(--core-metrics-spacing-100));
+}
+
+:host([compact]:not([connector])) .button {
+  padding-right: var(--progress-tracker-horizontal-compact-button-padding-right, 6px);
+  padding-left: var(--progress-tracker-horizontal-compact-button-padding-left, 6px);
+}
+
+:host([compact]:not([connector])) .button:hover, :host([compact]:not([connector])) .button:active, :host([compact]:not([connector])) .button:focus {
+    margin-right: -2px;
+    margin-left: -2px;
+    padding-right: var(--progress-tracker-horizontal-compact-button-padding-right, var(--core-metrics-spacing-100));
+    padding-left: var(--progress-tracker-horizontal-compact-button-padding-left, var(--core-metrics-spacing-100));
+  }
+
+:host([size="small"]:not([compact])) .button {
+  padding-right: var(--progress-tracker-horizontal-small-size-button-padding-right, var(--core-metrics-spacing-100));
+  padding-left: var(--progress-tracker-horizontal-small-size-button-padding-left, var(--core-metrics-spacing-100));
+}
+
+:host([size="medium"]:not([compact])) .button {
+  padding-right: var(--progress-tracker-horizontal-medium-size-button-padding-right, var(--core-metrics-spacing-150));
+  padding-left: var(--progress-tracker-horizontal-medium-size-button-padding-left, var(--core-metrics-spacing-150));
+}
+
+:host([size="large"]:not([compact])) .button {
+  padding-right: var(--progress-tracker-horizontal-large-size-button-padding-right, var(--core-metrics-spacing-200));
+  padding-left: var(--progress-tracker-horizontal-large-size-button-padding-left, var(--core-metrics-spacing-200));
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--progress-tracker-horizontal-button-hover-background-color, var(--core-fill-40-color));
+    color: var(--progress-tracker-horizontal-button-hover-text-color, var(--core-text-10-color));
+  }
+
+  .button:active, .button:hover:active {
+    background-color: var(--progress-tracker-horizontal-button-pressed-background-color, var(--core-emphasis-40-color));
+    color: var(--progress-tracker-horizontal-button-pressed-text-color, var(--core-text-10-color));
+  }
+
+  /**
+   * in interactive + compact + connectorless variant,
+   * the button overlaps 2px horizontally when hovered
+   * to give the button some more visual weight.
+   * dynamically updating z-index ensures that the hovered button’s hitbox is above the others
+   *
+   * e.g., without z-index, this is the hover area
+   *             [--3--][--4--]
+   *      [---2---]
+   * [--1--]
+   * where if you hover on the right edge of #2, you will hover on the next step
+   *
+   * e.g., with z-index:
+   *      [---2---]
+   * [--1--]     [--3--][--4--]
+   *
+   * the button’s box model is expanded using negative margins
+   * instead of using box-shadow to appropriately represent the button’s true hitbox
+   */
+  :host([compact]:not([connector])) .button {
+    z-index: 0;
+  }
+
+  :host([compact]:not([connector])) .button:hover {
+    z-index: 1;
+    margin-right: -2px;
+    margin-left: -2px;
+    padding-right: var(--progress-tracker-horizontal-compact-button-padding-right, var(--core-metrics-spacing-100));
+    padding-left: var(--progress-tracker-horizontal-compact-button-padding-left, var(--core-metrics-spacing-100));
+  }
+}
+
+:host([orientation="horizontal"]) {
+  --connector-color: var(--progress-tracker-horizontal-connector-color, var(--core-fill-30-color));
+  --connector-radius: var(--progress-tracker-horizontal-connector-radius, var(--divider-radius));
+  --active-connector-color: var(--progress-tracker-horizontal-active-connector-color, var(--core-fill-10-color));
+}
+
+:host([orientation="vertical"]) {
+  --connector-color: var(--progress-tracker-vertical-connector-color, var(--core-fill-30-color));
+  --connector-radius: var(--progress-tracker-vertical-connector-radius, 0);
+  --active-connector-color: var(--progress-tracker-vertical-active-connector-color, var(--core-blue-fill-color));
+}
+
+:host::after {
+  content: "";
+  display: none;
+  grid-area: connector;
+  align-self: center;
+  justify-self: center;
+  border-radius: var(--connector-radius);
+  pointer-events: none;
+}
+
+:host([connector="inactive"])::after {
+  display: flex;
+  background-color: var(--connector-color);
+}
+
+:host([connector="active"])::after {
+  display: flex;
+  background-color: var(--active-connector-color);
+}
+
+:host([orientation="vertical"])::after {
+  width: var(--progress-tracker-vertical-connector-size, 2px);
+  height: 100%;
+}
+
+:host([orientation="horizontal"])::after {
+  width: 100%;
+  height: var(--progress-tracker-horizontal-connector-size, 2px);
+}
+
+.content {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  grid-area: content;
+  align-items: flex-start;
+}
+
+.content ::slotted([slot="label"]) {
+    color: inherit;
+    cursor: inherit;
+  }
+
+/* add a margin above the title, to align with the icon */
+
+:host([orientation="vertical"][size="small"]) .content ::slotted([slot="label"]) {
+      margin: 3px 0 0;
+    }
+
+:host([orientation="vertical"][size="medium"]) .content ::slotted([slot="label"]) {
+      margin: 2px 0 0;
+    }
+
+:host([orientation="vertical"][size="large"]) .content ::slotted([slot="label"]) {
+      margin: 1px 0 0;
+    }
+
+.content ::slotted([slot="subtext"]) {
+
+    margin: 0;
+    color: var(--progress-tracker-subtext-color, var(--core-text-20-color));
+  }
+
+.content ::slotted(p:first-of-type) {
+    margin-top: 0;
+  }
+
+.content ::slotted(p:last-of-type) {
+    margin-bottom: 0;
+  }
+
+:host([orientation="horizontal"]) .content {
+  align-self: center;
+  white-space: nowrap;
+}
+
+:host([orientation="horizontal"]) .content ::slotted(:not([slot="icon"]):not([slot="label"])) {
+    display: none;
+  }
+
+:host([orientation="vertical"]) .content {
+  gap: var(--progress-tracker-line-spacing, var(--core-metrics-spacing-25));
+  padding-bottom: var(--progress-tracker-content-padding-bottom-size, var(--core-metrics-spacing-200));
+}
+
+/* horizontal, compact: hide content if step isn’t active */
+:host([orientation="horizontal"][compact]:not([active])) .content {
+  display: none;
+}
+
+/* horizontal: hide all slotted except [slot="label"] */
+:host([orientation="horizontal"]) .content ::slotted(:not([slot="label"])) {
+  display: none;
+}
+
+/**
+ * Layout and text styling specific to horizontal orientation
+ */
+
+:host([orientation="horizontal"]:not([active]):not([completed])) {
+  color: var(--progress-tracker-horizontal-inactive-text-color, var(--core-text-20-color));
+}
+
+:host([orientation="horizontal"][active]), :host([orientation="horizontal"][completed]) {
+  color: var(--progress-tracker-horizontal-active-text-color, var(--core-text-10-color));
+}
+
+/* with connector */
+:host([orientation="horizontal"][connector="active"]), :host([orientation="horizontal"][connector="inactive"]) {
+  grid-template-areas: "button connector";
+}
+
+/* without connector */
+:host([orientation="horizontal"]:not([connector])), :host([orientation="horizontal"][connector="hidden"]) {
+  grid-template-areas: "button";
+  grid-template-columns: auto;
+}
+
+/* with connector, not compact */
+:host([orientation="horizontal"][connector="active"]:not([compact])), :host([orientation="horizontal"][connector="inactive"]:not([compact])) {
+  grid-template-columns:
+    auto
+    minmax(
+      var(--tracker-horizontal-orientation-compact-density-small-size-current-state-connector-width),
+      var(--tracker-horizontal-orientation-regular-density-small-size-current-state-connector-width)
+    );
+}
+
+/* with connector, compact */
+:host([orientation="horizontal"][connector="active"][compact]), :host([orientation="horizontal"][connector="inactive"][compact]) {
+  grid-template-columns:
+    auto
+    minmax(
+      auto,
+      var(--tracker-horizontal-orientation-compact-density-small-size-current-state-connector-width)
+    );
+}
+
+/* small: height */
+:host([orientation="horizontal"][size="small"]) {
+  grid-template-rows: minmax(var(--progress-tracker-horizontal-small-size-height, 34px), 1fr);
+}
+
+/* medium: height */
+:host([orientation="horizontal"][size="medium"]) {
+  grid-template-rows: minmax(var(--progress-tracker-horizontal-medium-size-height, 40px), 1fr);
+}
+
+/* large: height */
+:host([orientation="horizontal"][size="large"]) {
+  grid-template-rows: minmax(var(--progress-tracker-horizontal-large-size-height, 42px), 1fr);
+}
+
+/* small, not compact, non-interactive: gap between label and connector */
+:host([orientation="horizontal"][size="small"][connector]:not([compact]):not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-connectors-density-small-size-current-state-step-spacing);
+}
+
+/* medium, not compact, non-interactive: gap between label and connector */
+:host([orientation="horizontal"][size="medium"][connector]:not([compact]):not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-connectors-density-medium-size-current-state-step-spacing);
+}
+
+/* large, not compact, non-interactive: gap between label and connector */
+:host([orientation="horizontal"][size="large"][connector]:not([compact]):not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-connectors-density-large-size-current-state-step-spacing);
+}
+
+/* small, compact, non-interactive: gap between label and connector */
+:host([orientation="horizontal"][size="small"][compact][connector]:not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-compact-density-small-size-current-state-step-spacing);
+}
+
+/* medium, compact, non-interactive: gap between label and connector */
+:host([orientation="horizontal"][size="medium"][compact][connector]:not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-compact-density-medium-size-current-state-step-spacing);
+}
+
+/* large, compact, non-interactive: gap between label and connector */
+:host([orientation="horizontal"][size="large"][compact][connector]:not([interactive])) {
+  gap: var(--tracker-horizontal-orientation-compact-density-large-size-current-state-step-spacing);
+}
+
+/* with connector, interactive: no gap between label and connector */
+:host([orientation="horizontal"][interactive]) {
+  gap: 0;
+}
+
+:host([orientation="horizontal"]) {
+  --default-icon-fill-color: var(--progress-tracker-horizontal-default-icon-fill-color, var(--core-fill-30-color));
+  --custom-icon-fill-color: var(--progress-tracker-horizontal-custom-icon-fill-color, var(--core-fill-20-color));
+  --active-icon-fill-color: var(--progress-tracker-horizontal-active-icon-fill-color, var(--core-fill-10-color));
+  --completed-icon-fill-color:
+    var(
+      --progress-tracker-horizontal-completed-icon-fill-color,
+      var(--core-fill-10-color)
+    );
+}
+
+:host([orientation="vertical"]) {
+  --default-icon-fill-color: var(--progress-tracker-vertical-default-icon-fill-color, var(--core-fill-30-color));
+  --custom-icon-fill-color: var(--progress-tracker-vertical-custom-icon-fill-color, var(--core-fill-20-color));
+  --active-icon-fill-color: var(--progress-tracker-vertical-active-icon-fill-color, var(--core-blue-fill-color));
+  --completed-icon-fill-color:
+    var(
+      --progress-tracker-vertical-completed-icon-fill-color,
+      var(--core-blue-fill-color)
+    );
+}
+
+.icon {
+  display: flex;
+  grid-area: icon;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  fill: var(--default-icon-fill-color);
+}
+
+.icon.custom-icon {
+    fill: var(--custom-icon-fill-color);
+  }
+
+:host([active]) .icon {
+    fill: var(--active-icon-fill-color);
+  }
+
+:host([completed]) .icon {
+    fill: var(--completed-icon-fill-color);
+  }
+
+:host([orientation="horizontal"]) .icon {
+    min-width: var(--progress-tracker-horizontal-icon-width, var(--core-metrics-spacing-200));
+    min-height: var(--progress-tracker-horizontal-icon-height, var(--core-metrics-spacing-200));
+  }
+
+:host([orientation="vertical"]) .icon {
+    flex: 0 0 var(--progress-tracker-vertical-icon-width, var(--accessory-icon-variant-medium-size-width));
+    max-width: var(--progress-tracker-vertical-icon-width, var(--accessory-icon-variant-medium-size-width));
+    max-height: var(--progress-tracker-vertical-icon-height, 28px);
+  }
+
+:host(:not([completed]):not([active])) .default-icon.active-circle-icon, :host(:not([completed]):not([active])) .default-icon.small-active-circle-icon {
+    fill: none;
+    stroke: var(--default-icon-fill-color);
+  }
+
+:host([active]) .default-icon.active-circle-icon, :host([active]) .default-icon.small-active-circle-icon {
+    fill: none;
+    stroke: var(--active-icon-fill-color);
+  }
+
+:host([completed]) .default-icon.active-circle-icon, :host([completed]) .default-icon.small-active-circle-icon {
+    fill: none;
+    stroke: var(--completed-icon-fill-color);
+  }
+
+@media (hover: hover) {
+    :host(:not([completed]):not([active])) .button:hover .icon, :host(:not([completed]):not([active])) .button:hover .default-icon, :host(:not([completed]):not([active])) .button:active .icon, :host(:not([completed]):not([active])) .button:active .default-icon {
+      fill: var(--progress-tracker-horizontal-hover-icon-fill-color, var(--core-fill-10-color));
+    }
+
+    :host(:not([completed]):not([active])) .button:hover .default-icon.active-circle-icon, :host(:not([completed]):not([active])) .button:hover .default-icon.small-active-circle-icon, :host(:not([completed]):not([active])) .button:active .default-icon.active-circle-icon, :host(:not([completed]):not([active])) .button:active .default-icon.small-active-circle-icon {
+      fill: none;
+      stroke: var(--progress-tracker-horizontal-hover-icon-fill-color, var(--core-fill-10-color));
+    }
+}
+
+/**
+ * Layout and text styling specific to vertical orientation
+ */
+
+:host([orientation="vertical"]) {
+  grid-template-rows: var(--progress-tracker-step-vertical-icon-height, 28px) auto;
+  grid-template-columns:
+    var(--progress-tracker-step-vertical-icon-width, var(--accessory-icon-variant-medium-size-width))
+    auto;
+  gap: 0 var(--core-metrics-spacing-200);
+  align-self: flex-start;
+  color: var(--progress-tracker-vertical-text-color, var(--core-text-10-color));
+}
+
+/* vertical grid layout, with connector */
+:host([orientation="vertical"][connector]) {
+  grid-template-areas:
+    "icon content"
+    "connector content";
+}
+
+/* vertical grid layout, with connector */
+:host([orientation="vertical"]:not([connector])) {
+  grid-template-areas:
+    "icon content"
+    ". content";
+}
+
+
+:host {
+  display: inline-grid;
+}

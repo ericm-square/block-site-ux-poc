@@ -1,0 +1,59 @@
+/* TODO: add design tokens for table components */
+
+:host {
+  position: relative;
+  grid-column: 1 / -1; /* makes the row span the full available columns in the table grid */
+  background-color: var(--table-cell-state-normal-background-color, var(--core-surface-10-color));
+}
+
+:host(:not([active])) {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+:host([orientation="horizontal"]) {
+    display: block;
+  }
+
+:host([orientation="vertical"]) {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+  }
+
+:host([orientation="vertical"]) ::slotted(.market-table-row) {
+      border-bottom: none;
+    }
+
+:host([stick-to]) {
+    position: sticky;
+    z-index: 1;
+  }
+
+:host([stick-to][orientation="horizontal"]) {
+    z-index: 2;
+  }
+
+:host([stick-to="top"]) {
+    top: 0;
+    border-bottom: var(--table-border-width, 1px) solid var(--table-heading-border-color, var(--core-divider-10-color));
+  }
+
+:host([stick-to="bottom"]) {
+    bottom: 0;
+  }
+
+:host([stick-to="bottom"]:not(:empty)) {
+    border-top: var(--table-border-width, 1px) solid var(--table-heading-border-color, var(--core-divider-10-color));
+  }
+
+:host([stick-to="left"]) {
+    left: 0;
+    justify-content: end;
+    border-right: var(--table-border-width, 1px) solid var(--table-heading-border-color, var(--core-divider-10-color));
+  }
+
+:host([stick-to="right"]) {
+    right: 0;
+    justify-content: start;
+    border-left: var(--table-border-width, 1px) solid var(--table-heading-border-color, var(--core-divider-10-color));
+  }

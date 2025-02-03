@@ -1,0 +1,26 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: inline-block;
+}
+
+.dropdown, .dropdown > .filter-button {
+  width: 100%;
+}
+
+.date-popover {
+  max-width: unset;
+  max-height: unset;
+}

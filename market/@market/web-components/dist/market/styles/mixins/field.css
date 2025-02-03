@@ -1,0 +1,62 @@
+%field {
+  /* not really necessary, but some folks in dashboard are anchoring
+    absolutely positioned UI to field components, so for now... */
+  position: relative;
+
+  /* remove browser focus styles */
+  outline: none;
+
+  /* == fonts == */
+  font-weight: var(--field-input-weight);
+  font-size: var(--field-input-size);
+  line-height: var(--field-input-leading);
+  cursor: text;
+
+  /* == inner input element == */
+  input,
+  ::slotted(input),
+  textarea,
+  ::slotted(textarea) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    cursor: inherit;
+  }
+
+  ::slotted(label) {
+    cursor: inherit;
+  }
+
+  /* override default browser focus styles */
+  input:focus,
+  ::slotted(input:focus),
+  textarea:focus,
+  ::slotted(textarea:focus) {
+    outline: none;
+  }
+
+  /* placeholder color */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--field-placeholder-text-color);
+  }
+
+  /* similar to the style above. this selector does not work with Safari */
+  ::slotted(input)::placeholder,
+  ::slotted(textarea)::placeholder {
+    color: var(--field-placeholder-text-color);
+  }
+
+  &([size='small']) {
+    font-size: var(--core-type-paragraph-20-size);
+    line-height: var(--core-type-paragraph-20-leading);
+  }
+}

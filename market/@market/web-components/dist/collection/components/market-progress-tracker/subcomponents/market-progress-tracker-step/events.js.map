@@ -1,0 +1,1 @@
+{"version":3,"file":"events.js","sourceRoot":"","sources":["../../../../../../src/components/market-progress-tracker/subcomponents/market-progress-tracker-step/events.ts"],"names":[],"mappings":"","sourcesContent":["export type TMarketProgressTrackerStepClickEventDetail = {\n  index: number;\n  name: string | null;\n};\n"]}

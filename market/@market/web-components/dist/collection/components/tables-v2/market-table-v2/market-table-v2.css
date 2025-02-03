@@ -1,0 +1,68 @@
+:host, * {
+  box-sizing: border-box;
+}
+
+/* host element is the scrollable wrapper for the inner table */
+:host {
+  --table-cell-state-normal-background-color: var(--core-surface-10-color);
+
+  position: relative;
+  display: block;
+
+  /* host elememt scrolls when inner table overflows */
+  overflow: auto;
+  width: 100%;
+  background-color: var(--table-cell-state-normal-background-color);
+
+  /* enable tabular (monospaced) figures for numbers */
+  font-feature-settings: "tnum";
+}
+/* the inner table */
+:host [role="table"] {
+    display: table;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    table-layout: auto;
+    text-align: left;
+  }
+/* weird, but slot needs to inherit in order to cascade to slotted items */
+:host slot {
+    vertical-align: inherit;
+    text-align: inherit;
+  }
+:host([layout="fixed"]) [role="table"] {
+    table-layout: fixed;
+  }
+:host([align="left"]) [role="table"] {
+    text-align: left;
+  }
+:host([align="center"]) [role="table"] {
+    text-align: center;
+  }
+:host([align="right"]) [role="table"] {
+    text-align: right;
+  }
+:host([valign="top"]) [role="table"] {
+    vertical-align: top;
+  }
+:host([valign="middle"]) [role="table"] {
+    vertical-align: middle;
+  }
+:host([valign="bottom"]) [role="table"] {
+    vertical-align: bottom;
+  }
+
+::slotted(.market-drag-cursor) {
+  --drag-cursor-height: 4px;
+
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: block;
+  height: 0;
+  outline: calc(var(--drag-cursor-height) / 2) solid var(--core-emphasis-fill-color);
+  pointer-events: none;
+}

@@ -1,0 +1,13 @@
+%link-focus-ring {
+  /* TODO: add link focus ring tokens (UI-6643) */
+  --text-link-focus-ring-border-size: var(--button-focus-ring-border-size);
+  --text-link-focus-ring-buffer-size: var(--button-focus-ring-buffer-size);
+  --text-link-focus-ring-color: var(--button-focus-ring-color);
+  --focus-ring-color: color-mix(in srgb, var(--text-link-focus-ring-color) 100%, transparent);
+
+  &:focus-visible {
+    border-radius: 1px;
+    outline: var(--text-link-focus-ring-border-size) solid var(--focus-ring-color);
+    outline-offset: var(--text-link-focus-ring-buffer-size);
+  }
+}

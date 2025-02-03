@@ -1,0 +1,54 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --segmented-control-option-min-width: var(--core-small-size-minimum-height);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--segmented-control-option-min-width); /* ensures >40px tap target */
+  padding: var(--segmented-control-option-padding-vertical) var(--segmented-control-option-padding-horizontal);
+  border-radius: var(--segmented-control-option-background-radius);
+  color: var(--segmented-control-option-label-normal-state);
+  font-weight: var(--segmented-control-option-label-weight);
+  font-size: var(--segmented-control-option-label-size);
+  line-height: var(--segmented-control-option-label-leading);
+  letter-spacing: var(--segmented-control-option-label-tracking);
+  text-align: center;
+  cursor: pointer;
+  transition: color var(--segmented-control-animation-duration);
+}
+
+:host([selected]) {
+  color: var(--segmented-control-option-label-selected-state);
+
+  /* box shadow managed by segmented control slider */
+  box-shadow: none !important;  /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) {
+  background: var(--segmented-control-option-background-disabled-state-color);
+  color: var(--segmented-control-option-label-disabled-state-color);
+  cursor: not-allowed;
+}
+
+:host(:hover:not([selected]):not([disabled])) {
+  color: var(--segmented-control-option-label-hover-state-color);
+}
+
+:host(:active:not([disabled])) {
+  color: var(--segmented-control-option-label-pressed-state-color);
+}

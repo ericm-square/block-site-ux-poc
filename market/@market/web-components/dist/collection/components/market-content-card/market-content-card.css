@@ -1,0 +1,21 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: block;
+  padding: var(--content-card-padding-vertical-size) var(--content-card-padding-horizontal-size);
+  border: var(--content-card-border-width) solid var(--content-card-border-color);
+  border-radius: var(--content-card-border-radius);
+  background-color: var(--content-card-background-color);
+}

@@ -1,0 +1,81 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --activity-indicator-bar-height: 4px;
+  --activity-indicator-bar-border-radius: 6px;
+  --activity-indicator-bar-bar-color: var(--core-fill-40-color);
+  --activity-indicator-bar-value-color: var(--core-emphasis-fill-color);
+
+  display: block;
+  height: var(--activity-indicator-bar-height);
+}
+
+progress {
+  /* override inline-block style on the progress tag */
+  display: block;
+
+  /* fill host element */
+  width: 100%;
+  height: 100%;
+
+  /* to get rid of extra bevel styling in fox */
+  border: none;
+  border-radius: var(--activity-indicator-bar-border-radius);
+  background-color: var(--activity-indicator-bar-bar-color);
+
+  /* so we can style it to our own */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress[value]::-webkit-progress-value {
+  border-radius: var(--activity-indicator-bar-border-radius);
+  background-color: var(--activity-indicator-bar-value-color);
+}
+
+progress[value]::-webkit-progress-bar, progress:not([value])::-webkit-progress-bar {
+  border-radius: var(--activity-indicator-bar-border-radius);
+  background-color: var(--activity-indicator-bar-bar-color);
+}
+
+/* same styling as above, but needs separating
+   because webkit does not understand this.
+   ref: https://www.w3.org/TR/CSS21/syndata.html#rule-sets */
+progress[value]::-moz-progress-bar {
+  border-radius: var(--activity-indicator-bar-border-radius);
+  background-color: var(--activity-indicator-bar-value-color);
+}
+
+progress:not([value])::-moz-progress-bar {
+  visibility: hidden;
+}
+
+/* HTML Fallback: https://css-tricks.com/html5-progress-element/#aa-2-html-fallback */
+.progress-bar {
+  /* fill host container */
+  width: 100%;
+  height: 100%;
+  border-radius: var(--activity-indicator-bar-border-radius);
+  background-color: var(--activity-indicator-bar-bar-color);
+}
+
+.progress-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: var(--activity-indicator-bar-border-radius);
+  background-color: var(--activity-indicator-bar-value-color);
+  text-indent: -9999px;
+}

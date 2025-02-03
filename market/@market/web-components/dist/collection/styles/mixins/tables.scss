@@ -1,0 +1,42 @@
+/* TODO: add design tokens for table components */
+
+%table-cell {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: var(--table-cell-vertical-padding-size, 12px) var(--table-cell-horizontal-padding-size, 8px);
+  background-color: var(--table-cell-state-normal-background-color, var(--core-surface-10-color));
+  font-weight: var(--table-cell-primary-text-font-weight, var(--core-type-paragraph-20-weight));
+  font-size: var(--table-cell-primary-text-font-size, var(--core-type-paragraph-20-size));
+  line-height: var(--table-cell-primary-text-line-height, var(--core-type-paragraph-20-leading));
+  text-overflow: ellipsis;
+
+  &([align="right"]) {
+    justify-content: flex-end;
+
+    .sorting-caret {
+      order: -1;
+      margin-right: var(--table-heading-sort-icon-space-size, 8px);
+      margin-left: 0;
+    }
+  }
+
+  &([stickTo="left"]) {
+    position: sticky;
+    grid-area: left;
+    border-right:
+      var(--table-fixed-column-border-width, 1px)
+      solid
+      var(--table-fixed-column-border-color, var(--core-divider-20-color));
+  }
+
+  &([stickTo="right"]) {
+    grid-area: right;
+    border-left:
+      var(--table-fixed-column-border-width, 1px)
+      solid
+      var(--table-fixed-column-border-color, var(--core-divider-20-color));
+  }
+}

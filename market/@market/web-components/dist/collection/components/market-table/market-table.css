@@ -1,0 +1,13 @@
+:host {
+  position: relative;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: rows;
+  overflow-x: clip; /* columns hidden using grid-template-columns should not be visible */
+  height: auto;
+}
+
+/* Last row in the table doesn't need a bottom border */
+::slotted(.market-table-row:last-of-type:not([slot="header"])), ::slotted(.market-table-row.buffer-row) {
+  border-bottom: none !important; /* stylelint-disable-line declaration-no-important */
+}

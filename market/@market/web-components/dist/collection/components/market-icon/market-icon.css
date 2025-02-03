@@ -1,0 +1,32 @@
+@property --icon-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 24px;
+}
+
+@property --icon-height {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 24px;
+}
+
+:host {
+  display: inline-block;
+  width: var(--icon-width);
+  height: var(--icon-height);
+  color: inherit;
+}
+
+:host([tintable]) ::slotted(svg) {
+    fill: currentcolor;
+  }
+
+:host([tintable]) ::slotted(svg) path, :host([tintable]) ::slotted(svg) circle, :host([tintable]) ::slotted(svg) rect, :host([tintable]) ::slotted(svg) polygon, :host([tintable]) ::slotted(svg) ellipse, :host([tintable]) ::slotted(svg) line, :host([tintable]) ::slotted(svg) polyline {
+      fill: inherit;
+    }
+
+::slotted(svg) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

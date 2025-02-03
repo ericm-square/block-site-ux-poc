@@ -1,0 +1,289 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --checkbox-offset: calc(-1 * var(--checkbox-border-size));
+  --focus-ring-color: color-mix(in srgb, var(--checkbox-focus-ring-color) 100%, transparent);
+
+  position: relative;
+  display: inline-block;
+  width: var(--checkbox-width);
+  height: var(--checkbox-height);
+  border: var(--checkbox-border-size) solid var(--checkbox-normal-state-normal-validity-unchecked-value-border-color);
+  border-radius: var(--checkbox-border-radius);
+
+  /* state:normal.validity:normal.value:unchecked */
+  background-color: var(--checkbox-normal-state-normal-validity-unchecked-value-background-color);
+}
+
+input {
+  position: absolute;
+
+  /* The top and left offset are to account for the border size */
+  top: var(--checkbox-offset);
+  left: var(--checkbox-offset);
+  width: var(--checkbox-width);
+  height: var(--checkbox-height);
+  margin: 0;
+  border-radius: var(--checkbox-border-radius);
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input:focus-visible {
+  outline: var(--checkbox-focus-ring-border-size) solid var(--focus-ring-color);
+  outline-offset: var(--checkbox-focus-ring-buffer-size);
+}
+
+svg {
+  position: absolute;
+  top: var(--checkbox-offset);
+  left: var(--checkbox-offset);
+  pointer-events: none;
+}
+
+:host(:hover), :host([hovered]) {
+  /* state:hover.validity:normal.value:unchecked */
+  border-color: var(--checkbox-hover-state-normal-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-hover-state-normal-validity-unchecked-value-background-color);
+}
+
+:host([focused]) {
+  /* state:focus.validity:normal.value:unchecked */
+  border-color: var(--checkbox-focus-state-normal-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-focus-state-normal-validity-unchecked-value-background-color);
+}
+
+:host(:active), :host([active]) {
+  /* state:active.validity:normal.value:unchecked */
+  border-color: var(--checkbox-pressed-state-normal-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-pressed-state-normal-validity-unchecked-value-background-color);
+}
+
+:host([checked]) {
+  /* state:normal.validity:normal.value:checked */
+  border-color: var(--checkbox-normal-state-normal-validity-checked-value-border-color);
+  background-color: var(--checkbox-normal-state-normal-validity-checked-value-background-color);
+}
+
+:host([checked]) path {
+    stroke: var(--checkbox-normal-state-normal-validity-checked-value-icon-color);
+  }
+
+:host([checked]:hover), :host([checked][hovered]) {
+  /* state:hover.validity:normal.value:checked */
+  border-color: var(--checkbox-hover-state-normal-validity-checked-value-border-color);
+  background-color: var(--checkbox-hover-state-normal-validity-checked-value-background-color);
+}
+
+:host([checked]:hover) path, :host([checked][hovered]) path {
+    stroke: var(--checkbox-hover-state-normal-validity-checked-value-icon-color);
+  }
+
+:host([checked][focused]) {
+  /* state:focus.validity:normal.value:checked */
+  border-color: var(--checkbox-focus-state-normal-validity-checked-value-border-color);
+  background-color: var(--checkbox-focus-state-normal-validity-checked-value-background-color);
+}
+
+:host([checked][focused]) path {
+    stroke: var(--checkbox-focus-state-normal-validity-checked-value-icon-color);
+  }
+
+:host([checked]:active), :host([checked][active]) {
+  /* state:active.validity:normal.value:checked */
+  border-color: var(--checkbox-pressed-state-normal-validity-checked-value-border-color);
+  background-color: var(--checkbox-pressed-state-normal-validity-checked-value-background-color);
+}
+
+:host([checked]:active) path, :host([checked][active]) path {
+    stroke: var(--checkbox-pressed-state-normal-validity-checked-value-icon-color);
+  }
+
+:host([indeterminate]) {
+  /* state:normal.validity:normal.value:indeterminate */
+  border-color: var(--checkbox-normal-state-normal-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-normal-state-normal-validity-indeterminate-value-background-color);
+}
+
+:host([indeterminate]) path {
+    stroke: var(--checkbox-normal-state-normal-validity-indeterminate-value-icon-color);
+  }
+
+:host([indeterminate]:hover), :host([indeterminate][hovered]) {
+  /* state:hover.validity:normal.value:indeterminate */
+  border-color: var(--checkbox-hover-state-normal-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-hover-state-normal-validity-indeterminate-value-background-color);
+}
+
+:host([indeterminate]:hover) path, :host([indeterminate][hovered]) path {
+    stroke: var(--checkbox-hover-state-normal-validity-indeterminate-value-icon-color);
+  }
+
+:host([indeterminate][focused]) {
+  /* state:focus.validity:normal.value:indeterminate */
+  border-color: var(--checkbox-focus-state-normal-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-focus-state-normal-validity-indeterminate-value-background-color);
+}
+
+:host([indeterminate][focused]) path {
+    stroke: var(--checkbox-focus-state-normal-validity-indeterminate-value-icon-color);
+  }
+
+:host([indeterminate]:active), :host([indeterminate][active]) {
+  /* state:active.validity:normal.value:indeterminate */
+  border-color: var(--checkbox-pressed-state-normal-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-pressed-state-normal-validity-indeterminate-value-background-color);
+}
+
+:host([indeterminate]:active) path, :host([indeterminate][active]) path {
+    stroke: var(--checkbox-pressed-state-normal-validity-indeterminate-value-icon-color);
+  }
+
+:host([invalid]) {
+  /* state:normal.validity:invalid.value:unchecked */
+  border-color: var(--checkbox-normal-state-invalid-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-normal-state-invalid-validity-unchecked-value-background-color);
+}
+
+:host([invalid]:hover) {
+  /* state:hover.validity:invalid.value:unchecked */
+  border-color: var(--checkbox-hover-state-invalid-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-hover-state-invalid-validity-unchecked-value-background-color);
+}
+
+:host([invalid][focused]) {
+  /* state:focus.validity:invalid.value:unchecked */
+  border-color: var(--checkbox-focus-state-invalid-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-focus-state-invalid-validity-unchecked-value-background-color);
+}
+
+:host([invalid]:active) {
+  /* state:active.validity:invalid.value:unchecked */
+  border-color: var(--checkbox-pressed-state-invalid-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-pressed-state-invalid-validity-unchecked-value-background-color);
+}
+
+:host([invalid][checked]) {
+  /* state:normal.validity:invalid.value:checked */
+  border-color: var(--checkbox-normal-state-invalid-validity-checked-value-border-color);
+  background-color: var(--checkbox-normal-state-invalid-validity-checked-value-background-color);
+}
+
+:host([invalid][checked]) path {
+    stroke: var(--checkbox-normal-state-invalid-validity-checked-value-icon-color);
+  }
+
+:host([invalid][checked]:hover) {
+  /* state:hover.validity:invalid.value:checked */
+  border-color: var(--checkbox-hover-state-invalid-validity-checked-value-border-color);
+  background-color: var(--checkbox-hover-state-invalid-validity-checked-value-background-color);
+}
+
+:host([invalid][checked]:hover) path {
+    stroke: var(--checkbox-hover-state-invalid-validity-checked-value-icon-color);
+  }
+
+:host([invalid][checked][focused]) {
+  /* state:focus.validity:invalid.value:checked */
+  border-color: var(--checkbox-focus-state-invalid-validity-checked-value-border-color);
+  background-color: var(--checkbox-focus-state-invalid-validity-checked-value-background-color);
+}
+
+:host([invalid][checked][focused]) path {
+    stroke: var(--checkbox-focus-state-invalid-validity-checked-value-icon-color);
+  }
+
+:host([invalid][checked]:active) {
+  /* state:active.validity:invalid.value:checked */
+  border-color: var(--checkbox-pressed-state-invalid-validity-checked-value-border-color);
+  background-color: var(--checkbox-pressed-state-invalid-validity-checked-value-background-color);
+}
+
+:host([invalid][checked]:active) path {
+    stroke: var(--checkbox-pressed-state-invalid-validity-checked-value-icon-color);
+  }
+
+:host([invalid][indeterminate]) {
+  /* state:normal.validity:invalid.value:indeterminate */
+  border-color: var(--checkbox-normal-state-invalid-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-normal-state-invalid-validity-indeterminate-value-background-color);
+}
+
+:host([invalid][indeterminate]) path {
+    stroke: var(--checkbox-normal-state-invalid-validity-indeterminate-value-icon-color);
+  }
+
+:host([invalid][indeterminate]:hover) {
+  /* state:hover.validity:invalid.value:indeterminate */
+  border-color: var(--checkbox-hover-state-invalid-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-hover-state-invalid-validity-indeterminate-value-background-color);
+}
+
+:host([invalid][indeterminate]:hover) path {
+    stroke: var(--checkbox-hover-state-invalid-validity-indeterminate-value-icon-color);
+  }
+
+:host([invalid][indeterminate][focused]) {
+  /* state:focus.validity:invalid.value:indeterminate */
+  border-color: var(--checkbox-focus-state-invalid-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-focus-state-invalid-validity-indeterminate-value-background-color);
+}
+
+:host([invalid][indeterminate]:active) {
+  /* state:active.validity:invalid.value:indeterminate */
+  border-color: var(--checkbox-pressed-state-invalid-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-pressed-state-invalid-validity-indeterminate-value-background-color);
+}
+
+:host([invalid][indeterminate]:active) path {
+    stroke: var(--checkbox-pressed-state-invalid-validity-indeterminate-value-icon-color);
+  }
+
+/* Disabled states trump all others */
+
+:host([disabled]) {
+  /* state:disabled.validity:normal.value:unchecked */
+  border-color: var(--checkbox-disabled-state-normal-validity-unchecked-value-border-color);
+  background-color: var(--checkbox-disabled-state-normal-validity-unchecked-value-background-color);
+  cursor: not-allowed;
+}
+
+:host([disabled]) input {
+    cursor: not-allowed;
+  }
+
+:host([checked][disabled]) {
+  /* state:disabled.validity:normal.value:checked */
+  border-color: var(--checkbox-disabled-state-normal-validity-checked-value-border-color);
+  background-color: var(--checkbox-disabled-state-normal-validity-checked-value-background-color);
+}
+
+:host([checked][disabled]) path {
+    stroke: var(--checkbox-disabled-state-normal-validity-checked-value-icon-color);
+  }
+
+:host([indeterminate][disabled]) {
+  /* state:disabled.validity:normal.value:indeterminate */
+  border-color: var(--checkbox-disabled-state-normal-validity-indeterminate-value-border-color);
+  background-color: var(--checkbox-disabled-state-normal-validity-indeterminate-value-background-color);
+}
+
+:host([indeterminate][disabled]) path {
+    stroke: var(--checkbox-disabled-state-normal-validity-indeterminate-value-icon-color);
+  }

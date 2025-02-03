@@ -1,0 +1,108 @@
+%field-accessories {
+  /* default accessory spacing */
+  --field-accessory-horizontal-spacing-size: 16px;
+  --field-size-small-accessory-horizontal-spacing-size: 12px;
+
+  /* image accessory spacing */
+  --field-size-large-image-accessory-outer-spacing-size: 12px;
+  --field-size-medium-image-accessory-outer-spacing-size: 4px;
+
+  /* button accessory spacing */
+  --field-size-large-button-accessory-outer-spacing-size: 12px;
+  --field-size-medium-button-accessory-outer-spacing-size: 4px;
+
+  /* tooltip accessory spacing */
+  --field-size-large-tooltip-accessory-horizontal-spacing-size: 5px;
+  --field-size-large-tooltip-accessory-vertical-spacing-size: -1px;
+  --field-size-small-tooltip-accessory-horizontal-spacing-size: 1px;
+
+  /* Leading accessories */
+
+  ::slotted([slot="leading-accessory"]) {
+    flex-shrink: 0;
+    margin-right: var(--field-accessory-horizontal-spacing-size);
+    margin-left: var(--field-accessory-horizontal-spacing-size);
+  }
+
+  ::slotted(.market-accessory[slot="leading-accessory"][size="image"]) {
+    margin-left: var(--field-size-large-image-accessory-outer-spacing-size);
+  }
+
+  ::slotted(.market-tooltip[slot="leading-accessory"]) {
+    /* Typically the tooltip would be a trailing accessory,
+     but just in case it's ever used as leading accessory */
+    margin:
+      var(--field-size-large-tooltip-accessory-vertical-spacing-size)
+      var(--field-size-large-tooltip-accessory-horizontal-spacing-size);
+  }
+
+  ::slotted(.market-button[slot="leading-accessory"][size="small"]) {
+    /* Typically the button would be a trailing accessory,
+     but just in case it's ever used as leading accessory */
+    margin-left: var(--field-size-large-button-accessory-outer-spacing-size);
+  }
+
+  /* Trailing accessories */
+
+  ::slotted([slot="trailing-accessory"]) {
+    flex-shrink: 0;
+    margin-right: var(--field-accessory-horizontal-spacing-size);
+    margin-left: var(--field-accessory-horizontal-spacing-size);
+  }
+
+  ::slotted(.market-accessory[slot="trailing-accessory"][size="image"]) {
+    margin-right: var(--field-size-large-image-accessory-outer-spacing-size);
+  }
+
+  ::slotted(.market-tooltip[slot="trailing-accessory"]) {
+    margin:
+      var(--field-size-large-tooltip-accessory-vertical-spacing-size)
+      var(--field-size-large-tooltip-accessory-horizontal-spacing-size);
+  }
+
+  ::slotted(.market-button[slot="trailing-accessory"][size="small"]) {
+    margin-right: var(--field-size-large-button-accessory-outer-spacing-size);
+  }
+
+  /* Size medium */
+  &([size='medium']) {
+    ::slotted(.market-accessory[slot="leading-accessory"][size="image"]) {
+      margin-left: var(--field-size-medium-image-accessory-outer-spacing-size);
+    }
+
+    ::slotted(.market-button[slot="leading-accessory"][size="small"]) {
+      margin-left: var(--field-size-medium-button-accessory-outer-spacing-size);
+    }
+
+    ::slotted(.market-accessory[slot="trailing-accessory"][size="image"]) {
+      margin-right: var(--field-size-medium-image-accessory-outer-spacing-size);
+    }
+
+    ::slotted(.market-button[slot="trailing-accessory"][size="small"]) {
+      margin-right: var(--field-size-medium-button-accessory-outer-spacing-size);
+    }
+  }
+
+  /* Size small */
+  &([size='small']) {
+    ::slotted([slot="leading-accessory"]),
+    ::slotted([slot="trailing-accessory"]) {
+      margin-right: var(--field-size-small-accessory-horizontal-spacing-size);
+      margin-left: var(--field-size-small-accessory-horizontal-spacing-size);
+    }
+
+    ::slotted(.market-tooltip[slot="leading-accessory"]),
+    ::slotted(.market-tooltip[slot="trailing-accessory"]) {
+      margin-right: var(--field-size-small-tooltip-accessory-horizontal-spacing-size);
+      margin-left: var(--field-size-small-tooltip-accessory-horizontal-spacing-size);
+    }
+  }
+
+  .label-input-container.has-leading-accessory {
+    padding-left: 0 !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  .label-input-container.has-trailing-accessory {
+    padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
+  }
+}

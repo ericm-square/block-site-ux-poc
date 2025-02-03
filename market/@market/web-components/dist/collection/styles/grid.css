@@ -1,0 +1,62 @@
+@import "./mixins/grid.css";
+
+/* TODO: Figure out how to get token values into the media query breakpoints */
+
+/* Medium Viewports */
+@media only screen and (min-width: 600px) {
+  :root {
+    --core-grid-column-count: var(--core-medium-viewport-grid-column-count);
+    --core-grid-horizontal-spacing: var(--core-medium-viewport-grid-horizontal-spacing);
+    --core-grid-vertical-spacing: var(--core-medium-viewport-grid-vertical-spacing);
+    --core-grid-item-full-size-column-span: var(--core-medium-viewport-grid-item-full-size-column-span);
+    --core-grid-item-large-size-column-span: var(--core-medium-viewport-grid-item-large-size-column-span);
+    --core-grid-item-medium-size-column-span: var(--core-medium-viewport-grid-item-medium-size-column-span);
+    --core-grid-item-small-size-column-span: var(--core-medium-viewport-grid-item-small-size-column-span);
+  }
+}
+
+/* Wide Viewports */
+@media only screen and (min-width: 840px) {
+  :root {
+    --core-grid-column-count: var(--core-wide-viewport-grid-column-count);
+    --core-grid-horizontal-spacing: var(--core-wide-viewport-grid-horizontal-spacing);
+    --core-grid-vertical-spacing: var(--core-wide-viewport-grid-vertical-spacing);
+    --core-grid-item-full-size-column-span: var(--core-wide-viewport-grid-item-full-size-column-span);
+    --core-grid-item-large-size-column-span: var(--core-wide-viewport-grid-item-large-size-column-span);
+    --core-grid-item-medium-size-column-span: var(--core-wide-viewport-grid-item-medium-size-column-span);
+    --core-grid-item-small-size-column-span: var(--core-wide-viewport-grid-item-small-size-column-span);
+  }
+}
+
+/* Extra Wide Viewports */
+@media only screen and (min-width: 1024px) {
+  :root {
+    --core-grid-column-count: var(--core-extra-wide-viewport-grid-column-count);
+    --core-grid-horizontal-spacing: var(--core-extra-wide-viewport-grid-horizontal-spacing);
+    --core-grid-vertical-spacing: var(--core-extra-wide-viewport-grid-vertical-spacing);
+    --core-grid-item-full-size-column-span: var(--core-extra-wide-viewport-grid-item-full-size-column-span);
+    --core-grid-item-large-size-column-span: var(--core-extra-wide-viewport-grid-item-large-size-column-span);
+    --core-grid-item-medium-size-column-span: var(--core-extra-wide-viewport-grid-item-medium-size-column-span);
+    --core-grid-item-small-size-column-span: var(--core-extra-wide-viewport-grid-item-small-size-column-span);
+  }
+}
+
+.market-grid-container {
+  @extend %grid-container;
+}
+
+.market-grid-item-small {
+  @extend %grid-item-small;
+}
+
+.market-grid-item-medium {
+  @extend %grid-item-medium;
+}
+
+.market-grid-item-large {
+  @extend %grid-item-large;
+}
+
+.market-grid-item-full {
+  @extend %grid-item-full;
+}

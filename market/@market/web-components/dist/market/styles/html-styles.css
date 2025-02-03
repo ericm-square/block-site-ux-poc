@@ -1,0 +1,38 @@
+@import "./mixins/link.css";
+
+[data-market-features*="html-styles"] {
+  a,
+  a:link,
+  a:hover,
+  a:active,
+  a:visited {
+    color: var(--text-link-normal-variant-color);
+    font-weight: var(--text-link-medium-size-text-weight);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  a,
+  a:link,
+  a:visited {
+    opacity: var(--text-link-normal-state-opacity);
+  }
+
+  a:hover {
+    opacity: var(--text-link-hover-state-opacity);
+  }
+
+  a:active {
+    opacity: var(--text-link-pressed-state-opacity);
+  }
+
+  a[disabled],
+  a.disabled,
+  a[aria-disabled="true"] {
+    opacity: var(--text-link-disabled-state-opacity);
+  }
+}
+
+[data-market-features*="html-styles"] a {
+  @extend %link-focus-ring;
+}

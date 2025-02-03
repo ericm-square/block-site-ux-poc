@@ -1,0 +1,13 @@
+:host {
+  display: inline-block;
+}
+
+market-dropdown, .market-dropdown {
+  width: 100%;
+}
+
+svg {
+  /* TODO: check back on this when icon library is more finalized and/or when
+  vertical centering of icons + text in buttons is implemented */
+  fill: transparent;
+}

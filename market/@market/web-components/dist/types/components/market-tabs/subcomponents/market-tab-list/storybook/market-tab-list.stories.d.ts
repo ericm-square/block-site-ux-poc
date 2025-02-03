@@ -1,0 +1,17 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { TMarketTabListTemplateArgs } from './market-tab-list.templates';
+type Story = StoryObj<TMarketTabListTemplateArgs>;
+declare const _default: Meta<TMarketTabListTemplateArgs>;
+export default _default;
+export declare const API: Story;
+export declare const DisabledFirstTab: Story;
+export declare const AllTabsDisabled: Story;
+export declare const OneTab: Story;
+export declare const Small: Story;
+export declare const SmallDisabledFirstTab: Story;
+export declare const SmallAllTabsDisabled: Story;
+export declare const SmallOneTab: Story;
+export declare const Large: Story;
+export declare const LargeDisabledFirstTab: Story;
+export declare const LargeAllTabsDisabled: Story;
+export declare const LargeOneTab: Story;

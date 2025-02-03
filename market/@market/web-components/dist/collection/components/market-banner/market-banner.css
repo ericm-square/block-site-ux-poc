@@ -1,0 +1,240 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: var(--banner-vertical-padding) var(--banner-horizontal-padding);
+  border-width: calc(var(--banner-border-width) * 1px);
+  border-style: solid;
+  border-radius: var(--banner-border-radius);
+  font-weight: var(--banner-text-weight);
+  font-size: var(--banner-text-size);
+  line-height: var(--banner-text-leading);
+  letter-spacing: var(--banner-text-tracking);
+  text-transform: var(--banner-text-case);
+  -moz-column-gap: var(--banner-icon-spacing);
+       column-gap: var(--banner-icon-spacing);
+}
+
+.icon-container, .dismiss-container {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.dismiss-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+
+.dismiss-container button svg {
+      fill: var(--banner-dismiss-button-normal-state-color);
+    }
+
+.dismiss-container button:active svg {
+      fill: var(--banner-dismiss-button-pressed-state-color);
+    }
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  row-gap: var(--banner-multiline-spacing);
+  -moz-column-gap: var(--banner-content-spacing);
+       column-gap: var(--banner-content-spacing);
+}
+
+.main.has-title {
+    flex-direction: column;
+  }
+
+.main.has-title .actions {
+      justify-content: unset;
+    }
+
+::slotted([slot="title"]) {
+  margin: 0;
+  font-weight: var(--banner-title-weight);
+  font-size: var(--banner-title-size);
+  font-family: inherit;
+  line-height: var(--banner-title-leading);
+  letter-spacing: var(--banner-title-tracking);
+  text-transform: var(--banner-title-case);
+}
+
+section {
+  flex-grow: 1;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+nav.hidden {
+    display: none;
+  }
+
+/* style slotted buttons and links the same */
+::slotted(a), ::slotted(button) {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-weight: var(--banner-button-text-weight);
+  font-size: var(--banner-button-text-size);
+  font-family: inherit;
+  line-height: var(--banner-button-text-leading);
+  letter-spacing: var(--banner-button-text-tracking);
+  text-decoration: none;
+  text-transform: var(--banner-button-text-case);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+::slotted(a:hover), ::slotted(button:hover) {
+  opacity: var(--text-link-hover-state-opacity);
+}
+
+::slotted(a:active), ::slotted(button:active) {
+  opacity: var(--text-link-pressed-state-opacity);
+}
+
+::slotted([slot="action"]) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* implement nav separator line */
+::slotted([slot="action"]:not(:last-child)) {
+  /* add extra right margin to place separator */
+  margin-right: calc(var(--banner-button-spacing) * 2 + var(--banner-button-separator-width));
+}
+::slotted([slot="action"]:not(:last-child))::after {
+    /* left and right margins will position separator between
+      this and the next action, and outside of clickable hit area */
+    content: "";
+    display: inline-block;
+    width: var(--banner-button-separator-width);
+    height: var(--banner-button-separator-height);
+    margin-right: calc(-1 * var(--banner-button-spacing) - var(--banner-button-separator-width));
+    margin-left: var(--banner-button-spacing);
+    background-color: var(--banner-button-separator-color);
+    opacity: var(--banner-button-separator-opacity);
+    pointer-events: none;
+  }
+
+:host([variant="info"]) {
+  border-color: var(--banner-info-variant-border-color);
+  background-color: var(--banner-info-variant-background-color);
+  color: var(--banner-info-variant-text-color);
+}
+
+:host([variant="info"]) .icon-container svg, :host([variant="info"]) ::slotted([slot="icon"]) {
+    fill: var(--banner-info-variant-icon-color);
+  }
+
+:host([variant="info"]) ::slotted(a) {
+    color: var(--banner-info-variant-text-link-text-color);
+  }
+
+:host([variant="info"]) ::slotted(button) {
+    color: var(--banner-info-variant-button-text-color);
+  }
+
+:host([variant="success"]) {
+  border-color: var(--banner-success-variant-border-color);
+  background-color: var(--banner-success-variant-background-color);
+  color: var(--banner-success-variant-text-color);
+}
+
+:host([variant="success"]) .icon-container svg, :host([variant="success"]) ::slotted([slot="icon"]) {
+    fill: var(--banner-success-variant-icon-color);
+  }
+
+:host([variant="success"]) ::slotted(a) {
+    color: var(--banner-success-variant-text-link-text-color);
+  }
+
+:host([variant="success"]) ::slotted(button) {
+    color: var(--banner-success-variant-button-text-color);
+  }
+
+:host([variant="warning"]) {
+  border-color: var(--banner-warning-variant-border-color);
+  background-color: var(--banner-warning-variant-background-color);
+  color: var(--banner-warning-variant-text-color);
+}
+
+:host([variant="warning"]) .icon-container svg, :host([variant="warning"]) ::slotted([slot="icon"]) {
+    fill: var(--banner-warning-variant-icon-color);
+  }
+
+:host([variant="warning"]) ::slotted(a) {
+    color: var(--banner-warning-variant-text-link-text-color);
+  }
+
+:host([variant="warning"]) ::slotted(button) {
+    color: var(--banner-warning-variant-button-text-color);
+  }
+
+:host([variant="critical"]) {
+  border-color: var(--banner-critical-variant-border-color);
+  background-color: var(--banner-critical-variant-background-color);
+  color: var(--banner-critical-variant-text-color);
+}
+
+:host([variant="critical"]) .icon-container svg, :host([variant="critical"]) ::slotted([slot="icon"]) {
+    fill: var(--banner-critical-variant-icon-color);
+  }
+
+:host([variant="critical"]) ::slotted(a) {
+    color: var(--banner-critical-variant-text-color);
+  }
+
+:host([variant="critical"]) ::slotted(button) {
+    color: var(--banner-critical-variant-button-text-color);
+  }
+
+:host([variant="insight"]) {
+  border-color: var(--banner-insight-variant-border-color);
+  background-color: var(--banner-insight-variant-background-color);
+  color: var(--banner-insight-variant-text-color);
+}
+
+:host([variant="insight"]) .icon-container svg, :host([variant="insight"]) ::slotted([slot="icon"]) {
+    fill: var(--banner-insight-variant-icon-color);
+  }
+
+:host([variant="insight"]) ::slotted(a) {
+    color: var(--banner-insight-variant-text-link-text-color);
+  }
+
+:host([variant="insight"]) ::slotted(button) {
+    color: var(--banner-insight-variant-button-text-color);
+  }

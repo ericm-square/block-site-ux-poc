@@ -1,0 +1,203 @@
+:host, * {
+  box-sizing: border-box;
+}
+
+:host {
+  --table-cell-border-width: 1px;
+  --table-cell-border-color: var(--core-divider-20-color);
+  --table-cell-horizontal-spacing: var(--core-metrics-spacing-150);
+  --table-cell-heading-border-color: var(--core-divider-10-color);
+  --table-cell-heading-font-weight: var(--core-type-medium-weight);
+  --table-cell-state-normal-background-color: var(--core-surface-10-color);
+
+  display: table-row;
+  vertical-align: inherit;
+  width: 100%;
+  outline: none;
+  text-align: inherit;
+}
+
+/* weird, but slot needs to inherit in order to cascade to slotted items */
+
+:host slot {
+    vertical-align: inherit;
+    text-align: inherit;
+  }
+
+:host([align="left"]) {
+    text-align: left;
+  }
+
+:host([align="center"]) {
+    text-align: center;
+  }
+
+:host([align="right"]) {
+    text-align: right;
+  }
+
+:host([valign="top"]) {
+    vertical-align: top;
+  }
+
+:host([valign="middle"]) {
+    vertical-align: middle;
+  }
+
+:host([valign="bottom"]) {
+    vertical-align: bottom;
+  }
+
+:host([header]) .market-table-v2-cell, :host([header]) ::slotted(.market-table-v2-cell), :host([footer]) .market-table-v2-cell, :host([footer]) ::slotted(.market-table-v2-cell) {
+      font-weight: var(--table-cell-heading-font-weight);
+    }
+
+:host([header]) .market-drag-handle, :host([footer]) .market-drag-handle {
+      visibility: hidden;
+    }
+
+:host([header]) .market-table-v2-cell, :host([header]) ::slotted(.market-table-v2-cell), :host([sticky="top"]) .market-table-v2-cell, :host([sticky="top"]) ::slotted(.market-table-v2-cell) {
+      border-bottom: var(--table-cell-border-width) solid var(--table-cell-heading-border-color);
+    }
+
+:host([footer]) .market-table-v2-cell, :host([footer]) ::slotted(.market-table-v2-cell), :host([sticky="bottom"]) .market-table-v2-cell, :host([sticky="bottom"]) ::slotted(.market-table-v2-cell) {
+      border-top: var(--table-cell-border-width) solid var(--table-cell-heading-border-color);
+      border-bottom: none;
+    }
+
+/* these styles apply to sticky table rows,
+    which layer ABOVE sticky table columns  */
+
+:host([sticky]) {
+    position: sticky;
+    z-index: 3;
+    background-color: var(--table-cell-state-normal-background-color);
+  }
+
+:host([sticky="top"]) {
+    top: 0;
+  }
+
+:host([sticky="bottom"]) {
+    bottom: 0;
+  }
+
+:host([interactive]) {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  :host([interactive]:hover) {
+    background-color: var(--table-cell-hover-state-background-color);
+  }
+}
+
+:host([interactive]:focus) {
+  background-color: var(--table-cell-focus-state-background-color);
+}
+
+:host([active]), :host([interactive]:active) {
+  background-color: var(--table-cell-pressed-state-background-color);
+}
+
+:host([disabled]) {
+  color: var(--table-cell-disabled-state-text-color);
+  pointer-events: none;
+}
+
+/* drag & drop states */
+
+.drag-handle-cell {
+  width: var(--core-metrics-spacing-500);
+}
+
+@media (hover: hover) {
+  :host([drag-handle-visibility="hover"]) .market-drag-handle {
+    opacity: 0%;
+  }
+
+  :host([drag-handle-visibility="hover"]:hover) .market-drag-handle {
+    opacity: 100%;
+  }
+}
+
+/* the original row is styled as an empty gray box */
+:host(.market-drag-placeholder), :host(.market-drag-placeholder[interactive]) {
+  background-color: var(--core-fill-50-color);
+}
+:host(.market-drag-placeholder) *, :host(.market-drag-placeholder) ::slotted(*), :host(.market-drag-placeholder[interactive]) *, :host(.market-drag-placeholder[interactive]) ::slotted(*) {
+    opacity: 0%;
+  }
+/* prevent duplicate drags at the same time! */
+:host(.market-drag-placeholder) .market-drag-handle, :host(.market-drag-placeholder[interactive]) .market-drag-handle {
+    pointer-events: none;
+  }
+
+/* the cloned row being dragged */
+:host(.market-drag-clone), :host(.market-drag-clone[interactive]) {
+  --table-row-dragged-width: 240px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--table-row-dragged-width);
+  border-bottom: var(--table-cell-border-width) solid var(--table-cell-border-color);
+  border-radius: var(--core-radius-10);
+  background-color: var(--core-surface-20-color);
+  cursor: grabbing;
+  transition-timing-function: var(--core-animation-move-transition-easing);
+  transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+  transition-property: top, width, height;
+}
+/*
+    create box shadow pseudo on which we can transition opacity
+    (hardware accelerated = better perf than transitioning box-shadow)
+  */
+:host(.market-drag-clone)::after, :host(.market-drag-clone[interactive])::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    border-radius: var(--core-radius-10);
+    box-shadow: var(--elevation-20-shadow);
+    opacity: var(--market-drag-clone-shadow-opacity, 0%); /* set by Draggable util */
+    transition-timing-function: var(--core-animation-move-transition-easing);
+    transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+    transition-property: opacity;
+  }
+:host(.market-drag-clone) .market-drag-handle, :host(.market-drag-clone[interactive]) .market-drag-handle {
+    cursor: grabbing;
+  }
+:host(.market-drag-clone) ::slotted(.market-table-v2-cell:first-child), :host(.market-drag-clone[interactive]) ::slotted(.market-table-v2-cell:first-child) {
+    overflow: hidden;
+    width: 100%;
+    border: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    /* transition the indent padding */
+    transition-timing-function: var(--core-animation-move-transition-easing);
+    transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+    transition-property: padding-left;
+  }
+:host(.market-drag-clone) ::slotted(.market-table-v2-cell:not(:first-child)), :host(.market-drag-clone[interactive]) ::slotted(.market-table-v2-cell:not(:first-child)) {
+    display: none;
+  }
+:host(.market-drag-clone) .drag-handle-cell, :host(.market-drag-clone[interactive]) .drag-handle-cell {
+    border: none;
+  }
+
+:host(.market-drag-clone[drag-handle-position="leading"]) {
+  justify-content: flex-start;
+}
+
+/* the cloned row being released (transitioning back to placeholder) */
+:host(.market-drag-released) {
+  pointer-events: none;
+  transition-property: opacity, width, height, transform, scale;
+}
+
+:host(.market-drag-into-collapsed-group) {
+  opacity: 0%;
+  scale: 0;
+}

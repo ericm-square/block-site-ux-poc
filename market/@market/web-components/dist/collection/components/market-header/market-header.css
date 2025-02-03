@@ -1,0 +1,200 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+::slotted(.wayfinding), ::slotted([slot="wayfinding"]), ::slotted(.subheading), ::slotted([slot="subheading"]) {
+  font-weight: var(--core-type-paragraph-20-weight);
+  font-size: var(--core-type-paragraph-20-size);
+  font-family: var(--core-type-paragraph-20-font-family);
+  line-height: var(--core-type-paragraph-20-leading);
+  letter-spacing: var(--core-type-paragraph-20-tracking);
+  text-transform: var(--core-type-paragraph-20-case);
+}
+
+::slotted(.wayfinding) b, ::slotted(.wayfinding) strong, ::slotted([slot="wayfinding"]) b, ::slotted([slot="wayfinding"]) strong, ::slotted(.subheading) b, ::slotted(.subheading) strong, ::slotted([slot="subheading"]) b, ::slotted([slot="subheading"]) strong {
+    font-weight: var(--core-type-semibold-20-weight);
+  }
+
+
+:host {
+  --header-animation-duration: 0.2s;
+
+  display: block;
+}
+
+/* remove margin from slotted elements */
+::slotted(*) {
+  margin: 0;
+}
+
+::slotted(.wayfinding), ::slotted([slot="wayfinding"]) {
+
+  display: block;
+  margin-bottom: var(--header-sub-text-spacing-bottom-size);
+  color: var(--header-sub-text-text-color);
+}
+
+::slotted(.subheading), ::slotted([slot="subheading"]) {
+
+  display: block;
+  margin-top: var(--header-sub-text-spacing-bottom-size);
+  color: var(--header-sub-text-text-color);
+}
+
+/* If you change these properties also update their counterparts in styles/components.css */
+:host([show-navigation]) ::slotted([slot="compact"]:not(.wayfinding):not(.subheading)) {
+    font-weight: var(--core-type-heading-20-weight);
+    font-size: var(--core-type-heading-20-size);
+    font-family: var(--core-type-heading-20-font-family);
+    line-height: var(--core-type-heading-20-leading);
+    letter-spacing: var(--core-type-heading-20-tracking);
+    text-transform: var(--core-type-heading-20-case);
+  }
+
+/* navigation w/ close button */
+nav {
+  padding-right: var(--header-main-text-horizontal-spacing);
+}
+
+/* actions menu w/ buttons */
+menu {
+  display: none;
+  grid-auto-flow: column;
+  align-items: start;
+  margin: 0;
+  padding-left: var(--header-main-text-horizontal-spacing);
+  -moz-column-gap: var(--button-group-spacing);
+       column-gap: var(--button-group-spacing);
+}
+:host([show-actions]) menu {
+    display: grid;
+  }
+
+.grid {
+  display: none;
+}
+
+:host([show-actions]) .grid {
+    /*
+      If actions are present, grid has 2 columns,
+      so stretch the first column (.compact) */
+    display: grid;
+    grid-template-columns: auto minmax(max-content, 1fr);
+  }
+
+:host([show-navigation]) .grid {
+    /*
+      If navigation is present, grid has 3 columns.
+      Perfectly center the middle column (.compact) if possible,
+      regardless of the content on the left/right columns.
+      ref: https://stackoverflow.com/a/68292664/17019161 */
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+  }
+
+.navigation {
+  display: none;
+}
+
+:host([show-navigation]) .navigation {
+    display: flex;
+  }
+
+.actions {
+  display: flex;
+  place-content: flex-end;
+}
+
+/* vertically center the eyebrow & title in the grid */
+.compact {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+}
+
+::slotted(p) {
+  margin-top: var(--header-bottom-padding-size);
+}
+
+::slotted(p[slot="compact"]) {
+  display: none;
+}
+
+/* Styles only applied if heading content cloned into center of 3-column layout */
+:host([show-navigation]) .compact {
+  overflow: hidden;
+  text-align: center;
+  opacity: 0%;
+  visibility: hidden;
+
+  /* fade out - delay hiding visibility until after opacity transition */
+  transition:
+    opacity var(--header-animation-duration) ease-in-out,
+    visibility 0s linear var(--header-animation-duration);
+}
+/* truncate compact text to one line */
+:host([show-navigation]) .compact ::slotted([slot="compact"]) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+.heading {
+  display: block;
+
+  /* fade in - immediately show visibility before opacity transition */
+  transition: opacity var(--header-animation-duration) ease-in-out, visibility 0s;
+}
+
+:host([show-navigation]) .heading {
+    margin-top: var(--header-nav-icon-button-spacing-buttom-size);
+  }
+
+:host([show-actions]:not([show-navigation])) .heading {
+    display: none;
+  }
+
+:host([show-navigation][compact]) .compact {
+    opacity: 100%;
+    visibility: visible;
+
+    /* fade in - immediately show visibility before opacity transition */
+    transition: opacity var(--header-animation-duration) ease-in-out, visibility 0s;
+  }
+
+:host([show-navigation][compact]) .heading {
+    opacity: 0%;
+    visibility: hidden;
+
+    /* fade out - delay hiding visibility until after opacity transition */
+    transition:
+      opacity var(--header-animation-duration) ease-in-out,
+      visibility 0s linear var(--header-animation-duration);
+  }
+
+/*
+  .regular and .wide are added to the host's classList in market-modal-full.tsx.
+  These apply header positioning depending on the `layout` prop on market-modal-full.
+*/
+:host(.regular) .heading {
+    /* TODO: This token should be renamed to modal-full-regular-layout-width */
+    max-width: var(--modal-full-fixed-layout-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+:host(.wide) .heading {
+    /* TODO: add a design token for modal full layout=wide */
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+  }

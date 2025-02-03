@@ -1,0 +1,72 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  width: 100vw;
+  height: 100%;
+
+  /* Enter Animation */
+  animation:
+    var(--core-animation-enter-transition-moderate-speed-duration)
+    market-fade-in
+    forwards
+    var(--core-animation-enter-transition-easing);
+}
+
+
+:host([hidden]) {
+    /* Exit Animation */
+    opacity: 0%;
+    animation-name: market-fade-out;
+    animation-duration: var(--core-animation-exit-transition-moderate-speed-duration);
+    animation-timing-function: var(--core-animation-exit-transition-easing);
+  }
+
+
+/* clicks should never pass through dialog content */
+
+
+:host > * {
+    pointer-events: auto;
+  }
+
+/* veil */
+:host(:not(.no-veil)) {
+  background-color: var(--core-surface-overlay-color);
+  opacity: 100%;
+
+  /* clicks should not pass through */
+  pointer-events: auto;
+}
+
+/* no veil */
+:host(.no-veil) {
+  /* clicks pass through to underlying elements */
+  pointer-events: none;
+}
+
+@media screen and (min-width: 800px) {
+  ::slotted(.market-modal-partial) {
+    align-self: center;
+    margin: var(--modal-partial-vertical-screen-buffer-size) var(--modal-partial-horizontal-screen-buffer-size);
+  }
+}
+
+::slotted(.market-dialog) {
+  align-self: center;
+  width: calc(100% - (2 * var(--modal-dialog-horizontal-screen-buffer-size, 16px)));
+}

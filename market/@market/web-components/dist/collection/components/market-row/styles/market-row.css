@@ -1,0 +1,674 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --transition-duration: 0.2s; /* TODO: design token when design finalizes spec */
+  --row-horizontal-spacing: 16px; /* this token is incorrect */
+
+  position: relative;
+  display: block;
+  margin: 0 calc(-1 * var(--row-normal-variant-background-horizontal-outset-padding));
+  background-color: var(--row-normal-variant-normal-state-background-color);
+  transition: background-color var(--transition-duration);
+}
+
+
+/* inset bottom border */
+
+
+:host::before {
+    content: "";
+    position: absolute;
+    right: var(--row-normal-variant-background-horizontal-outset-padding);
+    bottom: 0;
+    left: var(--row-normal-variant-background-horizontal-outset-padding);
+    display: block;
+    height: var(--row-normal-variant-separator-height);
+    background-color: var(--row-normal-variant-normal-state-separator-color);
+  }
+
+:host(:last-of-type)::before {
+  content: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding-right: var(--row-normal-variant-background-horizontal-outset-padding);
+  padding-left: var(--row-normal-variant-background-horizontal-outset-padding);
+  outline: none;
+  text-decoration: none;
+  -moz-column-gap: var(--row-horizontal-spacing);
+       column-gap: var(--row-horizontal-spacing);
+}
+
+.main {
+  display: flex;
+
+  /* this is to ensure that the label and subtext container fills the entire
+     space left by the optionally slotted leading accessory and/or control */
+  flex-grow: 2;
+  flex-direction: column;
+
+  /* we need to set min-width of zero to allow consumers to set a subtext or
+     label to be a single line with no overflow, for context see
+     https://stackoverflow.com/questions/39838908/text-overflow-ellipsis-not-working-in-nested-flexbox */
+  min-width: 0;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.drill-icon {
+  flex-shrink: 0;
+  fill: var(--row-normal-variant-normal-state-drill-color);
+}
+
+/* to hide .side container if no side text present */
+.hidden {
+  display: none; /* stylelint-disable-line declaration-no-important */
+}
+
+::slotted(*) {
+  /* all slotted elements will have their cursor inherited from the host */
+  cursor: inherit;
+}
+
+::slotted([slot="label"]) {
+  display: block;
+  margin: 0;
+  color: var(--row-normal-variant-normal-state-text-color);
+}
+
+::slotted([slot="subtext"]) {
+  display: block;
+  margin: 0;
+  color: var(--row-normal-variant-normal-state-subtext-color);
+}
+
+::slotted([slot="side-label"]) {
+  display: block;
+  margin: 0;
+  color: var(--row-normal-variant-normal-state-side-text-primary-color);
+}
+
+::slotted([slot="side-subtext"]) {
+  display: block;
+  margin: 0;
+  color: var(--row-normal-variant-normal-state-side-text-secondary-color);
+}
+
+::slotted([slot="control"]), ::slotted([slot="leading-accessory"]), ::slotted([slot="trailing-accessory"]) {
+  flex-shrink: 0;
+}
+
+/* drag & drop states */
+
+/* the original row is styled as an empty gray box */
+/*
+    use bottom border pseudo to create gray background because
+    placeholder background does not include horizontal outset.
+    use important to override various rules that hide border.
+  */
+:host(.market-drag-placeholder)::before {
+    content: "" !important; /* stylelint-disable-line declaration-no-important */
+    top: 0;
+    bottom: 0;
+    display: block !important; /* stylelint-disable-line declaration-no-important */
+    height: auto;
+    background-color: var(--core-fill-50-color);
+  }
+/* prevent duplicate drags at the same time! */
+:host(.market-drag-placeholder) .market-drag-handle {
+    pointer-events: none;
+  }
+/* hide any row content */
+:host(.market-drag-placeholder) *, :host(.market-drag-placeholder) ::slotted(*) {
+    opacity: 0%;
+    pointer-events: none;
+  }
+
+/* the cloned row being dragged */
+:host(.market-drag-clone) {
+  --row-dragged-min-width: 240px;
+
+  width: -moz-fit-content;
+
+  width: fit-content;
+  min-width: var(--row-dragged-min-width);
+  margin: 0; /* undo horizontal outset */
+  border-radius: var(--row-normal-variant-background-radius);
+  background-color: var(--core-surface-20-color);
+  cursor: grabbing;
+  transition-timing-function: var(--core-animation-move-transition-easing);
+  transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+  transition-property: top, width, height;
+}
+/*
+    create box shadow pseudo on which we can transition opacity
+    (hardware accelerated = better perf than transitioning box-shadow)
+  */
+:host(.market-drag-clone)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    border-radius: var(--row-normal-variant-background-radius);
+    box-shadow: var(--elevation-20-shadow);
+    opacity: var(--market-drag-clone-shadow-opacity, 0%); /* set by Draggable util */
+    transition-timing-function: var(--core-animation-move-transition-easing);
+    transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+    transition-property: opacity;
+  }
+:host(.market-drag-clone) .market-drag-handle {
+    cursor: grabbing;
+  }
+/* truncate main label if necessary */
+:host(.market-drag-clone) ::slotted([slot="label"]) {
+    overflow: hidden;
+    max-width: var(--row-dragged-min-width);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+/* hide extraneous slots */
+:host(.market-drag-clone) ::slotted(*:not([slot="label"], [slot="leading-accessory"])) {
+    display: none;
+  }
+
+/* the cloned row being released (transitioning back to placeholder) */
+:host(.market-drag-released) {
+  pointer-events: none;
+  transition-property: top, width, height, transform;
+}
+
+:host([size="small"]) {
+  min-height: var(--row-small-size-min-height, 40px); /* TODO: design token */
+
+  /* set font properties for default slot fallback */
+  font-size: var(--row-small-size-text-size);
+  line-height: var(--row-small-size-text-leading);
+  letter-spacing: var(--row-small-size-text-tracking);
+  text-transform: var(--row-small-size-text-case);
+}
+
+:host([size="small"]) .container {
+    padding-top: var(--row-small-size-vertical-padding);
+    padding-bottom: var(--row-small-size-vertical-padding);
+  }
+
+:host([size="small"]) .main {
+    gap: var(--row-small-size-text-vertical-spacing);
+  }
+
+:host([size="small"]) .side {
+    gap: var(--row-small-size-text-vertical-spacing);
+  }
+
+/* If you change these properties also update their counterparts in styles/components.css */
+
+:host([size="small"]) ::slotted([slot="label"]) {
+    font-weight: var(--row-small-size-text-weight);
+    font-size: var(--row-small-size-text-size);
+    line-height: var(--row-small-size-text-leading);
+    letter-spacing: var(--row-small-size-text-tracking);
+    text-transform: var(--row-small-size-text-case);
+  }
+
+:host([size="small"]) ::slotted([slot="subtext"]) {
+    font-weight: var(--row-small-size-subtext-weight);
+    font-size: var(--row-small-size-subtext-size);
+    line-height: var(--row-small-size-subtext-leading);
+    letter-spacing: var(--row-small-size-subtext-tracking);
+    text-transform: var(--row-small-size-subtext-case);
+  }
+
+:host([size="small"]) ::slotted([slot="side-label"]) {
+    font-weight: var(--row-small-size-side-text-primary-weight);
+    font-size: var(--row-small-size-side-text-primary-size);
+    line-height: var(--row-small-size-side-text-primary-leading);
+    letter-spacing: var(--row-small-size-side-text-primary-tracking);
+    text-transform: var(--row-small-size-side-text-primary-case);
+  }
+
+:host([size="small"]) ::slotted([slot="side-subtext"]) {
+    font-weight: var(--row-small-size-side-text-secondary-weight);
+    font-size: var(--row-small-size-side-text-secondary-size);
+    line-height: var(--row-small-size-side-text-secondary-leading);
+    letter-spacing: var(--row-small-size-side-text-secondary-tracking);
+    text-transform: var(--row-small-size-side-text-secondary-case);
+  }
+
+:host([size="medium"]) {
+  min-height: var(--row-medium-size-min-height, 56px); /* TODO: design token */
+
+  /* set font properties for default slot fallback */
+  font-size: var(--row-medium-size-text-size);
+  line-height: var(--row-medium-size-text-leading);
+  letter-spacing: var(--row-medium-size-text-tracking);
+  text-transform: var(--row-medium-size-text-case);
+}
+
+:host([size="medium"]) .container {
+    padding-top: var(--row-medium-size-vertical-padding);
+    padding-bottom: var(--row-medium-size-vertical-padding);
+  }
+
+:host([size="medium"]) .main {
+    gap: var(--row-medium-size-text-vertical-spacing);
+  }
+
+:host([size="medium"]) .side {
+    gap: var(--row-medium-size-text-vertical-spacing);
+  }
+
+/* If you change these properties also update their counterparts in styles/components.css */
+
+:host([size="medium"]) ::slotted([slot="label"]) {
+    font-weight: var(--row-medium-size-text-weight);
+    font-size: var(--row-medium-size-text-size);
+    line-height: var(--row-medium-size-text-leading);
+    letter-spacing: var(--row-medium-size-text-tracking);
+    text-transform: var(--row-medium-size-text-case);
+  }
+
+:host([size="medium"]) ::slotted([slot="subtext"]) {
+    font-weight: var(--row-medium-size-subtext-weight);
+    font-size: var(--row-medium-size-subtext-size);
+    line-height: var(--row-medium-size-subtext-leading);
+    letter-spacing: var(--row-medium-size-subtext-tracking);
+    text-transform: var(--row-medium-size-subtext-case);
+  }
+
+:host([size="medium"]) ::slotted([slot="side-label"]) {
+    font-weight: var(--row-medium-size-side-text-primary-weight);
+    font-size: var(--row-medium-size-side-text-primary-size);
+    line-height: var(--row-medium-size-side-text-primary-leading);
+    letter-spacing: var(--row-medium-size-side-text-primary-tracking);
+    text-transform: var(--row-medium-size-side-text-primary-case);
+  }
+
+:host([size="medium"]) ::slotted([slot="side-subtext"]) {
+    font-weight: var(--row-medium-size-side-text-secondary-weight);
+    font-size: var(--row-medium-size-side-text-secondary-size);
+    line-height: var(--row-medium-size-side-text-secondary-leading);
+    letter-spacing: var(--row-medium-size-side-text-secondary-tracking);
+    text-transform: var(--row-medium-size-side-text-secondary-case);
+  }
+
+/* [role="option"] is an interactive version */
+:host([interactive]), :host([role="option"]) {
+  --focus-ring-color: color-mix(in srgb, var(--row-normal-variant-focus-ring-color) 100%, transparent);
+
+  border-radius: var(--row-normal-variant-background-radius);
+  outline: none;
+  cursor: pointer;
+}
+:host([interactive]) .drill-icon, :host([role="option"]) .drill-icon {
+    color: var(--row-normal-variant-normal-state-drill-color);
+  }
+
+/*
+  focus ring:
+  - .container gets focus when it's a link
+  - :host gets focus when .container is NOT a link
+*/
+.container:focus-visible, :host(:focus-visible) .container, :host(.pseudo-focus) .container {
+  border-radius: var(--row-normal-variant-background-radius);
+  outline: var(--row-focus-ring-border-size) solid var(--focus-ring-color);
+
+  /*
+    --row-focus-ring-buffer-size is 2px but if we have a buffer,
+    the outline is covered by sibling rows when selected, so inset instead
+  */
+  outline-offset: calc(var(--row-focus-ring-border-size) * -1);
+}
+
+/* on initial load, suppress default slotted
+  control transition (ex. toggle sliding) */
+:host(.preload) ::slotted([slot="control"]) {
+  --row-slotted-control-transition: none;
+}
+
+/* media query suppresses hover styles on touch devices */
+@media (hover: hover) {
+  :host([interactive]:hover), :host([role="option"]:hover) {
+    background-color: var(--row-normal-variant-hover-state-background-color);
+  }
+
+    :host([interactive]:hover)::before, :host([role="option"]:hover)::before {
+      background-color: var(--row-normal-variant-hover-state-separator-color);
+    }
+
+    :host([interactive]:hover) .drill-icon, :host([role="option"]:hover) .drill-icon {
+      color: var(--row-normal-variant-hover-state-drill-color);
+    }
+
+    :host([interactive]:hover) ::slotted([slot="label"]), :host([role="option"]:hover) ::slotted([slot="label"]) {
+      color: var(--row-normal-variant-hover-state-text-color);
+    }
+
+    :host([interactive]:hover) ::slotted([slot="subtext"]), :host([role="option"]:hover) ::slotted([slot="subtext"]) {
+      color: var(--row-normal-variant-hover-state-subtext-color);
+    }
+
+    :host([interactive]:hover) ::slotted([slot="side-label"]), :host([role="option"]:hover) ::slotted([slot="side-label"]) {
+      color: var(--row-normal-variant-hover-state-side-text-primary-color);
+    }
+
+    :host([interactive]:hover) ::slotted([slot="side-subtext"]), :host([role="option"]:hover) ::slotted([slot="side-subtext"]) {
+      color: var(--row-normal-variant-hover-state-side-text-secondary-color);
+    }
+}
+
+:host([interactive][selected]:not(.has-slotted-control)), :host([role="option"][selected]:not(.has-slotted-control)) {
+  background-color: var(--row-normal-variant-selected-state-background-color);
+}
+
+:host([interactive][selected]:not(.has-slotted-control))::before, :host([role="option"][selected]:not(.has-slotted-control))::before {
+    background-color: var(--row-normal-variant-selected-state-separator-color);
+  }
+
+:host([interactive][selected]:not(.has-slotted-control)) .drill-icon, :host([role="option"][selected]:not(.has-slotted-control)) .drill-icon {
+    color: var(--row-normal-variant-selected-state-drill-color);
+  }
+
+:host([interactive][selected]:not(.has-slotted-control)) ::slotted([slot="label"]), :host([role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="label"]) {
+    color: var(--row-normal-variant-selected-state-text-color);
+  }
+
+:host([interactive][selected]:not(.has-slotted-control)) ::slotted([slot="subtext"]), :host([role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="subtext"]) {
+    color: var(--row-normal-variant-selected-state-subtext-color);
+  }
+
+:host([interactive][selected]:not(.has-slotted-control)) ::slotted([slot="side-label"]), :host([role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="side-label"]) {
+    color: var(--row-normal-variant-selected-state-side-text-primary-color);
+  }
+
+:host([interactive][selected]:not(.has-slotted-control)) ::slotted([slot="side-subtext"]), :host([role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="side-subtext"]) {
+    color: var(--row-normal-variant-selected-state-side-text-secondary-color);
+  }
+
+:host([interactive]:active), :host([role="option"]:active) {
+  background-color: var(--row-normal-variant-pressed-state-background-color);
+}
+
+:host([interactive]:active)::before, :host([role="option"]:active)::before {
+    background-color: var(--row-normal-variant-pressed-state-separator-color);
+  }
+
+:host([interactive]:active) .drill-icon, :host([role="option"]:active) .drill-icon {
+    color: var(--row-normal-variant-pressed-state-drill-color);
+  }
+
+:host([interactive]:active) ::slotted([slot="label"]), :host([role="option"]:active) ::slotted([slot="label"]) {
+    color: var(--row-normal-variant-pressed-state-text-color);
+  }
+
+:host([interactive]:active) ::slotted([slot="subtext"]), :host([role="option"]:active) ::slotted([slot="subtext"]) {
+    color: var(--row-normal-variant-pressed-state-subtext-color);
+  }
+
+:host([interactive]:active) ::slotted([slot="side-label"]), :host([role="option"]:active) ::slotted([slot="side-label"]) {
+    color: var(--row-normal-variant-pressed-state-side-text-primary-color);
+  }
+
+:host([interactive]:active) ::slotted([slot="side-subtext"]), :host([role="option"]:active) ::slotted([slot="side-subtext"]) {
+    color: var(--row-normal-variant-pressed-state-side-text-secondary-color);
+  }
+
+:host([interactive][disabled]), :host([role="option"][disabled]) {
+  background-color: var(--row-normal-variant-disabled-state-background-color);
+  color: var(--row-normal-variant-disabled-state-text-color);
+  pointer-events: none;
+}
+
+:host([interactive][disabled])::before, :host([role="option"][disabled])::before {
+    background-color: var(--row-normal-variant-disabled-state-separator-color);
+  }
+
+:host([interactive][disabled]) .drill-icon, :host([role="option"][disabled]) .drill-icon {
+    color: var(--row-normal-variant-disabled-state-drill-color);
+  }
+
+:host([interactive][disabled]) ::slotted([slot="label"]), :host([role="option"][disabled]) ::slotted([slot="label"]) {
+    color: var(--row-normal-variant-disabled-state-text-color);
+  }
+
+:host([interactive][disabled]) ::slotted([slot="subtext"]), :host([role="option"][disabled]) ::slotted([slot="subtext"]) {
+    color: var(--row-normal-variant-disabled-state-subtext-color);
+  }
+
+:host([interactive][disabled]) ::slotted([slot="side-label"]), :host([role="option"][disabled]) ::slotted([slot="side-label"]) {
+    color: var(--row-normal-variant-disabled-state-side-text-primary-color);
+  }
+
+:host([interactive][disabled]) ::slotted([slot="side-subtext"]), :host([role="option"][disabled]) ::slotted([slot="side-subtext"]) {
+    color: var(--row-normal-variant-disabled-state-side-text-secondary-color);
+  }
+
+/* non-interactive slotted accessories should be dimmed when row is disabled */
+
+:host([interactive][disabled]) ::slotted(.market-accessory), :host([interactive][disabled]) ::slotted(img[slot*="accessory"]), :host([interactive][disabled]) ::slotted(svg[slot*="accessory"]), :host([interactive][disabled]) ::slotted(div[slot*="accessory"]), :host([role="option"][disabled]) ::slotted(.market-accessory), :host([role="option"][disabled]) ::slotted(img[slot*="accessory"]), :host([role="option"][disabled]) ::slotted(svg[slot*="accessory"]), :host([role="option"][disabled]) ::slotted(div[slot*="accessory"]) {
+    opacity: var(--row-disabled-state-leading-accessory-opacity);
+  }
+
+:host([interactive][disabled]) ::slotted(.market-tooltip), :host([role="option"][disabled]) ::slotted(.market-tooltip) {
+    pointer-events: auto !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+/* when used as the displayed selection row in <market-select> */
+:host([slot="displayed-selection"]) {
+  pointer-events: none;
+}
+:host([slot="displayed-selection"]) .container {
+    padding: 0;
+  }
+/* truncate default slot */
+:host([slot="displayed-selection"]) .main {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+/* truncate and unbold the label slot */
+:host([slot="displayed-selection"]) ::slotted([slot="label"]) {
+    overflow: hidden;
+    color: inherit;
+
+    /* If you change these properties also update their counterparts in styles/components.css */
+    font-weight: var(--field-input-weight);
+    font-size: inherit;
+    line-height: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+:host([slot="displayed-selection"]) .side {
+    display: none;
+  }
+/* hide extraneous slots */
+:host([slot="displayed-selection"]) ::slotted([slot="subtext"]), :host([slot="displayed-selection"]) ::slotted([slot="side-label"]), :host([slot="displayed-selection"]) ::slotted([slot="side-subtext"]), :host([slot="displayed-selection"]) ::slotted([slot="leading-accessory"]), :host([slot="displayed-selection"]) ::slotted([slot="trailing-accessory"]), :host([slot="displayed-selection"]) ::slotted([slot="control"]) {
+    display: none;
+  }
+
+:host([destructive]) ::slotted([slot="label"]) {
+    color: var(--row-destructive-variant-normal-state-text-color);
+  }
+
+:host([destructive]) ::slotted([slot="subtext"]) {
+    color: var(--row-destructive-variant-normal-state-subtext-color);
+  }
+
+:host([destructive]) ::slotted([slot="side-label"]) {
+    color: var(--row-destructive-variant-normal-state-side-text-primary-color);
+  }
+
+:host([destructive]) ::slotted([slot="side-subtext"]) {
+    color: var(--row-destructive-variant-normal-state-side-text-secondary-color);
+  }
+
+/* [role="option"] is the interactive version */
+:host([destructive][role="option"]) {
+  border-radius: var(--row-destructive-variant-background-radius);
+}
+
+/* media query suppresses hover styles on touch devices */
+@media (hover: hover) {
+  :host([destructive][role="option"]:hover) {
+    background-color: var(--row-destructive-variant-hover-state-background-color);
+  }
+
+    :host([destructive][role="option"]:hover)::before {
+      background-color: var(--row-destructive-variant-hover-state-separator-color);
+    }
+
+    :host([destructive][role="option"]:hover) .drill-icon {
+      fill: var(--row-destructive-variant-hover-state-drill-color);
+    }
+
+    :host([destructive][role="option"]:hover) ::slotted([slot="label"]) {
+      color: var(--row-destructive-variant-hover-state-text-color);
+    }
+
+    :host([destructive][role="option"]:hover) ::slotted([slot="subtext"]) {
+      color: var(--row-destructive-variant-hover-state-subtext-color);
+    }
+
+    :host([destructive][role="option"]:hover) ::slotted([slot="side-label"]) {
+      color: var(--row-destructive-variant-hover-state-side-text-primary-color);
+    }
+
+    :host([destructive][role="option"]:hover) ::slotted([slot="side-subtext"]) {
+      color: var(--row-destructive-variant-hover-state-side-text-secondary-color);
+    }
+}
+
+:host([destructive][role="option"]:focus) {
+  background-color: var(--row-destructive-variant-focus-state-background-color);
+}
+
+:host([destructive][role="option"]:focus)::before {
+    background-color: var(--row-destructive-variant-focus-state-separator-color);
+  }
+
+:host([destructive][role="option"]:focus) .drill-icon {
+    fill: var(--row-destructive-variant-focus-state-drill-color);
+  }
+
+:host([destructive][role="option"]:focus) ::slotted([slot="label"]) {
+    color: var(--row-destructive-variant-focus-state-text-color);
+  }
+
+:host([destructive][role="option"]:focus) ::slotted([slot="subtext"]) {
+    color: var(--row-destructive-variant-focus-state-subtext-color);
+  }
+
+:host([destructive][role="option"]:focus) ::slotted([slot="side-label"]) {
+    color: var(--row-destructive-variant-focus-state-side-text-primary-color);
+  }
+
+:host([destructive][role="option"]:focus) ::slotted([slot="side-subtext"]) {
+    color: var(--row-destructive-variant-focus-state-side-text-secondary-color);
+  }
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control)) {
+  background-color: var(--row-destructive-variant-selected-state-background-color);
+}
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control))::before {
+    background-color: var(--row-destructive-variant-selected-state-separator-color);
+  }
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control)) .drill-icon {
+    fill: var(--row-destructive-variant-selected-state-drill-color);
+  }
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="label"]) {
+    color: var(--row-destructive-variant-selected-state-text-color);
+  }
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="subtext"]) {
+    color: var(--row-destructive-variant-selected-state-subtext-color);
+  }
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="side-label"]) {
+    color: var(--row-destructive-variant-selected-state-side-text-primary-color);
+  }
+
+:host([destructive][role="option"][selected]:not(.has-slotted-control)) ::slotted([slot="side-subtext"]) {
+    color: var(--row-destructive-variant-selected-state-side-text-secondary-color);
+  }
+
+:host([destructive][role="option"]:active) {
+  background-color: var(--row-destructive-variant-pressed-state-background-color);
+}
+
+:host([destructive][role="option"]:active)::before {
+    background-color: var(--row-destructive-variant-pressed-state-separator-color);
+  }
+
+:host([destructive][role="option"]:active) .drill-icon {
+    fill: var(--row-destructive-variant-pressed-state-drill-color);
+  }
+
+:host([destructive][role="option"]:active) ::slotted([slot="label"]) {
+    color: var(--row-destructive-variant-pressed-state-text-color);
+  }
+
+:host([destructive][role="option"]:active) ::slotted([slot="subtext"]) {
+    color: var(--row-destructive-variant-pressed-state-subtext-color);
+  }
+
+:host([destructive][role="option"]:active) ::slotted([slot="side-label"]) {
+    color: var(--row-destructive-variant-pressed-state-side-text-primary-color);
+  }
+
+:host([destructive][role="option"]:active) ::slotted([slot="side-subtext"]) {
+    color: var(--row-destructive-variant-pressed-state-side-text-secondary-color);
+  }
+
+:host([destructive][role="option"][disabled]) {
+  background-color: var(--row-destructive-variant-disabled-state-background-color);
+  color: var(--row-destructive-variant-disabled-state-text-color);
+  pointer-events: none;
+}
+
+:host([destructive][role="option"][disabled])::before {
+    background-color: var(--row-destructive-variant-disabled-state-separator-color);
+  }
+
+:host([destructive][role="option"][disabled]) .drill-icon {
+    fill: var(--row-destructive-variant-disabled-state-drill-color);
+  }
+
+:host([destructive][role="option"][disabled]) ::slotted([slot="label"]) {
+    color: var(--row-destructive-variant-disabled-state-text-color);
+  }
+
+:host([destructive][role="option"][disabled]) ::slotted([slot="subtext"]) {
+    color: var(--row-destructive-variant-disabled-state-subtext-color);
+  }
+
+:host([destructive][role="option"][disabled]) ::slotted([slot="side-label"]) {
+    color: var(--row-destructive-variant-disabled-state-side-text-primary-color);
+  }
+
+:host([destructive][role="option"][disabled]) ::slotted([slot="side-subtext"]) {
+    color: var(--row-destructive-variant-disabled-state-side-text-secondary-color);
+  }
+

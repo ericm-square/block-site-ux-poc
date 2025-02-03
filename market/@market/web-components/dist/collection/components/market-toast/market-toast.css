@@ -1,0 +1,282 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  width: 100%;
+  max-width: var(--toast-maximum-width);
+  border-radius: var(--toast-radius);
+  box-shadow: var(--elevation-30-shadow);
+  font-weight: var(--toast-text-weight);
+  font-size: var(--toast-text-size);
+  line-height: var(--toast-text-leading);
+  letter-spacing: var(--toast-text-tracking);
+  text-transform: var(--toast-text-case);
+}
+
+.icon-container, .dismiss-container {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.dismiss-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: var(--toast-vertical-padding-size) var(--toast-horizontal-padding-size);
+  -moz-column-gap: var(--toast-icon-spacing);
+       column-gap: var(--toast-icon-spacing);
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  row-gap: var(--toast-text-multiline-spacing);
+  -moz-column-gap: var(--toast-content-spacing);
+       column-gap: var(--toast-content-spacing);
+}
+
+section {
+  flex-grow: 1;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+nav.hidden {
+    display: none;
+  }
+
+/* style slotted buttons and links the same */
+::slotted(button), ::slotted(a) {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-weight: var(--toast-button-text-weight);
+  font-size: var(--toast-button-text-size);
+  font-family: inherit;
+  line-height: var(--toast-button-text-leading);
+  letter-spacing: var(--toast-button-text-tracking);
+  text-decoration: none;
+  text-transform: var(--toast-button-text-case);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+::slotted(button:hover), ::slotted(a:hover) {
+  opacity: var(--text-link-hover-state-opacity);
+}
+
+::slotted(button:active), ::slotted(a:active) {
+  opacity: var(--text-link-pressed-state-opacity);
+}
+
+::slotted([slot="action"]) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* implement nav separator line */
+::slotted([slot="action"]:not(:last-child)) {
+  /* add extra right margin to place separator */
+  margin-right: calc(var(--toast-button-spacing) * 2 + var(--toast-separator-width));
+}
+::slotted([slot="action"]:not(:last-child))::after {
+    /* left and right margins will position separator between
+      this and the next action, and outside of clickable hit area */
+    content: "";
+    display: inline-block;
+    width: var(--toast-separator-width);
+    height: var(--toast-separator-height);
+    margin-right: calc(-1 * var(--toast-button-spacing) - var(--toast-separator-width));
+    margin-left: var(--toast-button-spacing);
+    opacity: var(--toast-separator-opacity);
+    pointer-events: none;
+  }
+
+progress-bar {
+  height: var(--toast-progress-bar-height);
+}
+
+:host([variant="info"]) {
+  background-color: var(--toast-info-variant-background-color);
+  color: var(--toast-info-variant-text-color);
+}
+
+:host([variant="info"]) .icon-container {
+    color: var(--toast-info-variant-icon-color);
+  }
+
+:host([variant="info"]) .dismiss-container {
+    color: var(--toast-info-variant-dismiss-button-color);
+  }
+
+:host([variant="info"]) progress-bar {
+    background-color: var(--toast-info-variant-progress-bar-color);
+  }
+
+:host([variant="info"]) ::slotted(a) {
+    color: var(--toast-info-variant-text-link-text-color);
+  }
+
+:host([variant="info"]) ::slotted(button) {
+    color: var(--toast-info-variant-button-text-color);
+  }
+
+:host([variant="info"]) ::slotted([slot="action"]:not(:last-child))::after {
+    background-color: var(--toast-info-variant-separator-color);
+  }
+
+:host([variant="success"]) {
+  background-color: var(--toast-success-variant-background-color);
+  color: var(--toast-success-variant-text-color);
+}
+
+:host([variant="success"]) .icon-container {
+    color: var(--toast-success-variant-icon-color);
+  }
+
+:host([variant="success"]) .dismiss-container {
+    color: var(--toast-success-variant-dismiss-button-color);
+  }
+
+:host([variant="success"]) progress-bar {
+    background-color: var(--toast-success-variant-progress-bar-color);
+  }
+
+:host([variant="success"]) ::slotted(a) {
+    color: var(--toast-success-variant-text-link-text-color);
+  }
+
+:host([variant="success"]) ::slotted(button) {
+    color: var(--toast-success-variant-button-text-color);
+  }
+
+:host([variant="success"]) ::slotted([slot="action"]:not(:last-child))::after {
+    background-color: var(--toast-success-variant-separator-color);
+  }
+
+:host([variant="warning"]) {
+  background-color: var(--toast-warning-variant-background-color);
+  color: var(--toast-warning-variant-text-color);
+}
+
+:host([variant="warning"]) .icon-container {
+    color: var(--toast-warning-variant-icon-color);
+  }
+
+:host([variant="warning"]) .dismiss-container {
+    color: var(--toast-warning-variant-dismiss-button-color);
+  }
+
+:host([variant="warning"]) progress-bar {
+    background-color: var(--toast-warning-variant-progress-bar-color);
+  }
+
+:host([variant="warning"]) ::slotted(a) {
+    color: var(--toast-warning-variant-text-link-text-color);
+  }
+
+:host([variant="warning"]) ::slotted(button) {
+    color: var(--toast-warning-variant-button-text-color);
+  }
+
+:host([variant="warning"]) ::slotted([slot="action"]:not(:last-child))::after {
+    background-color: var(--toast-warning-variant-separator-color);
+  }
+
+:host([variant="critical"]) {
+  background-color: var(--toast-critical-variant-background-color);
+  color: var(--toast-critical-variant-text-color);
+}
+
+:host([variant="critical"]) .icon-container {
+    color: var(--toast-critical-variant-icon-color);
+  }
+
+:host([variant="critical"]) .dismiss-container {
+    color: var(--toast-critical-variant-dismiss-button-color);
+  }
+
+:host([variant="critical"]) progress-bar {
+    background-color: var(--toast-critical-variant-progress-bar-color);
+  }
+
+:host([variant="critical"]) ::slotted(a) {
+    color: var(--toast-critical-variant-text-link-text-color);
+  }
+
+:host([variant="critical"]) ::slotted(button) {
+    color: var(--toast-critical-variant-button-text-color);
+  }
+
+:host([variant="critical"]) ::slotted([slot="action"]:not(:last-child))::after {
+    background-color: var(--toast-critical-variant-separator-color);
+  }
+
+:host([variant="insight"]) {
+  background-color: var(--toast-insight-variant-background-color);
+  color: var(--toast-insight-variant-text-color);
+}
+
+:host([variant="insight"]) .icon-container {
+    color: var(--toast-insight-variant-icon-color);
+  }
+
+:host([variant="insight"]) .dismiss-container {
+    color: var(--toast-insight-variant-dismiss-button-color);
+  }
+
+:host([variant="insight"]) progress-bar {
+    background-color: var(--toast-insight-variant-progress-bar-color);
+  }
+
+:host([variant="insight"]) ::slotted(a) {
+    color: var(--toast-insight-variant-text-link-text-color);
+  }
+
+:host([variant="insight"]) ::slotted(button) {
+    color: var(--toast-insight-variant-button-text-color);
+  }
+
+:host([variant="insight"]) ::slotted([slot="action"]:not(:last-child))::after {
+    background-color: var(--toast-insight-variant-separator-color);
+  }

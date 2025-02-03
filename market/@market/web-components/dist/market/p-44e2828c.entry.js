@@ -1,0 +1,2 @@
+import{r as a,h as e,H as s,g as t}from"./p-c9795ae2.js";const r=":host{display:block}:host([hidden]){display:none}";const n=r;const o=class{constructor(e){a(this,e);this.hidden=false}render(){return e(s,{key:"6d3e25ab96517ba62ea131f1f205afb5036aadbc","aria-hidden":this.hidden.toString(),class:"market-tab-panel",role:"tabpanel",tabindex:"0"},e("slot",{key:"348c7928d64c672f5562456f6faea14a1b549075"}))}get el(){return t(this)}};o.style=n;export{o as market_tab_panel};
+//# sourceMappingURL=p-44e2828c.entry.js.map

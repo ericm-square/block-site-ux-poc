@@ -1,0 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const API: StoryObj;
+export declare const Examples: StoryObj;
+export declare const InteractiveExamples: StoryObj;
+export declare const MediumExamples: StoryObj;
+export declare const MediumInteractiveExamples: StoryObj;
+export declare const MediumDestructiveExamples: StoryObj;
+export declare const MediumDestructiveInteractiveExamples: StoryObj;
+export declare const SmallExamples: StoryObj;
+export declare const SmallInteractiveExamples: StoryObj;
+export declare const SmallDestructiveExamples: StoryObj;
+export declare const SmallDestructiveInteractiveExamples: StoryObj;
+export declare const WrappingBehavior: StoryObj;
+export declare const TruncationBehavior: StoryObj;

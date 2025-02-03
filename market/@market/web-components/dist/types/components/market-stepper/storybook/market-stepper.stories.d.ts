@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const API: StoryObj;
+export declare const WithValue: StoryObj;
+export declare const Invalid: StoryObj;
+export declare const Disabled: StoryObj;
+export declare const MinMax: StoryObj;
+export declare const Step: StoryObj;
+export declare const DecimalStep: StoryObj;
+export declare const InsideForm: StoryObj;

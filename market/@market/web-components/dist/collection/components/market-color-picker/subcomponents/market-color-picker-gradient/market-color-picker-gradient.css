@@ -1,0 +1,56 @@
+/* TODO: add design tokens to file */
+
+:host {
+  --primary-gradient-height: var(--color-picker-adjustments-hue-min-height);
+  --gradient-border-radius: var(--color-picker-adjustments-hue-radius);
+  --gradient-margin: var(--color-picker-vertical-spacing);
+  --secondary-gradient-height: calc(var(--color-picker-adjustments-saturation-brightness-min-height) * 1px);
+  --gradient-pointer-width: 12px;
+  --gradient-pointer-height: 12px;
+  --gradient-pointer-border: 2px white solid;
+  --gradient-pointer-border-radius: 50%;
+
+  display: block;
+}
+
+.primary-gradient {
+  position: relative;
+  width: 100%;
+  height: var(--primary-gradient-height);
+  border-radius: var(--gradient-border-radius);
+
+  /* Standardized gradient for selecting hues */
+  background:
+    linear-gradient(
+      to right,
+      hsl(0deg 100% 50%),
+      hsl(60deg 100% 50%),
+      hsl(120deg 100% 50%),
+      hsl(180deg 100% 50%),
+      hsl(240deg 100% 50%),
+      hsl(300deg 100% 50%),
+      hsl(0deg 100% 50%)
+    );
+}
+
+.secondary-gradient {
+  position: relative;
+  width: 100%;
+  height: var(--secondary-gradient-height);
+  margin-top: var(--gradient-margin);
+  border-radius: var(--gradient-border-radius);
+}
+
+.pointer {
+  position: absolute;
+  z-index: 2;
+  width: var(--gradient-pointer-width);
+  height: var(--gradient-pointer-height);
+  border: var(--gradient-pointer-border);
+  border-radius: var(--gradient-pointer-border-radius);
+  box-shadow: var(--elevation-20-shadow);
+}
+
+#primary-pointer {
+  top: calc(50% - 8px);
+}

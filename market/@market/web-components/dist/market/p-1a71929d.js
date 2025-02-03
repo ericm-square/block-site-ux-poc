@@ -1,0 +1,2 @@
+function n(n){return Boolean(n===null||n===void 0?void 0:n.changedTouches)}function o(o){const t=n(o)?o.changedTouches[0].clientX:o.clientX;const i=n(o)?o.changedTouches[0].clientY:o.clientY;return{x:t,y:i}}export{o as g,n as i};
+//# sourceMappingURL=p-1a71929d.js.map

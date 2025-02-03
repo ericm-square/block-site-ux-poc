@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","sourceRoot":"","sources":["../../../../src/utils/math/types.ts"],"names":[],"mappings":"","sourcesContent":["export type Vec2 = {\n  x: number;\n  y: number;\n};\n"]}

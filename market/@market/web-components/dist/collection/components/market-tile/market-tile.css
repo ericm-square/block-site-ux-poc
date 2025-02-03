@@ -1,0 +1,249 @@
+::slotted([slot="hint"]) {
+  font-weight: var(--core-type-display-10-weight);
+  font-size: var(--core-type-display-10-size);
+  font-family: var(--core-type-display-10-font-family);
+  line-height: var(--core-type-display-10-leading);
+  letter-spacing: var(--core-type-display-10-tracking);
+  text-transform: var(--core-type-display-10-case);
+}
+
+::slotted([slot="subtext"]) {
+  font-weight: var(--core-type-paragraph-10-weight);
+  font-size: var(--core-type-paragraph-10-size);
+  font-family: var(--core-type-paragraph-10-font-family);
+  line-height: var(--core-type-paragraph-10-leading);
+  letter-spacing: var(--core-type-paragraph-10-tracking);
+  text-transform: var(--core-type-paragraph-10-case);
+}
+
+::slotted([slot="subtext"]) b, ::slotted([slot="subtext"]) strong {
+    font-weight: var(--core-type-semibold-10-weight);
+  }
+
+::slotted([slot="label"]) {
+  font-weight: var(--core-type-medium-30-weight);
+  font-size: var(--core-type-medium-30-size);
+  font-family: var(--core-type-medium-30-font-family);
+  line-height: var(--core-type-medium-30-leading);
+  letter-spacing: var(--core-type-medium-30-tracking);
+  text-transform: var(--core-type-medium-30-case);
+}
+
+::slotted([slot="indicator"]) {
+  font-weight: var(--core-type-semibold-10-weight);
+  font-size: var(--core-type-semibold-10-size);
+  font-family: var(--core-type-semibold-10-font-family);
+  line-height: var(--core-type-semibold-10-leading);
+  letter-spacing: var(--core-type-semibold-10-tracking);
+  text-transform: var(--core-type-semibold-10-case);
+}
+
+
+/**
+ * This component uses CSS Grid areas to handle the differences in rendering size="small" tiles and
+ * size="medium" tiles. The areas are set up to look like this in a medium tile:
+ * LA = leading-accessory
+ * TA = trailing-accessory
+ * C = content
+ * ------------------
+ * | LA    _     TA |
+ * |                |
+ * | C     C      C |
+ * |________________|
+ * But in a small tile, the areas are shifted:
+ * ------------------
+ * | LA    C     TA |
+ * |________________|
+ */
+
+:host {
+  --item-tile-text-color: black;
+  --focus-ring-color:
+    color-mix(
+      in srgb,
+      var(--item-tile-focus-ring-color, var(--core-focus-ring-color)) 100%,
+      transparent
+    );
+
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas:
+    "leading-accessory _ trailing-accessory"
+    "content content content";
+  grid-template-columns: minmax(0, max-content) 1fr auto;
+  box-sizing: border-box;
+  width: var(--item-tile-width, 200px);
+  height: var(--item-tile-medium-height, 124px);
+  padding: var(--item-tile-medium-padding, var(--core-metrics-spacing-150));
+  border-radius: var(--item-tile-border-radius, 6px);
+  background: var(--item-tile-fill-color, var(--core-fill-40-color));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+:host([interactive]) {
+    cursor: pointer;
+  }
+
+:host([size="small"]) {
+    grid-template-areas: "leading-accessory content trailing-accessory";
+    grid-template-columns: max-content 1fr minmax(0, max-content);
+    height: var(--item-tile-small-height, 56px);
+    padding:
+      var(--item-tile-small-padding-vertical, var(--core-metrics-spacing-50))
+      var(--item-tile-small-padding-horizontal, var(--core-metrics-spacing-150));
+    -moz-column-gap: var(--core-metrics-spacing-100);
+         column-gap: var(--core-metrics-spacing-100);
+  }
+
+:host([size="small"]) ::slotted([slot="leading-accessory"]), :host([size="small"]) .trailing-accessory-container {
+      align-items: center;
+    }
+
+:host([size="small"]) .content {
+      justify-content: center;
+      align-items: start;
+    }
+
+/** When size="small", if position is absolute, the label runs over the remove button */
+
+:host([size="small"]) .remove-button {
+      position: relative;
+    }
+
+:host([aria-disabled]) {
+    opacity: 20%;
+    cursor: not-allowed;
+  }
+
+:host([aria-disabled]) .remove-button {
+      cursor: not-allowed;
+    }
+
+:host([aria-disabled]) .remove-button:hover {
+        background: var(--item-tile-remove-button-fill, #fff);
+      }
+
+:host([aria-selected="true"]) {
+    box-shadow:
+      inset 0 0 0 var(--item-tile-selected-value-border-width, 2px)
+      var(--item-tile-selected-value-border-color, var(--core-emphasis-fill-color));
+  }
+
+:host(:focus-visible) {
+    outline: var(--item-tile-focus-ring-border-size, var(--core-focus-ring-border-size)) solid var(--focus-ring-color);
+    outline-offset: var(--item-tile-focus-ring-buffer-size, var(--core-focus-ring-buffer-size));
+  }
+
+.background-image {
+  display: none;
+}
+
+.background-image.has-slotted-media, .background-image ::slotted([slot="media"]) {
+  --item-tile-text-color: white;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--item-tile-border-radius, 6px);
+}
+
+.background-image.has-slotted-media::before, .background-image ::slotted([slot="media"])::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--item-tile-border-radius, 6px);
+    background-image:
+      var(
+        --item-tile-background-image-gradient,
+        linear-gradient(180.98deg, rgb(0 0 0 / 4%) 0.84%, rgb(0 0 0 / 40%) 99.16%)
+      );
+  }
+
+::slotted([slot="leading-accessory"]) {
+  z-index: 2;
+  display: flex;
+  grid-area: leading-accessory;
+  align-items: flex-start;
+}
+
+.trailing-accessory-container {
+  z-index: 3;
+  display: flex;
+  grid-area: trailing-accessory;
+  justify-content: flex-end;
+}
+
+.trailing-accessory-container .remove-button {
+    position: absolute;
+    width: var(--item-tile-remove-button-width, 24px);
+    height: var(--item-tile-remove-button-height, 24px);
+    border: none;
+    border-radius: 100px;
+    background: var(--item-tile-remove-button-fill, var(--core-surface-30-color));
+    box-shadow: var(--elevation-10-shadow);
+    cursor: pointer;
+  }
+
+.trailing-accessory-container .remove-button:hover {
+      background: var(--item-tile-remove-button-hover-state-background-color, #ffe5ea);
+    }
+
+.trailing-accessory-container .remove-button:active {
+      background: var(--item-time-remove-button-active-state-background-color, #ffccd5);
+    }
+
+.trailing-accessory-container .remove-button svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: var(--core-metrics-spacing-50);
+    }
+
+.trailing-accessory-container ::slotted([slot="indicator"]) {
+
+    height: var(--core-metrics-spacing-200);
+    padding: 0 var(--core-metrics-spacing-100);
+    border-radius: 100px;
+    background: var(--core-fill-10-dark-mode-color);
+    color: black;
+    box-shadow: var(--elevation-10-shadow);
+  }
+
+.content {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  grid-area: content;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+::slotted([slot="label"]) {
+
+  display: -webkit-box; /* stylelint-disable-line value-no-vendor-prefix */
+  overflow-y: hidden;
+  min-width: 0;
+  -webkit-line-clamp: var(--item-tile-label-line-clamp, 1);
+  -webkit-box-orient: vertical;
+}
+
+::slotted([slot="subtext"]) {
+
+  display: -webkit-box; /* stylelint-disable-line value-no-vendor-prefix */
+  overflow-y: hidden;
+  min-width: 0;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

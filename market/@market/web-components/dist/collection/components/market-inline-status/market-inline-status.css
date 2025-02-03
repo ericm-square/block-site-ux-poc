@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  align-items: flex-start;
+  font-weight: var(--inline-status-normal-size-text-weight);
+  font-size: var(--inline-status-normal-size-text-size);
+  font-family: var(--inline-status-normal-size-text-font-family);
+  line-height: var(--inline-status-normal-size-text-leading);
+  letter-spacing: var(--inline-status-normal-size-text-tracking);
+  text-transform: var(--inline-status-normal-size-text-case);
+}
+
+  :host .icon, :host ::slotted([slot="icon"]) {
+    flex-shrink: 0;
+    margin-right: var(--inline-status-normal-size-spacing-horizontal);
+  }
+
+:host([variant="info"]) {
+  color: var(--core-text-20-color);
+}
+
+:host([variant="info"]) .icon, :host([variant="info"]) ::slotted([slot="icon"]) {
+    fill: var(--core-fill-20-color);
+  }
+
+:host([variant="critical"]) {
+  color: var(--inline-status-error-variant-icon-color);
+}
+
+:host([variant="critical"]) .icon, :host([variant="critical"]) ::slotted([slot="icon"]) {
+    fill: var(--inline-status-error-variant-text-color);
+  }
+
+:host([variant="success"]) {
+  color: var(--inline-status-success-variant-icon-color);
+}
+
+:host([variant="success"]) .icon, :host([variant="success"]) ::slotted([slot="icon"]) {
+    fill: var(--inline-status-success-variant-text-color);
+  }
+
+:host([variant="warning"]) {
+  color: var(--inline-status-warning-variant-icon-color);
+}
+
+:host([variant="warning"]) .icon, :host([variant="warning"]) ::slotted([slot="icon"]) {
+    fill: var(--inline-status-warning-variant-icon-color);
+  }

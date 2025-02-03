@@ -1,0 +1,56 @@
+@import "../animations"; /* safari needs an explicit import */
+
+%modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  overflow: hidden;
+
+  ::slotted(main),
+  ::slotted(.main) {
+    flex: 0 1 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  ::slotted(.market-header) {
+    margin-bottom: var(--core-metrics-spacing-300);
+    padding-top: 0;
+  }
+
+  ::slotted(.market-footer) {
+    padding-bottom: 0;
+  }
+}
+
+%modal-full {
+  @extend %modal;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--modal-full-vertical-padding-size);
+  padding-bottom: var(--modal-full-vertical-padding-size);
+  background-color: var(--modal-full-background-color);
+
+  /* Enter animation */
+  animation:
+    var(--modal-full-animation-enter-transition-duration)
+    market-slideup
+    forwards
+    var(--modal-full-animation-enter-transition-easing);
+
+  ::slotted(*) {
+    padding-right: var(--modal-full-horizontal-padding-size);
+    padding-left: var(--modal-full-horizontal-padding-size);
+  }
+
+  /* Exit animation */
+  &([hidden]) {
+    animation-name: market-slidedown;
+    animation-duration: var(--modal-full-animation-exit-transition-duration);
+    animation-timing-function: var(--modal-full-animation-exit-transition-easing);
+  }
+}

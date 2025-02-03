@@ -1,0 +1,167 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --focus-ring-color: color-mix(in srgb, var(--toggle-focus-ring-color) 100%, transparent);
+
+  position: relative;
+  display: inline-block;
+
+  /* Height is set to ensure focus ring is set to the correct height. */
+  height: var(--toggle-height);
+}
+
+input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: var(--toggle-border-radius);
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input:focus-visible {
+  outline: var(--toggle-focus-ring-border-size) solid var(--focus-ring-color);
+  outline-offset: var(--core-focus-ring-buffer-size); /* --toggle-focus-ring-buffer-size is 0px for some reason? */
+}
+
+circle, rect {
+  /* if toggle is slotted into market-row, inherit transition style from row */
+  transition: var(--row-slotted-control-transition, cx 0.3s);
+}
+
+/* state:normal.value:unselected */
+circle {
+  fill: var(--toggle-normal-state-unselected-value-thumb-color);
+}
+
+rect {
+  fill: var(--toggle-normal-state-unselected-value-track-color);
+  stroke: var(--toggle-normal-state-unselected-value-border-color);
+}
+
+/* state:normal.value:selected */
+
+:host([checked]) circle {
+    fill: var(--toggle-normal-state-selected-value-thumb-color);
+
+    /* Number determined from movement of the toggle thumb in Figma SVGs */
+
+    /* todo: add design token for this number */
+    cx: 28px;
+  }
+
+:host([checked]) rect {
+    fill: var(--toggle-normal-state-selected-value-track-color);
+    stroke: var(--toggle-normal-state-selected-value-border-color);
+  }
+
+/* state:hover.value:unselected */
+
+:host(:hover) circle, :host([hovered]) circle {
+    fill: var(--toggle-hover-state-unselected-value-thumb-color);
+  }
+
+:host(:hover) rect, :host([hovered]) rect {
+    fill: var(--toggle-hover-state-unselected-value-track-color);
+    stroke: var(--toggle-hover-state-unselected-value-border-color);
+  }
+
+/* state:hover.value:selected */
+
+:host([checked]:hover) circle, :host([checked][hovered]) circle {
+    fill: var(--toggle-hover-state-selected-value-thumb-color);
+  }
+
+:host([checked]:hover) rect, :host([checked][hovered]) rect {
+    fill: var(--toggle-hover-state-selected-value-track-color);
+    stroke: var(--toggle-hover-state-selected-value-border-color);
+  }
+
+/* state:focus.value:unselected */
+
+:host([focused]) circle {
+    fill: var(--toggle-focus-state-unselected-value-thumb-color);
+  }
+
+:host([focused]) rect {
+    fill: var(--toggle-focus-state-unselected-value-track-color);
+    stroke: var(--toggle-focus-state-unselected-value-border-color);
+  }
+
+/* state:focus.value:selected */
+
+:host([checked][focused]) circle {
+    fill: var(--toggle-focus-state-selected-value-thumb-color);
+  }
+
+:host([checked][focused]) rect {
+    fill: var(--toggle-focus-state-selected-value-track-color);
+    stroke: var(--toggle-focus-state-selected-value-border-color);
+  }
+
+/* state:pressed.value:unselected */
+
+:host(:active) circle, :host([active]) circle {
+    fill: var(--toggle-pressed-state-unselected-value-thumb-color);
+  }
+
+:host(:active) rect, :host([active]) rect {
+    fill: var(--toggle-pressed-state-unselected-value-track-color);
+    stroke: var(--toggle-pressed-state-unselected-value-border-color);
+  }
+
+/* state:pressed.value:selected */
+
+:host([checked]:active) circle, :host([checked][active]) circle {
+    fill: var(--toggle-pressed-state-selected-value-thumb-color);
+  }
+
+:host([checked]:active) rect, :host([checked][active]) rect {
+    fill: var(--toggle-pressed-state-selected-value-track-color);
+    stroke: var(--toggle-pressed-state-selected-value-border-color);
+  }
+
+/* state:disabled.value:unselected */
+
+:host([disabled]) input {
+    cursor: not-allowed;
+  }
+
+:host([disabled]) circle {
+    fill: var(--toggle-disabled-state-unselected-value-thumb-color);
+  }
+
+:host([disabled]) rect {
+    fill: var(--toggle-disabled-state-unselected-value-track-color);
+    stroke: var(--toggle-disabled-state-unselected-value-border-color);
+  }
+
+/* state:disabled.value:selected */
+
+:host([disabled][checked]) circle {
+    fill: var(--toggle-disabled-state-selected-value-thumb-color);
+  }
+
+:host([disabled][checked]) rect {
+    fill: var(--toggle-disabled-state-selected-value-track-color);
+    stroke: var(--toggle-disabled-state-selected-value-border-color);
+  }

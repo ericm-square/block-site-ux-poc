@@ -1,0 +1,104 @@
+%floating-input {
+  /* used for empty state scale transform */
+  --field-input-animation-speed: 0.2s;
+  --field-input-label-translate: 12px;
+  --field-empty-phase-label-text-size-unitless: 16;
+  --field-float-phase-label-text-size-unitless: 14;
+
+  /* size medium */
+  --field-size-medium-float-phase-vertical-padding-size: 12px;
+  --field-size-medium-float-phase-horizontal-padding-size: 16px;
+
+  /* size small */
+  --field-size-small-float-phase-vertical-padding-size: 9px;
+  --field-size-small-float-phase-horizontal-padding-size: 12px;
+
+  display: flex;
+  align-items: center;
+
+  .label-input-container,
+  &([value='']:not([focused]):not([autofilled])) .label-input-container {
+    flex-grow: 1;
+    padding: var(--field-float-phase-vertical-padding-size) var(--field-float-phase-horizontal-padding-size);
+  }
+
+  &([size='medium']) .label-input-container,
+  &([size='medium'][value='']:not([focused]):not([autofilled])) .label-input-container {
+    padding:
+      var(--field-size-medium-float-phase-vertical-padding-size)
+      var(--field-size-medium-float-phase-horizontal-padding-size);
+  }
+
+  &([size='small']) .label-input-container,
+  &([size='small'][value='']:not([focused]):not([autofilled])) .label-input-container {
+    padding:
+      var(--field-size-small-float-phase-vertical-padding-size)
+      var(--field-size-small-float-phase-horizontal-padding-size);
+  }
+
+  /* == phase:empty == */
+  ::slotted(label) {
+    display: block;
+    min-height: var(--field-empty-phase-label-text-leading);
+    font-weight: var(--field-empty-phase-label-text-weight);
+    font-size: var(--field-empty-phase-label-text-size);
+    line-height: var(--field-empty-phase-label-text-leading);
+    letter-spacing: var(--field-empty-phase-label-text-tracking);
+    transition: all var(--field-input-animation-speed);
+    transform: translateY(var(--field-input-label-translate));
+    transform-origin: 0 0;
+  }
+
+  /* == phase:float == */
+  &(:not([value=""])) ::slotted(label),
+  &([value=""]:not([focused])[autofilled]) ::slotted(label),
+  &([focused]) ::slotted(label) {
+    font-weight: var(--field-float-phase-label-text-weight);
+    transform:
+      scale(
+        calc(var(--field-float-phase-label-text-size-unitless) / var(--field-empty-phase-label-text-size-unitless))
+      );
+  }
+
+  /* normally (unfocused), hide the input & placeholder */
+  input,
+  ::slotted(input),
+  textarea,
+  ::slotted(textarea) {
+    opacity: 0%;
+  }
+
+  /* focused or with value, show the input & placeholder */
+  &([focused]),
+  &(:not([value=''])) {
+    input,
+    ::slotted(input),
+    textarea,
+    ::slotted(textarea) {
+      opacity: 100%;
+    }
+  }
+
+  /* when not size large... */
+  &([size='small']),
+  &([size='medium']) {
+    /* visually hide the label */
+    ::slotted(label) {
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      width: 1px;
+      height: 1px;
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
+
+    /* input & placeholder is always visible */
+    input,
+    ::slotted(input),
+    textarea,
+    ::slotted(textarea) {
+      opacity: 100%;
+    }
+  }
+}

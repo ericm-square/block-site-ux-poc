@@ -1,0 +1,105 @@
+[data-market-features*="typography"] {
+  /* ROW */
+
+  /* Small Size */
+  .market-row[size="small"] > [slot="label"] {
+    font-weight: var(--row-small-size-text-weight);
+    font-size: var(--row-small-size-text-size);
+    line-height: var(--row-small-size-text-leading);
+    letter-spacing: var(--row-small-size-text-tracking);
+    text-transform: var(--row-small-size-text-case);
+  }
+
+  .market-row[size="small"] > [slot="subtext"] {
+    font-weight: var(--row-small-size-subtext-weight);
+    font-size: var(--row-small-size-subtext-size);
+    line-height: var(--row-small-size-subtext-leading);
+    letter-spacing: var(--row-small-size-subtext-tracking);
+    text-transform: var(--row-small-size-subtext-case);
+  }
+
+  .market-row[size="small"] > [slot="side-label"] {
+    font-weight: var(--row-small-size-side-text-primary-weight);
+    font-size: var(--row-small-size-side-text-primary-size);
+    line-height: var(--row-small-size-side-text-primary-leading);
+    letter-spacing: var(--row-small-size-side-text-primary-tracking);
+    text-transform: var(--row-small-size-side-text-primary-case);
+  }
+
+  .market-row[size="small"] > [slot="side-subtext"] {
+    font-weight: var(--row-small-size-side-text-secondary-weight);
+    font-size: var(--row-small-size-side-text-secondary-size);
+    line-height: var(--row-small-size-side-text-secondary-leading);
+    letter-spacing: var(--row-small-size-side-text-secondary-tracking);
+    text-transform: var(--row-small-size-side-text-secondary-case);
+  }
+
+  /* Medium Size */
+
+  .market-row[size="medium"] > [slot="label"] {
+    font-weight: var(--row-medium-size-text-weight);
+    font-size: var(--row-medium-size-text-size);
+    line-height: var(--row-medium-size-text-leading);
+    letter-spacing: var(--row-medium-size-text-tracking);
+    text-transform: var(--row-medium-size-text-case);
+  }
+
+  .market-row[size="medium"] > [slot="subtext"] {
+    font-weight: var(--row-medium-size-subtext-weight);
+    font-size: var(--row-medium-size-subtext-size);
+    line-height: var(--row-medium-size-subtext-leading);
+    letter-spacing: var(--row-medium-size-subtext-tracking);
+    text-transform: var(--row-medium-size-subtext-case);
+  }
+
+  .market-row[size="medium"] > [slot="side-label"] {
+    font-weight: var(--row-medium-size-side-text-primary-weight);
+    font-size: var(--row-medium-size-side-text-primary-size);
+    line-height: var(--row-medium-size-side-text-primary-leading);
+    letter-spacing: var(--row-medium-size-side-text-primary-tracking);
+    text-transform: var(--row-medium-size-side-text-primary-case);
+  }
+
+  .market-row[size="medium"] > [slot="side-subtext"] {
+    font-weight: var(--row-medium-size-side-text-secondary-weight);
+    font-size: var(--row-medium-size-side-text-secondary-size);
+    line-height: var(--row-medium-size-side-text-secondary-leading);
+    letter-spacing: var(--row-medium-size-side-text-secondary-tracking);
+    text-transform: var(--row-medium-size-side-text-secondary-case);
+  }
+
+  .market-row[slot="displayed-selection"] > [slot="label"] {
+    font-weight: var(--field-input-weight);
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  /* FIELD */
+
+  .market-field > [slot="error"] {
+    color: var(--field-error-message-text-color);
+    font-weight: var(--field-error-message-text-weight);
+    font-size: var(--field-error-message-text-size);
+    line-height: var(--field-error-message-text-leading);
+    letter-spacing: var(--field-error-message-text-tracking);
+  }
+
+  .market-field > [slot="action"] {
+    color: var(--field-action-text-color);
+  }
+
+  .market-field > [slot] {
+    margin-top: 4px; /* TODO: design token */
+  }
+
+  /* HEADER */
+
+  .market-header[show-navigation] > [slot="compact"]:not(.wayfinding):not(.subheading) {
+    font-weight: var(--core-type-heading-20-weight);
+    font-size: var(--core-type-heading-20-size);
+    font-family: var(--core-type-heading-20-font-family);
+    line-height: var(--core-type-heading-20-leading);
+    letter-spacing: var(--core-type-heading-20-tracking);
+    text-transform: var(--core-type-heading-20-case);
+  }
+}

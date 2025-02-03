@@ -1,0 +1,16 @@
+/* Import these styles into component CSS to debug CSS layout & positioning! */
+
+:host,
+:host *,
+:host *::before,
+:host *::after,
+::slotted(*),
+::slotted(*)::before,
+::slotted(*)::after {
+  /* stylelint-disable declaration-no-important */
+  border-color: rgb(255 105 180) !important;
+  background-color: rgb(112 187 255 / 3%) !important;
+  color: rgb(255 105 180) !important;
+  outline: rgb(255 105 180 / 25%) solid 1px !important;
+  /* stylelint-enable declaration-no-important */
+}

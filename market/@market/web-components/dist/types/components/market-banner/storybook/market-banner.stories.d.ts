@@ -1,0 +1,17 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const API: StoryObj;
+export declare const Variants: StoryObj;
+export declare const Dismissable: StoryObj;
+export declare const InlineLink: StoryObj;
+export declare const InlineButton: StoryObj;
+export declare const LongText: StoryObj;
+export declare const Title: StoryObj;
+export declare const LinkActions: StoryObj;
+export declare const ButtonActions: StoryObj;
+export declare const ActionsDismissable: StoryObj;
+export declare const ActionsTitle: StoryObj;
+export declare const ActionsLongText: StoryObj;
+export declare const CustomIcon: StoryObj;
+export declare const KitchenSink: StoryObj;

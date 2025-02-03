@@ -1,0 +1,17 @@
+{
+  "name": "@market/market-theme",
+  "version": "31.2.0",
+  "description": "Market design tokens for web",
+  "main": "build/js/cjs/index.js",
+  "module": "build/js/esm/index.mjs",
+  "types": "build/js/types/index.d.ts",
+  "license": "UNLICENSED",
+  "autopublish": true,
+  "files": [
+    "assets/",
+    "css/",
+    "js/",
+    "less/",
+    "scss/"
+  ]
+}

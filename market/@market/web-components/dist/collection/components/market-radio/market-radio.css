@@ -1,0 +1,204 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  --transition-duration: 0.2s;
+  --radio-offset: calc(-1 * var(--radio-border-size));
+  --focus-ring-color: color-mix(in srgb, var(--radio-focus-ring-color) 100%, transparent);
+
+  position: relative;
+  display: inline-block;
+  width: var(--radio-width);
+  height: var(--radio-height);
+  border: var(--radio-border-size) solid var(--radio-normal-state-normal-validity-unselected-value-border-color);
+  border-radius: var(--radio-border-radius);
+  background-color: var(--radio-normal-state-normal-validity-unselected-value-background-color);
+}
+
+input {
+  position: absolute;
+
+  /* The top and left offset are to account for the border size */
+  top: var(--radio-offset);
+  left: var(--radio-offset);
+  width: var(--radio-width);
+  height: var(--radio-height);
+  margin: 0;
+  border-radius: var(--radio-border-radius);
+  background: transparent;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input:focus-visible {
+  outline: var(--radio-focus-ring-border-size, var(--core-focus-ring-border-size)) solid var(--focus-ring-color);
+  outline-offset: var(--radio-focus-ring-buffer-size);
+}
+
+svg {
+  position: absolute;
+  top: calc(50% - var(--radio-svg-radius));
+  left: calc(50% - var(--radio-svg-radius));
+  align-items: center;
+  pointer-events: none;
+}
+
+/* UNSELECTED - default state */
+
+@media (hover: hover) {
+  /* state:hover.validity:normal.value:unselected */
+  :host(:hover), :host([hovered]) {
+    border-color: var(--radio-hover-state-normal-validity-unselected-value-border-color);
+    background-color: var(--radio-hover-state-normal-validity-unselected-value-background-color);
+  }
+}
+
+/* state:focus.validity:normal.value:unselected */
+:host(:focus), :host([focused]) {
+  border-color: var(--radio-focus-state-normal-validity-unselected-value-border-color);
+  background-color: var(--radio-focus-state-normal-validity-unselected-value-background-color);
+}
+
+/* state:active.validity:normal.value:unselected */
+:host(:active), :host([active]) {
+  border-color: var(--radio-pressed-state-normal-validity-unselected-value-border-color);
+  background-color: var(--radio-pressed-state-normal-validity-unselected-value-background-color);
+}
+
+/* UNSELECTED + INVALID */
+
+/* state:normal.validity:invalid.value:unselected */
+:host([invalid]) {
+  border-color: var(--radio-normal-state-invalid-validity-unselected-value-border-color);
+  background-color: var(--radio-normal-state-invalid-validity-unselected-value-background-color);
+}
+
+@media (hover: hover) {
+  /* state:hover.validity:invalid.value:unselected */
+  :host([invalid]:hover), :host([invalid][hovered]) {
+    border-color: var(--radio-hover-state-invalid-validity-unselected-value-border-color);
+    background-color: var(--radio-hover-state-invalid-validity-unselected-value-background-color);
+  }
+}
+
+/* state:focus.validity:invalid.value:unselected */
+:host([invalid]:focus), :host([invalid][focused]) {
+  border-color: var(--radio-focus-state-invalid-validity-unselected-value-border-color);
+  background-color: var(--radio-focus-state-invalid-validity-unselected-value-background-color);
+}
+
+/* state:active.validity:invalid.value:unselected */
+:host([invalid]:active), :host([invalid][active]) {
+  border-color: var(--radio-pressed-state-invalid-validity-unselected-value-border-color);
+  background-color: var(--radio-pressed-state-invalid-validity-unselected-value-background-color);
+}
+
+/* state:disabled.validity:normal.value:unselected */
+:host([disabled]), :host([invalid][disabled]) {
+  border-color: var(--radio-disabled-state-normal-validity-unselected-value-border-color);
+  background-color: var(--radio-disabled-state-normal-validity-unselected-value-background-color);
+}
+
+/* SELECTED */
+
+/* state:normal.validity:normal.value:selected */
+:host([selected]) {
+  border-color: var(--radio-normal-state-normal-validity-selected-value-border-color);
+  background-color: var(--radio-normal-state-normal-validity-selected-value-background-color);
+}
+:host([selected]) svg {
+    fill: var(--radio-normal-state-normal-validity-selected-value-icon-color);
+  }
+
+@media (hover: hover) {
+  /* state:hover.validity:normal.value:selected */
+  :host([selected]:hover), :host([selected][hovered]) {
+    border-color: var(--radio-hover-state-normal-validity-selected-value-border-color);
+    background-color: var(--radio-hover-state-normal-validity-selected-value-background-color);
+  }
+
+    :host([selected]:hover) svg, :host([selected][hovered]) svg {
+      fill: var(--radio-normal-state-normal-validity-selected-value-icon-color);
+    }
+}
+
+/* state:focus.validity:normal.value:selected */
+:host([selected]:focus), :host([selected][focused]) {
+  border-color: var(--radio-focus-state-normal-validity-selected-value-border-color);
+  background-color: var(--radio-focus-state-normal-validity-selected-value-background-color);
+}
+:host([selected]:focus) svg, :host([selected][focused]) svg {
+    fill: var(--radio-focus-state-normal-validity-selected-value-icon-color);
+  }
+
+/* state:active.validity:normal.value:selected */
+:host([selected]:active), :host([selected][active]) {
+  border-color: var(--radio-pressed-state-normal-validity-selected-value-border-color);
+  background-color: var(--radio-pressed-state-normal-validity-selected-value-background-color);
+}
+:host([selected]:active) svg, :host([selected][active]) svg {
+    fill: var(--radio-pressed-state-normal-validity-selected-value-icon-color);
+  }
+
+/* SELECTED + INVALID */
+
+/* state:normal.validity:invalid.value:selected */
+:host([invalid][selected]) {
+  border-color: var(--radio-normal-state-invalid-validity-selected-value-border-color);
+  background-color: var(--radio-normal-state-invalid-validity-selected-value-background-color);
+}
+:host([invalid][selected]) svg {
+    fill: var(--radio-normal-state-invalid-validity-selected-value-icon-color);
+  }
+
+@media (hover: hover) {
+  /* state:hover.validity:invalid.value:selected */
+  :host([invalid][selected]:hover), :host([invalid][selected][hovered]) {
+    border-color: var(--radio-hover-state-invalid-validity-selected-value-border-color);
+    background-color: var(--radio-hover-state-invalid-validity-selected-value-background-color);
+  }
+
+    :host([invalid][selected]:hover) svg, :host([invalid][selected][hovered]) svg {
+      fill: var(--radio-hover-state-invalid-validity-selected-value-icon-color);
+    }
+}
+
+/* state:focus.validity:invalid.value:selected */
+:host([invalid][selected]:focus), :host([invalid][selected][focused]) {
+  border-color: var(--radio-focus-state-invalid-validity-selected-value-border-color);
+  background-color: var(--radio-focus-state-invalid-validity-selected-value-background-color);
+}
+:host([invalid][selected]:focus) svg, :host([invalid][selected][focused]) svg {
+    fill: var(--radio-focus-state-invalid-validity-selected-value-icon-color);
+  }
+
+/* state:active.validity:invalid.value:selected */
+:host([invalid][selected]:active), :host([invalid][selected][active]) {
+  border-color: var(--radio-pressed-state-invalid-validity-selected-value-border-color);
+  background-color: var(--radio-pressed-state-invalid-validity-selected-value-background-color);
+}
+:host([invalid][selected]:active) svg, :host([invalid][selected][active]) svg {
+    fill: var(--radio-pressed-state-invalid-validity-selected-value-icon-color);
+  }
+
+/* state:disabled.validity:normal.value:unchecked */
+:host([selected][disabled]), :host([selected][disabled][invalid]) {
+  border-color: var(--radio-disabled-state-normal-validity-selected-value-border-color);
+  background-color: var(--radio-disabled-state-normal-validity-selected-value-background-color);
+}
+:host([selected][disabled]) svg, :host([selected][disabled][invalid]) svg {
+    fill: var(--radio-disabled-state-normal-validity-selected-value-icon-color);
+  }

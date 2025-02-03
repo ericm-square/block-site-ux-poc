@@ -1,0 +1,149 @@
+/* blank white block with no functionality */
+:host(:not([day])) {
+  border-width: 0 !important; /* stylelint-disable-line declaration-no-important */
+  border-radius: 0 !important; /* stylelint-disable-line declaration-no-important */
+  background-color: rgb(0 0 0 / 0%) !important; /* stylelint-disable-line declaration-no-important */
+  color: rgb(0 0 0 / 0%) !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: var(--date-picker-grid-item-width);
+  height: var(--date-picker-grid-item-height);
+  padding: 0;
+
+  /* font styling */
+  font-size: var(--date-picker-weekdays-font-size);
+  line-height: var(--date-picker-weekdays-font-leading);
+  text-align: center;
+}
+
+:host([disabled]) {
+    color: var(--date-picker-date-text-unselected-selection-disabled-state-color);
+    cursor: not-allowed;
+  }
+
+/* Styling for weekday headings */
+
+:host(.weekday-header) {
+    color: var(--date-picker-weekdays-color-color);
+    cursor: auto;
+  }
+
+/* default date shape, excluding selection='range-middle' since no border-radius */
+
+:host(:not([selection='range-middle']:not([today]))) {
+    border-radius: var(--date-picker-date-border-radius);
+  }
+
+/* SELECTION: NONE */
+
+:host([selection='none']:not([disabled])) {
+    color: var(--date-picker-date-text-unselected-selection-normal-state-color);
+  }
+
+/* selected styling */
+
+:host([selection='single'][selected]), :host([selection='range-first'][selected]), :host([selection='range-last'][selected]) {
+    background-color: var(--date-picker-date-background-single-selection-normal-state-color);
+    color: var(--date-picker-date-text-single-selection-disabled-state-color);
+  }
+
+/* disabled date styling when 'default' has black background styling */
+
+:host([selection='single'][disabled][selected]), :host([selection='range-first'][disabled][selected]), :host([selection='range-last'][disabled][selected]) {
+    background-color: var(--date-picker-date-background-single-selection-disabled-state-color);
+    color: var(--date-picker-date-text-single-selection-disabled-state-color);
+  }
+
+/* SELECTION: RANGE-FIRST */
+
+/* date shape changes only when NOT selected */
+
+:host(:hover[selection='range-first']:not([selected]):not([today])), :host(:active[selection='range-first']:not([selected]):not([today])) {
+    --date-picker-date-range-first-selection-border-radius-top-left: var(--date-picker-date-border-radius);
+    --date-picker-date-range-first-selection-border-radius-top-right: 0;
+    --date-picker-date-range-first-selection-border-radius-bottom-right: 0;
+    --date-picker-date-range-first-selection-border-radius-bottom-left: var(--date-picker-date-border-radius);
+
+    border-radius:
+      var(--date-picker-date-range-first-selection-border-radius-top-left)
+      var(--date-picker-date-range-first-selection-border-radius-top-right)
+      var(--date-picker-date-range-first-selection-border-radius-bottom-right)
+      var(--date-picker-date-range-first-selection-border-radius-bottom-left);
+  }
+
+/* SELECTION: RANGE-MIDDLE */
+
+:host([selection='range-middle']:not([disabled])) {
+    background-color: var(--date-picker-date-background-range-middle-selection-hover-state-color);
+    color: var(--date-picker-date-text-range-middle-selection-hover-state-color);
+  }
+
+:host([selection='range-middle'][selected]) {
+    background-color: var(--date-picker-date-background-range-middle-selection-normal-state-color);
+  }
+
+/* only variant of today and disabled with border */
+
+:host([selection='range-middle'][disabled][today]) {
+    border-color: var(--date-picker-date-border-disabled-state-color-color);
+  }
+
+/* SELECTION: RANGE-LAST */
+
+/* date shape changes only when NOT selected */
+
+:host(:hover[selection='range-last']:not([selected]):not([today])), :host(:active[selection='range-last']:not([selected]):not([today])) {
+    --date-picker-date-range-last-selection-border-radius-top-left: 0;
+    --date-picker-date-range-last-selection-border-radius-top-right: var(--date-picker-date-border-radius);
+    --date-picker-date-range-last-selection-border-radius-bottom-right: var(--date-picker-date-border-radius);
+    --date-picker-date-range-last-selection-border-radius-bottom-left: 0;
+
+    border-radius:
+      var(--date-picker-date-range-last-selection-border-radius-top-left)
+      var(--date-picker-date-range-last-selection-border-radius-top-right)
+      var(--date-picker-date-range-last-selection-border-radius-bottom-right)
+      var(--date-picker-date-range-last-selection-border-radius-bottom-left);
+  }
+
+/* today = true */
+
+:host([today]) {
+    box-sizing: border-box;
+
+    /* TODO: update design token to use unit instead of forcing px via calc */
+    border-width: calc(var(--date-picker-today-border-width) * 1px);
+    border-style: solid;
+    border-radius: var(--date-picker-date-border-radius);
+    font-weight: var(--date-picker-today-font-weight);
+  }
+
+:host([today]:not([disabled])) {
+    border-color: var(--date-picker-today-border-color-color);
+  }
+
+:host([today][disabled]) {
+    color: var(--date-picker-today-label-disabled-state-color-color);
+  }
+
+/* :hover and :active styling */
+
+:host(:hover:not([disabled])) {
+    cursor: pointer;
+  }
+
+:host(:hover:not([disabled]):not([selected])) {
+    background-color: var(--date-picker-date-background-unselected-selection-hover-state-color);
+    color: var(--date-picker-date-text-unselected-selection-hover-state-color);
+  }
+
+:host(:active:not([disabled]):not([selected])) {
+    background-color: var(--date-picker-date-background-unselected-selection-pressed-state-color);
+    color: var(--date-picker-date-text-unselected-selection-pressed-state-color);
+  }

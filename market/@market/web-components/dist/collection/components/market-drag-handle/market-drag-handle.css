@@ -1,0 +1,16 @@
+:host {
+  cursor: grab;
+}
+
+:host(:active) {
+  cursor: grabbing;
+}
+
+svg {
+  display: block;
+  fill: var(--drag-handle-normal-state-color, var(--core-fill-20-color));
+}
+
+:host(:hover) svg {
+  fill: var(--drag-handle-hover-state-color, var(--core-fill-10-color));
+}

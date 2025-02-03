@@ -1,0 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const Introduction: StoryObj;
+export declare const AutoLayout: StoryObj;
+export declare const FixedLayout: StoryObj;
+export declare const Wrapping: StoryObj;
+export declare const NoWrap: StoryObj;
+export declare const TruncateFixed: StoryObj;
+export declare const TruncateAuto: StoryObj;
+export declare const AlignHorizontal: StoryObj;
+export declare const AlignVertical: StoryObj;
+export declare const HeaderFooter: StoryObj;
+export declare const Accessibility: StoryObj;

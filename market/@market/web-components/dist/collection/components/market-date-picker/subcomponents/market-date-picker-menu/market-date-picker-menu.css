@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  margin-right: var(--date-picker-menu-horizontal-spacing);
+  font-weight: var(--date-picker-menu-text-weight);
+  font-size: var(--date-picker-menu-text-size);
+  line-height: var(--date-picker-menu-text-leading);
+}
+
+:host > .market-list > .market-row {
+  min-height: var(--date-picker-menu-row-height);
+  padding: 0 12px;
+}
+
+/* remove bottom border from market-row */
+:host > .market-list > .market-row::before {
+  content: none;
+}
+
+:host > .market-list > .market-row::part(container) {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+:host > .market-list > .market-row[selected] {
+  color: var(--date-picker-menu-row-label-selected-state-text-color);
+}
+
+@media only screen and (max-width: 800px) {
+  :host {
+    margin-right: 0;
+  }
+
+  :host > .market-list > .market-row {
+    width: inherit;
+  }
+}

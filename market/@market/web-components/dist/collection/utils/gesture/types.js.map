@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","sourceRoot":"","sources":["../../../../src/utils/gesture/types.ts"],"names":[],"mappings":"","sourcesContent":["import type { Vec2 } from '../math/types';\n\nexport type TMouseOrTouchEvent = MouseEvent | TouchEvent;\n\nexport type TMarketDragCoords = Vec2;\n"]}

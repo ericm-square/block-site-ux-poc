@@ -1,0 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const InteractiveCells: StoryObj;
+export declare const InteractiveRows: StoryObj;
+export declare const StickyRows: StoryObj;
+export declare const StickyColumns: StoryObj;
+export declare const StickyBoth: StoryObj;
+export declare const Accessories: StoryObj;
+export declare const FormFields: StoryObj;
+export declare const Checkboxes: StoryObj;
+export declare const Toggles: StoryObj;

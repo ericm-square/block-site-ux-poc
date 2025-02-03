@@ -1,0 +1,1 @@
+{"version":3,"file":"events.js","sourceRoot":"","sources":["../../../../src/components/market-action-card/events.ts"],"names":[],"mappings":"","sourcesContent":["export type TMarketActionCardSelectedEventDetail = { value: string };\nexport type TMarketActionCardDeselectedEventDetail = { value: string };\n"]}

@@ -1,0 +1,533 @@
+{
+  "core": {
+    "icon": {
+      "expand": {
+        "fidelity:16": {
+          "default": true,
+          "asset": "chevron-down",
+          "size": 16,
+          "width": 16,
+          "height": 16,
+          "tintable": true
+        }
+      },
+      "collapse": {
+        "fidelity:16": {
+          "default": true,
+          "asset": "chevron-up",
+          "size": 16,
+          "width": 16,
+          "height": 16,
+          "tintable": true
+        }
+      },
+      "continue": {
+        "fidelity:16": {
+          "default": true,
+          "asset": "chevron-right",
+          "size": 16,
+          "width": 16,
+          "height": 16,
+          "tintable": true
+        }
+      },
+      "return": {
+        "fidelity:16": {
+          "default": true,
+          "asset": "chevron-left",
+          "size": 16,
+          "width": 16,
+          "height": 16,
+          "tintable": true
+        }
+      },
+      "clear": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "x",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "close": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "x",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "add": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "plus",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "remove": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "minus",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "back": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-left",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "previous": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-left",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "forward": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-right",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "next": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-right",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "ascend": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-up",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "descend": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-down",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "more": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "ellipsis-horizontal",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "menu": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "hamburger-lines",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "loading": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "radial-spinner",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "search": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "magnifying-glass",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "drag": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "grip-dots-vertical",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "warn": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "exclamation-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "warning": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "exclamation-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "alert": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "exclamation-triangle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "attention": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "exclamation-triangle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "succeed": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "checkmark-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "success": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "checkmark-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "inform": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "i-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "info": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "i-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "deny": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "no-entry-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "denied": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "no-entry-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "cancel": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "x-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "cancelled": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "x-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "recommend": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "lightning-bolt",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "recommendation": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "lightning-bolt",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "refresh": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "dual-rotating-arrows",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "cycle": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "dual-rotating-arrows",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "delete": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "trashcan",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "checkmark": {
+        "fidelity:24": {
+          "asset": "checkmark",
+          "size": 24,
+          "width": 20,
+          "height": 20,
+          "tintable": true
+        },
+        "fidelity:20": {
+          "default": true,
+          "asset": "checkmark",
+          "size": 20,
+          "width": 20,
+          "height": 20,
+          "tintable": true
+        }
+      },
+      "indeterminate": {
+        "fidelity:20": {
+          "default": true,
+          "asset": "indeterminate-mark",
+          "size": 20,
+          "width": 20,
+          "height": 20,
+          "tintable": true
+        }
+      },
+      "help": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "question-mark-circle",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "show": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "eye",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "hide": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "eye-slash",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "filter": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "filter",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "file": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "dogeared-paper",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "look": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "binoculars",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "ascending": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-up",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "descending": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "arrow-down",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "unsorted": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "up-down",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "settings": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "sliders-horizontal",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "undo": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "cycle-backward",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "redo": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "cycle-forward",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "edit": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "pencil-writing",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      },
+      "picture": {
+        "fidelity:24": {
+          "default": true,
+          "asset": "image",
+          "size": 24,
+          "width": 24,
+          "height": 24,
+          "tintable": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const _default: Meta;
+export default _default;
+export declare const API: StoryObj;
+export declare const BasicExample: StoryObj;
+export declare const HeaderFooter: StoryObj;
+export declare const Sticky: StoryObj;
+export declare const StickTo: StoryObj;
+export declare const Indentation: StoryObj;
+export declare const Interactivity: StoryObj;
+export declare const Checkboxes: StoryObj;
+export declare const Toggles: StoryObj;
+export declare const NestedCheckboxes: StoryObj;

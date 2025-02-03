@@ -1,0 +1,272 @@
+:host, * {
+  box-sizing: border-box;
+}
+
+:host {
+  --table-cell-vertical-padding-size: var(--core-metrics-spacing-150);
+  --table-cell-horizontal-padding-size: var(--core-metrics-spacing-100);
+  --table-cell-horizontal-spacing-size: var(--core-metrics-spacing-150);
+  --table-cell-border-width: 1px;
+  --table-cell-heading-border-color: var(--core-divider-10-color);
+  --table-cell-state-normal-background-color: var(--core-surface-10-color);
+  --table-cell-hover-state-background-color: var(--core-fill-50-color);
+  --table-cell-focus-state-background-color: var(--core-fill-50-color);
+  --table-cell-pressed-state-background-color: var(--core-emphasis-40-color);
+  --table-cell-disabled-state-text-color: var(--core-text-30-color);
+  --table-cell-indent-level: 0;
+  --table-cell-indent-size: var(--core-metrics-spacing-500);
+  --table-cell-caret-size: var(--core-metrics-spacing-500);
+  --table-cell-text-font-weight: var(--core-type-paragraph-20-weight);
+  --table-cell-text-font-size: var(--core-type-paragraph-20-size);
+  --table-cell-text-line-height: var(--core-type-paragraph-20-leading);
+  --table-cell-focus-ring-color: color-mix(in srgb, var(--core-focus-ring-color) 50%, transparent);
+
+  display: table-cell;
+  vertical-align: inherit;
+  width: auto;
+  padding: var(--table-cell-vertical-padding-size) var(--table-cell-horizontal-padding-size);
+  border-bottom: var(--table-cell-border-width) solid var(--table-cell-border-color);
+  outline: none;
+  font-weight: var(--table-cell-text-font-weight);
+  font-size: var(--table-cell-text-font-size);
+  line-height: var(--table-cell-text-line-height);
+  text-align: inherit;
+}
+
+:host .content-outer {
+    display: flex;
+    gap: var(--table-cell-horizontal-spacing-size);
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    /* shrink the gaps between UI & inner content when dragged */
+    transition-timing-function: var(--core-animation-move-transition-easing);
+    transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+    transition-property: gap;
+  }
+
+:host .content-inner {
+    display: flex;
+    gap: var(--table-cell-horizontal-spacing-size);
+    align-items: center;
+    width: 100%;
+  }
+
+:host .default-slot {
+    width: 100%;
+  }
+
+/* indented with NO caret */
+
+:host([indent]:not([indent="0"])) {
+    padding-left:
+      calc(
+        var(--table-cell-horizontal-spacing-size) + var(--table-cell-indent-level) * var(--table-cell-indent-size)
+      );
+  }
+
+/* indented with a caret */
+
+:host([indent][caret]:not([indent="0"])) {
+    padding-left:
+      calc(
+        var(--table-cell-horizontal-padding-size) + var(--table-cell-indent-level) * var(--table-cell-indent-size)
+      );
+  }
+
+:host([nowrap]) .default-slot {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+:host([align="left"]) {
+    text-align: left;
+  }
+
+:host([align="center"]) {
+    text-align: center;
+  }
+
+:host([align="right"]) {
+    text-align: right;
+  }
+
+:host([valign="top"]) {
+    vertical-align: top;
+  }
+
+:host([valign="middle"]) {
+    vertical-align: middle;
+  }
+
+:host([valign="bottom"]) {
+    vertical-align: bottom;
+  }
+
+/* these styles apply to sticky table columns,
+    which layer BELOW sticky table rows  */
+
+:host([sticky]) {
+    position: sticky;
+    z-index: 2;
+    background-color: var(--table-cell-state-normal-background-color);
+  }
+
+:host([sticky="left"]) {
+    left: 0;
+    border-right: var(--table-cell-border-width) solid var(--table-cell-heading-border-color);
+  }
+
+:host([sticky="right"]) {
+    right: 0;
+    border-left: var(--table-cell-border-width) solid var(--table-cell-heading-border-color);
+  }
+
+/* inside a dragged row */
+
+:host(.market-drag-clone-first-cell) {
+    /* remove indentation */
+    /* stylelint-disable-next-line declaration-no-important */
+    padding-left: var(--table-cell-horizontal-padding-size) !important;
+  }
+
+/* shrink UI flex gaps */
+
+:host(.market-drag-clone-first-cell) .content-outer {
+      gap: 0;
+    }
+
+/* shrink extraneous UI */
+
+:host(.market-drag-clone-first-cell) .caret-button, :host(.market-drag-clone-first-cell) ::slotted([slot="control"]) {
+      width: 0;
+      height: 0;
+      opacity: 0%;
+    }
+
+::slotted([slot="control"]), ::slotted([slot="leading-accessory"]), ::slotted([slot="trailing-accessory"]) {
+  flex-shrink: 0;
+}
+
+/* transitions for dragged row */
+.caret-button, ::slotted([slot="control"]) {
+  transition-timing-function: var(--core-animation-move-transition-easing);
+  transition-duration: var(--core-animation-move-transition-moderate-speed-duration);
+  transition-property: width, height, opacity;
+}
+
+:host([interactive]) {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  :host([sortable]:hover), :host([interactive]:hover) {
+    background-color: var(--table-cell-hover-state-background-color);
+  }
+}
+
+:host([sortable]:focus), :host([interactive]:focus) {
+  background-color: var(--table-cell-focus-state-background-color);
+}
+
+:host([active]), :host([sortable]:active), :host([interactive]:active) {
+  background-color: var(--table-cell-pressed-state-background-color);
+}
+
+:host([disabled]) {
+  color: var(--table-cell-disabled-state-text-color);
+  pointer-events: none;
+}
+
+.caret-button {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: var(--table-cell-caret-size);
+  height: var(--table-cell-caret-size);
+
+  /* negative margins allow larger hit area without affecting layout */
+  margin-top: calc(var(--table-cell-vertical-padding-size) * -1);
+  margin-bottom: calc(var(--table-cell-vertical-padding-size) * -1);
+  margin-left: calc(var(--table-cell-horizontal-padding-size) * -1);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.caret-button svg {
+    display: block;
+    fill: var(--core-fill-20-color);
+    transition: 0.2s transform ease;
+  }
+
+:host([caret="up"]) .caret-button svg {
+      transform: rotate(-180deg);
+    }
+
+.caret-button:focus-visible {
+    border-radius: var(--core-radius-10);
+    outline: var(--core-focus-ring-border-size) solid var(--table-cell-focus-ring-color);
+    outline-offset: calc(var(--core-focus-ring-border-size) * -1);
+  }
+
+.sort-button {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--core-metrics-spacing-50);
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: var(--table-cell-vertical-padding-size) var(--table-cell-horizontal-padding-size);
+  border: none;
+  background: transparent;
+  outline: none;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.sort-button svg {
+    display: block;
+    flex-shrink: 0;
+    fill: var(--core-text-30-color);
+  }
+
+.sort-button:focus-visible {
+    border-radius: var(--core-radius-10);
+    outline: var(--core-focus-ring-border-size) solid var(--table-cell-focus-ring-color);
+    outline-offset: calc(var(--core-focus-ring-border-size) * -1);
+  }
+
+:host([align="left"]) .sort-button {
+    justify-content: start;
+  }
+
+:host([align="center"]) .sort-button {
+    justify-content: center;
+  }
+
+:host([align="right"]) .sort-button {
+    justify-content: end;
+  }
+
+:host([sortable]) {
+  padding: 0;
+}
+
+:host([sortable][sort-order="ascending"]) .sort-button svg, :host([sortable][sort-order="descending"]) .sort-button svg {
+      fill: var(--core-text-10-color);
+    }

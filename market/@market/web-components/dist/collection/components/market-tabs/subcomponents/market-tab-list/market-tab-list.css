@@ -1,0 +1,25 @@
+/* TODO: add design tokens */
+
+:host {
+  position: relative;
+  display: flex;
+}
+
+:host::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: var(--tabs-list-bottom-border-size, 1px);
+    background-color: var(--tabs-list-bottom-border-color, var(--core-divider-20-color));
+  }
+
+:host(:not([size])), :host([size="small"]), :host([size="medium"]) {
+  gap: var(--tabs-list-medium-size-horizontal-spacing, var(--core-metrics-spacing-200));
+}
+
+:host([size="large"]) {
+  gap: var(--tabs-list-large-size-horizontal-spacing, var(--core-metrics-spacing-300));
+}

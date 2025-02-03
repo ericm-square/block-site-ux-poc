@@ -1,0 +1,34 @@
+:host, ::slotted(*), * {
+  box-sizing: border-box;
+}
+
+:host([disabled]) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+:host([disabled]) *, :host([disabled]) ::slotted(*) {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  display: block;
+  overflow: hidden;
+  width: 100vw;
+  height: 100%;
+  opacity: 0%;
+}
+
+
+:host([active]) {
+    z-index: 1000;
+    opacity: 100%;
+
+    /* whether click events pass through or not is managed by market-context's styles */
+    pointer-events: none;
+  }
