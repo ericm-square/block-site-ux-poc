@@ -1,37 +1,75 @@
 <html>
     <head>
         <title>Market × Buyer theme demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./@market/web-components/dist/market/market.css" />
         <link rel="stylesheet" href="market-buyer-overrides.css" />
+        <link rel="stylesheet" href="custom-components.css" />
         <script type="module" src="./@market/web-components/dist/market/market.esm.js"></script>
         <script nomodule src="./@market/web-components/dist/market/styles/typography.css"></script>
     </head>
 
 
-<body data-market-features="typography">
+    <body data-market-features="typography">
 
-    <div class="market-grid-container">    
+    <div class="market-grid-container">
 
-        <market-banner class="market-grid-item-large">
-          <span slot="title">Market × Buyer theme demo</span>
-          This is a proof of concept demonstrating how out-of-the-box Market components can be quickly and easily restyled to create a purpose-built buyer-facing theme.
-          <a slot="action" href="#">Link</a>
-          <button slot="action">Button</button>
-        </market-banner>
+        <market-content-card class="business-card market-grid-item-medium">
+                    <div class="business-hero">
+                        <video playsinline autoplay muted loop>
+                          <source src="media/video.webm" type="video/webm">
+                          Your browser does not support the video tag.
+                        </video>
+                        <div class="business-avatar">
+                            <img src="media/logo.png" alt="logo">
+                        </div>
+                    </div>
+                    <div class="business-info">
+                        <h1>Little Grenjai</h1>
+                        <div class="contact-info">
 
-         <market-content-card class="market-grid-item-medium">
-            <market-header compact>
-              <h2>Header within a content card</h2>
-              <small slot="subheading">Including a subheading</small>
-            </market-header>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.</p>
-            <market-button-group>
-              <market-button rank="primary">Button 1</market-button><market-button rank="secondary">Button 2</market-button>
-            </market-button-group>
+                            <market-row interactive size="small">
+                              <label slot="label">477 Gates Ave, Brooklyn, NY 11216</label>
+                              <market-accessory size="icon" slot="leading-accessory">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C15.86 2 19 5.14 19 9C19 12.52 16.39 15.44 13 15.92V22H11V15.92C7.61 15.43 5 12.52 5 9C5 5.14 8.14 2 12 2ZM7 9C7 11.76 9.24 14 12 14C14.76 14 17 11.76 17 9C17 6.24 14.76 4 12 4C9.24 4 7 6.24 7 9ZM13.5 9C13.5 9.82843 12.8284 10.5 12 10.5C11.1716 10.5 10.5 9.82843 10.5 9C10.5 8.17157 11.1716 7.5 12 7.5C12.8284 7.5 13.5 8.17157 13.5 9Z"/>
+                                </svg>
+                              </market-accessory>
+                            </market-row>
+
+                            <market-row interactive size="small">
+                              <label slot="label">(800) 123–4567</label>
+                              <market-accessory size="icon" slot="leading-accessory">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.19849 2.30957L11.7954 7.90647L9.4831 10.2188C10.7199 11.7766 12.1644 13.2253 13.7195 14.4677L16.038 12.1491L21.6949 17.806L18.6628 20.838C18.018 21.4828 17.0719 21.841 16.1002 21.6463C9.50626 20.3257 3.67872 14.4982 2.35812 7.90425C2.16351 6.93252 2.52164 5.98642 3.16642 5.34165L6.19849 2.30957ZM6.19849 5.138L4.58063 6.75586C4.35148 6.98501 4.27108 7.27137 4.31918 7.5115C5.4813 13.3141 10.6903 18.5232 16.493 19.6853C16.7331 19.7334 17.0195 19.653 17.2486 19.4238L18.8665 17.806L16.038 14.9775L13.9008 17.1148L13.2075 16.5985C11.0066 14.9592 8.984 12.931 7.35238 10.7263L6.83976 10.0337L8.96697 7.90647L6.19849 5.138Z" />
+                                </svg>
+                              </market-accessory>
+                            </market-row>
+                        </div>
+                        <p class="business-description paragraph-30">A cozy neighborhood restaurant serving fresh, locally-sourced ingredients with a modern twist on classic comfort food. Our chef-driven menu changes seasonally to showcase the best produce and proteins available. We pride ourselves on creating a warm, inviting atmosphere where every guest feels like family.</p>
+
+                        <market-button-group alignment="left">
+                          <market-button rank="primary">Button 1</market-button>
+                          <market-button rank="secondary">Button 2</market-button>
+                          <market-button rank="secondary">Button 3</market-button>
+                          <market-button rank="secondary">Button 4</market-button>
+                          <market-button rank="secondary">Button 5</market-button>
+                          <market-button rank="secondary">Button 6</market-button>
+                        </market-button-group>
+                    </div>
         </market-content-card>
 
+        
+        <!-- CONTROLS -->
+
         <market-content-card class="market-grid-item-medium">
+            <market-header compact>
+              <h2>Assorted controls</h2>
+            </market-header>
+
+            <br>
+
             <market-button-dropdown interaction="click" popover-placement="auto">
               <market-button slot="trigger">Dropdown button</market-button>
               <div slot="content">
@@ -54,9 +92,54 @@
             <market-segmented-control>
               <market-segment value="segment-1">Segment 1</market-segment><market-segment value="segment-2">Segment 2</market-segment><market-segment value="segment-3">Segment 3</market-segment>
             </market-segmented-control>
+
+            <br><br>
+
+            <market-toggle></market-toggle>
+
+            <br><br>
+
+            <market-radio></market-radio>
+
+            <br><br>
+
+            <market-checkbox></market-checkbox>
         </market-content-card>
 
+
+        <!-- ??? -->
+
         <market-content-card class="market-grid-item-medium">
+        </market-content-card>
+
+        <!-- CONTENT CARD -->
+
+         <market-content-card class="market-grid-item-medium">
+            <market-header compact>
+              <h2>A content card with content</h2>
+              <small slot="subheading">Including a subheading</small>
+            </market-header>
+
+            <br>
+
+            <market-banner>
+              <span slot="title">Market × Buyer theme demo</span>
+              This is a proof of concept demonstrating how out-of-the-box Market components can be quickly and easily restyled to create a purpose-built buyer-facing theme.
+              <a slot="action" href="#">Link</a>
+              <button slot="action">Button</button>
+            </market-banner>
+            
+            <br>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </market-content-card>
+
+        <!-- ACCORDION -->
+
+        <market-content-card class="market-grid-item-large">
+            <market-header compact>
+              <h2>An accordion</h2>
+            </market-header>
             <market-accordion-item name="demo-accordion">
             <!-- The label slot element should be permitted content of a button DOM element as this is its parent -->
             <span slot="label">Accordion Item 1</span>
@@ -73,6 +156,113 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </market-accordion-item>
         </market-content-card>
+
+        <!-- FORM -->
+
+        <market-content-card class="market-grid-item-small">
+            <market-header compact>
+              <h2>A little form</h2>
+            </market-header>
+
+            <br>
+
+            <market-input-text>
+              <label>Type something</label>
+              <input slot="input">
+            </market-input-text>
+
+            <br>
+
+            <market-textarea>
+              <label>Type something longer</label>
+            </market-textarea>
+
+            <br>
+
+            <market-row size="medium">
+              <label slot="label">You good?</label>
+              <market-checkbox slot="control"></market-checkbox>
+            </market-row>
+
+            <br>
+
+            <market-button-group alignment="fill">
+              <market-button rank="primary">Send it</market-button>
+            </market-button-group>
+        </market-content-card>
+
+        <!-- ITEM LIST -->
+
+        <market-content-card class="market-grid-item-full item-list">
+                <market-row interactive size="medium" class="market-grid-item-small item-card">
+                  <label slot="label">Market Row Item Card</label>
+                  <p slot="subtext">$9.99</p>
+                  <p class="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+                  <market-accessory size="image" slot="trailing-accessory" class="item-image">
+                    <svg width="136" height="136" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" fill="var(--core-surface-inverse-color)" fill-opacity="0.1" aria-labelledby="1327a324-1772-4ea7-94ac-513dd4ab3c46">
+                      <title id="1327a324-1772-4ea7-94ac-513dd4ab3c46">Placeholder svg 136</title>
+                      <rect x="0" y="0" width="136" height="136"></rect>
+                    </svg>
+                  </market-accessory>
+                </market-row>
+                <market-row interactive size="medium" class="market-grid-item-small item-card">
+                  <label slot="label">Market Row Item Card</label>
+                  <p slot="subtext">$9.99</p>
+                  <p class="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <market-accessory size="image" slot="trailing-accessory" class="item-image">
+                    <svg width="136" height="136" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" fill="var(--core-surface-inverse-color)" fill-opacity="0.1" aria-labelledby="1327a324-1772-4ea7-94ac-513dd4ab3c46">
+                      <title id="1327a324-1772-4ea7-94ac-513dd4ab3c46">Placeholder svg 136</title>
+                      <rect x="0" y="0" width="136" height="136"></rect>
+                    </svg>
+                  </market-accessory>
+                </market-row>
+                <market-row interactive size="medium" class="market-grid-item-small item-card">
+                  <label slot="label">Market Row Item Card</label>
+                  <p slot="subtext">$9.99</p>
+                  <p class="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <market-accessory size="image" slot="trailing-accessory" class="item-image">
+                    <svg width="136" height="136" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" fill="var(--core-surface-inverse-color)" fill-opacity="0.1" aria-labelledby="1327a324-1772-4ea7-94ac-513dd4ab3c46">
+                      <title id="1327a324-1772-4ea7-94ac-513dd4ab3c46">Placeholder svg 136</title>
+                      <rect x="0" y="0" width="136" height="136"></rect>
+                    </svg>
+                  </market-accessory>
+                </market-row>
+                <market-row interactive size="medium" class="market-grid-item-small item-card">
+                  <label slot="label">Market Row Item Card</label>
+                  <p slot="subtext">$9.99</p>
+                  <p class="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <market-accessory size="image" slot="trailing-accessory" class="item-image">
+                    <svg width="136" height="136" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" fill="var(--core-surface-inverse-color)" fill-opacity="0.1" aria-labelledby="1327a324-1772-4ea7-94ac-513dd4ab3c46">
+                      <title id="1327a324-1772-4ea7-94ac-513dd4ab3c46">Placeholder svg 136</title>
+                      <rect x="0" y="0" width="136" height="136"></rect>
+                    </svg>
+                  </market-accessory>
+                </market-row>
+                <market-row interactive size="medium" class="market-grid-item-small item-card">
+                  <label slot="label">Market Row Item Card</label>
+                  <p slot="subtext">$9.99</p>
+                  <p class="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <market-accessory size="image" slot="trailing-accessory" class="item-image">
+                    <svg width="136" height="136" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" fill="var(--core-surface-inverse-color)" fill-opacity="0.1" aria-labelledby="1327a324-1772-4ea7-94ac-513dd4ab3c46">
+                      <title id="1327a324-1772-4ea7-94ac-513dd4ab3c46">Placeholder svg 136</title>
+                      <rect x="0" y="0" width="136" height="136"></rect>
+                    </svg>
+                  </market-accessory>
+                </market-row>
+                <market-row interactive size="medium" class="market-grid-item-small item-card">
+                  <label slot="label">Market Row Item Card</label>
+                  <p slot="subtext">$9.99</p>
+                  <p class="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <market-accessory size="image" slot="trailing-accessory" class="item-image">
+                    <svg width="136" height="136" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" fill="var(--core-surface-inverse-color)" fill-opacity="0.1" aria-labelledby="1327a324-1772-4ea7-94ac-513dd4ab3c46">
+                      <title id="1327a324-1772-4ea7-94ac-513dd4ab3c46">Placeholder svg 136</title>
+                      <rect x="0" y="0" width="136" height="136"></rect>
+                    </svg>
+                  </market-accessory>
+                </market-row>
+
+        </market-content-card>
+
 </div>
     </body>
 </html>

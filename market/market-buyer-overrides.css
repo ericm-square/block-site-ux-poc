@@ -1,5 +1,14 @@
 :root {
 
+/* Defines BRAND color */
+  --brand-emphasis-fill-light-mode-color: rgba(123, 97, 255, 1);
+  --brand-emphasis-text-light-mode-color: rgba(123, 97, 255, 1);
+  --brand-emphasis-text-20-light-mode-color: rgba(123, 97, 255, 0.8); /* UNIQUE TO BUYER */
+  --brand-emphasis-40-light-mode-color: rgba(123, 97, 255, 0.1);
+  --brand-emphasis-30-light-mode-color: rgba(123, 97, 255, 0.2);
+  --brand-emphasis-20-light-mode-color: rgba(82, 58, 208, 1);
+  --brand-emphasis-10-light-mode-color: rgba(52, 31, 163, 1);
+
 /* Makes all buttons round */
   --button-border-radius: 1000px;
 
@@ -8,21 +17,74 @@
   --core-type-font-family: "Cash Sans", sans-serif;
 
 /* Overrides EMPHASIS with BRAND color */
-  --core-emphasis-fill-light-mode-color: rgba(123, 97, 255, 1);
-  --core-emphasis-text-light-mode-color: rgba(123, 97, 255, 1);
-  --core-emphasis-40-light-mode-color: rgba(123, 97, 255, 0.1);
-  --core-emphasis-30-light-mode-color: rgba(123, 97, 255, 0.2);
-  --core-emphasis-20-light-mode-color: rgba(82, 58, 208, 1);
-  --core-emphasis-10-light-mode-color: rgba(52, 31, 163, 1);
+  --core-emphasis-fill-light-mode-color: var(--brand-emphasis-fill-light-mode-color);
+  --core-emphasis-text-light-mode-color: var(--brand-emphasis-text-light-mode-color);
+  --core-emphasis-40-light-mode-color: var(--brand-emphasis-40-light-mode-color);
+  --core-emphasis-30-light-mode-color: var(--brand-emphasis-30-light-mode-color));
+  --core-emphasis-20-light-mode-color: var(--brand-emphasis-20-light-mode-color);
+  --core-emphasis-10-light-mode-color: var(--brand-emphasis-10-light-mode-color);
 
 /* Makes SEGMENTED CONTROL round */
   --segmented-control-background-radius: 1000px;
   --segmented-control-option-background-radius: 1000px;
 
-/* Removes ELEVATION effects */
+/* Removes ELEVATION effects 
   --elevation-10-shadow: none;
   --elevation-20-shadow: none;
   --elevation-30-shadow: none;
+*/
+
+/* RADIUS overrides */
+ --content-card-border-radius: 24px;
+ --banner-border-radius: 16px;
+
+/* PADDING overrides */
+--content-card-padding-horizontal-size: 24px;
+--content-card-padding-vertical-size: 24px;
+
+}
+
+/* CUSTOM BACKGROUND COLOR */
+body {
+  background: #111;
+}
+
+/* MARKET GRID overrides */
+.market-grid-container {
+  grid-gap: 8px;
+}
+
+/* MARKET ROW for Item Cards */
+.item-list {
+  display: grid;
+  grid-template-columns: subgrid;
+  gap: 24px;
+}
+
+.item-card {
+}
+
+market-row {
+    height: fit-content;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+market-row:before {
+  display: none;
+}
+
+.item-image {
+    width: 136px;
+    height: 136px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.item-description {
+  --max-lines: 3;
+  max-height: 64px;
+  overflow: hidden;
 }
 
 /* Defines max card with */

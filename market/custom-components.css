@@ -1,0 +1,62 @@
+/* BUSINESS CARD */
+
+.business-card {
+	padding: 8px;
+	background: linear-gradient(var(--core-emphasis-40-light-mode-color), var(--core-emphasis-40-light-mode-color)),
+				linear-gradient(white, white);
+}
+
+
+.business-card h1, .business-card p, .business-card label {
+	color: var(--core-emphasis-text-light-mode-color);
+}
+
+.business-card svg {
+	fill: var(--core-emphasis-text-light-mode-color);
+}
+
+.business-hero {
+	width: 100%;
+	height: auto;
+	position: relative;
+	margin-bottom: 48px;
+}
+
+video {
+	border-radius: 20px 20px 8px 8px;
+	width: 100%;
+	height: auto;
+	max-height: 480px;
+	object-fit: cover;
+	aspect-ratio: 4 / 3;
+}
+
+.business-avatar {
+	position: absolute;
+	bottom: -48px;
+	left: 12px;
+}
+
+.business-avatar img {
+	object-fit: contain;
+	width: 96px;
+	height: 96px;
+}
+
+.business-info {
+	padding: 16px;
+}
+
+.business-info h1 {
+	font-size: 40px;
+	font-weight: 600;
+	margin: 8px 0;
+}
+
+.business-info label {
+	font-size: 16px !important;
+}
+
+.business-info p {
+	color: var(--brand-emphasis-text-20-light-mode-color);
+}
