@@ -1,15 +1,31 @@
 :root {
-  --button-border-radius: 100px;
 
+/* Makes all buttons round */
+  --button-border-radius: 1000px;
+
+/* Overrides all fonts with Cash Sans */
   --core-type-display-font-family: "Cash Sans", sans-serif;
   --core-type-font-family: "Cash Sans", sans-serif;
 
+/* Overrides EMPHASIS with BRAND color */
   --core-emphasis-fill-light-mode-color: rgba(123, 97, 255, 1);
   --core-emphasis-text-light-mode-color: rgba(123, 97, 255, 1);
   --core-emphasis-40-light-mode-color: rgba(123, 97, 255, 0.1);
   --core-emphasis-30-light-mode-color: rgba(123, 97, 255, 0.2);
+  --core-emphasis-20-light-mode-color: rgba(82, 58, 208, 1);
+  --core-emphasis-10-light-mode-color: rgba(52, 31, 163, 1);
+
+/* Makes SEGMENTED CONTROL round */
+  --segmented-control-background-radius: 1000px;
+  --segmented-control-option-background-radius: 1000px;
+
+/* Removes ELEVATION effects */
+  --elevation-10-shadow: none;
+  --elevation-20-shadow: none;
+  --elevation-30-shadow: none;
 }
 
+/* Defines max card with */
 market-content-card {
-  max-width: 480px;
+  /* max-width: 480px; */
 }
