@@ -1,0 +1,15 @@
+:root {
+  --button-border-radius: 100px;
+
+  --core-type-display-font-family: "Cash Sans", sans-serif;
+  --core-type-font-family: "Cash Sans", sans-serif;
+
+  --core-emphasis-fill-light-mode-color: rgba(123, 97, 255, 1);
+  --core-emphasis-text-light-mode-color: rgba(123, 97, 255, 1);
+  --core-emphasis-40-light-mode-color: rgba(123, 97, 255, 0.1);
+  --core-emphasis-30-light-mode-color: rgba(123, 97, 255, 0.2);
+}
+
+market-content-card {
+  max-width: 480px;
+}
