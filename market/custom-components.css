@@ -60,3 +60,9 @@ video {
 .business-info p {
 	color: var(--brand-emphasis-text-20-light-mode-color);
 }
+
+
+/* CUSTOM BACKGROUND COLOR */
+body {
+  background: #111;
+}

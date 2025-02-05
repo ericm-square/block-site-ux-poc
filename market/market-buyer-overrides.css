@@ -44,11 +44,6 @@
 
 }
 
-/* CUSTOM BACKGROUND COLOR */
-body {
-  background: #111;
-}
-
 /* MARKET GRID overrides */
 .market-grid-container {
   grid-gap: 8px;
@@ -59,9 +54,6 @@ body {
   display: grid;
   grid-template-columns: subgrid;
   gap: 24px;
-}
-
-.item-card {
 }
 
 market-row {
